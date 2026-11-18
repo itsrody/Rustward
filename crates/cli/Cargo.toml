@@ -1,0 +1,28 @@
+[package]
+name = "rustshield"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "rustshield"
+path = "src/main.rs"
+
+[dependencies]
+adblock.workspace = true
+anyhow.workspace = true
+clap.workspace = true
+hex.workspace = true
+admit.workspace = true
+analyze.workspace = true
+model.workspace = true
+dedup.workspace = true
+emit.workspace = true
+fetch.workspace = true
+parse.workspace = true
+rewrite.workspace = true
+verify.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true

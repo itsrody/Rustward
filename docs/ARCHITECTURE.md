@@ -222,16 +222,16 @@ RustyShield/
 │   └── resources/                  # pinned official uBO snapshot + generated Resource JSON
 ├── lists.lock                      # generated: per-source hash, etag, metadata (checked in)
 ├── crates/
-│   ├── rustshield-core/            # IR types, SemanticKey, config schema, errors, traits
-│   ├── rustshield-fetch/           # HTTP, conditional GET, cache, lockfile, redirect handling
-│   ├── rustshield-parse/           # engine-backed parser wrapper -> IR
-│   ├── rustshield-analyze/         # classification, statistics, cost model
-│   ├── rustshield-admit/           # golden-rule gate, official-resource + trust checks
-│   ├── rustshield-dedup/           # exact + semantic dedup, source priority
-│   ├── rustshield-rewrite/         # rewrite-to-eligible catalog, safety framework, subsumption
-│   ├── rustshield-emit/            # deterministic sort, text emission, sidecar reports
-│   ├── rustshield-verify/          # corpus generation, differential tests, benchmarks
-│   └── rustshield-cli/             # clap orchestration, stage caching
+│   ├── model/            # IR types, SemanticKey, config schema, errors, traits
+│   ├── fetch/           # HTTP, conditional GET, cache, lockfile, redirect handling
+│   ├── parse/           # engine-backed parser wrapper -> IR
+│   ├── analyze/         # classification, statistics, cost model
+│   ├── admit/           # golden-rule gate, official-resource + trust checks
+│   ├── dedup/           # exact + semantic dedup, source priority
+│   ├── rewrite/         # rewrite-to-eligible catalog, safety framework, subsumption
+│   ├── emit/            # deterministic sort, text emission, sidecar reports
+│   ├── verify/          # corpus generation, differential tests, benchmarks
+│   └── rustshield/             # clap orchestration, stage caching
 ├── corpus/                         # fixtures + optional real request corpora (CSV/JSONL)
 ├── tests/fixtures/                 # golden lists, badfilter traps, hosts, cosmetic edge cases
 ├── docs/ARCHITECTURE.md            # this document
@@ -248,7 +248,7 @@ upgrade is an explicit, verified event.
 
 ---
 
-## 6. Canonical data model (`rustshield-core`)
+## 6. Canonical data model (`model`)
 
 ### 6.1 Sourced line
 
@@ -381,7 +381,7 @@ mismatch, all rewrites in the responsible group/family are reverted and the pipe
 
 ## 7. Stage details
 
-### 7.1 Fetch (`rustshield-fetch`)
+### 7.1 Fetch (`fetch`)
 
 - `reqwest` (rustls), gzip/brotli, per-source timeout, bounded retry with exponential backoff.
 - Conditional GET using `lists.lock` (`ETag`, `If-Modified-Since`); `304` reuses the cached blob.
@@ -397,7 +397,7 @@ mismatch, all rewrites in the responsible group/family are reverted and the pipe
 - Attribution: source id, title, homepage, and license note from config are carried into the IR and
   into the generated header comments (important when redistributing third-party lists).
 
-### 7.2 Ingest / parse (`rustshield-parse`)
+### 7.2 Ingest / parse (`parse`)
 
 - Before parsing, run the **directive pass** (D9): evaluate `!#if` / `!#else` / `!#endif` for the
   pinned target environment and expand `!#include` from a content-addressed include tree. The
@@ -416,7 +416,7 @@ mismatch, all rewrites in the responsible group/family are reverted and the pipe
 - Parse results are cached by (blob hash, dialect, profile hash, directive environment hash), so
   unchanged lists are not re-parsed and a profile change cannot silently reuse stale results.
 
-### 7.3 Analyze (`rustshield-analyze`)
+### 7.3 Analyze (`analyze`)
 
 Per source and globally, produce:
 
@@ -435,7 +435,7 @@ Per source and globally, produce:
   args, all `action` operators, unvetted `+js(...)` scriptlets, `#$#`, `#%#`, HTML filters.
 - **Golden-rule admission classification:** `ELIGIBLE`, `REWRITABLE_TO_ELIGIBLE`,
   `INELIGIBLE(reason)`, with counts by rule class, source dialect, and exclusion reason. This is the
-  input to `rustshield-admit`; `INELIGIBLE` rules never reach dedup unless a rewriter claims them.
+  input to `admit`; `INELIGIBLE` rules never reach dedup unless a rewriter claims them.
 - **Optimizability classification**, mirroring the engine exactly:
   - `ENGINE_FUSABLE` — passes `is_filter_optimizable_by_patterns`, has `FilterTokens::Empty`, and
     belongs to an optimizer-enabled bucket. Leave these alone; the engine fuses them at load time.
@@ -448,7 +448,7 @@ Per source and globally, produce:
 - Outputs `reports/analysis.json` and a human-readable `reports/analysis.md` with the top duplicate
   clusters and the largest unoptimizable groups.
 
-#### 7.3.1 Golden-rule admission (`rustshield-admit`)
+#### 7.3.1 Golden-rule admission (`admit`)
 
 This stage enforces §2.4 before dedup so only eligible or rewritable rules reach later stages:
 
@@ -469,7 +469,7 @@ Already eligible rules that the engine cannot fuse stay in the set. The admissio
 allowlist: any rule that cannot prove eligibility is a candidate for rewrite or exclusion, never a
 silent pass-through.
 
-### 7.4 Dedup (`rustshield-dedup`)
+### 7.4 Dedup (`dedup`)
 
 Three ordered passes:
 
@@ -486,7 +486,7 @@ Hard exclusions: `$badfilter` rules are never deduplicated (their precise text/I
 their canonical official name, grade, resource digest, and `PermissionMask`. Different trust grades
 or digests never collapse into one key.
 
-### 7.5 Classify (`rustshield-analyze`, reused)
+### 7.5 Classify (`analyze`, reused)
 
 Rules are partitioned into buckets that mirror `NetworkFilterListId`:
 
@@ -500,7 +500,7 @@ This partition is used (a) by rewriters to restrict their search space, (b) by t
 a readable deterministic file, and (c) by verification to build targeted sub-engines for local
 differential checks.
 
-### 7.6 Rewrite (`rustshield-rewrite`) — the core value-add
+### 7.6 Rewrite (`rewrite`) — the core value-add
 
 #### 7.6.1 Framework
 
@@ -664,7 +664,7 @@ golden-rule postcondition: the reparsed rule must be `ELIGIBLE` under §2.4 — 
 native CSS / allowlisted lightweight procedural, or a D11-qualified official+trusted scriptlet/redirect.
 No action operators, injected CSS/JS, or unvetted resources are emitted.
 
-### 7.7 Sort and emit (`rustshield-emit`)
+### 7.7 Sort and emit (`emit`)
 
 Output text is ordered for **determinism, auditability, and fast engine construction**. Line order
 does not define matching semantics in `adblock-rust`, but it changes parser/flatbuffer build locality
@@ -750,7 +750,7 @@ decision_mismatches, cosmetic_mismatches, golden_rule_violations
 
 ## 8. Verification and benchmarking on the real engine
 
-### 8.1 Differential test harness (`rustshield-verify`)
+### 8.1 Differential test harness (`verify`)
 
 Build engines with the **same feature profile**:
 

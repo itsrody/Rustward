@@ -1,0 +1,22 @@
+! Title: RustShield basic test fixture
+! Description: Small deterministic list exercising parsing, admission, dedup, and emit.
+!#if env_chromium
+||ads.example^$script
+||ads.example^$image
+||ads.example^$script
+||tracker.example^$domain=site-a.example
+||tracker.example^$domain=site-b.example
+||banner.example^$script,image
+@@||allowed.example^$script
+example.com##.ad
+example.com,other.example##.ad
+example.com##div.ad > span:has(a)
+example.com##.promo:has-text(Sponsored)
+example.com##.ad:matches-css(display: none)
+example.com##.ad:style(color: red)
+example.com##+js(abort-on-property-read, adblockWasFound)
+example.com##+js(unknown-scriptlet)
+||blocked.example^$denyallow=first-party.example
+!#else
+||inactive.example^
+!#endif

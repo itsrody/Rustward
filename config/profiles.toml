@@ -1,0 +1,11 @@
+[desktop]
+features = ["embedded-domain-resolver", "full-regex-handling", "single-thread"]
+description = "Brave desktop feature profile"
+
+[mobile]
+features = ["embedded-domain-resolver", "full-regex-handling", "single-thread"]
+description = "Mobile profile; same parser semantics as desktop for 0.13.6"
+
+[wasm]
+features = ["embedded-domain-resolver", "full-regex-handling"]
+description = "Wasm profile without single-thread optimizations"

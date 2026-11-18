@@ -1,0 +1,24 @@
+{
+  "source": "ubo-local-fixture",
+  "commit": "local-fixture",
+  "resources": [
+    {
+      "name": "abort-on-property-read.js",
+      "aliases": ["aopr", "abort-on-property-read"],
+      "grade": "standard",
+      "kind": "application/javascript",
+      "content": "try { Object.defineProperty(window, '{{1}}', { get: () => undefined }); } catch (e) {}",
+      "dependencies": [],
+      "permission": 0
+    },
+    {
+      "name": "trusted-set-cookie.js",
+      "aliases": [],
+      "grade": "trusted",
+      "kind": "application/javascript",
+      "content": "try { document.cookie = '{{1}}={{2}}'; } catch (e) {}",
+      "dependencies": [],
+      "permission": 1
+    }
+  ]
+}

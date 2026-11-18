@@ -1,0 +1,436 @@
+//! Golden-rule admission: fast-native, official, engine-trusted rules only.
+
+use adblock::{
+    Engine,
+    lists::{FilterSet, ParseOptions},
+    request::Request,
+    resources::{PermissionMask, Resource},
+};
+use anyhow::{Context, Result};
+use model::{
+    AdmissionResult, Config, CosmeticPayload, DialectGap, Eligibility, ExclusionReason,
+    ExclusionRecord, GapClass, NetworkRule, ParsedOutcome, ParsedRecord, ResourceCatalog,
+    ResourceDecision, Rule, RuleState, ScriptletGrade, model::CosmeticRule, util::is_literal_arg,
+};
+use std::path::Path;
+
+pub fn admit(records: &[ParsedRecord], config: &Config, root: &Path) -> Result<AdmissionResult> {
+    let catalog = load_catalog(config, root)?;
+    let engine_resources = catalog.engine_resources();
+    let mut accepted = Vec::new();
+    let mut excluded = Vec::new();
+    let mut resource_decisions = Vec::new();
+
+    for record in records {
+        match &record.outcome {
+            ParsedOutcome::Network(rule) => match admit_network(
+                rule,
+                config,
+                &catalog,
+                &engine_resources,
+                &mut resource_decisions,
+            ) {
+                Ok(()) => {
+                    let mut rule = rule.clone();
+                    if rule.is_badfilter {
+                        rule.state = RuleState::Pinned;
+                    }
+                    accepted.push(Rule::Network(rule));
+                }
+                Err(reason) => excluded.push(ExclusionRecord {
+                    source_id: record.source_id.clone(),
+                    line_no: record.line_no,
+                    dialect: record.dialect,
+                    text: record.raw_text.clone(),
+                    reason,
+                }),
+            },
+            ParsedOutcome::Cosmetic(rule) => match admit_cosmetic(
+                rule,
+                config,
+                &catalog,
+                &engine_resources,
+                &mut resource_decisions,
+            ) {
+                Ok(admitted_rule) => accepted.push(Rule::Cosmetic(admitted_rule)),
+                Err(reason) => excluded.push(ExclusionRecord {
+                    source_id: record.source_id.clone(),
+                    line_no: record.line_no,
+                    dialect: record.dialect,
+                    text: record.raw_text.clone(),
+                    reason,
+                }),
+            },
+            ParsedOutcome::Unsupported { reason, .. } => excluded.push(ExclusionRecord {
+                source_id: record.source_id.clone(),
+                line_no: record.line_no,
+                dialect: record.dialect,
+                text: record.raw_text.clone(),
+                reason: reason.clone(),
+            }),
+            ParsedOutcome::Empty
+            | ParsedOutcome::Comment
+            | ParsedOutcome::Metadata
+            | ParsedOutcome::Directive => {}
+        }
+    }
+
+    Ok(AdmissionResult {
+        accepted,
+        excluded,
+        resource_decisions,
+    })
+}
+
+fn load_catalog(config: &Config, root: &Path) -> Result<ResourceCatalog> {
+    let Some(resources) = &config.resources else {
+        return Ok(ResourceCatalog::empty());
+    };
+    let ubo = &resources.ubo;
+    let Some(path) = ubo.snapshot_path.as_ref() else {
+        return Ok(ResourceCatalog::empty());
+    };
+    ResourceCatalog::load_verified(&root.join(path), &ubo.snapshot_sha256)
+        .with_context(|| "failed to load official resource snapshot")
+}
+
+fn admit_network(
+    rule: &NetworkRule,
+    config: &Config,
+    catalog: &ResourceCatalog,
+    engine_resources: &[Resource],
+    decisions: &mut Vec<ResourceDecision>,
+) -> std::result::Result<(), ExclusionReason> {
+    if rule.eligibility != Eligibility::Eligible {
+        return match &rule.eligibility {
+            Eligibility::Ineligible(reason) => Err(reason.clone()),
+            _ => Err(ExclusionReason::Policy(
+                "rule arrived at ADMIT in a non-eligible state".to_string(),
+            )),
+        };
+    }
+    if has_unsupported_gap(&rule.dialect_gaps) {
+        return Err(ExclusionReason::UnsupportedSyntax(
+            rule.dialect_gaps
+                .iter()
+                .find(|gap| gap.class == GapClass::Unsupported)
+                .map(|gap| gap.kind.clone())
+                .unwrap_or_else(|| "unsupported syntax".to_string()),
+        ));
+    }
+    if rule.is_regex || rule.is_complete_regex || rule.is_hostname_regex {
+        return Err(ExclusionReason::Regex);
+    }
+    if rule.match_case {
+        return Err(ExclusionReason::MatchCase);
+    }
+    if rule.is_redirect {
+        if let Some(modifier) = &rule.modifier_option {
+            qualify_resource(
+                modifier,
+                rule,
+                config,
+                catalog,
+                engine_resources,
+                decisions,
+                false,
+            )?;
+        }
+    }
+    Ok(())
+}
+
+fn admit_cosmetic(
+    rule: &CosmeticRule,
+    config: &Config,
+    catalog: &ResourceCatalog,
+    engine_resources: &[Resource],
+    decisions: &mut Vec<ResourceDecision>,
+) -> std::result::Result<CosmeticRule, ExclusionReason> {
+    let mut rule = rule.clone();
+    if rule.eligibility != Eligibility::Eligible {
+        return match &rule.eligibility {
+            Eligibility::Ineligible(reason) => Err(reason.clone()),
+            _ => Err(ExclusionReason::Policy(
+                "rule arrived at ADMIT in a non-eligible state".to_string(),
+            )),
+        };
+    }
+    if rule.action_detail.is_some() && !config.cosmetic.allow_action_operators {
+        return Err(ExclusionReason::ActionOperator);
+    }
+    if has_unsupported_gap(&rule.dialect_gaps) {
+        return Err(ExclusionReason::UnsupportedSyntax(
+            rule.dialect_gaps
+                .iter()
+                .find(|gap| gap.class == GapClass::Unsupported)
+                .map(|gap| gap.kind.clone())
+                .unwrap_or_else(|| "unsupported syntax".to_string()),
+        ));
+    }
+
+    if rule.script_inject {
+        if !config.cosmetic.allow_vetted_scriptlets {
+            return Err(ExclusionReason::Policy(
+                "scriptlets are disabled".to_string(),
+            ));
+        }
+        let name = match &rule.payload {
+            CosmeticPayload::VettedScriptlet { name, .. } => name.clone(),
+            _ => {
+                return Err(ExclusionReason::UnsupportedSyntax(
+                    "scriptlet invocation was not parsed".to_string(),
+                ));
+            }
+        };
+        qualify_resource(
+            &name,
+            &rule,
+            config,
+            catalog,
+            engine_resources,
+            decisions,
+            true,
+        )?;
+        if let Some(resource) = catalog.find(&name) {
+            if let CosmeticPayload::VettedScriptlet {
+                grade,
+                resource_digest,
+                permission,
+                ..
+            } = &mut rule.payload
+            {
+                *grade = resource.grade;
+                *resource_digest = resource.digest;
+                *permission = resource.permission;
+            }
+        }
+        return Ok(rule);
+    }
+
+    match &rule.payload {
+        CosmeticPayload::NativeCss(_) => {
+            if !config.cosmetic.allow_native_css {
+                return Err(ExclusionReason::Policy(
+                    "native CSS is disabled".to_string(),
+                ));
+            }
+            if rule.selector_ops != ["css-selector"] {
+                return Err(ExclusionReason::SlowCosmetic(rule.selector_ops.join(",")));
+            }
+        }
+        CosmeticPayload::LightProcedural { op, .. } => {
+            if !config
+                .cosmetic
+                .light_procedural_allowlist
+                .iter()
+                .any(|name| name == op.name())
+            {
+                return Err(ExclusionReason::SlowCosmetic(op.name().to_string()));
+            }
+            let value = match op {
+                model::FastOperator::HasText(value) => value,
+                model::FastOperator::MatchesAttr(value) => value,
+            };
+            if !config.cosmetic.allow_regex_procedural_args && !is_literal_arg(value) {
+                return Err(ExclusionReason::SlowCosmetic(format!(
+                    "{} uses a non-literal argument",
+                    op.name()
+                )));
+            }
+        }
+        CosmeticPayload::VettedScriptlet { .. } => unreachable!(),
+    }
+    Ok(rule)
+}
+
+fn has_unsupported_gap(gaps: &[DialectGap]) -> bool {
+    gaps.iter().any(|gap| gap.class == GapClass::Unsupported)
+}
+
+trait ResourceRule {
+    fn resource_rule_fields(&self) -> (String, String, u8, bool, Vec<String>);
+}
+
+impl ResourceRule for NetworkRule {
+    fn resource_rule_fields(&self) -> (String, String, u8, bool, Vec<String>) {
+        (
+            self.source_id.clone(),
+            self.text.clone(),
+            self.source_permissions,
+            self.source_trusted,
+            self.hostname.clone().into_iter().collect(),
+        )
+    }
+}
+
+impl ResourceRule for CosmeticRule {
+    fn resource_rule_fields(&self) -> (String, String, u8, bool, Vec<String>) {
+        let hosts = if self.hosts.is_empty() {
+            self.entities.clone()
+        } else {
+            self.hosts.clone()
+        };
+        (
+            self.source_id.clone(),
+            self.text.clone(),
+            self.source_permissions,
+            self.source_trusted,
+            hosts,
+        )
+    }
+}
+
+fn qualify_resource<R: ResourceRule>(
+    requested_name: &str,
+    rule: &R,
+    config: &Config,
+    catalog: &ResourceCatalog,
+    engine_resources: &[Resource],
+    decisions: &mut Vec<ResourceDecision>,
+    scriptlet: bool,
+) -> std::result::Result<(), ExclusionReason> {
+    let Some(resources) = &config.resources else {
+        return Err(ExclusionReason::UnknownResource(format!(
+            "{requested_name}: no resource snapshot configured"
+        )));
+    };
+    let ubo = &resources.ubo;
+    let (source_id, rule_text, source_permissions, source_trusted, hosts) =
+        rule.resource_rule_fields();
+    let effective_permissions = source_permissions & config.engine.permissions;
+
+    let resource = catalog
+        .find(requested_name)
+        .ok_or_else(|| ExclusionReason::UnknownResource(requested_name.to_string()))?;
+    let canonical_name = resource.name.clone();
+    let mut decision = ResourceDecision {
+        name: requested_name.to_string(),
+        canonical_name: canonical_name.clone(),
+        grade: resource.grade,
+        digest: hex::encode(resource.digest),
+        permission: resource.permission,
+        source_id: source_id.clone(),
+        source_permissions,
+        decision: "pending".to_string(),
+        reason: None,
+    };
+
+    let result = (|| -> std::result::Result<(), ExclusionReason> {
+        let grade_ok = match resource.grade {
+            ScriptletGrade::Standard => ubo.allow_standard,
+            ScriptletGrade::Trusted => ubo.allow_trusted && source_trusted,
+        };
+        if !grade_ok {
+            return Err(ExclusionReason::Trust(format!(
+                "{} grade {} is not allowed for source {}",
+                canonical_name,
+                resource.grade.as_str(),
+                source_id
+            )));
+        }
+        let closure = catalog
+            .dependency_closure(&canonical_name)
+            .map_err(|error| ExclusionReason::UnknownResource(error.to_string()))?;
+        let source_mask = PermissionMask::from_bits(effective_permissions);
+        for item in &closure {
+            let permission = PermissionMask::from_bits(item.permission);
+            if !permission.is_injectable_by(source_mask) {
+                return Err(ExclusionReason::Trust(format!(
+                    "{} requires permission {:?} but source grants {:?}",
+                    item.name, item.permission, source_mask
+                )));
+            }
+            let kind_ok = if scriptlet {
+                item.kind == model::ResourceKind::Template
+                    || item.kind == model::ResourceKind::ApplicationJavascript
+                    || item.kind == model::ResourceKind::FnJavascript
+            } else {
+                item.permission == 0
+            };
+            if !kind_ok {
+                return Err(ExclusionReason::Trust(format!(
+                    "{} cannot be used for {}",
+                    item.name,
+                    if scriptlet {
+                        "script injection"
+                    } else {
+                        "redirect"
+                    }
+                )));
+            }
+        }
+        if ubo.require_realization {
+            let realized = if scriptlet {
+                realize_scriptlet(&rule_text, effective_permissions, engine_resources, &hosts)
+            } else {
+                realize_redirect(&rule_text, effective_permissions, engine_resources, &hosts)
+            };
+            if !realized {
+                return Err(ExclusionReason::Trust(format!(
+                    "engine did not realize {canonical_name}"
+                )));
+            }
+        }
+        Ok(())
+    })();
+
+    match &result {
+        Ok(()) => decision.decision = "admitted".to_string(),
+        Err(reason) => {
+            decision.decision = "excluded".to_string();
+            decision.reason = Some(reason.to_string());
+        }
+    }
+    decisions.push(decision);
+    result
+}
+
+fn build_engine(rule_text: &str, permissions: u8, resources: &[Resource]) -> Engine {
+    let mut set = FilterSet::new(false);
+    set.add_filter_list(
+        rule_text.to_string(),
+        ParseOptions {
+            permissions: PermissionMask::from_bits(permissions),
+            ..Default::default()
+        },
+    );
+    let mut engine = Engine::new_with_filter_set(set);
+    engine.use_resources(resources.iter().cloned());
+    engine
+}
+
+fn realize_scriptlet(
+    rule_text: &str,
+    permissions: u8,
+    resources: &[Resource],
+    hosts: &[String],
+) -> bool {
+    let engine = build_engine(rule_text, permissions, resources);
+    let host = hosts.first().map(String::as_str).unwrap_or("example.com");
+    let url = if host.contains("://") {
+        host.to_string()
+    } else {
+        format!("https://{host}/")
+    };
+    !engine
+        .url_cosmetic_resources(&url)
+        .injected_script
+        .is_empty()
+}
+
+fn realize_redirect(
+    rule_text: &str,
+    permissions: u8,
+    resources: &[Resource],
+    hosts: &[String],
+) -> bool {
+    let engine = build_engine(rule_text, permissions, resources);
+    let host = hosts.first().map(String::as_str).unwrap_or("ads.example");
+    let url = format!("https://{host}/rs-probe.js");
+    let request = match Request::new(&url, "https://site.example/", "script", "GET") {
+        Ok(request) => request,
+        Err(_) => return false,
+    };
+    engine.check_network_request(&request).redirect.is_some()
+}

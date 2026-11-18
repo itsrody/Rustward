@@ -1,0 +1,41 @@
+[workspace]
+resolver = "3"
+members = [
+  "crates/model",
+  "crates/fetch",
+  "crates/parse",
+  "crates/analyze",
+  "crates/admit",
+  "crates/dedup",
+  "crates/rewrite",
+  "crates/emit",
+  "crates/verify",
+  "crates/cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MPL-2.0"
+rust-version = "1.85"
+
+[workspace.dependencies]
+adblock = { version = "=0.13.6", features = ["css-validation", "debug-info"] }
+anyhow = "1"
+base64 = "0.22"
+clap = { version = "4", features = ["derive"] }
+hex = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+toml = "0.8"
+
+model = { path = "crates/model" }
+fetch = { path = "crates/fetch" }
+parse = { path = "crates/parse" }
+analyze = { path = "crates/analyze" }
+admit = { path = "crates/admit" }
+dedup = { path = "crates/dedup" }
+rewrite = { path = "crates/rewrite" }
+emit = { path = "crates/emit" }
+verify = { path = "crates/verify" }

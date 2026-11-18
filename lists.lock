@@ -1,0 +1,32 @@
+{
+  "sources": {
+    "local-basic": {
+      "url": "file://tests/fixtures/basic.txt",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/tests/fixtures/basic.txt",
+      "sha256": "a31d5285dd30f953b4a4489d6c1bc710e4950fcafc903eb3a4705f89c19e467e",
+      "bytes": 730,
+      "fetched_at": "1970-01-01T00:00:00Z",
+      "dialect": "ubo",
+      "format": "standard",
+      "priority": 100,
+      "enabled": true,
+      "trusted": false,
+      "permissions": 0,
+      "license": "test fixture"
+    },
+    "local-hosts": {
+      "url": "file://tests/fixtures/hosts.txt",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/tests/fixtures/hosts.txt",
+      "sha256": "2ef9ec79e4694cddbc0cebf1398be20f664cc25cb51caccda03fe12458967ef1",
+      "bytes": 67,
+      "fetched_at": "1970-01-01T00:00:00Z",
+      "dialect": "hosts",
+      "format": "hosts",
+      "priority": 10,
+      "enabled": true,
+      "trusted": false,
+      "permissions": 0,
+      "license": "test fixture"
+    }
+  }
+}

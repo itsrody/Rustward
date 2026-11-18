@@ -1,0 +1,13 @@
+[package]
+name = "parse"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+adblock.workspace = true
+anyhow.workspace = true
+fetch.workspace = true
+model.workspace = true
+sha2.workspace = true

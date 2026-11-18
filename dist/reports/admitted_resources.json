@@ -48136,6 +48136,17 @@
     "reason": null
   },
   {
+    "name": "set-cookie-reload",
+    "canonical_name": "set-cookie-reload.js",
+    "grade": "standard",
+    "digest": "21cdad8eef30f5ba7bc0724dc1667498037b719fdd09aa926ed1ef3cc7bf3a01",
+    "permission": 0,
+    "source_id": "ag-tracking",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "noop.js",
     "canonical_name": "noop.js",
     "grade": "standard",
@@ -80128,6 +80139,17 @@
     "canonical_name": "set-constant.js",
     "grade": "standard",
     "digest": "6483d84d8211ee1b84ab64a8a4d2687270ce789a486ce6efc3ba56a059e10746",
+    "permission": 0,
+    "source_id": "easyprivacy",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "set-cookie-reload",
+    "canonical_name": "set-cookie-reload.js",
+    "grade": "standard",
+    "digest": "21cdad8eef30f5ba7bc0724dc1667498037b719fdd09aa926ed1ef3cc7bf3a01",
     "permission": 0,
     "source_id": "easyprivacy",
     "source_permissions": 0,

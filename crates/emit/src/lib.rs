@@ -41,6 +41,13 @@ pub fn emit(rules: &[Rule], config: &Config, build_id: &str) -> Result<EmitResul
     }
 
     let mut output = String::new();
+    output.push_str(&format!("! Title: {}\n", config.output.title));
+    output.push_str(&format!(
+        "! Last modified: {}\n",
+        config.output.last_modified
+    ));
+    output.push_str(&format!("! Expires: {}\n", config.output.expires));
+    output.push_str(&format!("! Description: {}\n", config.output.description));
     output.push_str("! RustShield: generated offline list\n");
     output.push_str(&format!("! RustShield: build-id={build_id}\n"));
     output.push_str(&format!(

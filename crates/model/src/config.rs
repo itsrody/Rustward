@@ -66,10 +66,34 @@ pub struct OutputConfig {
     pub emit_order: String,
     #[serde(default)]
     pub inline_audit_comments: bool,
+    #[serde(default = "default_list_title")]
+    pub title: String,
+    #[serde(default = "default_list_last_modified")]
+    pub last_modified: String,
+    #[serde(default = "default_list_expires")]
+    pub expires: String,
+    #[serde(default = "default_list_description")]
+    pub description: String,
 }
 
 fn default_emit_order() -> String {
     "compiler-friendly-v1".to_string()
+}
+
+fn default_list_title() -> String {
+    "RustShield".to_string()
+}
+
+fn default_list_last_modified() -> String {
+    "Sat, 14 Nov 2026 13:05:16 +0000".to_string()
+}
+
+fn default_list_expires() -> String {
+    "2 days".to_string()
+}
+
+fn default_list_description() -> String {
+    "Verified unified filter list for Brave adblock-rust".to_string()
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

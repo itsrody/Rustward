@@ -65,6 +65,12 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
 
     let list_path = root.join("RustShield.txt");
     let first_list = fs::read_to_string(&list_path).expect("read list");
+    assert!(first_list.starts_with("! Title: RustShield\n"));
+    assert!(first_list.contains("! Last modified: Sat, 14 Nov 2026 13:05:16 +0000\n"));
+    assert!(first_list.contains("! Expires: 2 days\n"));
+    assert!(
+        first_list.contains("! Description: Verified unified filter list for Brave adblock-rust\n")
+    );
     assert!(first_list.contains("||ads.example^$image,script"));
     assert!(first_list.contains("||tracker.example^$domain=site-a.example|site-b.example"));
     assert!(first_list.contains("example.com,other.example##.ad"));

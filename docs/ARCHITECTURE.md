@@ -897,6 +897,10 @@ adblock_version = "=0.13.6"
 path = "dist/RustShield.txt"          # all published artifacts live under dist/
 emit_order = "compiler-friendly-v1"  # benchmarked engine-bucket/token locality order
 inline_audit_comments = false
+title = "RustShield"
+last_modified = "Sat, 14 Nov 2026 13:05:16 +0000"
+expires = "2 days"
+description = "Verified unified filter list for Brave adblock-rust"
 
 [verify]
 required = true

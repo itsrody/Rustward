@@ -8,20 +8,20 @@
     "cosmetic_vetted_scriptlet": 370,
     "directives": 101,
     "effective_cosmetic_rules": 93650,
-    "effective_network_rules": 599162,
-    "eligible": 600481,
+    "effective_network_rules": 599175,
+    "eligible": 600494,
     "empty_lines": 1469,
     "excluded_by_gate": 94268,
     "metadata": 38,
-    "network_rules": 504691,
+    "network_rules": 504704,
     "output_fast_native_css": 48242,
     "output_light_procedural": 127,
     "output_vetted_scriptlet": 369,
     "parse_errors": 1937,
-    "raw_lines": 750585
+    "raw_lines": 750598
   },
   "dialects": {
-    "ubo": 750585
+    "ubo": 750598
   },
   "gaps": {
     "all:SEMANTIC_GAP": 70895,
@@ -36,6 +36,6 @@
     "xpath:SEMANTIC_GAP": 29
   },
   "eligibility": {
-    "ELIGIBLE": 600481
+    "ELIGIBLE": 600494
   }
 }

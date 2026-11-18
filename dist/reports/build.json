@@ -1,8 +1,8 @@
 {
-  "build_id": "f93a56de1c9f239a0c7bc94341632f5dfeca2f7038ea13f0f6a2faf0812beefd",
-  "config_hash": "43101053305538abc78dcb2471fdf486f0816ce90251149f662f69597afb9f70",
+  "build_id": "7a358f2f38a1294438de25e21d5c9b97cfa428f2f477236b213e378d07a3bfcd",
+  "config_hash": "0687d2d3f274dd3c6ca4d9bad1ed522471904ce43dcf973331ab2fe1a6828b33",
   "profile_hash": "7523a0d8d369cd3ba756dd22e4c6bbb3e9bcfd0e8c4f97cefee9e7ee3023e475",
-  "lists_lock_hash": "ef7258860cee82f593049050839d875e48547d37228af2ac3660ac9fabed5e61",
+  "lists_lock_hash": "665abbf6df08314ae33bf9e3cb94b11f80ee64d47865fb0826213ac5933effa1",
   "adblock_version": "=0.13.6",
   "emit_order": "compiler-friendly-v1",
   "metrics": {
@@ -17,19 +17,19 @@
     "duplicates_exact": 41838,
     "duplicates_semantic": 2660,
     "effective_cosmetic_rules": 93650,
-    "effective_network_rules": 599162,
-    "eligible": 600481,
+    "effective_network_rules": 599175,
+    "eligible": 600494,
     "empty_lines": 1469,
     "excluded_by_gate": 94268,
     "golden_rule_violations": 0,
     "metadata": 38,
-    "network_rules": 504691,
+    "network_rules": 504704,
     "output_fast_native_css": 48242,
     "output_light_procedural": 127,
-    "output_lines": 553429,
+    "output_lines": 553442,
     "output_vetted_scriptlet": 369,
     "parse_errors": 1937,
-    "raw_lines": 750585,
+    "raw_lines": 750598,
     "rewrites_applied": 1407
   },
   "receipts": [
@@ -22324,14 +22324,14 @@
     "emit_order_violations": 0
   },
   "bench": {
-    "admitted_opt_bytes": 31128445,
-    "candidate_opt_bytes": 29281885,
-    "admitted_noopt_bytes": 31128517,
-    "candidate_noopt_bytes": 29281957,
-    "admitted_build_ms": 441,
-    "candidate_build_ms": 405,
-    "admitted_qps": 528156.7586160589,
-    "candidate_qps": 538223.0200999746,
+    "admitted_opt_bytes": 31128989,
+    "candidate_opt_bytes": 29282453,
+    "admitted_noopt_bytes": 31129069,
+    "candidate_noopt_bytes": 29282525,
+    "admitted_build_ms": 445,
+    "candidate_build_ms": 411,
+    "admitted_qps": 537712.694945049,
+    "candidate_qps": 568795.2336779563,
     "emit_order": "compiler-friendly-v1"
   }
 }

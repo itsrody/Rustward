@@ -4743,7 +4743,7 @@ ag-base-easylist	21339	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent d
 ag-base-easylist	21340	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-base-easylist	21341	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-base-easylist	21342	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	47588	ubo	xpath	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	47601	ubo	xpath	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-tracking	9	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	10	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	11	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification

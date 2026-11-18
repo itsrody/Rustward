@@ -18,9 +18,9 @@
     },
     "ag-base-easylist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/3644135b1b731d41f6c3e8f6f52220a72f665e0597a83399a4aa751a994542a2",
-      "sha256": "3644135b1b731d41f6c3e8f6f52220a72f665e0597a83399a4aa751a994542a2",
-      "bytes": 2429449,
+      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/0742567e8714c9b40dfc4d485244073946db4f2e2a111343124a6aa67d1ed718",
+      "sha256": "0742567e8714c9b40dfc4d485244073946db4f2e2a111343124a6aa67d1ed718",
+      "bytes": 2429767,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -29,8 +29,8 @@
       "trusted": false,
       "permissions": 0,
       "license": "AdGuard Base filter + EasyList; see upstream ! Title/! Description metadata",
-      "etag": "\"90d45438efe1485b4099b73ecd61491a\"",
-      "last_modified": "Wed, 18 Nov 2026 19:50:04 GMT"
+      "etag": "\"247b5d8419528bf82f68f693cb4b0130\"",
+      "last_modified": "Wed, 18 Nov 2026 20:48:36 GMT"
     },
     "ag-tracking": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt",

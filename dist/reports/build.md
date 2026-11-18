@@ -1,9 +1,9 @@
 # RustShield build
 
-- build id: `f93a56de1c9f239a0c7bc94341632f5dfeca2f7038ea13f0f6a2faf0812beefd`
-- emitted rules: `553429`
+- build id: `7a358f2f38a1294438de25e21d5c9b97cfa428f2f477236b213e378d07a3bfcd`
+- emitted rules: `553442`
 - parse errors: `1937`
 - rewrites: `1407`
 - mismatches: `0`
-- flatbuffer bytes: admitted `31128445`, candidate `29281885`
-- engine build ms: admitted `441`, candidate `405`
+- flatbuffer bytes: admitted `31128989`, candidate `29282453`
+- engine build ms: admitted `445`, candidate `411`

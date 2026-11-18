@@ -1,0 +1,81 @@
+[engine]
+profile = "desktop"
+adblock_version = "=0.13.6"
+permissions = 0
+
+[output]
+path = "RustShield.txt"
+emit_order = "compiler-friendly-v1"
+inline_audit_comments = false
+
+[verify]
+required = true
+corpus = ["generated", "fixtures"]
+max_mismatches = 0
+max_cases = 5000
+max_cosmetic_hosts = 256
+bench_iterations = 3
+
+[directives]
+enabled = true
+env = ["chromium", "ext_ublock"]
+include_root = "config/includes"
+
+[golden_rule]
+require_fast_native = true
+require_official_resources = true
+require_engine_trust = true
+rewrite_or_exclude = true
+retain_eligible_non_fusable = true
+zero_violations = true
+
+[resources.ubo]
+repo = "https://github.com/gorhill/uBlock"
+commit = "local-fixture"
+scriptlets_path = "src/js/resources/scriptlets.js"
+snapshot_path = "config/resources/ubo-official.json"
+snapshot_sha256 = "bdedba2f1e80ba433af66fdede9d53a0f485bedb0f12691e4a88a1e9297d64eb"
+trust_bit = 0b00000001
+allow_standard = true
+allow_trusted = true
+require_realization = true
+
+[cosmetic]
+allow_native_css = true
+light_procedural_allowlist = ["has-text", "matches-attr"]
+allow_regex_procedural_args = false
+allow_chained_procedural = false
+allow_action_operators = false
+allow_vetted_scriptlets = true
+allow_css_injection = false
+allow_js_injection = false
+
+[rewrite]
+enabled = ["type_union", "domain_union", "to_domain_union", "cosmetic_host_union"]
+ubo_host_semantics = false
+regex_fusion = false
+
+[[source]]
+id = "local-basic"
+url = "file://tests/fixtures/basic.txt"
+path = "tests/fixtures/basic.txt"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 100
+enabled = true
+trusted = false
+permissions = 0
+license = "test fixture"
+
+[[source]]
+id = "local-hosts"
+url = "file://tests/fixtures/hosts.txt"
+path = "tests/fixtures/hosts.txt"
+dialect = "hosts"
+format = "hosts"
+priority = 10
+enabled = true
+trusted = false
+permissions = 0
+license = "test fixture"

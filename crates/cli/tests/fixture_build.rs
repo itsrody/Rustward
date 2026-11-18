@@ -17,13 +17,18 @@ fn repo_root() -> PathBuf {
 fn copy_fixture_tree(root: &Path) {
     let source = repo_root();
     for relative in [
-        "config/sources.toml",
+        "tests/fixtures/sources.toml",
         "config/profiles.toml",
         "config/resources/ubo-official.json",
         "tests/fixtures/basic.txt",
         "tests/fixtures/hosts.txt",
     ] {
-        let destination = root.join(relative);
+        let destination_relative = if relative == "tests/fixtures/sources.toml" {
+            "config/sources.toml"
+        } else {
+            relative
+        };
+        let destination = root.join(destination_relative);
         fs::create_dir_all(destination.parent().expect("parent")).expect("create parent");
         fs::copy(source.join(relative), &destination).expect("copy fixture");
     }

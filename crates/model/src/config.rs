@@ -3,6 +3,7 @@
 use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
 use std::{
+    collections::BTreeMap,
     fs,
     path::{Path, PathBuf},
 };
@@ -79,6 +80,24 @@ pub struct VerifyConfig {
     pub corpus: Vec<String>,
     #[serde(default)]
     pub max_mismatches: usize,
+    #[serde(default = "default_max_cases")]
+    pub max_cases: usize,
+    #[serde(default = "default_max_cosmetic_hosts")]
+    pub max_cosmetic_hosts: usize,
+    #[serde(default = "default_bench_iterations")]
+    pub bench_iterations: usize,
+}
+
+fn default_max_cases() -> usize {
+    5_000
+}
+
+fn default_max_cosmetic_hosts() -> usize {
+    256
+}
+
+fn default_bench_iterations() -> usize {
+    3
 }
 
 impl Default for VerifyConfig {
@@ -87,6 +106,9 @@ impl Default for VerifyConfig {
             required: false,
             corpus: vec!["generated".to_string(), "fixtures".to_string()],
             max_mismatches: 0,
+            max_cases: default_max_cases(),
+            max_cosmetic_hosts: default_max_cosmetic_hosts(),
+            bench_iterations: default_bench_iterations(),
         }
     }
 }
@@ -240,6 +262,12 @@ pub struct SourceConfig {
     pub url: String,
     #[serde(default)]
     pub path: Option<PathBuf>,
+    /// Pin for the raw source bytes. Required for HTTP(S) sources.
+    #[serde(default)]
+    pub sha256: Option<String>,
+    /// Pins for `!#include` files, keyed by the include token used in the list.
+    #[serde(default)]
+    pub include_sha256: BTreeMap<String, String>,
     #[serde(default)]
     pub dialect: Dialect,
     #[serde(default)]

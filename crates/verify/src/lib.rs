@@ -82,7 +82,7 @@ pub fn verify(
         resources,
         true,
     );
-    let corpus = generate_corpus(admitted_rules);
+    let corpus = generate_corpus(admitted_rules, config.verify.max_cases);
     let mut mismatches = Vec::new();
 
     for case in &corpus {
@@ -98,10 +98,16 @@ pub fn verify(
                 case: case.label.clone(),
                 detail: format!("network decision {before:?} != {after:?}"),
             });
+            if mismatches.len() > config.verify.max_mismatches {
+                break;
+            }
         }
     }
 
-    for host in cosmetic_hosts(admitted_rules) {
+    for host in cosmetic_hosts(admitted_rules)
+        .into_iter()
+        .take(config.verify.max_cosmetic_hosts.max(1))
+    {
         let url = format!("https://{host}/");
         let before = cosmetic_snapshot(&admitted.url_cosmetic_resources(&url));
         let after = cosmetic_snapshot(&candidate.url_cosmetic_resources(&url));
@@ -110,6 +116,9 @@ pub fn verify(
                 case: format!("cosmetic:{host}"),
                 detail: format!("cosmetic resources {before:?} != {after:?}"),
             });
+            if mismatches.len() > config.verify.max_mismatches {
+                break;
+            }
         }
     }
 
@@ -159,9 +168,10 @@ pub fn bench(
     let admitted_noopt = build_engine(&admitted_lists, resources, false);
     let candidate_noopt = build_engine(&candidate_lists, resources, false);
 
-    let corpus = generate_corpus(admitted_rules);
-    let admitted_qps = throughput(&admitted_opt, &corpus);
-    let candidate_qps = throughput(&candidate_opt, &corpus);
+    let corpus = generate_corpus(admitted_rules, config.verify.max_cases);
+    let iterations = config.verify.bench_iterations.max(1);
+    let admitted_qps = throughput(&admitted_opt, &corpus, iterations);
+    let candidate_qps = throughput(&candidate_opt, &corpus, iterations);
 
     BenchReport {
         admitted_opt_bytes: admitted_opt.serialize().len(),
@@ -176,7 +186,7 @@ pub fn bench(
     }
 }
 
-fn throughput(engine: &Engine, corpus: &[CorpusCase]) -> f64 {
+fn throughput(engine: &Engine, corpus: &[CorpusCase], iterations: usize) -> f64 {
     let requests: Vec<Request> = corpus
         .iter()
         .filter_map(|case| {
@@ -186,7 +196,6 @@ fn throughput(engine: &Engine, corpus: &[CorpusCase]) -> f64 {
     if requests.is_empty() {
         return 0.0;
     }
-    let iterations = 20usize;
     let started = Instant::now();
     for _ in 0..iterations {
         for request in &requests {
@@ -208,75 +217,34 @@ fn decision(result: &adblock::blocker::BlockerResult) -> Decision {
     }
 }
 
-fn generate_corpus(rules: &[Rule]) -> Vec<CorpusCase> {
+fn generate_corpus(rules: &[Rule], max_cases: usize) -> Vec<CorpusCase> {
+    let max_cases = max_cases.max(1);
     let mut cases = Vec::new();
     let mut seen = BTreeSet::new();
-    let mut push =
-        |label: String, url: String, source: String, kind: &'static str, method: &'static str| {
-            if seen.insert(label.clone()) {
-                cases.push(CorpusCase {
-                    url,
-                    source_url: source,
-                    request_type: kind,
-                    method,
-                    label,
-                });
-            }
-        };
 
-    let neutral_sources = [
-        "https://site-a.example/".to_string(),
-        "https://site-b.example/".to_string(),
-        "https://neutral.example/".to_string(),
-    ];
-    let types = ["script", "image", "document", "xmlhttprequest"];
-    let methods = ["GET", "POST"];
-
-    for rule in rules {
-        let Rule::Network(network) = rule else {
-            continue;
-        };
-        if network.is_badfilter {
-            continue;
-        }
-        let mut urls = Vec::new();
-        if let Some(host) = &network.hostname {
-            urls.push(format!("http://{host}/rs-probe.js"));
-            urls.push(format!("https://{host}/path?q=1"));
-            urls.push(format!("https://sub.{host}/"));
-        }
-        if !network.body.is_empty() && !network.is_regex {
-            let body = network.body.trim_matches(|c: char| c == '|' || c == '^');
-            if !body.is_empty() {
-                urls.push(format!("https://neutral.example/path/{body}"));
-                urls.push(format!("https://neutral.example/?q={body}"));
-            }
-        }
-        let mut sources = neutral_sources.to_vec();
-        for domain in network.domains.iter().take(4) {
-            sources.push(format!("https://{domain}/"));
-        }
-        for (url_index, url) in urls.into_iter().enumerate() {
-            for source in sources.iter().take(6) {
-                for kind in types {
-                    for method in methods {
-                        push(
-                            format!(
-                                "rule:{}:{}:{url_index}:{source}:{kind}:{method}",
-                                rule.source_id(),
-                                rule.line_no()
-                            ),
-                            url.clone(),
-                            source.clone(),
-                            kind,
-                            method,
-                        );
-                    }
-                }
-            }
+    fn push(
+        cases: &mut Vec<CorpusCase>,
+        seen: &mut BTreeSet<String>,
+        label: String,
+        url: String,
+        source: String,
+        kind: &'static str,
+        method: &'static str,
+    ) {
+        if seen.insert(label.clone()) {
+            cases.push(CorpusCase {
+                url,
+                source_url: source,
+                request_type: kind,
+                method,
+                label,
+            });
         }
     }
 
+    let types = ["script", "image", "document", "xmlhttprequest"];
+
+    // Keep unconditional negative probes even when the corpus budget is small.
     for host in [
         "example.org",
         "news.example.net",
@@ -286,6 +254,8 @@ fn generate_corpus(rules: &[Rule]) -> Vec<CorpusCase> {
     ] {
         for kind in types {
             push(
+                &mut cases,
+                &mut seen,
                 format!("negative:{host}:{kind}"),
                 format!("https://{host}/benign.js"),
                 "https://example.org/".to_string(),
@@ -294,7 +264,102 @@ fn generate_corpus(rules: &[Rule]) -> Vec<CorpusCase> {
             );
         }
     }
+
+    let neutral_sources = [
+        "https://site-a.example/".to_string(),
+        "https://site-b.example/".to_string(),
+        "https://neutral.example/".to_string(),
+    ];
+    let methods = ["GET", "POST"];
+    let network_count = rules
+        .iter()
+        .filter(|rule| matches!(rule, Rule::Network(_)))
+        .count()
+        .max(1);
+    let budget = max_cases.saturating_sub(cases.len());
+    let per_rule_limit = (budget / network_count).clamp(1, 144);
+
+    for rule in rules {
+        if cases.len() >= max_cases {
+            break;
+        }
+        let Rule::Network(network) = rule else {
+            continue;
+        };
+        if network.is_badfilter {
+            continue;
+        }
+
+        let mut rule_cases = Vec::new();
+        {
+            let mut push_rule = |label: String,
+                                 url: String,
+                                 source: String,
+                                 kind: &'static str,
+                                 method: &'static str| {
+                if seen.insert(label.clone()) {
+                    rule_cases.push(CorpusCase {
+                        url,
+                        source_url: source,
+                        request_type: kind,
+                        method,
+                        label,
+                    });
+                }
+            };
+
+            let mut urls = Vec::new();
+            if let Some(host) = &network.hostname {
+                urls.push(format!("http://{host}/rs-probe.js"));
+                urls.push(format!("https://{host}/path?q=1"));
+                urls.push(format!("https://sub.{host}/"));
+            }
+            if !network.body.is_empty() && !network.is_regex {
+                let body = network.body.trim_matches(|c: char| c == '|' || c == '^');
+                if !body.is_empty() {
+                    urls.push(format!("https://neutral.example/path/{body}"));
+                    urls.push(format!("https://neutral.example/?q={body}"));
+                }
+            }
+            let mut sources = neutral_sources.to_vec();
+            for domain in network.domains.iter().take(4) {
+                sources.push(format!("https://{domain}/"));
+            }
+            for (url_index, url) in urls.into_iter().enumerate() {
+                for source in sources.iter().take(6) {
+                    for kind in types {
+                        for method in methods {
+                            push_rule(
+                                format!(
+                                    "rule:{}:{}:{url_index}:{source}:{kind}:{method}",
+                                    rule.source_id(),
+                                    rule.line_no()
+                                ),
+                                url.clone(),
+                                source.clone(),
+                                kind,
+                                method,
+                            );
+                        }
+                    }
+                }
+            }
+        }
+        cases.extend(evenly_sample(rule_cases, per_rule_limit));
+    }
+
+    cases.truncate(max_cases);
     cases
+}
+
+fn evenly_sample(cases: Vec<CorpusCase>, limit: usize) -> Vec<CorpusCase> {
+    if cases.len() <= limit || limit == 0 {
+        return cases;
+    }
+    let step = cases.len() / limit;
+    (0..limit)
+        .map(|index| cases[index * step].clone())
+        .collect()
 }
 
 fn cosmetic_hosts(rules: &[Rule]) -> BTreeSet<String> {

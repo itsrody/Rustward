@@ -1,8 +1,8 @@
 # RustShield — Architecture Design
 
-**Status:** design proposal (no implementation yet)
-**Target engine:** Brave `adblock-rust` (`adblock` crate), pinned version
-**Primary output:** `RustShield.txt` — one deterministic, deduplicated, semantics-preserving,
+**Status:** implemented; published by GitHub Actions on manual trigger and every 2 days.
+**Target engine:** Brave `adblock-rust` (`adblock` crate), pinned to `=0.13.6`.
+**Primary output:** `dist/RustShield.txt` — one deterministic, deduplicated, semantics-preserving,
 engine-optimized unified filter list, plus auditable sidecar reports.
 
 ---
@@ -13,7 +13,7 @@ RustShield is an offline **list compiler**, not a browser component. It ingests 
 filter lists (EasyList, EasyPrivacy, hosts lists, regional lists, privacy lists, etc.), parses them
 with the *actual* rust-adblock parser, classifies them by what rust-adblock can and cannot optimize,
 deduplicates, safely rewrites rules that rust-adblock supports but does not optimize, verifies the
-result against the real engine, and emits `RustShield.txt`.
+result against the real engine, and emits `dist/RustShield.txt`.
 
 ### Non-goals
 
@@ -220,7 +220,6 @@ RustyShield/
 │   ├── sources.toml                # source registry + per-source trust (checked in)
 │   ├── profiles.toml               # engine feature profiles (desktop / mobile / wasm)
 │   └── resources/                  # pinned official uBO snapshot + generated Resource JSON
-├── lists.lock                      # generated: per-source hash, etag, metadata (checked in)
 ├── crates/
 │   ├── model/            # IR types, SemanticKey, config schema, errors, traits
 │   ├── fetch/           # HTTP, conditional GET, cache, lockfile, redirect handling
@@ -231,12 +230,15 @@ RustyShield/
 │   ├── rewrite/         # rewrite-to-eligible catalog, safety framework, subsumption
 │   ├── emit/            # deterministic sort, text emission, sidecar reports
 │   ├── verify/          # corpus generation, differential tests, benchmarks
-│   └── rustshield/             # clap orchestration, stage caching
+│   └── cli/                 # clap orchestration and staged publishing
 ├── corpus/                         # fixtures + optional real request corpora (CSV/JSONL)
 ├── tests/fixtures/                 # golden lists, badfilter traps, hosts, cosmetic edge cases
 ├── docs/ARCHITECTURE.md            # this document
-├── reports/                        # generated build.json / build.md / rewrites.tsv
-└── RustShield.txt                  # generated output
+└── dist/                           # generated output, committed by GitHub Actions
+    ├── RustShield.txt
+    ├── RustShield.txt.sha256
+    ├── lists.lock
+    └── reports/                    # build.json / build.md / rewrites.tsv / verify.json / bench.json
 ```
 
 The split is deliberately along pipeline boundaries. If a single-crate build is preferred for the
@@ -383,19 +385,21 @@ mismatch, all rewrites in the responsible group/family are reverted and the pipe
 
 ### 7.1 Fetch (`fetch`)
 
-- `reqwest` (rustls), gzip/brotli, per-source timeout, bounded retry with exponential backoff.
-- Conditional GET using `lists.lock` (`ETag`, `If-Modified-Since`); `304` reuses the cached blob.
-- Honor `! Redirect:` metadata via `read_list_metadata`; follow at most one hop, with a loop and
-  domain allowlist check. Emit a warning if the redirect target differs from the configured URL.
-- Store raw bytes in `cache/blobs/sha256/<digest>`; lockfile records source id, final URL, etag,
-  last-modified, sha256, byte count, fetched_at, and parsed metadata.
-- Normalization: strip UTF-8 BOM, verify UTF-8 (lossy conversion *with a warning*; sources with a
-  high replacement-character ratio are rejected), normalize CRLF → LF, drop trailing whitespace.
-- Failure policy: per-source soft failure falls back to its last known good blob; hard failure only
-  when no usable source remains. `--offline` uses cache only; `--update` revalidates; `--pin` uses
-  the lockfile verbatim.
-- Attribution: source id, title, homepage, and license note from config are carried into the IR and
-  into the generated header comments (important when redistributing third-party lists).
+- `reqwest` (rustls, blocking) with a 30-second per-request timeout and at most one redirect.
+- Every HTTP(S) source must carry a `sha256` pin in `config/sources.toml`. The pin is verified
+  against the raw bytes, so an upstream change fails the build until `rustshield update-pins` is run
+  and the config diff is reviewed.
+- Conditional GET using the previous `dist/lists.lock` (`If-None-Match`, `If-Modified-Since`); `304`
+  reuses the cached blob.
+- Store raw bytes in `cache/blobs/sha256/<digest>`. `build --offline` is cache-only and fails if a
+  pinned blob is absent. `current_sha256()` used by `update-pins` bypasses pins and cache.
+- `!#include` tokens are resolved relative to the parent URL and each included file must be pinned
+  in `include_sha256`, making directive expansion deterministic. Included blobs are cached and
+  recorded under the source's `includes` section in `dist/lists.lock`.
+- Normalization: strip UTF-8 BOM, verify UTF-8, normalize CRLF → LF, drop trailing whitespace.
+- Lockfile records source id, final URL, etag, last-modified, sha256, byte count, fetched_at,
+  dialect, format, priority, enabled, trusted, permissions, and license note.
+- Attribution: source id and license note from config are carried into the IR and lockfile.
 
 ### 7.2 Ingest / parse (`parse`)
 
@@ -705,25 +709,26 @@ separators, stable comment prefix (`! RustShield:`). Optional `--inline-audit-co
 one-line provenance comments per rewritten rule for debug builds; off in production to keep parsing
 fast and the list small.
 
-**Atomic publish:** write all artifacts to `out/.staging-<buildid>/`, verify, then `fsync` + rename
-`RustShield.txt` into place, and swap the reports directory. The previous list is kept as
-`RustShield.txt.prev` for one build.
+**Atomic publish:** write all artifacts to `out/.staging-<buildid>/`, verify, then rename the list,
+sidecar, lockfile, and reports into `dist/`. The previous list is kept as `dist/RustShield.txt.prev`
+for one build and is ignored by Git.
 
 ### 7.8 Output artifacts
 
 ```
-RustShield.txt                 # the unified list
-RustShield.txt.sha256          # digest of the exact bytes
-reports/manifest.json          # config hash, lockfile hash, tool + engine versions, profile
-reports/build.json             # all metrics below, machine-readable
-reports/build.md               # human summary
-reports/analysis.json          # classification, eligibility, optimizability histogram
-reports/rewrites.tsv           # rewrite receipts (before, after, reason, checks, R/D family)
-reports/excluded.tsv           # ineligible rules, failed rewrites, duplicates, subsumed rules
-reports/admitted_resources.json # official resource digests, grades, permissions, trust decisions
-reports/dialect_gaps.tsv       # dialect-specific unsupported/semantic gaps with source dialect
-reports/verify.json            # per-corpus mismatch details / zero mismatches
-reports/bench.json             # build time, flatbuffer bytes, serialized bytes, QPS, emit-order
+dist/RustShield.txt                 # the unified list
+dist/RustShield.txt.sha256          # digest of the exact bytes
+dist/lists.lock                     # pinned source/include metadata used for reproducible builds
+dist/reports/manifest.json          # config hash, lockfile hash, tool + engine versions, profile
+dist/reports/build.json             # all metrics below, machine-readable
+dist/reports/build.md               # human summary
+dist/reports/analysis.json          # classification, eligibility, optimizability histogram
+dist/reports/rewrites.tsv           # rewrite receipts (before, after, reason, checks, R/D family)
+dist/reports/excluded.tsv           # ineligible rules, failed rewrites, duplicates, subsumed rules
+dist/reports/admitted_resources.json # official resource digests, grades, permissions, trust decisions
+dist/reports/dialect_gaps.tsv       # dialect-specific unsupported/semantic gaps with source dialect
+dist/reports/verify.json            # per-corpus mismatch details / zero mismatches
+dist/reports/bench.json             # build time, flatbuffer bytes, serialized bytes, QPS, emit-order
 ```
 
 Key metrics in `build.json`:
@@ -861,18 +866,17 @@ the build fails loudly.
 ## 9. CLI surface
 
 ```text
-rustshield fetch   [--update | --offline | --pin]
-rustshield parse   [--source <id>] [--dialect <abp|adguard|ubo|hosts|auto>]
+rustshield build   [--offline] [--no-verify]
+rustshield update-pins                      # refresh HTTP(S) source sha256 pins from upstream
 rustshield analyze
-rustshield admit   [--show-excluded] [--verify-resources]
-rustshield build   [--offline] [--no-verify] [--inline-audit-comments] [--only <stages>]
-rustshield verify  [--baseline <file> | --admitted-baseline <file> | --intent-baseline <file>] [--candidate RustShield.txt] [--corpus <dir>]
-rustshield bench   [--baseline <file>] [--candidate RustShield.txt] [--emit-order-control]
-rustshield dialects                         # dialect support matrix + gap report
+rustshield verify  [--candidate <file>]
+rustshield bench   [--candidate <file>]
 rustshield resources                        # official resource snapshot, grades, trust decisions
-rustshield explain <rule-id | raw-rule>     # provenance + dialect + rewrite history
-rustshield diff    --from <file> --to <file> # human-readable rule delta
 ```
+
+Global options: `--root <dir>` (default `.`) and `--config <file>` (default
+`config/sources.toml`). Set `RUSTSHIELD_TIMING=1` for per-stage timings and
+`RUSTSHIELD_DEBUG_REWRITE=1` for rewrite diagnostics.
 
 Exit codes: `0` success, `1` pipeline error, `2` verification mismatch (publish blocked).
 
@@ -888,7 +892,7 @@ profile = "desktop"                 # selects features + ParseOptions.permission
 adblock_version = "=0.13.6"
 
 [output]
-path = "RustShield.txt"
+path = "dist/RustShield.txt"          # all published artifacts live under dist/
 emit_order = "compiler-friendly-v1"  # benchmarked engine-bucket/token locality order
 inline_audit_comments = false
 
@@ -896,6 +900,9 @@ inline_audit_comments = false
 required = true
 corpus = ["generated", "fixtures"]
 max_mismatches = 0
+max_cases = 5000
+max_cosmetic_hosts = 256
+bench_iterations = 3
 
 [directives]
 enabled = true
@@ -914,9 +921,9 @@ zero_violations = true
 [resources.ubo]
 # Pinned official snapshot; generated Resource descriptors are content-addressed.
 repo = "https://github.com/gorhill/uBlock"
-commit = "<pinned-commit>"
+commit = "local-fixture"
 scriptlets_path = "src/js/resources/scriptlets.js"
-snapshot_sha256 = "<sha256>"
+snapshot_sha256 = "bdedba2f1e80ba433af66fdede9d53a0f485bedb0f12691e4a88a1e9297d64eb"
 trust_bit = 0b00000001               # TRUST_BITS for requiresTrust resources
 allow_standard = true
 allow_trusted = true
@@ -934,63 +941,47 @@ allow_css_injection = false         # #$#
 allow_js_injection = false          # #%#
 
 [rewrite]
-# Pure R-family optimizations + safe dialect canonicalization + D11 qualification.
-enabled = ["type_union", "domain_union", "to_domain_union",
-           "hosts_canonicalize", "cosmetic_host_union", "subsumption",
-           "abp_redirect_alias", "alias_canonicalization", "option_order",
-           "extended_css_normalization", "queryprune_alias",
-           "official_resource_qualification", "golden_rule_exclusion"]
-# D1 is the only active intent bridge; D5/D7/regex-fusion are removed/disabled.
+# Only engine-equivalent, reparse-verified families are enabled.
+enabled = ["type_union", "domain_union", "to_domain_union", "cosmetic_host_union"]
 ubo_host_semantics = false
 regex_fusion = false
 
+# Rolling upstream URLs are pinned by sha256; update-pins refreshes them in reviewed commits.
 [[source]]
-id = "easylist"
-url = "https://easylist.to/easylist/easylist.txt"
-dialect = "abp"
-format = "standard"
-priority = 100
-enabled = true
-trusted = false                       # no privileged scriptlets
-permissions = 0                       # PermissionMask bits for this source
-license = "CC BY-SA 3.0"
-
-[[source]]
-id = "adguard-base"
-url = "https://filters.adtidy.org/extension/chromium/filters/2.txt"
-dialect = "adguard"
-format = "standard"
-priority = 90
-enabled = true
-
-[[source]]
-id = "ubo-filters"
-url = "https://raw.githubusercontent.com/gorhill/uBlock/master/assets/alienfoundry/filters.txt"
+id = "ag-base-easylist"
+url = "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt"
+sha256 = "732b63a8dcdeb457a051a1794a8390338540710db9ca5dada7bb60df5d9fa47f"
 dialect = "ubo"
 format = "standard"
-host_semantics = "ubo"                    # enables D1 for this source only
-trusted = true                            # uBO's own list; privileged scriptlets allowed
-permissions = 0b00000001                  # matches resources.ubo.trust_bit
-priority = 80
+host_semantics = "ubo"
+priority = 100
 enabled = true
+trusted = false
+permissions = 0
+license = "AdGuard Base filter + EasyList; see upstream metadata"
 
 [[source]]
-id = "hosts-custom"
-url = "https://example.org/hosts.txt"
-dialect = "hosts"
-format = "hosts"
-priority = 10
+id = "ubo-filters-min"
+url = "https://ublockorigin.pages.dev/filters/filters.min.txt"
+sha256 = "dda87b991a1a2ab71ce30cfca3aae31e2e181eb005bf51692546cebcb4c31808"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 74
 enabled = true
+trusted = false
+permissions = 0
+license = "uBlock filters; GPL-3.0-or-later (uBlock Origin uAssets)"
 ```
 
 `dialect = "auto"` uses conservative detection from source metadata and syntax markers, but the
-detected value is recorded in `lists.lock` and must be approved before a source is enabled; dialect
-detection never changes semantics by itself.
+detected value is recorded in `dist/lists.lock` and must be approved before a source is enabled;
+dialect detection never changes semantics by itself.
 
-`lists.lock` (generated, checked in) records for each source: final URL, ETag, Last-Modified,
-sha256, byte count, fetched_at, metadata, dialect (including auto-detected), directive environment
-hash, and the profile hash. The pinned uBO resource snapshot commit/hash is recorded in config and
-mirrored into `reports/admitted_resources.json`; both feed the build id. Together they are the
+`dist/lists.lock` (generated, checked in) records for each source and include: final URL, ETag,
+Last-Modified, sha256, byte count, fetched_at, dialect, format, priority, enabled, trusted,
+permissions, and license note. The pinned uBO resource snapshot hash is recorded in config and
+mirrored into `dist/reports/admitted_resources.json`; both feed the build id. Together they are the
 reproducibility anchor.
 
 ---

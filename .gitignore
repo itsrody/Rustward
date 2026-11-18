@@ -1,7 +1,9 @@
 /target/
 /out/
+/cache/
 /RustShield.txt
 /RustShield.txt.sha256
 /RustShield.txt.prev
 /reports/
+/dist/*.prev
 **.tmp

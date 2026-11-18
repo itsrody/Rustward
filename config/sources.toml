@@ -4,7 +4,7 @@ adblock_version = "=0.13.6"
 permissions = 0
 
 [output]
-path = "RustShield.txt"
+path = "dist/RustShield.txt"
 emit_order = "compiler-friendly-v1"
 inline_audit_comments = false
 
@@ -12,6 +12,9 @@ inline_audit_comments = false
 required = true
 corpus = ["generated", "fixtures"]
 max_mismatches = 0
+max_cases = 5000
+max_cosmetic_hosts = 256
+bench_iterations = 3
 
 [directives]
 enabled = true
@@ -52,10 +55,13 @@ enabled = ["type_union", "domain_union", "to_domain_union", "cosmetic_host_union
 ubo_host_semantics = false
 regex_fusion = false
 
+# AdGuard's `extension/ublock` optimized lists are rolling upstream files. Each `sha256` pin makes
+# the build reproducible and turns upstream changes into an explicit review step.
+
 [[source]]
-id = "local-basic"
-url = "file://tests/fixtures/basic.txt"
-path = "tests/fixtures/basic.txt"
+id = "ag-base-easylist"
+url = "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt"
+sha256 = "3644135b1b731d41f6c3e8f6f52220a72f665e0597a83399a4aa751a994542a2"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -63,16 +69,238 @@ priority = 100
 enabled = true
 trusted = false
 permissions = 0
-license = "test fixture"
+license = "AdGuard Base filter + EasyList; see upstream ! Title/! Description metadata"
+
 
 [[source]]
-id = "local-hosts"
-url = "file://tests/fixtures/hosts.txt"
-path = "tests/fixtures/hosts.txt"
-dialect = "hosts"
-format = "hosts"
-priority = 10
+id = "ag-tracking"
+url = "https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt"
+sha256 = "b04a1cbb821bc361e2ca936b9ab1adfad7d8521935aa80fea663d6dc92056957"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 98
 enabled = true
 trusted = false
 permissions = 0
-license = "test fixture"
+license = "AdGuard Tracking Protection; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "ag-annoyances"
+url = "https://filters.adtidy.org/extension/ublock/filters/14_optimized.txt"
+sha256 = "f2b668bf2959e052c1eeff10f245cb1bcdfa8593fe9ca80e82b6d33229448229"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 96
+enabled = true
+trusted = false
+permissions = 0
+license = "AdGuard Annoyances; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "easyprivacy"
+url = "https://filters.adtidy.org/extension/ublock/filters/118_optimized.txt"
+sha256 = "725cc3b43f1018e8234f6f8629f836cbe52b240ef5cfcacb301fa8a06484ee98"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 94
+enabled = true
+trusted = false
+permissions = 0
+license = "EasyPrivacy; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "fanboy-annoyances"
+url = "https://filters.adtidy.org/extension/ublock/filters/122_optimized.txt"
+sha256 = "661071a32ef1dd0a095b21588b985ca16345aecd28e63ec63424c3a53d9ca177"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 92
+enabled = true
+trusted = false
+permissions = 0
+license = "Fanboy's Annoyances; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "fanboy-social"
+url = "https://filters.adtidy.org/extension/ublock/filters/123_optimized.txt"
+sha256 = "8d15c5f7d6994ce0c6d3d97c28d1a586d95e38b7f74aff6af6d6b8f26dc96898"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 90
+enabled = true
+trusted = false
+permissions = 0
+license = "Fanboy's Social Blocking; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "web-annoyances-ultralist"
+url = "https://filters.adtidy.org/extension/ublock/filters/201_optimized.txt"
+sha256 = "38d2593af4f17ecd31cab7f305c6e6039a89c521a54fbf4a5cebdb834a8af8f8"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 88
+enabled = true
+trusted = false
+permissions = 0
+license = "Web Annoyances Ultralist; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "warning-removal"
+url = "https://filters.adtidy.org/extension/ublock/filters/207_optimized.txt"
+sha256 = "63799706e4071124e6b44fdf0d9875f9a6dabb260b2b5ff8489b5276031bff56"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 86
+enabled = true
+trusted = false
+permissions = 0
+license = "Adblock Warning Removal; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "malicious-url"
+url = "https://filters.adtidy.org/extension/ublock/filters/208_optimized.txt"
+sha256 = "20b8a7eb1333f51390aae00e0614f7690ef5b1f940d642fdfb231c01043ff638"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 84
+enabled = true
+trusted = false
+permissions = 0
+license = "Online Malicious URL Blocklist; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "dandelion-annoyances"
+url = "https://filters.adtidy.org/extension/ublock/filters/250_optimized.txt"
+sha256 = "cfd31e6865562174bdf9af8b7cb0154207b7c39926a4c9806a3c7d82f6167da7"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 82
+enabled = true
+trusted = false
+permissions = 0
+license = "Dandelion Sprout's Annoyances; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "phishing-url"
+url = "https://filters.adtidy.org/extension/ublock/filters/255_optimized.txt"
+sha256 = "f1399b09a7d4c14f594d1d453a5d414d8270a7a79a30994f98c6b9e68864f8d9"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 80
+enabled = true
+trusted = false
+permissions = 0
+license = "Phishing URL Blocklist; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "scam-blocklist"
+url = "https://filters.adtidy.org/extension/ublock/filters/256_optimized.txt"
+sha256 = "0afc899c4fc314bf3444d18fbc5aeb1531e3a9e6f1d07f16bcd1c7498be8dfe7"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 78
+enabled = true
+trusted = false
+permissions = 0
+license = "Scam Blocklist by DurableNapkin; see upstream ! Title/! Description metadata"
+
+
+[[source]]
+id = "ubo-badware"
+url = "https://filters.adtidy.org/extension/ublock/filters/257_optimized.txt"
+sha256 = "a5f3c207927314850ef6103f013ffab3cb9e913b7978db74ae3b24a1205ae970"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 76
+enabled = true
+trusted = false
+permissions = 0
+license = "uBlock Origin Badware Risks; see upstream ! Title/! Description metadata"
+
+[[source]]
+id = "ubo-filters-min"
+url = "https://ublockorigin.pages.dev/filters/filters.min.txt"
+sha256 = "dda87b991a1a2ab71ce30cfca3aae31e2e181eb005bf51692546cebcb4c31808"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 74
+enabled = true
+trusted = false
+permissions = 0
+license = "uBlock filters; GPL-3.0-or-later (uBlock Origin uAssets)"
+
+[[source]]
+id = "ubo-badware-min"
+url = "https://ublockorigin.pages.dev/filters/badware.min.txt"
+sha256 = "288a7d98a42751cea3b13e81140eefe0bd1e33b4c2f97bd4cb69390f09ed9d09"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 73
+enabled = true
+trusted = false
+permissions = 0
+license = "uBlock filters - Badware risks; GPL-3.0-or-later (uBlock Origin uAssets)"
+
+[[source]]
+id = "ubo-privacy-min"
+url = "https://ublockorigin.pages.dev/filters/privacy.min.txt"
+sha256 = "df8d956ddeba1925230fad17be92f69850c02fd869655e6d7fb0b2eab322814e"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 72
+enabled = true
+trusted = false
+permissions = 0
+license = "uBlock filters - Privacy; GPL-3.0-or-later (uBlock Origin uAssets)"
+
+[[source]]
+id = "ubo-annoyances-min"
+url = "https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt"
+sha256 = "5f88048a0d66135e39576d60c6c7099a08fcba56ca70f5e31a3ceeae2646e87f"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 71
+enabled = true
+trusted = false
+permissions = 0
+license = "uBlock filters - Annoyances; GPL-3.0-or-later (uBlock Origin uAssets)"
+
+[[source]]
+id = "ubo-annoyances-cookies"
+url = "https://ublockorigin.pages.dev/filters/annoyances-cookies.txt"
+sha256 = "2540b020ec5d160ae66ec8e40911b089052668483a31880b591d21cf1855403f"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 70
+enabled = true
+trusted = false
+permissions = 0
+license = "uBlock filters - Cookie Notices; GPL-3.0-or-later (uBlock Origin uAssets)"
+

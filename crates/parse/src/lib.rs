@@ -41,11 +41,12 @@ pub fn evaluate_directives(
             })
             .collect());
     }
-    evaluate_text(&source.text, root, config, &mut Vec::new())
+    evaluate_text(&source.text, source, root, config, &mut Vec::new())
 }
 
 fn evaluate_text(
     text: &str,
+    source: &FetchedSource,
     root: &Path,
     config: &Config,
     seen_includes: &mut Vec<String>,
@@ -96,23 +97,29 @@ fn evaluate_text(
         if let Some(include) = trimmed.strip_prefix("!#include ") {
             if active(&stack) {
                 let include_path = include.trim().trim_matches('"');
-                let root_dir = config
-                    .directives
-                    .include_root
-                    .as_ref()
-                    .map(|path| root.join(path))
-                    .unwrap_or_else(|| root.to_path_buf());
-                let resolved = root_dir.join(include_path);
-                let canonical = resolved.canonicalize().unwrap_or_else(|_| resolved.clone());
-                let key = canonical.to_string_lossy().to_string();
+                let (included, key) = if let Some(fetched) = source.includes.get(include_path) {
+                    (fetched.text.clone(), fetched.url.clone())
+                } else {
+                    let root_dir = config
+                        .directives
+                        .include_root
+                        .as_ref()
+                        .map(|path| root.join(path))
+                        .unwrap_or_else(|| root.to_path_buf());
+                    let resolved = root_dir.join(include_path);
+                    let canonical = resolved.canonicalize().unwrap_or_else(|_| resolved.clone());
+                    let bytes = fs::read(&canonical)
+                        .with_context(|| format!("failed to read !#include {include_path}"))?;
+                    (
+                        String::from_utf8(bytes)?,
+                        canonical.to_string_lossy().to_string(),
+                    )
+                };
                 if seen_includes.contains(&key) {
                     anyhow::bail!("recursive !#include: {key}");
                 }
-                let bytes = fs::read(&canonical)
-                    .with_context(|| format!("failed to read !#include {include_path}"))?;
-                let included = String::from_utf8(bytes)?;
                 seen_includes.push(key);
-                let nested = evaluate_text(&included, root, config, seen_includes)?;
+                let nested = evaluate_text(&included, source, root, config, seen_includes)?;
                 seen_includes.pop();
                 output.extend(nested);
             }
@@ -668,6 +675,8 @@ fn detect_gap_for_error(text: &str) -> Option<DialectGap> {
             id: String::new(),
             url: String::new(),
             path: None,
+            sha256: None,
+            include_sha256: Default::default(),
             dialect: Dialect::Auto,
             format: SourceFormat::Standard,
             host_semantics: None,

@@ -153,7 +153,9 @@ arguments only, no `/regex/`, one operator. It can be reduced further by config.
    `resource.permission.is_injectable_by(source.permissions)` for the resource and every dependency.
 3. **Engine realization.** After engine construction, `url_cosmetic_resources(host).injected_script`
    must contain the invocation. This catches silent skips from insufficient permission, missing
-   dependencies, or non-injectable resource kinds.
+   dependencies, or non-injectable resource kinds. Differential verification compares the multiset
+   of independent `try { ... } catch` blocks, not their concatenation order, because compiler-friendly
+   re-emission intentionally changes rule order.
 
 Failures are excluded with `SCRIPTLET_NOT_IN_LIBRARY`, `SCRIPTLET_GRADE_MISMATCH`,
 `SCRIPTLET_TRUST_FAILED`, or `SCRIPTLET_NOT_REALIZED`. The same official+trust gate applies to

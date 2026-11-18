@@ -385,8 +385,29 @@ fn cosmetic_snapshot(
     (
         selectors,
         resources.generichide,
-        resources.injected_script.clone(),
+        normalize_injected_script(&resources.injected_script),
     )
+}
+
+/// The engine concatenates scriptlets in list order. Re-emission intentionally changes rule order for
+/// engine locality, so compare the multiset of independent `try { ... } catch` blocks instead.
+fn normalize_injected_script(script: &str) -> String {
+    let mut blocks = Vec::new();
+    let mut current = String::new();
+    let mut saw_block = false;
+    for line in script.lines() {
+        current.push_str(line);
+        current.push('\n');
+        if line == "} catch ( e ) { }" {
+            blocks.push(std::mem::take(&mut current));
+            saw_block = true;
+        }
+    }
+    if !saw_block || !current.trim().is_empty() {
+        return script.to_string();
+    }
+    blocks.sort();
+    blocks.concat()
 }
 
 fn passes_golden_rule(rule: &Rule) -> bool {

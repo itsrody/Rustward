@@ -1,0 +1,41 @@
+{
+  "metrics": {
+    "badfilter_pinned": 126,
+    "comments": 54228,
+    "cosmetic_fast_native": 57771,
+    "cosmetic_light_procedural": 129,
+    "cosmetic_rules": 48738,
+    "cosmetic_vetted_scriptlet": 370,
+    "directives": 101,
+    "effective_cosmetic_rules": 93650,
+    "effective_network_rules": 599162,
+    "eligible": 600481,
+    "empty_lines": 1469,
+    "excluded_by_gate": 94268,
+    "metadata": 38,
+    "network_rules": 504691,
+    "output_fast_native_css": 48242,
+    "output_light_procedural": 127,
+    "output_vetted_scriptlet": 369,
+    "parse_errors": 1937,
+    "raw_lines": 750585
+  },
+  "dialects": {
+    "ubo": 750585
+  },
+  "gaps": {
+    "all:SEMANTIC_GAP": 70895,
+    "entity_domain:SEMANTIC_GAP": 469,
+    "extended-css:SEMANTIC_GAP": 1,
+    "js_injection:UNSUPPORTED": 1,
+    "matches-css:SEMANTIC_GAP": 54,
+    "matches-path:SEMANTIC_GAP": 89,
+    "scriptlet:ENGINE_NATIVE": 28212,
+    "ubo_bare_hostname:SEMANTIC_GAP": 414,
+    "upward:SEMANTIC_GAP": 327,
+    "xpath:SEMANTIC_GAP": 29
+  },
+  "eligibility": {
+    "ELIGIBLE": 600481
+  }
+}

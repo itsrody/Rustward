@@ -1,0 +1,7 @@
+{
+  "required": true,
+  "mismatches": [],
+  "cases_checked": 5000,
+  "golden_rule_violations": 0,
+  "emit_order_violations": 0
+}

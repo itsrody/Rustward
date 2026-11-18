@@ -1,0 +1,29 @@
+{
+  "build_id": "f93a56de1c9f239a0c7bc94341632f5dfeca2f7038ea13f0f6a2faf0812beefd",
+  "config_hash": "43101053305538abc78dcb2471fdf486f0816ce90251149f662f69597afb9f70",
+  "profile_hash": "7523a0d8d369cd3ba756dd22e4c6bbb3e9bcfd0e8c4f97cefee9e7ee3023e475",
+  "lists_lock_hash": "ef7258860cee82f593049050839d875e48547d37228af2ac3660ac9fabed5e61",
+  "adblock_version": "=0.13.6",
+  "engine_profile": "desktop",
+  "emit_order": "compiler-friendly-v1",
+  "sources": [
+    "ag-base-easylist",
+    "ag-tracking",
+    "ag-annoyances",
+    "easyprivacy",
+    "fanboy-annoyances",
+    "fanboy-social",
+    "web-annoyances-ultralist",
+    "warning-removal",
+    "malicious-url",
+    "dandelion-annoyances",
+    "phishing-url",
+    "scam-blocklist",
+    "ubo-badware",
+    "ubo-filters-min",
+    "ubo-badware-min",
+    "ubo-privacy-min",
+    "ubo-annoyances-min",
+    "ubo-annoyances-cookies"
+  ]
+}

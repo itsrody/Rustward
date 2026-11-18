@@ -12,12 +12,22 @@ use model::{
     ExclusionRecord, GapClass, NetworkRule, ParsedOutcome, ParsedRecord, ResourceCatalog,
     ResourceDecision, Rule, RuleState, ScriptletGrade, model::CosmeticRule, util::is_literal_arg,
 };
-use std::path::Path;
+use std::{collections::BTreeSet, path::Path};
 
 pub fn admit(records: &[ParsedRecord], config: &Config, root: &Path) -> Result<AdmissionResult> {
     let catalog = load_catalog(config, root)?;
     let engine_resources = catalog.engine_resources();
+    // `get_id()` already excludes the BAD_FILTER feature bit, so a parsed badfilter's
+    // engine_id is the identity of the rule it cancels.
+    let badfilter_targets: BTreeSet<u64> = records
+        .iter()
+        .filter_map(|record| match &record.outcome {
+            ParsedOutcome::Network(rule) if rule.is_badfilter => Some(rule.engine_id),
+            _ => None,
+        })
+        .collect();
     let mut accepted = Vec::new();
+    let mut baseline = Vec::new();
     let mut excluded = Vec::new();
     let mut resource_decisions = Vec::new();
 
@@ -32,10 +42,35 @@ pub fn admit(records: &[ParsedRecord], config: &Config, root: &Path) -> Result<A
             ) {
                 Ok(()) => {
                     let mut rule = rule.clone();
-                    if rule.is_badfilter {
+                    let engine_id = rule.engine_id;
+                    let is_badfilter = rule.is_badfilter;
+                    if is_badfilter {
                         rule.state = RuleState::Pinned;
                     }
-                    accepted.push(Rule::Network(rule));
+                    let admitted = Rule::Network(rule);
+                    baseline.push(admitted.clone());
+                    if is_badfilter {
+                        excluded.push(ExclusionRecord {
+                            source_id: record.source_id.clone(),
+                            line_no: record.line_no,
+                            dialect: record.dialect,
+                            text: record.raw_text.clone(),
+                            reason: ExclusionReason::BadfilterResolved,
+                        });
+                    } else if badfilter_targets.contains(&engine_id) {
+                        excluded.push(ExclusionRecord {
+                            source_id: record.source_id.clone(),
+                            line_no: record.line_no,
+                            dialect: record.dialect,
+                            text: record.raw_text.clone(),
+                            reason: ExclusionReason::BadfilterTarget(format!(
+                                "cancelled by $badfilter (id={})",
+                                engine_id
+                            )),
+                        });
+                    } else {
+                        accepted.push(admitted);
+                    }
                 }
                 Err(reason) => excluded.push(ExclusionRecord {
                     source_id: record.source_id.clone(),
@@ -52,7 +87,10 @@ pub fn admit(records: &[ParsedRecord], config: &Config, root: &Path) -> Result<A
                 &engine_resources,
                 &mut resource_decisions,
             ) {
-                Ok(admitted_rule) => accepted.push(Rule::Cosmetic(admitted_rule)),
+                Ok(admitted_rule) => {
+                    baseline.push(Rule::Cosmetic(admitted_rule.clone()));
+                    accepted.push(Rule::Cosmetic(admitted_rule));
+                }
                 Err(reason) => excluded.push(ExclusionRecord {
                     source_id: record.source_id.clone(),
                     line_no: record.line_no,
@@ -77,6 +115,8 @@ pub fn admit(records: &[ParsedRecord], config: &Config, root: &Path) -> Result<A
 
     Ok(AdmissionResult {
         accepted,
+        baseline,
+        badfilter_targets,
         excluded,
         resource_decisions,
     })
@@ -250,6 +290,9 @@ fn has_unsupported_gap(gaps: &[DialectGap]) -> bool {
 
 trait ResourceRule {
     fn resource_rule_fields(&self) -> (String, String, u8, bool, Vec<String>);
+    fn realize_redirect(&self, _permissions: u8, _resources: &[Resource]) -> bool {
+        false
+    }
 }
 
 impl ResourceRule for NetworkRule {
@@ -261,6 +304,10 @@ impl ResourceRule for NetworkRule {
             self.source_trusted,
             self.hostname.clone().into_iter().collect(),
         )
+    }
+
+    fn realize_redirect(&self, permissions: u8, resources: &[Resource]) -> bool {
+        realize_redirect(self, permissions, resources)
     }
 }
 
@@ -364,7 +411,7 @@ fn qualify_resource<R: ResourceRule>(
             let realized = if scriptlet {
                 realize_scriptlet(&rule_text, effective_permissions, engine_resources, &hosts)
             } else {
-                realize_redirect(&rule_text, effective_permissions, engine_resources, &hosts)
+                rule.realize_redirect(effective_permissions, engine_resources)
             };
             if !realized {
                 return Err(ExclusionReason::Trust(format!(
@@ -419,18 +466,136 @@ fn realize_scriptlet(
         .is_empty()
 }
 
-fn realize_redirect(
-    rule_text: &str,
-    permissions: u8,
-    resources: &[Resource],
-    hosts: &[String],
-) -> bool {
-    let engine = build_engine(rule_text, permissions, resources);
-    let host = hosts.first().map(String::as_str).unwrap_or("ads.example");
-    let url = format!("https://{host}/rs-probe.js");
-    let request = match Request::new(&url, "https://site.example/", "script", "GET") {
-        Ok(request) => request,
-        Err(_) => return false,
+fn realize_redirect(rule: &NetworkRule, permissions: u8, resources: &[Resource]) -> bool {
+    let engine = build_engine(&rule.text, permissions, resources);
+    let options = rule_options(&rule.text);
+
+    let mut source_hosts: Vec<String> = rule
+        .domains
+        .iter()
+        .map(|host| clean_probe_host(host))
+        .collect();
+    if source_hosts.is_empty() {
+        source_hosts.push("site.example".to_string());
+    }
+
+    let mut target_hosts: Vec<String> = rule
+        .to_domains
+        .iter()
+        .map(|host| clean_probe_host(host))
+        .collect();
+    if let Some(host) = &rule.hostname {
+        target_hosts.push(clean_probe_host(host));
+    }
+    target_hosts.push("ads.example".to_string());
+    target_hosts.sort();
+    target_hosts.dedup();
+
+    let request_types = redirect_request_types(&options);
+    let methods = redirect_methods(&options);
+
+    for source in &source_hosts {
+        let source_url = format!("https://{source}/");
+        for target in &target_hosts {
+            let url = format!("https://{target}/rs-probe.js");
+            for request_type in &request_types {
+                for method in &methods {
+                    let request = match Request::new(&url, &source_url, request_type, method) {
+                        Ok(request) => request,
+                        Err(_) => continue,
+                    };
+                    if engine.check_network_request(&request).redirect.is_some() {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    false
+}
+
+fn rule_options(text: &str) -> Vec<String> {
+    let Some((_, options)) = text.rsplit_once('$') else {
+        return Vec::new();
     };
-    engine.check_network_request(&request).redirect.is_some()
+    options
+        .split(',')
+        .map(|option| option.trim().to_ascii_lowercase())
+        .filter(|option| !option.is_empty())
+        .collect()
+}
+
+fn clean_probe_host(value: &str) -> String {
+    let mut host = value.trim();
+    if let Some((_, rest)) = host.split_once("://") {
+        host = rest;
+    }
+    host = host
+        .trim_start_matches("||")
+        .trim_start_matches("*.")
+        .split('/')
+        .next()
+        .unwrap_or(host)
+        .trim_end_matches('.');
+    if host.is_empty() {
+        "ads.example".to_string()
+    } else {
+        host.to_ascii_lowercase()
+    }
+}
+
+fn redirect_request_types(options: &[String]) -> Vec<String> {
+    let aliases = [
+        ("beacon", "beacon"),
+        ("csp_report", "csp_report"),
+        ("document", "document"),
+        ("main_frame", "document"),
+        ("fetch", "fetch"),
+        ("font", "font"),
+        ("image", "image"),
+        ("imageset", "image"),
+        ("media", "media"),
+        ("object", "object"),
+        ("object_subrequest", "object"),
+        ("ping", "ping"),
+        ("script", "script"),
+        ("stylesheet", "stylesheet"),
+        ("sub_frame", "subdocument"),
+        ("subdocument", "subdocument"),
+        ("websocket", "websocket"),
+        ("xhr", "xhr"),
+        ("xmlhttprequest", "xhr"),
+    ];
+    let mut types: Vec<String> = options
+        .iter()
+        .filter(|option| !option.starts_with('~') && !option.contains('='))
+        .filter_map(|option| {
+            aliases
+                .iter()
+                .find(|(alias, _)| *alias == option.as_str())
+                .map(|(_, canonical)| (*canonical).to_string())
+        })
+        .collect();
+    if types.is_empty() {
+        types.push("script".to_string());
+    }
+    types.sort();
+    types.dedup();
+    types
+}
+
+fn redirect_methods(options: &[String]) -> Vec<String> {
+    let mut methods: Vec<String> = options
+        .iter()
+        .filter_map(|option| option.strip_prefix("method="))
+        .flat_map(|value| value.split('|'))
+        .filter(|value| !value.starts_with('~') && !value.is_empty())
+        .map(|value| value.to_ascii_uppercase())
+        .collect();
+    if methods.is_empty() {
+        methods.push("GET".to_string());
+    }
+    methods.sort();
+    methods.dedup();
+    methods
 }

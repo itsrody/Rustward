@@ -1,6 +1,6 @@
 //! Conservative rewrite catalog with structural, reparse, and differential checks.
 
-use adblock::lists::ParseOptions;
+use adblock::{filters::network::NetworkFilterMask as Mask, lists::ParseOptions};
 use anyhow::Result;
 use model::{
     Config, CosmeticPayload, Eligibility, NetworkRule, Origin, RewriteReceipt, Rule, RuleState,
@@ -54,6 +54,15 @@ pub fn rewrite(rules: Vec<Rule>, config: &Config) -> Result<RewriteResult> {
     }
     if config.rewrite_enabled("cosmetic_host_union") {
         rewrite_cosmetic(&mut rules, config, &mut receipts)?;
+    }
+    for family in [
+        "mask_subsumption",
+        "domain_subsumption",
+        "hostname_subsumption",
+    ] {
+        if config.rewrite_enabled(family) {
+            rewrite_subsumption(&mut rules, family, &badfilter_targets, &mut receipts)?;
+        }
     }
 
     Ok(RewriteResult { rules, receipts })
@@ -259,6 +268,293 @@ fn rewrite_network(
     }
     let _ = config;
     Ok(())
+}
+
+/// R8/R10/R7: remove a strictly redundant rule when a broader sibling remains.
+/// Every removal is still gated by the engine differential check.
+fn rewrite_subsumption(
+    rules: &mut Vec<Rule>,
+    family: &str,
+    badfilter_targets: &HashSet<u64>,
+    receipts: &mut Vec<RewriteReceipt>,
+) -> Result<()> {
+    let mut groups: BTreeMap<String, Vec<usize>> = BTreeMap::new();
+    for (index, rule) in rules.iter().enumerate() {
+        let Rule::Network(network) = rule else {
+            continue;
+        };
+        if network.is_badfilter
+            || badfilter_targets.contains(&network.engine_id)
+            || network.eligibility != Eligibility::Eligible
+            || network.state != RuleState::Active
+        {
+            continue;
+        }
+        let key = match family {
+            "mask_subsumption" => mask_subsumption_key(network),
+            "domain_subsumption" => domain_subsumption_key(network),
+            "hostname_subsumption" => hostname_subsumption_key(network),
+            _ => continue,
+        };
+        groups.entry(key).or_default().push(index);
+    }
+
+    // removed index -> surviving subsuming index
+    let mut removals: BTreeMap<usize, usize> = BTreeMap::new();
+    for indices in groups.into_values() {
+        match family {
+            "mask_subsumption" => {
+                let Some(broadest) = indices.iter().copied().max_by_key(|&index| {
+                    (
+                        network_at(rules, index).mask.count_ones(),
+                        std::cmp::Reverse(index),
+                    )
+                }) else {
+                    continue;
+                };
+                let broad = network_at(rules, broadest);
+                for &index in &indices {
+                    if index != broadest && mask_subsumes(broad, network_at(rules, index)) {
+                        removals.insert(index, broadest);
+                    }
+                }
+            }
+            "domain_subsumption" => {
+                let Some(global) = indices.iter().copied().find(|&index| {
+                    let rule = network_at(rules, index);
+                    rule.domains.is_empty() && rule.not_domains.is_empty()
+                }) else {
+                    continue;
+                };
+                for &index in &indices {
+                    if index == global {
+                        continue;
+                    }
+                    let rule = network_at(rules, index);
+                    if !rule.domains.is_empty() || !rule.not_domains.is_empty() {
+                        removals.insert(index, global);
+                    }
+                }
+            }
+            "hostname_subsumption" => {
+                let by_host: BTreeMap<&str, usize> = indices
+                    .iter()
+                    .copied()
+                    .filter_map(|index| {
+                        network_at(rules, index)
+                            .hostname
+                            .as_deref()
+                            .map(|host| (host, index))
+                    })
+                    .collect();
+                for &index in &indices {
+                    let rule = network_at(rules, index);
+                    let Some(host) = rule.hostname.as_deref() else {
+                        continue;
+                    };
+                    if host.is_empty() || host.contains('*') {
+                        continue;
+                    }
+                    if let Some(subsumer) = host_ancestors(host)
+                        .iter()
+                        .filter_map(|ancestor| by_host.get(ancestor.as_str()).copied())
+                        .find(|&subsumer| subsumer != index)
+                    {
+                        removals.insert(index, subsumer);
+                    }
+                }
+            }
+            _ => {}
+        }
+    }
+
+    let mut verified: Vec<usize> = Vec::new();
+    for (removed, subsumer) in removals {
+        let before = vec![
+            network_at(rules, subsumer).text.clone(),
+            network_at(rules, removed).text.clone(),
+        ];
+        let after = network_at(rules, subsumer).text.clone();
+        let permissions = network_at(rules, subsumer).source_permissions;
+        if !verify::network_equivalence(&before, &after, permissions)? {
+            continue;
+        }
+        let id = format!(
+            "{family}-{}",
+            &sha256_hex(before.join("||").as_bytes())[..12]
+        );
+        receipts.push(RewriteReceipt {
+            id,
+            family: family.to_string(),
+            before,
+            after,
+            source_id: network_at(rules, subsumer).source_id.clone(),
+            checks: vec![
+                "structural-subsumption".to_string(),
+                "reparse-equal".to_string(),
+                "engine-differential".to_string(),
+            ],
+        });
+        verified.push(removed);
+    }
+
+    let remove_set: HashSet<usize> = verified.into_iter().collect();
+    if remove_set.is_empty() {
+        return Ok(());
+    }
+    let mut remaining = Vec::with_capacity(rules.len() - remove_set.len());
+    for (index, rule) in rules.drain(..).enumerate() {
+        if !remove_set.contains(&index) {
+            remaining.push(rule);
+        }
+    }
+    *rules = remaining;
+    Ok(())
+}
+
+fn network_at<'a>(rules: &'a [Rule], index: usize) -> &'a NetworkRule {
+    match &rules[index] {
+        Rule::Network(network) => network,
+        Rule::Cosmetic(_) => unreachable!("subsumption groups contain network rules only"),
+    }
+}
+
+/// Builds a deterministic grouping key from the fields that must be identical for two
+/// rules to be subsumption candidates. Debug formatting is stable for these scalar and
+/// vector fields, and avoids serde's 16-element tuple limit.
+fn subsumption_key(fields: &[&dyn std::fmt::Debug]) -> String {
+    fields
+        .iter()
+        .map(|field| format!("{field:?}"))
+        .collect::<Vec<_>>()
+        .join("\u{1f}")
+}
+
+fn mask_subsumption_key(rule: &NetworkRule) -> String {
+    subsumption_key(&[
+        &rule.features,
+        &rule.hostname,
+        &rule.body,
+        &rule.left_anchor,
+        &rule.right_anchor,
+        &rule.hostname_anchor,
+        &rule.is_regex,
+        &rule.is_complete_regex,
+        &rule.is_hostname_regex,
+        &rule.is_exception,
+        &rule.important,
+        &rule.match_case,
+        &rule.is_badfilter,
+        &rule.is_redirect,
+        &rule.is_csp,
+        &rule.is_removeparam,
+        &rule.is_generic_hide,
+        &rule.domains,
+        &rule.not_domains,
+        &rule.to_domains,
+        &rule.not_to_domains,
+        &rule.domain_hashes,
+        &rule.not_domain_hashes,
+        &rule.to_domain_hashes,
+        &rule.not_to_domain_hashes,
+        &rule.modifier_option,
+        &rule.tag,
+        &rule.source_permissions,
+    ])
+}
+
+fn domain_subsumption_key(rule: &NetworkRule) -> String {
+    subsumption_key(&[
+        &rule.mask,
+        &rule.features,
+        &rule.hostname,
+        &rule.body,
+        &rule.left_anchor,
+        &rule.right_anchor,
+        &rule.hostname_anchor,
+        &rule.is_regex,
+        &rule.is_complete_regex,
+        &rule.is_hostname_regex,
+        &rule.is_exception,
+        &rule.important,
+        &rule.match_case,
+        &rule.is_badfilter,
+        &rule.is_redirect,
+        &rule.is_csp,
+        &rule.is_removeparam,
+        &rule.is_generic_hide,
+        &rule.to_domains,
+        &rule.not_to_domains,
+        &rule.to_domain_hashes,
+        &rule.not_to_domain_hashes,
+        &rule.modifier_option,
+        &rule.tag,
+        &rule.source_permissions,
+    ])
+}
+
+fn hostname_subsumption_key(rule: &NetworkRule) -> String {
+    subsumption_key(&[
+        &rule.mask,
+        &rule.features,
+        &rule.body,
+        &rule.left_anchor,
+        &rule.right_anchor,
+        &rule.hostname_anchor,
+        &rule.is_regex,
+        &rule.is_complete_regex,
+        &rule.is_hostname_regex,
+        &rule.is_exception,
+        &rule.important,
+        &rule.match_case,
+        &rule.is_badfilter,
+        &rule.is_redirect,
+        &rule.is_csp,
+        &rule.is_removeparam,
+        &rule.is_generic_hide,
+        &rule.domains,
+        &rule.not_domains,
+        &rule.to_domains,
+        &rule.not_to_domains,
+        &rule.domain_hashes,
+        &rule.not_domain_hashes,
+        &rule.to_domain_hashes,
+        &rule.not_to_domain_hashes,
+        &rule.modifier_option,
+        &rule.tag,
+        &rule.source_permissions,
+    ])
+}
+
+const SUBSUMABLE_MASK: u32 = Mask::FROM_NETWORK_TYPES.bits()
+    | Mask::FROM_DOCUMENT.bits()
+    | Mask::FROM_HTTP.bits()
+    | Mask::FROM_HTTPS.bits()
+    | Mask::FROM_ANY_METHODS.bits()
+    | Mask::THIRD_PARTY.bits()
+    | Mask::FIRST_PARTY.bits();
+
+fn mask_subsumes(broad: &NetworkRule, narrow: &NetworkRule) -> bool {
+    if broad.mask == narrow.mask {
+        return false;
+    }
+    let broad_bits = broad.mask & SUBSUMABLE_MASK;
+    let narrow_bits = narrow.mask & SUBSUMABLE_MASK;
+    broad_bits & narrow_bits == narrow_bits
+        && broad.mask & !SUBSUMABLE_MASK == narrow.mask & !SUBSUMABLE_MASK
+}
+
+fn host_ancestors(host: &str) -> Vec<String> {
+    let labels: Vec<&str> = host.split('.').collect();
+    if labels.len() < 2 {
+        return Vec::new();
+    }
+    let mut ancestors: Vec<String> = (1..labels.len())
+        .filter(|&start| labels.len() - start >= 2)
+        .map(|start| labels[start..].join("."))
+        .collect();
+    ancestors.sort_by_key(|ancestor| std::cmp::Reverse(ancestor.len()));
+    ancestors
 }
 
 fn build_network_candidate(group: &[NetworkRule], family: &str) -> Option<String> {

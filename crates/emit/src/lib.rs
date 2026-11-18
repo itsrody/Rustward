@@ -1,8 +1,8 @@
 //! Deterministic, compiler-friendly list emission.
 
 use anyhow::Result;
-use model::{Config, CosmeticPayload, NetworkRule, Rule, RuleState};
-use std::collections::BTreeMap;
+use model::{Config, CosmeticPayload, NetworkRule, Rule, RuleState, util::build_timestamp};
+use std::collections::{BTreeMap, BTreeSet};
 
 #[derive(Debug, Clone)]
 pub struct EmitResult {
@@ -11,11 +11,21 @@ pub struct EmitResult {
     pub rules: Vec<Rule>,
 }
 
-pub fn emit(rules: &[Rule], config: &Config, build_id: &str) -> Result<EmitResult> {
+pub fn emit(
+    rules: &[Rule],
+    config: &Config,
+    build_id: &str,
+    badfilter_targets: &BTreeSet<u64>,
+) -> Result<EmitResult> {
     let mut selected: Vec<Rule> = rules
         .iter()
         .filter(|rule| {
-            !matches!(rule.state(), RuleState::Excluded(_))
+            !rule.is_badfilter()
+                && !matches!(
+                    rule,
+                    Rule::Network(network) if badfilter_targets.contains(&network.engine_id)
+                )
+                && !matches!(rule.state(), RuleState::Excluded(_))
                 && matches!(rule.eligibility(), model::Eligibility::Eligible)
         })
         .cloned()
@@ -42,10 +52,12 @@ pub fn emit(rules: &[Rule], config: &Config, build_id: &str) -> Result<EmitResul
 
     let mut output = String::new();
     output.push_str(&format!("! Title: {}\n", config.output.title));
-    output.push_str(&format!(
-        "! Last modified: {}\n",
-        config.output.last_modified
-    ));
+    let last_modified = config
+        .output
+        .last_modified
+        .clone()
+        .unwrap_or_else(build_timestamp);
+    output.push_str(&format!("! Last modified: {last_modified}\n"));
     output.push_str(&format!("! Expires: {}\n", config.output.expires));
     output.push_str(&format!("! Description: {}\n", config.output.description));
     output.push_str("! RustShield: generated offline list\n");

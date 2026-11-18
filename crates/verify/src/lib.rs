@@ -17,8 +17,11 @@ use std::{collections::BTreeSet, time::Instant};
 #[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 pub struct Decision {
     pub blocked: bool,
+    pub important: bool,
+    pub exception: bool,
     pub redirect: Option<String>,
     pub rewritten_url: Option<String>,
+    pub csp: Option<String>,
 }
 
 #[derive(Debug, Clone)]
@@ -91,8 +94,8 @@ pub fn verify(
                 Ok(request) => request,
                 Err(_) => continue,
             };
-        let before = decision(&admitted.check_network_request(&request));
-        let after = decision(&candidate.check_network_request(&request));
+        let before = decision(&admitted, &request);
+        let after = decision(&candidate, &request);
         if before != after {
             mismatches.push(Mismatch {
                 case: case.label.clone(),
@@ -209,13 +212,51 @@ fn throughput(engine: &Engine, corpus: &[CorpusCase], iterations: usize) -> f64 
     (requests.len() * iterations) as f64 / elapsed
 }
 
-fn decision(result: &adblock::blocker::BlockerResult) -> Decision {
+/// Full observable engine decision for one request. Exceptions are forced so that an
+/// explicit `@@` rule is visible even when no blocking rule matched; CSP directives are
+/// read separately because the engine exposes them through a dedicated API.
+fn decision(engine: &Engine, request: &Request) -> Decision {
+    let result = engine.check_network_request_subset(request, false, true);
     Decision {
         blocked: result.should_block(),
+        important: result.important,
+        exception: result.exception.is_some(),
         redirect: result.redirect.clone(),
         rewritten_url: result.rewritten_url.clone(),
+        csp: engine.get_csp_directives(request),
     }
 }
+
+const NEGATIVE_TYPES: [&str; 10] = [
+    "script",
+    "image",
+    "document",
+    "subdocument",
+    "stylesheet",
+    "font",
+    "media",
+    "xmlhttprequest",
+    "fetch",
+    "ping",
+];
+
+const REQUEST_TYPE_BITS: [(&str, u32); 13] = [
+    ("image", 1 << 0),
+    ("media", 1 << 1),
+    ("object", 1 << 2),
+    ("other", 1 << 3),
+    ("ping", 1 << 4),
+    ("script", 1 << 5),
+    ("stylesheet", 1 << 6),
+    ("subdocument", 1 << 7),
+    ("websocket", 1 << 8),
+    ("xmlhttprequest", 1 << 9),
+    ("font", 1 << 10),
+    ("document", 1 << 29),
+    ("fetch", 0),
+];
+
+const METHOD_BITS: [(&str, u32); 3] = [("GET", 1 << 26), ("HEAD", 1 << 27), ("POST", 1 << 30)];
 
 fn generate_corpus(rules: &[Rule], max_cases: usize) -> Vec<CorpusCase> {
     let max_cases = max_cases.max(1);
@@ -242,9 +283,7 @@ fn generate_corpus(rules: &[Rule], max_cases: usize) -> Vec<CorpusCase> {
         }
     }
 
-    let types = ["script", "image", "document", "xmlhttprequest"];
-
-    // Keep unconditional negative probes even when the corpus budget is small.
+    // Unconditional negative probes stay even when the corpus budget is small.
     for host in [
         "example.org",
         "news.example.net",
@@ -252,7 +291,7 @@ fn generate_corpus(rules: &[Rule], max_cases: usize) -> Vec<CorpusCase> {
         "site-b.example",
         "neutral.example",
     ] {
-        for kind in types {
+        for kind in NEGATIVE_TYPES {
             push(
                 &mut cases,
                 &mut seen,
@@ -263,34 +302,47 @@ fn generate_corpus(rules: &[Rule], max_cases: usize) -> Vec<CorpusCase> {
                 "GET",
             );
         }
+        push(
+            &mut cases,
+            &mut seen,
+            format!("negative:{host}:query"),
+            format!("https://{host}/benign.js?utm_source=rs&keep=1"),
+            "https://example.org/".to_string(),
+            "document",
+            "GET",
+        );
     }
 
-    let neutral_sources = [
-        "https://site-a.example/".to_string(),
-        "https://site-b.example/".to_string(),
-        "https://neutral.example/".to_string(),
-    ];
-    let methods = ["GET", "POST"];
-    let network_count = rules
+    let network_rules: Vec<&model::NetworkRule> = rules
         .iter()
-        .filter(|rule| matches!(rule, Rule::Network(_)))
-        .count()
-        .max(1);
+        .filter_map(|rule| match rule {
+            Rule::Network(network) if !network.is_badfilter => Some(network),
+            _ => None,
+        })
+        .collect();
     let budget = max_cases.saturating_sub(cases.len());
-    let per_rule_limit = (budget / network_count).clamp(1, 144);
+    let stride = (network_rules.len() / budget.max(1)).max(1);
+    let per_rule_limit = (budget / network_rules.len().max(1)).clamp(1, 24);
 
-    for rule in rules {
+    // Sampling by stride covers every source instead of only the first lists.
+    for (index, network) in network_rules.iter().enumerate() {
         if cases.len() >= max_cases {
             break;
         }
-        let Rule::Network(network) = rule else {
-            continue;
-        };
-        if network.is_badfilter {
+        if index % stride != 0 {
             continue;
         }
 
+        let urls = rule_urls(network);
+        let sources = rule_sources(network);
+        let kinds = if network.is_csp {
+            vec!["document", "subdocument"]
+        } else {
+            mask_types(network.mask)
+        };
+        let methods = mask_methods(network.mask);
         let mut rule_cases = Vec::new();
+
         {
             let mut push_rule = |label: String,
                                  url: String,
@@ -308,32 +360,69 @@ fn generate_corpus(rules: &[Rule], max_cases: usize) -> Vec<CorpusCase> {
                 }
             };
 
-            let mut urls = Vec::new();
-            if let Some(host) = &network.hostname {
-                urls.push(format!("http://{host}/rs-probe.js"));
-                urls.push(format!("https://{host}/path?q=1"));
-                urls.push(format!("https://sub.{host}/"));
-            }
-            if !network.body.is_empty() && !network.is_regex {
-                let body = network.body.trim_matches(|c: char| c == '|' || c == '^');
-                if !body.is_empty() {
-                    urls.push(format!("https://neutral.example/path/{body}"));
-                    urls.push(format!("https://neutral.example/?q={body}"));
+            // Special-action probes come first: they exercise important, explicit
+            // exceptions, CSP, redirect, and removeparam paths even at a one-case budget.
+            if network.important
+                || network.is_exception
+                || network.is_csp
+                || network.is_redirect
+                || network.is_removeparam
+            {
+                for (url_index, url) in urls.iter().take(2).enumerate() {
+                    for source in sources.iter().take(3) {
+                        for kind in kinds.iter().take(2) {
+                            for method in methods.iter().take(2) {
+                                push_rule(
+                                    format!(
+                                        "special:{}:{}:{url_index}:{source}:{kind}:{method}",
+                                        network.source_id, network.line_no
+                                    ),
+                                    url.clone(),
+                                    source.clone(),
+                                    kind,
+                                    method,
+                                );
+                            }
+                        }
+                    }
                 }
             }
-            let mut sources = neutral_sources.to_vec();
-            for domain in network.domains.iter().take(4) {
-                sources.push(format!("https://{domain}/"));
+
+            // $domain/$from and $to matrices: target host and initiator are varied
+            // independently so partially rewrites cannot hide a domain regression.
+            let has_domain_matrix = !network.domains.is_empty()
+                || !network.not_domains.is_empty()
+                || !network.to_domains.is_empty()
+                || !network.not_to_domains.is_empty();
+            if has_domain_matrix {
+                for (url_index, url) in urls.iter().take(3).enumerate() {
+                    for source in sources.iter().take(6) {
+                        for kind in kinds.iter().take(2) {
+                            for method in methods.iter().take(2) {
+                                push_rule(
+                                    format!(
+                                        "matrix:{}:{}:{url_index}:{source}:{kind}:{method}",
+                                        network.source_id, network.line_no
+                                    ),
+                                    url.clone(),
+                                    source.clone(),
+                                    kind,
+                                    method,
+                                );
+                            }
+                        }
+                    }
+                }
             }
-            for (url_index, url) in urls.into_iter().enumerate() {
-                for source in sources.iter().take(6) {
-                    for kind in types {
-                        for method in methods {
+
+            for (url_index, url) in urls.iter().take(2).enumerate() {
+                for source in sources.iter().take(3) {
+                    for kind in kinds.iter().take(3) {
+                        for method in methods.iter().take(2) {
                             push_rule(
                                 format!(
-                                    "rule:{}:{}:{url_index}:{source}:{kind}:{method}",
-                                    rule.source_id(),
-                                    rule.line_no()
+                                    "general:{}:{}:{url_index}:{source}:{kind}:{method}",
+                                    network.source_id, network.line_no
                                 ),
                                 url.clone(),
                                 source.clone(),
@@ -345,11 +434,151 @@ fn generate_corpus(rules: &[Rule], max_cases: usize) -> Vec<CorpusCase> {
                 }
             }
         }
-        cases.extend(evenly_sample(rule_cases, per_rule_limit));
+        cases.extend(prioritized_sample(rule_cases, per_rule_limit));
     }
 
     cases.truncate(max_cases);
     cases
+}
+
+fn mask_types(mask: u32) -> Vec<&'static str> {
+    let mut types: Vec<&'static str> = REQUEST_TYPE_BITS
+        .iter()
+        .filter(|(_, bit)| *bit != 0 && mask & bit != 0)
+        .map(|(kind, _)| *kind)
+        .collect();
+    if types.is_empty() {
+        types.extend(["script", "image", "document", "xmlhttprequest"]);
+    }
+    types
+}
+
+fn mask_methods(mask: u32) -> Vec<&'static str> {
+    let mut methods: Vec<&'static str> = METHOD_BITS
+        .iter()
+        .filter(|(_, bit)| mask & bit != 0)
+        .map(|(method, _)| *method)
+        .collect();
+    if methods.is_empty() {
+        methods.extend(["GET", "HEAD", "POST"]);
+    }
+    methods
+}
+
+fn rule_urls(rule: &model::NetworkRule) -> Vec<String> {
+    let mut urls = Vec::new();
+    let scheme = if rule.mask & (1 << 12) != 0 {
+        "https"
+    } else if rule.mask & (1 << 11) != 0 {
+        "http"
+    } else {
+        "https"
+    };
+
+    if let Some(host) = &rule.hostname {
+        push_unique(&mut urls, format!("{scheme}://{host}/rs-probe.js"));
+        push_unique(&mut urls, format!("{scheme}://{host}/path?q=1"));
+        push_unique(&mut urls, format!("{scheme}://sub.{host}/"));
+    }
+    for host in rule
+        .to_domains
+        .iter()
+        .chain(rule.not_to_domains.iter())
+        .take(4)
+    {
+        let host = host.trim_start_matches('~');
+        push_unique(&mut urls, format!("{scheme}://{host}/rs-probe.js"));
+    }
+    if !rule.body.is_empty() && !rule.is_regex {
+        let body = rule.body.trim_matches(|c: char| c == '|' || c == '^');
+        if !body.is_empty() {
+            push_unique(&mut urls, format!("{scheme}://neutral.example/path/{body}"));
+            push_unique(&mut urls, format!("{scheme}://neutral.example/?q={body}"));
+        }
+    }
+    if rule.is_removeparam {
+        for param in removeparam_params(rule) {
+            push_unique(
+                &mut urls,
+                format!("{scheme}://neutral.example/path?{param}=rs1&keep=1"),
+            );
+            push_unique(
+                &mut urls,
+                format!("{scheme}://neutral.example/path?keep=1&{param}=rs2"),
+            );
+            push_unique(
+                &mut urls,
+                format!("{scheme}://neutral.example/path?{param}="),
+            );
+        }
+    }
+    if urls.is_empty() {
+        push_unique(&mut urls, format!("{scheme}://neutral.example/rs-probe.js"));
+    }
+    urls
+}
+
+fn removeparam_params(rule: &model::NetworkRule) -> Vec<String> {
+    let mut params = Vec::new();
+    if let Some(modifier) = &rule.modifier_option {
+        let raw = modifier
+            .strip_prefix("removeparam=")
+            .unwrap_or(modifier.as_str());
+        for part in raw.split('|') {
+            let name = part.trim();
+            if !name.is_empty()
+                && !name.starts_with('/')
+                && name
+                    .chars()
+                    .all(|c| c.is_ascii_alphanumeric() || c == '_' || c == '-')
+            {
+                push_unique(&mut params, name.to_string());
+            }
+        }
+    }
+    if params.is_empty() {
+        params.extend(["utm_source".to_string(), "fbclid".to_string()]);
+    }
+    params
+}
+
+fn rule_sources(rule: &model::NetworkRule) -> Vec<String> {
+    let mut sources = vec![
+        "https://site-a.example/".to_string(),
+        "https://site-b.example/".to_string(),
+        "https://neutral.example/".to_string(),
+    ];
+    for domain in rule.domains.iter().chain(rule.not_domains.iter()).take(6) {
+        let domain = domain.trim_start_matches('~');
+        push_unique(&mut sources, format!("https://{domain}/"));
+    }
+    sources
+}
+
+fn push_unique(list: &mut Vec<String>, value: String) {
+    if !list.contains(&value) {
+        list.push(value);
+    }
+}
+
+fn prioritized_sample(cases: Vec<CorpusCase>, limit: usize) -> Vec<CorpusCase> {
+    if cases.len() <= limit || limit == 0 {
+        return cases;
+    }
+    let mut result = Vec::with_capacity(limit);
+    let special_count = (limit / 2).max(1).min(cases.len());
+    for case in cases.iter().take(special_count) {
+        result.push(case.clone());
+    }
+    for case in evenly_sample(cases, limit) {
+        if result.len() >= limit {
+            break;
+        }
+        if !result.iter().any(|selected| selected.label == case.label) {
+            result.push(case);
+        }
+    }
+    result
 }
 
 fn evenly_sample(cases: Vec<CorpusCase>, limit: usize) -> Vec<CorpusCase> {
@@ -392,22 +621,80 @@ fn cosmetic_snapshot(
 /// The engine concatenates scriptlets in list order. Re-emission intentionally changes rule order for
 /// engine locality, so compare the multiset of independent `try { ... } catch` blocks instead.
 fn normalize_injected_script(script: &str) -> String {
+    let mut preamble = String::new();
     let mut blocks = Vec::new();
-    let mut current = String::new();
-    let mut saw_block = false;
+    let mut current: Option<Vec<&str>> = None;
     for line in script.lines() {
-        current.push_str(line);
-        current.push('\n');
-        if line == "} catch ( e ) { }" {
-            blocks.push(std::mem::take(&mut current));
-            saw_block = true;
+        match &mut current {
+            None => {
+                if line == "try {" {
+                    current = Some(vec![line]);
+                } else {
+                    preamble.push_str(line);
+                    preamble.push('\n');
+                }
+            }
+            Some(block) => {
+                block.push(line);
+                if line == "} catch ( e ) { }" {
+                    let mut text = block.join("\n");
+                    text.push('\n');
+                    blocks.push(text);
+                    current = None;
+                }
+            }
         }
     }
-    if !saw_block || !current.trim().is_empty() {
+    if current.is_some() || blocks.is_empty() {
         return script.to_string();
     }
     blocks.sort();
-    blocks.concat()
+    let mut result = normalize_declarations(&preamble);
+    result.push_str(&blocks.concat());
+    result
+}
+
+/// Dependency declarations are concatenated in engine list order. Sort the independent
+/// top-level function/class declarations so re-emitted rule order does not change the
+/// scriptlet payload.
+fn normalize_declarations(preamble: &str) -> String {
+    let mut leading = String::new();
+    let mut declarations = Vec::new();
+    let mut current: Option<Vec<&str>> = None;
+    for line in preamble.lines() {
+        if is_top_level_declaration(line) {
+            if let Some(previous) = current.take() {
+                declarations.push(join_lines(&previous));
+            }
+            current = Some(vec![line]);
+        } else if let Some(block) = &mut current {
+            block.push(line);
+        } else {
+            leading.push_str(line);
+            leading.push('\n');
+        }
+    }
+    if let Some(last) = current {
+        declarations.push(join_lines(&last));
+    }
+    if declarations.is_empty() {
+        return preamble.to_string();
+    }
+    declarations.sort();
+    leading.push_str(&declarations.concat());
+    leading
+}
+
+fn is_top_level_declaration(line: &str) -> bool {
+    line.starts_with("function ")
+        || line.starts_with("async function ")
+        || line.starts_with("class ")
+}
+
+fn join_lines(lines: &[&str]) -> String {
+    let mut text = lines.join("\n");
+    text.push('\n');
+    text
 }
 
 fn passes_golden_rule(rule: &Rule) -> bool {
@@ -451,9 +738,7 @@ pub fn network_equivalence(before: &[String], after: &str, permissions: u8) -> R
         else {
             continue;
         };
-        if decision(&before_engine.check_network_request(&request))
-            != decision(&after_engine.check_network_request(&request))
-        {
+        if decision(&before_engine, &request) != decision(&after_engine, &request) {
             return Ok(false);
         }
     }
@@ -491,6 +776,34 @@ pub fn cosmetic_equivalence(before: &[String], after: &str, permissions: u8) -> 
     Ok(true)
 }
 
+/// Extracts literal domain values from named `$` options in raw rule text. Entity
+/// domains (`.*`) and negations (`~`) are normalized; the engine remains authoritative
+/// for semantics, this only supplies initiator/target hosts for differential probes.
+fn option_domain_values(text: &str, keys: &[&str]) -> Vec<String> {
+    let Some((_, options)) = text.rsplit_once('$') else {
+        return Vec::new();
+    };
+    let mut out = Vec::new();
+    for option in options.split(',') {
+        let option = option.trim().trim_start_matches('~');
+        for key in keys {
+            let Some(value) = option
+                .strip_prefix(*key)
+                .and_then(|rest| rest.strip_prefix('='))
+            else {
+                continue;
+            };
+            for domain in value.split('|') {
+                let domain = domain.trim().trim_start_matches('~').trim_end_matches(".*");
+                if domain.contains('.') && !domain.contains('*') {
+                    out.push(domain.to_string());
+                }
+            }
+        }
+    }
+    out
+}
+
 fn corpus_for_texts<'a>(texts: impl Iterator<Item = &'a str>) -> Vec<CorpusCase> {
     let mut cases = Vec::new();
     for text in texts {
@@ -509,18 +822,34 @@ fn corpus_for_texts<'a>(texts: impl Iterator<Item = &'a str>) -> Vec<CorpusCase>
             let body = body.trim_matches(|c: char| c == '|' || c == '^');
             if !body.is_empty() {
                 urls.push(format!("https://neutral.example/path/{body}"));
+                urls.push(format!("https://neutral.example/path?{body}=1&keep=1"));
             }
         }
+        // Include `$to=` domains as target hosts and `$domain=`/`$from=` domains as
+        // initiators. Without these, a domain-restricted rule never fires in the
+        // differential corpus and an unsafe rewrite could pass trivially.
+        for domain in option_domain_values(text, &["to"]) {
+            urls.push(format!("https://{domain}/rs-probe.js"));
+        }
+        let mut sources: Vec<String> = vec![
+            "https://site-a.example/".to_string(),
+            "https://site-b.example/".to_string(),
+        ];
+        for domain in option_domain_values(text, &["domain", "from"]) {
+            sources.push(format!("https://{domain}/"));
+        }
         for (index, url) in urls.into_iter().enumerate() {
-            for source in ["https://site-a.example/", "https://site-b.example/"] {
-                for kind in ["script", "image", "document"] {
-                    cases.push(CorpusCase {
-                        url: url.clone(),
-                        source_url: source.to_string(),
-                        request_type: kind,
-                        method: "GET",
-                        label: format!("rewrite:{index}:{source}:{kind}:{text}"),
-                    });
+            for source in &sources {
+                for kind in mask_types(filter.mask.bits()) {
+                    for method in mask_methods(filter.mask.bits()) {
+                        cases.push(CorpusCase {
+                            url: url.clone(),
+                            source_url: source.clone(),
+                            request_type: kind,
+                            method,
+                            label: format!("rewrite:{index}:{source}:{kind}:{method}:{text}"),
+                        });
+                    }
                 }
             }
         }

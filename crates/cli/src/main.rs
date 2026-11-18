@@ -98,7 +98,12 @@ impl Pipeline {
         let rewrite = rewrite::rewrite(dedup.rules.clone(), &config)?;
         timing("rewrite", started.elapsed());
         let started = Instant::now();
-        let emit = emit::emit(&rewrite.rules, &config, &build_id)?;
+        let emit = emit::emit(
+            &rewrite.rules,
+            &config,
+            &build_id,
+            &admission.badfilter_targets,
+        )?;
         timing("emit", started.elapsed());
         let started = Instant::now();
         let resources = engine_resources(&config, &root);
@@ -123,7 +128,7 @@ impl Pipeline {
     fn verify(&self, candidate_text: &str) -> Result<model::VerifyReport> {
         verify::verify(
             &self.config,
-            &self.admission.accepted,
+            &self.admission.baseline,
             &self.emit.rules,
             candidate_text,
             &self.emit.text,
@@ -134,7 +139,7 @@ impl Pipeline {
     fn bench(&self, candidate_text: &str) -> model::BenchReport {
         verify::bench(
             &self.config,
-            &self.admission.accepted,
+            &self.admission.baseline,
             candidate_text,
             &self.resources,
             &self.config.output.emit_order,

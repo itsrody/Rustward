@@ -2,7 +2,7 @@
 
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 
 use crate::config::Dialect;
 
@@ -59,6 +59,8 @@ pub enum ExclusionReason {
     ActionOperator,
     UnknownResource(String),
     Trust(String),
+    BadfilterResolved,
+    BadfilterTarget(String),
     Policy(String),
     RewriteFailed(String),
 }
@@ -74,6 +76,8 @@ impl ExclusionReason {
             Self::ActionOperator => "ACTION_OPERATOR",
             Self::UnknownResource(_) => "UNKNOWN_RESOURCE",
             Self::Trust(_) => "ENGINE_TRUST",
+            Self::BadfilterResolved => "BADFILTER_RESOLVED",
+            Self::BadfilterTarget(_) => "BADFILTER_TARGET",
             Self::Policy(_) => "POLICY",
             Self::RewriteFailed(_) => "REWRITE_FAILED",
         }
@@ -88,6 +92,8 @@ impl ExclusionReason {
             | Self::Trust(s)
             | Self::Policy(s)
             | Self::RewriteFailed(s) => s,
+            Self::BadfilterResolved => "badfilter resolved at build time and omitted from output",
+            Self::BadfilterTarget(detail) => detail,
             Self::Regex => "regex rules are not fast-native",
             Self::MatchCase => "match-case requires regex machinery",
             Self::ActionOperator => "DOM action operators are excluded",
@@ -349,7 +355,12 @@ pub enum ParsedOutcome {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AdmissionResult {
+    /// Rules that pass admission, after build-time `$badfilter` resolution.
     pub accepted: Vec<Rule>,
+    /// Rules that would be visible to the engine before build-time `$badfilter` resolution.
+    pub baseline: Vec<Rule>,
+    /// Engine IDs cancelled by `$badfilter`; emission must never reintroduce them.
+    pub badfilter_targets: BTreeSet<u64>,
     pub excluded: Vec<ExclusionRecord>,
     pub resource_decisions: Vec<ResourceDecision>,
 }

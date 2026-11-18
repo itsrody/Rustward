@@ -33,7 +33,13 @@ pub fn dedup(rules: Vec<Rule>) -> Result<DedupResult> {
         let exact_key = rule.text().trim().to_string();
         if let Some(existing) = by_exact.get_mut(&exact_key) {
             duplicate_exact += 1;
-            merge_provenance(existing, &rule);
+            if preferred(existing, &rule) {
+                let mut chosen = rule;
+                chosen = merge_into(chosen, existing);
+                *existing = chosen;
+            } else {
+                merge_provenance(existing, &rule);
+            }
             continue;
         }
         by_exact.insert(exact_key, rule);
@@ -72,7 +78,7 @@ pub fn dedup(rules: Vec<Rule>) -> Result<DedupResult> {
 
 fn rank(rule: &Rule) -> (i32, usize, &str, usize) {
     (
-        -source_priority(rule),
+        source_priority(rule).saturating_neg(),
         rule.text().len(),
         rule.source_id(),
         rule.line_no(),

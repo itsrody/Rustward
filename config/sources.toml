@@ -8,9 +8,9 @@ path = "dist/RustShield.txt"
 emit_order = "compiler-friendly-v1"
 inline_audit_comments = false
 title = "RustShield"
-last_modified = "Sat, 14 Nov 2026 13:05:16 +0000"
+# Omitted: emitted as the UTC build time in RFC 2822 form.
 expires = "2 days"
-description = "Verified unified filter list for Brave adblock-rust"
+description = "Rust-verified rules list for Brave Browser."
 
 [verify]
 required = true
@@ -35,10 +35,10 @@ zero_violations = true
 
 [resources.ubo]
 repo = "https://github.com/gorhill/uBlock"
-commit = "local-fixture"
+commit = "3cca944b4a4c5f3473d6cb7153e6fb99b5f7d1db"
 scriptlets_path = "src/js/resources/scriptlets.js"
 snapshot_path = "config/resources/ubo-official.json"
-snapshot_sha256 = "bdedba2f1e80ba433af66fdede9d53a0f485bedb0f12691e4a88a1e9297d64eb"
+snapshot_sha256 = "ddc13cecf2441456e0c707a484fb7e76a4d82d1ad13b09e8075ee1ab2e4cd038"
 trust_bit = 0b00000001
 allow_standard = true
 allow_trusted = true
@@ -55,7 +55,15 @@ allow_css_injection = false
 allow_js_injection = false
 
 [rewrite]
-enabled = ["type_union", "domain_union", "to_domain_union", "cosmetic_host_union"]
+enabled = [
+    "type_union",
+    "domain_union",
+    "to_domain_union",
+    "cosmetic_host_union",
+    "mask_subsumption",
+    "domain_subsumption",
+    "hostname_subsumption",
+]
 ubo_host_semantics = false
 regex_fusion = false
 
@@ -65,7 +73,7 @@ regex_fusion = false
 [[source]]
 id = "ag-base-easylist"
 url = "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt"
-sha256 = "0742567e8714c9b40dfc4d485244073946db4f2e2a111343124a6aa67d1ed718"
+sha256 = "3644135b1b731d41f6c3e8f6f52220a72f665e0597a83399a4aa751a994542a2"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -246,7 +254,7 @@ license = "uBlock Origin Badware Risks; see upstream ! Title/! Description metad
 [[source]]
 id = "ubo-filters-min"
 url = "https://ublockorigin.pages.dev/filters/filters.min.txt"
-sha256 = "dda87b991a1a2ab71ce30cfca3aae31e2e181eb005bf51692546cebcb4c31808"
+sha256 = "4c06e212fd29a2f2b8bff133b5d03c35df1bac72b4dbfb3a22b7dbf34df3aa1c"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -259,7 +267,7 @@ license = "uBlock filters; GPL-3.0-or-later (uBlock Origin uAssets)"
 [[source]]
 id = "ubo-badware-min"
 url = "https://ublockorigin.pages.dev/filters/badware.min.txt"
-sha256 = "288a7d98a42751cea3b13e81140eefe0bd1e33b4c2f97bd4cb69390f09ed9d09"
+sha256 = "a34933d5c94efd986fa02f0057570f592cfc084dc1ef9dc74d65284fd17287b5"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -272,7 +280,7 @@ license = "uBlock filters - Badware risks; GPL-3.0-or-later (uBlock Origin uAsse
 [[source]]
 id = "ubo-privacy-min"
 url = "https://ublockorigin.pages.dev/filters/privacy.min.txt"
-sha256 = "df8d956ddeba1925230fad17be92f69850c02fd869655e6d7fb0b2eab322814e"
+sha256 = "224823c8f046b783b657162d7507e13f613c6a6313753c49be4e4ddb05e6e353"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -285,7 +293,7 @@ license = "uBlock filters - Privacy; GPL-3.0-or-later (uBlock Origin uAssets)"
 [[source]]
 id = "ubo-annoyances-min"
 url = "https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt"
-sha256 = "5f88048a0d66135e39576d60c6c7099a08fcba56ca70f5e31a3ceeae2646e87f"
+sha256 = "d7046689cdb9ab8797691b7b51e6ec6ab29acd560863d1319d7931f8a2ed0d67"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"

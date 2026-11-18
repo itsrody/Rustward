@@ -68,8 +68,9 @@ pub struct OutputConfig {
     pub inline_audit_comments: bool,
     #[serde(default = "default_list_title")]
     pub title: String,
-    #[serde(default = "default_list_last_modified")]
-    pub last_modified: String,
+    /// Fixed value for reproducible fixtures. When omitted, emission uses the UTC build time.
+    #[serde(default)]
+    pub last_modified: Option<String>,
     #[serde(default = "default_list_expires")]
     pub expires: String,
     #[serde(default = "default_list_description")]
@@ -84,16 +85,12 @@ fn default_list_title() -> String {
     "RustShield".to_string()
 }
 
-fn default_list_last_modified() -> String {
-    "Sat, 14 Nov 2026 13:05:16 +0000".to_string()
-}
-
 fn default_list_expires() -> String {
     "2 days".to_string()
 }
 
 fn default_list_description() -> String {
-    "Verified unified filter list for Brave adblock-rust".to_string()
+    "Rust-verified rules list for Brave Browser.".to_string()
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

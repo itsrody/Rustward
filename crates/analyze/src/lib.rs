@@ -45,10 +45,20 @@ pub fn analyze(
     );
     set(
         &mut metrics,
-        "badfilter_pinned",
-        output_rules
+        "badfilter_resolved",
+        admission
+            .excluded
             .iter()
-            .filter(|rule| rule.is_badfilter())
+            .filter(|row| row.reason.code() == "BADFILTER_RESOLVED")
+            .count(),
+    );
+    set(
+        &mut metrics,
+        "badfilter_targets_pruned",
+        admission
+            .excluded
+            .iter()
+            .filter(|row| row.reason.code() == "BADFILTER_TARGET")
             .count(),
     );
 

@@ -8,6 +8,10 @@
 ||tracker.example^$domain=site-b.example
 ||banner.example^$script,image
 @@||allowed.example^$script
+||cancelled.example^$script
+||cancelled.example^$script,badfilter
+@@||exception-cancelled.example^$script
+@@||exception-cancelled.example^$script,badfilter
 example.com##.ad
 example.com,other.example##.ad
 example.com##div.ad > span:has(a)

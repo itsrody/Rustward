@@ -235,11 +235,10 @@ fn parse_line(
             } else {
                 trimmed.to_string()
             };
-            let options = split_network_options(&canonical_text);
+            let options = parse_network_options(&canonical_text);
             let (domains, not_domains) =
-                collect_domain_values(options.as_ref(), &["domain", "from"], false);
-            let (to_domains, not_to_domains) =
-                collect_domain_values(options.as_ref(), &["to"], true);
+                collect_domain_values(options.as_ref(), &["domain", "from"]);
+            let (to_domains, not_to_domains) = collect_domain_values(options.as_ref(), &["to"]);
             let rule = NetworkRule {
                 engine_id: filter.get_id(),
                 mask: filter.mask.bits(),
@@ -271,9 +270,7 @@ fn parse_line(
                 to_domain_hashes: hash_all(&filter.opt_to_domains),
                 not_to_domain_hashes: hash_all(&filter.opt_not_to_domains),
                 modifier_option: filter.modifier_option.map(str::to_string),
-                tag: options
-                    .as_ref()
-                    .and_then(|(_, values)| option_value(values, "tag")),
+                tag: option_value(options.as_ref(), "tag"),
                 text: canonical_text,
                 source_id: source.config.id.clone(),
                 line_no: line.line_no,
@@ -325,46 +322,79 @@ fn hash_all(values: &Option<Vec<u64>>) -> Vec<u64> {
     values
 }
 
-fn split_network_options(text: &str) -> Option<(String, Vec<String>)> {
-    let (prefix, options) = text.rsplit_once('$')?;
-    if prefix.contains('$') || options.contains('$') || options.is_empty() {
-        return None;
-    }
-    Some((
-        prefix.to_string(),
-        options.split(',').map(str::to_string).collect(),
-    ))
+#[derive(Debug, Clone)]
+struct ParsedNetworkOption {
+    name: String,
+    value: Option<String>,
+    negated: bool,
 }
 
-fn option_value(options: &[String], key: &str) -> Option<String> {
-    options.iter().find_map(|option| {
-        option.split_once('=').and_then(|(name, value)| {
-            if name.eq_ignore_ascii_case(key) {
-                Some(value.to_string())
-            } else {
-                None
+#[derive(Debug, Clone)]
+struct ParsedNetworkOptions {
+    options: Vec<ParsedNetworkOption>,
+}
+
+/// Structured `$` option parser. The engine remains authoritative for semantics; this
+/// parser only exposes option shape so gap detection does not rely on substring matches.
+fn parse_network_options(text: &str) -> Option<ParsedNetworkOptions> {
+    let (prefix, raw_options) = text.rsplit_once('$')?;
+    if prefix.contains('$') || raw_options.is_empty() || raw_options.contains('$') {
+        return None;
+    }
+    let mut options = Vec::new();
+    for item in raw_options.split(',') {
+        let item = item.trim();
+        if item.is_empty() {
+            continue;
+        }
+        let (negated, item) = match item.strip_prefix('~') {
+            Some(rest) => (true, rest),
+            None => (false, item),
+        };
+        let (name, value) = match item.split_once('=') {
+            Some((name, value)) if !name.is_empty() && !value.is_empty() => {
+                (name.to_ascii_lowercase(), Some(value.to_string()))
             }
-        })
-    })
+            Some((name, _)) if name.is_empty() => return None,
+            _ => (item.to_ascii_lowercase(), None),
+        };
+        options.push(ParsedNetworkOption {
+            name,
+            value,
+            negated,
+        });
+    }
+    if options.is_empty() {
+        None
+    } else {
+        Some(ParsedNetworkOptions { options })
+    }
+}
+
+fn option_value(options: Option<&ParsedNetworkOptions>, key: &str) -> Option<String> {
+    options?
+        .options
+        .iter()
+        .find(|option| option.name == key && !option.negated)
+        .and_then(|option| option.value.clone())
 }
 
 fn collect_domain_values(
-    options: Option<&(String, Vec<String>)>,
+    options: Option<&ParsedNetworkOptions>,
     keys: &[&str],
-    is_to: bool,
 ) -> (Vec<String>, Vec<String>) {
     let mut positive = Vec::new();
     let mut negative = Vec::new();
-    let Some((_, options)) = options else {
+    let Some(options) = options else {
         return (positive, negative);
     };
-    for option in options {
-        let Some((name, value)) = option.split_once('=') else {
-            continue;
-        };
-        if !keys.iter().any(|key| name.eq_ignore_ascii_case(key)) {
+    for option in &options.options {
+        if !keys.contains(&option.name.as_str()) {
             continue;
         }
+        let Some(value) = &option.value else {
+            continue;
+        };
         for item in value.split('|') {
             if let Some(host) = item.strip_prefix('~') {
                 negative.push(host.to_ascii_lowercase());
@@ -372,10 +402,6 @@ fn collect_domain_values(
                 positive.push(item.to_ascii_lowercase());
             }
         }
-    }
-    // `to=` options have engine semantics even when only negations are present.
-    if is_to && positive.is_empty() && !negative.is_empty() {
-        // Keep negations only; admission reports the semantic gap separately.
     }
     sorted_unique(&mut positive);
     sorted_unique(&mut negative);
@@ -544,38 +570,36 @@ fn classify_selector(operators: &[CosmeticFilterOperator], config: &Config) -> C
 
 fn detect_network_gaps(text: &str, source: &model::SourceConfig) -> Vec<DialectGap> {
     let mut gaps = Vec::new();
-    if text.contains("$denyallow=") {
-        gaps.push(DialectGap::new(
-            "denyallow",
-            GapClass::Unsupported,
-            "engine rejects $denyallow",
-        ));
-    }
-    if text.contains("$all") {
-        gaps.push(DialectGap::new(
-            "all",
-            GapClass::SemanticGap,
-            "$all is not engine-native",
-        ));
-    }
-    if text.contains("$rewrite=") {
-        gaps.push(DialectGap::new(
-            "rewrite",
-            GapClass::Canonicalized,
-            "rewrite alias maps to redirect",
-        ));
-    }
-    if text.contains("$queryprune=") {
-        gaps.push(DialectGap::new(
-            "queryprune",
-            GapClass::Canonicalized,
-            "queryprune maps to removeparam",
-        ));
-    }
-    if let Some(options) = split_network_options(text) {
-        for option in options.1 {
-            if let Some((name, value)) = option.split_once('=') {
-                if name.eq_ignore_ascii_case("domain") || name.eq_ignore_ascii_case("from") {
+    if let Some(parsed) = parse_network_options(text) {
+        for option in &parsed.options {
+            let value = option.value.as_deref().unwrap_or_default();
+            match option.name.as_str() {
+                "denyallow" => gaps.push(DialectGap::new(
+                    "denyallow",
+                    GapClass::Unsupported,
+                    "engine rejects $denyallow",
+                )),
+                "all" => gaps.push(DialectGap::new(
+                    "all",
+                    GapClass::SemanticGap,
+                    "$all is expanded to engine type bits",
+                )),
+                "rewrite" => gaps.push(DialectGap::new(
+                    "rewrite",
+                    GapClass::Canonicalized,
+                    "rewrite alias maps to redirect",
+                )),
+                "queryprune" => gaps.push(DialectGap::new(
+                    "queryprune",
+                    GapClass::Canonicalized,
+                    "queryprune maps to removeparam",
+                )),
+                "match-case" => gaps.push(DialectGap::new(
+                    "match-case",
+                    GapClass::SemanticGap,
+                    "match-case forces regex machinery",
+                )),
+                "domain" | "from" | "to" => {
                     if value
                         .split('|')
                         .any(|domain| domain.trim_start_matches('~').ends_with(".*"))
@@ -587,7 +611,7 @@ fn detect_network_gaps(text: &str, source: &model::SourceConfig) -> Vec<DialectG
                         ));
                     }
                 }
-                if name.eq_ignore_ascii_case("method") {
+                "method" => {
                     let allowed = ["get", "head", "post"];
                     if value
                         .split('|')
@@ -600,6 +624,20 @@ fn detect_network_gaps(text: &str, source: &model::SourceConfig) -> Vec<DialectG
                         ));
                     }
                 }
+                "scheme" => {
+                    let allowed = ["http", "https", "ws", "wss"];
+                    if value
+                        .split('|')
+                        .any(|scheme| !allowed.contains(&scheme.to_ascii_lowercase().as_str()))
+                    {
+                        gaps.push(DialectGap::new(
+                            "dropped_scheme",
+                            GapClass::SemanticGap,
+                            "unsupported schemes are dropped by the engine",
+                        ));
+                    }
+                }
+                _ => {}
             }
         }
     }

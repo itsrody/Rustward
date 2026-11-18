@@ -123,8 +123,10 @@ properties:
 `REWRITABLE_TO_ELIGIBLE`, or `INELIGIBLE`. Rules in the second class are handed to the rewriter;
 successful candidates become `ELIGIBLE`, and failed candidates become `EXCLUDED` with a receipt.
 An already eligible rule that the engine cannot fuse is **retained** — fusion is a size win, not an
-admission requirement. `$badfilter` rules remain pinned verbatim as a semantic exception; they are
-engine-native and trusted, but never rewritten or deduplicated.
+admission requirement. `$badfilter` is resolved at build time (see §7.3.2): the badfilter lines are
+excluded from output, their matching targets are pruned, and both remain in the verification baseline
+so the differential gate proves the resolution is semantics-preserving. Badfilter rules are hard
+barriers — never rewritten, deduplicated, or subsumed.
 
 **Cosmetic tiers.** Tiers 0 and 1 stay first-class; tier 2 is the only permitted scriptlet path.
 
@@ -170,8 +172,10 @@ Failures are excluded with `SCRIPTLET_NOT_IN_LIBRARY`, `SCRIPTLET_GRADE_MISMATCH
 2. **Conservative by default.** A rewrite is applied only if structural preconditions hold *and*
    the generated text re-parses into the expected field values *and* differential verification
    passes. An ineligible rule that cannot be safely made eligible is excluded, not passed through.
-3. **`$badfilter` is a barrier.** Badfilter rules are emitted verbatim and never deduplicated,
-   rewritten, or subsumed; their target IDs are pinned against all transformations.
+3. **`$badfilter` is a barrier resolved at build time.** Badfilter lines are excluded from the
+   output and their targets are pruned before publication; both stay in the verification baseline.
+   They are never deduplicated, rewritten, or subsumed, and their target IDs are pinned against all
+   transformations.
 4. **Determinism everywhere.** `BTreeMap`/`BTreeSet`, sorted vectors, bytewise string ordering,
    LF endings, fixed RNG seed, no wall-clock data in the list body. Build metadata is content-based.
 5. **Auditability.** Every dropped, deduplicated, or rewritten rule has a receipt with source ids,
@@ -334,7 +338,7 @@ pub enum CosmeticPayload {
 pub enum Eligibility {
     Eligible,                       // fast-native + official + engine-trusted
     RewritableToEligible,           // try safe rewrite catalog; failure => Excluded
-    Ineligible(ExclusionReason),    // badfilter pinned is the only non-rewritable exception
+    Ineligible(ExclusionReason),    // no safe rewrite exists; excluded with a reason
 }
 
 pub struct CosmeticRule {
@@ -352,17 +356,21 @@ pub struct CosmeticRule {
 
 ### 6.4 Semantic key
 
-- **Network:** `hash(engine_id, tag)` where `engine_id = NetworkFilter::get_id()`. We add `tag`
-  because `get_id()` intentionally excludes it, yet it changes matching via active tags. Dialect
-  aliases (`from`→`domain`, `3p`→`third-party`, `rewrite`→`redirect`, …) are normalized *before*
-  hashing; the source dialect itself is not part of the key, because the output dialect is fixed.
-- **Cosmetic:** stable hash over canonical `(hosts, payload kind + value, action, generic flag)`;
+- **Network (Stage 5):** `hash(engine_id, tag, source_permissions)` where
+  `engine_id = NetworkFilter::get_id()`. We add `tag` and the source permission bits because
+  `get_id()` intentionally excludes both, yet both change behavior (active-tag filtering and resource
+  permission checks). Without them, a tagged rule could collapse into an untagged one or a trusted
+  resource rule into an untrusted one. Dialect aliases (`from`→`domain`, `3p`→`third-party`,
+  `rewrite`→`redirect`, …) are normalized before hashing; the source dialect itself is not part of the
+  key, because the output dialect is fixed.
+- **Cosmetic (Stage 5):** stable hash over canonical `(hosts, negated hosts, entities, payload,
+  selector ops, action, action detail, generic flag, resource permission, source permissions)`;
   `CosmeticFilter` has no public id accessor. Extended-CSS operator aliases and official scriptlet
-  aliases are canonicalized before hashing. Ineligible rules are not keyed; they are rewritten to an
-  eligible form or excluded. Vetted scriptlets include the official resource digest and permission in
-  the key so two spellings with different resources or trust never collapse.
+  aliases are canonicalized before hashing. Vetted scriptlets include the official resource digest
+  and permission in the key so two spellings with different resources or trust never collapse.
 - **Badfilter targets:** set of `get_id()` values of all `$badfilter` rules. Any rule whose
-  `engine_id` is in this set gets `RuleState::Pinned` (never modified), regardless of dialect.
+  `engine_id` is in this set is pruned at build time (§7.3.2); both it and the badfilter line remain in
+  the verification baseline. Badfilters are barriers and are never keyed, rewritten, or deduplicated.
 
 ### 6.5 Rewrite receipt
 
@@ -414,10 +422,20 @@ mismatch, all rewrites in the responsible group/family are reverted and the pipe
 - Classify every line, including failures (`Unsupported`, `Empty`, `Directive`, network/cosmetic
   error kinds). Attach a `DialectGap` to every failure that is explainable by source dialect
   (`denyallow`, `#%#`, `$all`, entity domains, …).
+- **Structured `$` option parsing (Stage 4).** The raw option string is parsed into named
+  `(name, value, negated)` entries before gap detection. `$denyallow`, `$all`, `$rewrite`,
+  `$queryprune`, `$match-case`, entity domains (`.*`), dropped `$method=`/`$scheme=` values, and
+  uBO bare-hostname intent are reported from parsed fields rather than substring matches. The engine
+  remains authoritative for semantics; this parser only exposes option *shape* so a gap cannot be
+  missed by a spelling change.
 - **Engine feature profile matters.** The generator and the target browser must agree on
   `full-regex-handling` (otherwise `/regex/` rules are rejected), `css-validation` (otherwise
   malformed CSS may be accepted), and `embedded-domain-resolver`. Profiles live in
   `config/profiles.toml`; the selected profile hash goes into the output header and manifest.
+- **`$badfilter` identity.** `NetworkFilter::get_id()` excludes the `BAD_FILTER` feature bit, so a
+  parsed badfilter's `engine_id` is the identity of the rule it cancels. Targets are resolved at
+  build time (§7.3) and both the badfilter lines and their targets are kept in the verification
+  baseline.
 - Hosts-format sources use `FilterFormat::Hosts`; they are canonicalized to `||host^` text early.
 - Parse results are cached by (blob hash, dialect, profile hash, directive environment hash), so
   unchanged lists are not re-parsed and a profile change cannot silently reuse stale results.
@@ -475,22 +493,42 @@ Already eligible rules that the engine cannot fuse stay in the set. The admissio
 allowlist: any rule that cannot prove eligibility is a candidate for rewrite or exclusion, never a
 silent pass-through.
 
+#### 7.3.2 Build-time `$badfilter` resolution
+
+`admit` resolves `$badfilter` before publication instead of emitting those lines verbatim:
+
+1. For each badfilter line, `NetworkFilter::get_id()` yields the engine id of its target (the
+   `BAD_FILTER` bit is deliberately excluded from that hash). These ids form the target set.
+2. Badfilter lines are recorded as `BadfilterResolved` exclusions and are **not** admitted to output.
+3. Any non-badfilter rule whose `get_id()` is in the target set is recorded as `BadfilterTarget`
+   and pruned from output.
+4. Both the badfilter lines and their targets remain in the **verification baseline** (which mirrors
+   what the engine would load from the raw lists), so `verify` proves that removing both sides is
+   semantics-preserving. This keeps the list slimmer without changing behavior.
+
+Receipts report `badfilter_resolved` and `badfilter_targets_pruned` counts. A badfilter and its
+targets are hard barriers: never rewritten, deduplicated, or subsumed.
+
 ### 7.4 Dedup (`dedup`)
 
 Three ordered passes:
 
 1. **Exact textual dedup** after BOM/whitespace normalization. Provenance is unioned; the shortest
    spelling wins (ties broken by source priority, then line number).
-2. **Semantic dedup** via `SemanticKey`. Rules with the same engine ID + tag (network) or canonical
-   key (cosmetic) collapse, even when spelled differently (e.g. `$from=` vs `$domain=` aliases,
-   reordered options, punycode vs Unicode hostnames).
+2. **Semantic dedup** via `SemanticKey` (Stage 5). For network rules the key is the engine id plus
+   the `$tag` and the source `PermissionMask`, because `get_id()` deliberately omits both: two rules
+   can share an engine id yet behave differently under tag filtering or resource permission checks.
+   For cosmetic rules the key is the canonical tuple of hosts, negated hosts, entities, payload,
+   selectors, action, genericity, and both permission fields. Rules collapse even when spelled
+   differently (`$from=` vs `$domain=` aliases, reordered options, punycode vs Unicode hostnames).
 3. **Priority resolution** across sources: `config` priority decides which source's text is kept.
-   Every merge records all origins in the receipt.
+   Every merge records all origins in the receipt; an equal-exact-text collision keeps the highest
+   priority source rather than relying on iteration order.
 
-Hard exclusions: `$badfilter` rules are never deduplicated (their precise text/ID matters),
-`INELIGIBLE` rules are absent before dedup, and scriptlets are deduped only after D11 has resolved
-their canonical official name, grade, resource digest, and `PermissionMask`. Different trust grades
-or digests never collapse into one key.
+Hard exclusions: `$badfilter` rules are never deduplicated (their precise text/ID matters, and they
+are resolved at build time in §7.3.2), `INELIGIBLE` rules are absent before dedup, and scriptlets are
+deduped only after D11 has resolved their canonical official name, grade, resource digest, and
+`PermissionMask`. Different trust grades or digests never collapse into one key.
 
 ### 7.5 Classify (`analyze`, reused)
 
@@ -635,7 +673,18 @@ Notes:
 - **R1/R2/R3 are the main workhorses** — verified equivalent, common in real lists, and reduce both
   source size and flatbuffer size (probe: two rules → one rule saves 32 bytes in the flatbuffer).
 - **R7–R10 are high-risk.** They are gated by strict structural predicates *and* differential
-  verification, and each removal is logged with the subsuming rule id.
+  verification, and each removal is logged with the subsuming rule id. R7/R8/R10 are implemented and
+  enabled as `hostname_subsumption`, `mask_subsumption`, and `domain_subsumption` respectively. They
+  group rules by a deterministic key of every field that must be identical (excluding only the one
+  dimension being widened), require the broader sibling to be a strict superset, and gate every
+  removal on `verify::network_equivalence`. Grouping keys use debug formatting rather than serde tuples
+  so all network-rule fields can participate without a tuple-size limit.
+- **Stage 7 (hostname-wildcard admission) was evaluated and admits zero rules.** A `||*.example.com^`
+  hostname-regex rule matches *subdomains only*, while its fast-anchored counterpart `||example.com^`
+  also matches the apex domain; the differential gate therefore rejects every such rewrite. Because
+  admitting these rules would either broaden behavior or require blanket regex admission (both
+  forbidden), none are emitted. The structural candidate check remains documented here so the
+  decision is auditable, but no config flag is enabled for it.
 - **No pattern concatenation.** Because `ads|banner` is a single literal pattern in this syntax,
   the generator never tries to emulate `FilterPart::AnyOf` in text. Engine-fusable rules stay as
   separate lines; the engine fuses them internally.
@@ -681,8 +730,8 @@ and the engine's `TokenSelector` choices. The emitter uses a versioned, benchmar
 
 1. Minimal generated header comments: build id, source attributions/licenses, counts, and
    `! Generated by RustShield — do not edit`.
-2. `$badfilter` rules, verbatim, first for audit. They are engine-native/trusted but pinned and never
-   rewritten. The engine does not depend on their position.
+2. `$badfilter` rules and their resolved targets are **not emitted**; both are resolved at build time
+   (§7.3.2). `emit` applies a final filter so no badfilter line can leak into the output.
 3. Network rules grouped by the engine's bucket order, mirrored from `NetworkFilterListId`
    (`Csp`, `Exceptions`, `Importants`, `Redirects`, `RemoveParam`, `Filters`, `GenericHide`,
    `TaggedFilters*`), with `@@$generichide` first inside `Exceptions`. The enum is `pub(crate)`, so
@@ -743,7 +792,7 @@ excluded_by_gate, excluded_rewrite_failures, rules_by_dialect,
 official_resources_used, trusted_resources_used, resource_trust_failures,
 directive_includes_expanded,
 dialect_gaps_by_kind, dialect_gaps_engine_native, dialect_gaps_semantic,
-duplicates_exact, duplicates_semantic, badfilter_pinned,
+duplicates_exact, duplicates_semantic, badfilter_resolved, badfilter_targets_pruned,
 engine_fusable, supported_not_optimized_retained, rewrites_applied, rewrites_by_family,
 rules_removed_by_subsumption, output_lines, emit_order,
 flatbuffer_bytes_baseline_opt, flatbuffer_bytes_candidate_opt,
@@ -766,7 +815,9 @@ Build engines with the **same feature profile**:
   lists today". This is a semantic oracle, not the exact publish target.
 - **Admitted baseline:** only raw lines that pass the §2.4 golden rule, before dedup/rewrite, with
   official resources loaded. This is the fair reference for dedup and R/D rewrites: policy exclusions
-  are intentional and are reported in `excluded.tsv`, not counted as mismatches.
+  are intentional and are reported in `excluded.tsv`, not counted as mismatches. `$badfilter` lines
+  and their targets are retained in this baseline even though the candidate omits both, so build-time
+  badfilter resolution is verified rather than trusted.
 - **Intent baseline:** admitted lines with only the opt-in D1 bridge applied, one rule at a time,
   and **no** R-family optimization. This is the reference when D1 is enabled; otherwise it equals the
   admitted baseline.
@@ -830,6 +881,14 @@ baseline.get_csp_directives(req)
 
 ...must equal the candidate's values. **Do not compare** `filter`/`exception` debug info (raw rule
 text), because successful rewriting intentionally changes which rule matches.
+
+**Hardened decision tuple (Stage 2).** The comparison above is implemented as a single `Decision`
+value covering block, `important`, exception (queried with `force_check_exceptions = true`),
+`redirect`, `rewritten_url`, and `get_csp_directives()`. A rule-only block/exception comparison would
+miss silent regressions in special actions, `$domain`/`$to` targeting, `removeparam`, and request
+type/method narrowing, so the corpus also samples across the whole list by stride and adds
+special-action, domain/to-domain, query-parameter, and expanded method probes. `verify.max_mismatches`
+is **0** in production and cannot be relaxed: any mismatch blocks publication with exit code 2.
 
 For cosmetic filters, for each host in the union of cosmetic host sets:
 
@@ -898,9 +957,9 @@ path = "dist/RustShield.txt"          # all published artifacts live under dist/
 emit_order = "compiler-friendly-v1"  # benchmarked engine-bucket/token locality order
 inline_audit_comments = false
 title = "RustShield"
-last_modified = "Sat, 14 Nov 2026 13:05:16 +0000"
+# Omitted: emitted as the UTC build time in RFC 2822 form.
 expires = "2 days"
-description = "Verified unified filter list for Brave adblock-rust"
+description = "Rust-verified rules list for Brave Browser."
 
 [verify]
 required = true
@@ -929,7 +988,7 @@ zero_violations = true
 repo = "https://github.com/gorhill/uBlock"
 commit = "local-fixture"
 scriptlets_path = "src/js/resources/scriptlets.js"
-snapshot_sha256 = "bdedba2f1e80ba433af66fdede9d53a0f485bedb0f12691e4a88a1e9297d64eb"
+snapshot_sha256 = "ddc13cecf2441456e0c707a484fb7e76a4d82d1ad13b09e8075ee1ab2e4cd038"
 trust_bit = 0b00000001               # TRUST_BITS for requiresTrust resources
 allow_standard = true
 allow_trusted = true

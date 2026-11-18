@@ -7,6 +7,7 @@ permissions = 0
 path = "RustShield.txt"
 emit_order = "compiler-friendly-v1"
 inline_audit_comments = false
+last_modified = "Sat, 14 Nov 2026 13:05:16 +0000"
 
 [verify]
 required = true
@@ -34,7 +35,7 @@ repo = "https://github.com/gorhill/uBlock"
 commit = "local-fixture"
 scriptlets_path = "src/js/resources/scriptlets.js"
 snapshot_path = "config/resources/ubo-official.json"
-snapshot_sha256 = "bdedba2f1e80ba433af66fdede9d53a0f485bedb0f12691e4a88a1e9297d64eb"
+snapshot_sha256 = "ddc13cecf2441456e0c707a484fb7e76a4d82d1ad13b09e8075ee1ab2e4cd038"
 trust_bit = 0b00000001
 allow_standard = true
 allow_trusted = true

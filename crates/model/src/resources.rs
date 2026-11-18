@@ -36,6 +36,19 @@ impl ResourceKind {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum ContentEncoding {
+    Text,
+    Base64,
+}
+
+impl Default for ContentEncoding {
+    fn default() -> Self {
+        Self::Text
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct OfficialResource {
     pub name: String,
@@ -44,6 +57,8 @@ pub struct OfficialResource {
     pub grade: ScriptletGrade,
     pub kind: ResourceKind,
     pub content: String,
+    #[serde(default)]
+    pub content_encoding: ContentEncoding,
     #[serde(default)]
     pub dependencies: Vec<String>,
     #[serde(default)]
@@ -88,6 +103,11 @@ impl ResourceSnapshot {
         let mut snapshot: Self = serde_json::from_slice(bytes)
             .with_context(|| format!("failed to parse resource snapshot {}", path.display()))?;
         for resource in &mut snapshot.resources {
+            if resource.content_encoding == ContentEncoding::Base64 {
+                base64::engine::general_purpose::STANDARD
+                    .decode(&resource.content)
+                    .with_context(|| format!("invalid base64 content for {}", resource.name))?;
+            }
             resource.digest = resource.compute_digest();
         }
         Ok(snapshot)
@@ -106,6 +126,7 @@ impl OfficialResource {
             self.grade.as_str(),
             self.kind.as_str(),
             &self.content,
+            self.content_encoding,
             &self.dependencies,
             self.permission,
         );
@@ -125,11 +146,29 @@ impl OfficialResource {
                 adblock::resources::MimeType::from_extension(&self.name),
             ),
         };
+        let content_bytes = match self.content_encoding {
+            ContentEncoding::Text => self.content.as_bytes().to_vec(),
+            ContentEncoding::Base64 => base64::engine::general_purpose::STANDARD
+                .decode(&self.content)
+                .unwrap_or_default(),
+        };
+        let mut aliases = Vec::new();
+        let mut seen = BTreeSet::new();
+        for alias in self
+            .aliases
+            .iter()
+            .flat_map(|alias| resource_name_variants(alias))
+            .chain(resource_name_variants(&self.name))
+        {
+            if alias != self.name && seen.insert(alias.clone()) {
+                aliases.push(alias);
+            }
+        }
         adblock::resources::Resource {
             name: self.name.clone(),
-            aliases: self.aliases.clone(),
+            aliases,
             kind,
-            content: base64::engine::general_purpose::STANDARD.encode(self.content.as_bytes()),
+            content: base64::engine::general_purpose::STANDARD.encode(content_bytes),
             dependencies: self.dependencies.clone(),
             permission: adblock::resources::PermissionMask::from_bits(self.permission),
         }
@@ -144,14 +183,33 @@ pub struct ResourceCatalog {
     by_name: BTreeMap<String, usize>,
 }
 
+/// Returns the canonical resource identifier together with its `.js`-suffixed and
+/// `.js`-stripped spellings. uBO rules use both `noop` and `noop.js`-style names for
+/// the same resource, so catalog lookup and engine aliases must agree on them.
+pub fn resource_name_variants(name: &str) -> Vec<String> {
+    let mut variants = vec![name.to_string()];
+    if let Some(stem) = name.strip_suffix(".js") {
+        if !stem.is_empty() {
+            variants.push(stem.to_string());
+        }
+    } else {
+        variants.push(format!("{name}.js"));
+    }
+    variants
+}
+
 impl ResourceCatalog {
     pub fn new(snapshot: ResourceSnapshot) -> Result<Self> {
         let mut by_name = BTreeMap::new();
         for (index, resource) in snapshot.resources.iter().enumerate() {
+            let mut names = Vec::new();
             for name in std::iter::once(resource.name.as_str())
                 .chain(resource.aliases.iter().map(String::as_str))
             {
-                if let Some(existing) = by_name.insert(name.to_string(), index) {
+                names.extend(resource_name_variants(name));
+            }
+            for name in names {
+                if let Some(existing) = by_name.insert(name.clone(), index) {
                     if existing != index {
                         bail!("duplicate official resource name or alias: {name}");
                     }
@@ -184,8 +242,12 @@ impl ResourceCatalog {
     }
 
     pub fn find(&self, name: &str) -> Option<&OfficialResource> {
-        self.by_name
-            .get(name)
+        if let Some(index) = self.by_name.get(name) {
+            return self.resources.get(*index);
+        }
+        resource_name_variants(name)
+            .iter()
+            .find_map(|variant| self.by_name.get(variant))
             .and_then(|index| self.resources.get(*index))
     }
 

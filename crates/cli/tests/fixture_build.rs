@@ -68,9 +68,7 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(first_list.starts_with("! Title: RustShield\n"));
     assert!(first_list.contains("! Last modified: Sat, 14 Nov 2026 13:05:16 +0000\n"));
     assert!(first_list.contains("! Expires: 2 days\n"));
-    assert!(
-        first_list.contains("! Description: Verified unified filter list for Brave adblock-rust\n")
-    );
+    assert!(first_list.contains("! Description: Rust-verified rules list for Brave Browser.\n"));
     assert!(first_list.contains("||ads.example^$image,script"));
     assert!(first_list.contains("||tracker.example^$domain=site-a.example|site-b.example"));
     assert!(first_list.contains("example.com,other.example##.ad"));
@@ -78,6 +76,9 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(!first_list.contains("matches-css"));
     assert!(!first_list.contains("denyallow"));
     assert!(!first_list.contains("inactive.example"));
+    assert!(!first_list.contains("badfilter"));
+    assert!(!first_list.contains("cancelled.example"));
+    assert!(!first_list.contains("exception-cancelled.example"));
 
     for artifact in [
         "RustShield.txt.sha256",
@@ -111,6 +112,8 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
         serde_json::from_slice(&fs::read(root.join("reports/build.json")).expect("read build"))
             .expect("parse build");
     assert_eq!(build["metrics"]["rewrites_applied"], 3);
+    assert_eq!(build["metrics"]["badfilter_resolved"], 2);
+    assert_eq!(build["metrics"]["badfilter_targets_pruned"], 2);
 
     let rewrites = fs::read_to_string(root.join("reports/rewrites.tsv")).expect("read rewrites");
     assert!(rewrites.contains("type_union"));

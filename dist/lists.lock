@@ -2,7 +2,7 @@
   "sources": {
     "ag-annoyances": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/14_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/f2b668bf2959e052c1eeff10f245cb1bcdfa8593fe9ca80e82b6d33229448229",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/f2b668bf2959e052c1eeff10f245cb1bcdfa8593fe9ca80e82b6d33229448229",
       "sha256": "f2b668bf2959e052c1eeff10f245cb1bcdfa8593fe9ca80e82b6d33229448229",
       "bytes": 2046949,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -18,9 +18,9 @@
     },
     "ag-base-easylist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/0742567e8714c9b40dfc4d485244073946db4f2e2a111343124a6aa67d1ed718",
-      "sha256": "0742567e8714c9b40dfc4d485244073946db4f2e2a111343124a6aa67d1ed718",
-      "bytes": 2429767,
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/3644135b1b731d41f6c3e8f6f52220a72f665e0597a83399a4aa751a994542a2",
+      "sha256": "3644135b1b731d41f6c3e8f6f52220a72f665e0597a83399a4aa751a994542a2",
+      "bytes": 2429449,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -34,7 +34,7 @@
     },
     "ag-tracking": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/b04a1cbb821bc361e2ca936b9ab1adfad7d8521935aa80fea663d6dc92056957",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/b04a1cbb821bc361e2ca936b9ab1adfad7d8521935aa80fea663d6dc92056957",
       "sha256": "b04a1cbb821bc361e2ca936b9ab1adfad7d8521935aa80fea663d6dc92056957",
       "bytes": 14946363,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -50,7 +50,7 @@
     },
     "dandelion-annoyances": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/250_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/cfd31e6865562174bdf9af8b7cb0154207b7c39926a4c9806a3c7d82f6167da7",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/cfd31e6865562174bdf9af8b7cb0154207b7c39926a4c9806a3c7d82f6167da7",
       "sha256": "cfd31e6865562174bdf9af8b7cb0154207b7c39926a4c9806a3c7d82f6167da7",
       "bytes": 177243,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -66,7 +66,7 @@
     },
     "easyprivacy": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/118_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/725cc3b43f1018e8234f6f8629f836cbe52b240ef5cfcacb301fa8a06484ee98",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/725cc3b43f1018e8234f6f8629f836cbe52b240ef5cfcacb301fa8a06484ee98",
       "sha256": "725cc3b43f1018e8234f6f8629f836cbe52b240ef5cfcacb301fa8a06484ee98",
       "bytes": 992718,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -82,7 +82,7 @@
     },
     "fanboy-annoyances": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/122_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/661071a32ef1dd0a095b21588b985ca16345aecd28e63ec63424c3a53d9ca177",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/661071a32ef1dd0a095b21588b985ca16345aecd28e63ec63424c3a53d9ca177",
       "sha256": "661071a32ef1dd0a095b21588b985ca16345aecd28e63ec63424c3a53d9ca177",
       "bytes": 1062654,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -98,7 +98,7 @@
     },
     "fanboy-social": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/123_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/8d15c5f7d6994ce0c6d3d97c28d1a586d95e38b7f74aff6af6d6b8f26dc96898",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/8d15c5f7d6994ce0c6d3d97c28d1a586d95e38b7f74aff6af6d6b8f26dc96898",
       "sha256": "8d15c5f7d6994ce0c6d3d97c28d1a586d95e38b7f74aff6af6d6b8f26dc96898",
       "bytes": 157962,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -114,7 +114,7 @@
     },
     "malicious-url": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/208_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/20b8a7eb1333f51390aae00e0614f7690ef5b1f940d642fdfb231c01043ff638",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/20b8a7eb1333f51390aae00e0614f7690ef5b1f940d642fdfb231c01043ff638",
       "sha256": "20b8a7eb1333f51390aae00e0614f7690ef5b1f940d642fdfb231c01043ff638",
       "bytes": 2570493,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -130,7 +130,7 @@
     },
     "phishing-url": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/255_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/f1399b09a7d4c14f594d1d453a5d414d8270a7a79a30994f98c6b9e68864f8d9",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/f1399b09a7d4c14f594d1d453a5d414d8270a7a79a30994f98c6b9e68864f8d9",
       "sha256": "f1399b09a7d4c14f594d1d453a5d414d8270a7a79a30994f98c6b9e68864f8d9",
       "bytes": 2845007,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -146,7 +146,7 @@
     },
     "scam-blocklist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/256_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/0afc899c4fc314bf3444d18fbc5aeb1531e3a9e6f1d07f16bcd1c7498be8dfe7",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/0afc899c4fc314bf3444d18fbc5aeb1531e3a9e6f1d07f16bcd1c7498be8dfe7",
       "sha256": "0afc899c4fc314bf3444d18fbc5aeb1531e3a9e6f1d07f16bcd1c7498be8dfe7",
       "bytes": 40195,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -162,7 +162,7 @@
     },
     "ubo-annoyances-cookies": {
       "url": "https://ublockorigin.pages.dev/filters/annoyances-cookies.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/2540b020ec5d160ae66ec8e40911b089052668483a31880b591d21cf1855403f",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/2540b020ec5d160ae66ec8e40911b089052668483a31880b591d21cf1855403f",
       "sha256": "2540b020ec5d160ae66ec8e40911b089052668483a31880b591d21cf1855403f",
       "bytes": 378854,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -177,9 +177,9 @@
     },
     "ubo-annoyances-min": {
       "url": "https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/5f88048a0d66135e39576d60c6c7099a08fcba56ca70f5e31a3ceeae2646e87f",
-      "sha256": "5f88048a0d66135e39576d60c6c7099a08fcba56ca70f5e31a3ceeae2646e87f",
-      "bytes": 308758,
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/d7046689cdb9ab8797691b7b51e6ec6ab29acd560863d1319d7931f8a2ed0d67",
+      "sha256": "d7046689cdb9ab8797691b7b51e6ec6ab29acd560863d1319d7931f8a2ed0d67",
+      "bytes": 308759,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -193,7 +193,7 @@
     },
     "ubo-badware": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/257_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/a5f3c207927314850ef6103f013ffab3cb9e913b7978db74ae3b24a1205ae970",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/a5f3c207927314850ef6103f013ffab3cb9e913b7978db74ae3b24a1205ae970",
       "sha256": "a5f3c207927314850ef6103f013ffab3cb9e913b7978db74ae3b24a1205ae970",
       "bytes": 255588,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -209,9 +209,9 @@
     },
     "ubo-badware-min": {
       "url": "https://ublockorigin.pages.dev/filters/badware.min.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/288a7d98a42751cea3b13e81140eefe0bd1e33b4c2f97bd4cb69390f09ed9d09",
-      "sha256": "288a7d98a42751cea3b13e81140eefe0bd1e33b4c2f97bd4cb69390f09ed9d09",
-      "bytes": 165335,
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/a34933d5c94efd986fa02f0057570f592cfc084dc1ef9dc74d65284fd17287b5",
+      "sha256": "a34933d5c94efd986fa02f0057570f592cfc084dc1ef9dc74d65284fd17287b5",
+      "bytes": 165336,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -224,9 +224,9 @@
     },
     "ubo-filters-min": {
       "url": "https://ublockorigin.pages.dev/filters/filters.min.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/dda87b991a1a2ab71ce30cfca3aae31e2e181eb005bf51692546cebcb4c31808",
-      "sha256": "dda87b991a1a2ab71ce30cfca3aae31e2e181eb005bf51692546cebcb4c31808",
-      "bytes": 1966916,
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/4c06e212fd29a2f2b8bff133b5d03c35df1bac72b4dbfb3a22b7dbf34df3aa1c",
+      "sha256": "4c06e212fd29a2f2b8bff133b5d03c35df1bac72b4dbfb3a22b7dbf34df3aa1c",
+      "bytes": 1966981,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -239,9 +239,9 @@
     },
     "ubo-privacy-min": {
       "url": "https://ublockorigin.pages.dev/filters/privacy.min.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/df8d956ddeba1925230fad17be92f69850c02fd869655e6d7fb0b2eab322814e",
-      "sha256": "df8d956ddeba1925230fad17be92f69850c02fd869655e6d7fb0b2eab322814e",
-      "bytes": 141354,
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/224823c8f046b783b657162d7507e13f613c6a6313753c49be4e4ddb05e6e353",
+      "sha256": "224823c8f046b783b657162d7507e13f613c6a6313753c49be4e4ddb05e6e353",
+      "bytes": 141432,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -254,7 +254,7 @@
     },
     "warning-removal": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/207_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/63799706e4071124e6b44fdf0d9875f9a6dabb260b2b5ff8489b5276031bff56",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/63799706e4071124e6b44fdf0d9875f9a6dabb260b2b5ff8489b5276031bff56",
       "sha256": "63799706e4071124e6b44fdf0d9875f9a6dabb260b2b5ff8489b5276031bff56",
       "bytes": 74132,
       "fetched_at": "1970-01-01T00:00:00Z",
@@ -270,7 +270,7 @@
     },
     "web-annoyances-ultralist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/201_optimized.txt",
-      "path": "/home/runner/work/RustyShield/RustyShield/cache/blobs/sha256/38d2593af4f17ecd31cab7f305c6e6039a89c521a54fbf4a5cebdb834a8af8f8",
+      "path": "/Users/itsrody/Documents/Projects/RustShield/cache/blobs/sha256/38d2593af4f17ecd31cab7f305c6e6039a89c521a54fbf4a5cebdb834a8af8f8",
       "sha256": "38d2593af4f17ecd31cab7f305c6e6039a89c521a54fbf4a5cebdb834a8af8f8",
       "bytes": 308955,
       "fetched_at": "1970-01-01T00:00:00Z",

@@ -1,14 +1,14 @@
 {
   "required": true,
   "mismatches": [],
-  "cases_checked": 458960,
+  "cases_checked": 460172,
   "golden_rule_violations": 0,
   "emit_order_violations": 0,
   "coverage": {
     "network_rules_total": 675326,
     "network_rules_probed": 243497,
-    "rewrite_receipts_total": 52169,
-    "rewrite_receipts_exercised": 50924,
+    "rewrite_receipts_total": 52335,
+    "rewrite_receipts_exercised": 51090,
     "cosmetic_hosts_total": 75155,
     "cosmetic_hosts_checked": 62210
   }

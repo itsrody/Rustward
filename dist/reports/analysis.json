@@ -15,7 +15,7 @@
     "empty_lines": 4006,
     "excluded_by_gate": 22858,
     "metadata": 38,
-    "network_rules": 591768,
+    "network_rules": 591008,
     "output_fast_native_css": 48170,
     "output_light_procedural": 327,
     "output_vetted_scriptlet": 21010,

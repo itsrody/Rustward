@@ -4580,7 +4580,7 @@ ag-base-easylist	20319	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 ag-base-easylist	20320	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20321	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20326	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	47355	ubo	xpath	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	47370	ubo	xpath	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-tracking	9	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	10	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	11	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification

@@ -13875,6 +13875,7 @@ ubo-filters-min	50	ubo	ACTION_OPERATOR	tvspielfilm.de##table.info-table tr:has(t
 ubo-filters-min	60	ubo	REGEX	||adnxs.com/*/sport1.js$script,redirect=noopjs,domain=sport1.de
 ubo-filters-min	61	ubo	ENGINE_TRUST	||acdn.adnxs.com/as/1h/pages/sport1_mediathek.js$script,redirect=noopjs,domain=sport1.de
 ubo-filters-min	62	ubo	ENGINE_TRUST	||asadcdn.com/adlib/*$script,redirect=noopjs,domain=sport1.de
+ubo-filters-min	67	ubo	SLOW_COSMETIC_OPERATOR	sport1.de##strong:has-text(/anzeige/i)
 ubo-filters-min	74	ubo	REGEX	||twnmm.com/js/*/adobe_audience_manager$script,redirect=noopjs
 ubo-filters-min	75	ubo	REGEX	||twnmm.com/js/*/dfpad/*$script,redirect=noopjs
 ubo-filters-min	80	ubo	ACTION_OPERATOR	pornhub.*##div.container:style(margin-top: 0px !important)
@@ -13954,6 +13955,8 @@ ubo-filters-min	346	ubo	PARSE_ERROR	*$script,3p,denyallow=googleapis.com,domain=
 ubo-filters-min	357	ubo	ACTION_OPERATOR	usatoday.com##.gnt_n:style(top: 0 !important; margin-top: 0 !important;)
 ubo-filters-min	363	ubo	BADFILTER_RESOLVED	@@||ad.yieldlab.net^$script,domain=spiegel.de,badfilter
 ubo-filters-min	364	ubo	REGEX	||cdn.prod.www.spiegel.de/public/spon/generated/web/js/header*.js$script,1p
+ubo-filters-min	379	ubo	SLOW_COSMETIC_OPERATOR	quora.com##.FeedStory.feed_item > div > div:has-text(/by Quora for Business/i)
+ubo-filters-min	380	ubo	SLOW_COSMETIC_OPERATOR	quora.com##.Toggle.SimpleToggle.ToggleAnswerFooterWrapper > div:has-text(/Promoted/i)
 ubo-filters-min	401	ubo	PARSE_ERROR	||bit.ly^$popup,domain=eurogamer.net
 ubo-filters-min	408	ubo	PARSE_ERROR	gamestorrents.*,gogoanimes.*,limetorrents.*,piratebayz.*##^script:has-text(AaDetector)
 ubo-filters-min	410	ubo	ACTION_OPERATOR	mediafire.com##.center:style(margin-top:50px !important)
@@ -13973,6 +13976,7 @@ ubo-filters-min	482	ubo	ACTION_OPERATOR	mind42.com###content.sidebar2:style(marg
 ubo-filters-min	485	ubo	ACTION_OPERATOR	elmundo.es##.disabled-vscroll:style(overflow: auto !important; position: initial !important;)
 ubo-filters-min	488	ubo	REGEX	||fux.com/*banner$image
 ubo-filters-min	490	ubo	REGEX	.com/external/*?width=300&height=250$frame,1p
+ubo-filters-min	492	ubo	SLOW_COSMETIC_OPERATOR	torrentz2.*##[class]:not(body):not(html):has-text(/Protect your privacy/i)
 ubo-filters-min	498	ubo	REGEX	||torlock.*/sww.js$script,1p
 ubo-filters-min	499	ubo	BATCH_EXCLUDED	torlock.*##:xpath(//strong[contains(text(),"VPN")]/../../..)
 ubo-filters-min	501	ubo	BATCH_EXCLUDED	torlock2.*##:xpath(//strong[contains(text(),"VPN")]/../../..)
@@ -13988,6 +13992,7 @@ ubo-filters-min	571	ubo	REGEX	||player-feedback*.glomex.*^
 ubo-filters-min	579	ubo	REGEX	*$script,redirect-rule=noopjs,domain=mp4upload.com
 ubo-filters-min	580	ubo	PARSE_ERROR	*$script,3p,denyallow=cloudflare.com|cloudflare.net|fontawesome.com|gstatic.com|hwcdn.net|jquery.com|jsdelivr.net,domain=mp4upload.com
 ubo-filters-min	582	ubo	REGEX	@@||userupload.*^$ghide
+ubo-filters-min	583	ubo	SLOW_COSMETIC_OPERATOR	userupload.*##.btn-danger:has-text(/download/i)
 ubo-filters-min	593	ubo	PARSE_ERROR	animepahe.*##^script:has-text('shift')
 ubo-filters-min	594	ubo	PARSE_ERROR	animepahe.*##^script:has-text(\'shift\')
 ubo-filters-min	600	ubo	REGEX	@@||pahe.*^$ghide
@@ -14026,6 +14031,7 @@ ubo-filters-min	862	ubo	REGEX	||ouo.*/js/jbitly.js$script,1p
 ubo-filters-min	863	ubo	REGEX	||ouo.*/js/webpush.ma.js$script,1p
 ubo-filters-min	864	ubo	REGEX	||ouo.*/sw$script,1p
 ubo-filters-min	865	ubo	REGEX	*$script,redirect-rule=noopjs,domain=ouo.*
+ubo-filters-min	872	ubo	SLOW_COSMETIC_OPERATOR	1337x.*,x1337x.*,1337x.unblock2.xyz,1337x.unblocked.*,1337x.unblockit.*##ul > li:has-text(/‌/i)
 ubo-filters-min	873	ubo	BATCH_EXCLUDED	1337x.*,x1337x.*,1337x.unblock2.xyz,1337x.unblocked.*,1337x.unblockit.*##:xpath('//*[contains(text(),"Hide your IP")]/..')
 ubo-filters-min	879	ubo	REGEX	||topblockchainsolutions.*^$all
 ubo-filters-min	888	ubo	REGEX	@@||seirsanduk.*^$ghide
@@ -14378,6 +14384,7 @@ ubo-filters-min	3515	ubo	REGEX	@@*$ghide,domain=freeserverhostingweb.club|me-enc
 ubo-filters-min	3519	ubo	ENGINE_TRUST	||ads-twitter.com/uwt.js$xhr,3p,redirect=noop.txt
 ubo-filters-min	3521	ubo	ACTION_OPERATOR	compucalitv.com##.onp-sl-content:style(display: block !important;)
 ubo-filters-min	3526	ubo	PARSE_ERROR	*$script,3p,denyallow=chatango.com,domain=compucalitv.com
+ubo-filters-min	3546	ubo	SLOW_COSMETIC_OPERATOR	webserver.one##div[id^="imCell_"][class=""]:has-text(/Advertisement/i)
 ubo-filters-min	3554	ubo	PARSE_ERROR	t-online.de##^script:has-text(}(window);)
 ubo-filters-min	3555	ubo	PARSE_ERROR	t-online.de##^script:has-text(,window\);)
 ubo-filters-min	3556	ubo	PARSE_ERROR	t-online.de##^script:has-text(toscr\')
@@ -14658,6 +14665,7 @@ ubo-filters-min	5538	ubo	ENGINE_TRUST	||adservice.google.com/adsid/integrator.js
 ubo-filters-min	5540	ubo	REGEX	*$xhr,redirect-rule=nooptext,domain=btik.com
 ubo-filters-min	5550	ubo	REGEX	||firefaucet.win/*.gif$image
 ubo-filters-min	5553	ubo	REGEX	||300mbmovies4u.*/sw.js$script,1p
+ubo-filters-min	5556	ubo	SLOW_COSMETIC_OPERATOR	sensualgirls.org##.wide_boxcontent:has-text(/adb/i)
 ubo-filters-min	5558	ubo	ACTION_OPERATOR	sensualgirls.org##div[data-width][style*="background-image: url"]:style(background: none !important)
 ubo-filters-min	5562	ubo	UNKNOWN_RESOURCE	||googlesyndication.com/pagead/js/adsbygoogle.js$script,redirect=noopjs:10,domain=folhabv.com.br
 ubo-filters-min	5568	ubo	ENGINE_TRUST	||imasdk.googleapis.com/js/sdkloader/ima3.js$script,redirect=google-ima.js,domain=babygames.com
@@ -16478,6 +16486,7 @@ ubo-filters-min	16446	ubo	ENGINE_TRUST	||surfe.pro/js/net.js$script,xhr,redirect
 ubo-filters-min	16464	ubo	BATCH_EXCLUDED	givee.club##.definetelynotanad:upward([class^="col-md-"])
 ubo-filters-min	16468	ubo	REGEX	://media.*/js/code.min.js|$script,3p
 ubo-filters-min	16472	ubo	ENGINE_TRUST	/prebid-add.js$script,redirect-rule=prebid-ads.js
+ubo-filters-min	16474	ubo	SLOW_COSMETIC_OPERATOR	mail.com##.mod-container:has-text(/sponsor/i)
 ubo-filters-min	16478	ubo	PARSE_ERROR	gmx.*##^script:has-text(adslotFilledByCriteo)
 ubo-filters-min	16481	ubo	ACTION_OPERATOR	gmx.*##html.can-have-sky .page-body > .section-content:style(margin-right: 0 !important;)
 ubo-filters-min	16482	ubo	ACTION_OPERATOR	gmx.*###container:style(width:100%!important)
@@ -16629,6 +16638,7 @@ ubo-filters-min	17302	ubo	ACTION_OPERATOR	mathway.com##.container:style(width: 1
 ubo-filters-min	17310	ubo	ACTION_OPERATOR	viefaucet.com##.ads:style(position: absolute; opacity: 0; pointer-events: none;)
 ubo-filters-min	17313	ubo	REGEX	*$script,domain=videolyrics.in,redirect-rule=noopjs
 ubo-filters-min	17317	ubo	PARSE_ERROR	videolyrics.in##^script:has-text(htmls)
+ubo-filters-min	17320	ubo	SLOW_COSMETIC_OPERATOR	google.com##[data-profile-url-path^="/localservices"]:has-text(/google screened/i)
 ubo-filters-min	17323	ubo	REGEX	*$image,domain=my.optikservers.com,redirect-rule=1x1.gif
 ubo-filters-min	17324	ubo	REGEX	*$script,domain=criptoshark.com,redirect-rule=noopjs
 ubo-filters-min	17325	ubo	REGEX	*$script,xhr,domain=hatecoin.me,redirect-rule=noopjs
@@ -17436,6 +17446,7 @@ ubo-filters-min	21469	ubo	ACTION_OPERATOR	aliezstream.pro,mylivestream.pro###ope
 ubo-filters-min	21476	ubo	ENGINE_TRUST	gunauc.net#@#+js(prevent-fetch, pagead2.googlesyndication.com)
 ubo-filters-min	21486	ubo	REGEX	||vader.amperwave.net/*/instream/$xhr,3p
 ubo-filters-min	21489	ubo	BATCH_EXCLUDED	mylocal.co.uk##main > div > [id].scroll-mt-20:has(.items-center + div:has-text(/^Sponsored$/))
+ubo-filters-min	21498	ubo	SLOW_COSMETIC_OPERATOR	ettvi.com##div[class*="ads"]:has-text(/Advertisement/i)
 ubo-filters-min	21504	ubo	ENGINE_TRUST	perchance.org##+js(rpnt, script, scri12pts && ifra2mes && coo1kies, true)
 ubo-filters-min	21505	ubo	ENGINE_TRUST	perchance.org##+js(rpnt, script, (scri12pts && ifra2mes), (true))
 ubo-filters-min	21517	ubo	BADFILTER_RESOLVED	||h.seznam.cz^$badfilter
@@ -20094,6 +20105,7 @@ ubo-annoyances-min	2856	ubo	ACTION_OPERATOR	taufiqhdyt.com##body,code:style(-web
 ubo-annoyances-min	2861	ubo	REGEX	*$script,redirect-rule=noopjs,domain=forums.lostmediawiki.com
 ubo-annoyances-min	2865	ubo	BATCH_EXCLUDED	online2pdf.com##div[class="container_box content_box"] > div:only-child > div:last-child > div:last-child > ins.adsbygoogle:upward(4)
 ubo-annoyances-min	2866	ubo	BATCH_EXCLUDED	online2pdf.com##div[class="container_box content_box"] > div[id][class] > div:last-child > div:last-child > ins.adsbygoogle:upward(3)
+ubo-annoyances-min	2873	ubo	SLOW_COSMETIC_OPERATOR	forum.release-apk.com##.has-profile.post:first-child:has-text(/adblock/i)
 ubo-annoyances-min	2876	ubo	ACTION_OPERATOR	blog.naver.com##*:style(-webkit-touch-callout: default !important; -webkit-user-select: text !important; -moz-user-select: text !important; -ms-user-select: text !important; user-select: text !important;)
 ubo-annoyances-min	2878	ubo	ACTION_OPERATOR	raqmedia.com##body:style(-webkit-touch-callout: default !important; -webkit-user-select: text !important; -moz-user-select: text !important; -ms-user-select: text !important; user-select: text !important;)
 ubo-annoyances-min	2883	ubo	ACTION_OPERATOR	android1pro.com##:not(input):not(textarea),img:style(-webkit-touch-callout: default !important; -webkit-user-select: text !important; -moz-user-select: text !important; -ms-user-select: text !important; user-select: text !important;)

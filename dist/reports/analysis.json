@@ -5,19 +5,19 @@
     "batch_excluded_nested_procedural": 439,
     "comments": 58064,
     "cosmetic_fast_native": 57694,
-    "cosmetic_light_procedural": 129,
-    "cosmetic_rules": 69303,
+    "cosmetic_light_procedural": 117,
+    "cosmetic_rules": 69291,
     "cosmetic_vetted_scriptlet": 23926,
     "directives": 101,
     "effective_cosmetic_rules": 93591,
     "effective_network_rules": 684092,
-    "eligible": 757127,
+    "eligible": 757115,
     "empty_lines": 4006,
-    "excluded_by_gate": 22852,
+    "excluded_by_gate": 22864,
     "metadata": 38,
     "network_rules": 591967,
     "output_fast_native_css": 48166,
-    "output_light_procedural": 127,
+    "output_light_procedural": 115,
     "output_vetted_scriptlet": 21010,
     "parse_errors": 2296,
     "raw_lines": 842188
@@ -41,6 +41,6 @@
     "xpath:SEMANTIC_GAP": 29
   },
   "eligibility": {
-    "ELIGIBLE": 757127
+    "ELIGIBLE": 757115
   }
 }

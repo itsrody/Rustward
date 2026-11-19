@@ -1,8 +1,8 @@
 {
-  "build_id": "a09896cc99806fd752b2b2caff9ad91f81d91337a5df475934b1e19ae4928293",
-  "config_hash": "2d90555156914da67c419cb214b3b91353f3ce6ccb1d4890f6d9637a0679dfa1",
+  "build_id": "24565c7f80e4be9bfa0c204d14b47b111c59fea3a532010829e4e56c4ba5de38",
+  "config_hash": "a6c8ca18f6f0949d1a6c2ba79997e65a323780912a8e0f906800c1d9522aea34",
   "profile_hash": "7523a0d8d369cd3ba756dd22e4c6bbb3e9bcfd0e8c4f97cefee9e7ee3023e475",
-  "lists_lock_hash": "46825c81981323b4fb9ddaddaf52fa6795e592f8cbe690c2cb32d55a8210577b",
+  "lists_lock_hash": "1e3cba5bcbecba0072545b55fa89e9acbf0bace4bf4e90d60eae66a71ddb0ed4",
   "adblock_version": "=0.13.6",
   "emit_order": "compiler-friendly-v1",
   "metrics": {
@@ -10,34 +10,34 @@
     "badfilter_targets_pruned": 30,
     "batch_excluded_nested_procedural": 439,
     "comments": 58064,
-    "cosmetic_fast_native": 57696,
-    "cosmetic_hosts_checked": 2048,
-    "cosmetic_hosts_total": 74215,
-    "cosmetic_light_procedural": 117,
-    "cosmetic_rules": 69293,
+    "cosmetic_fast_native": 57698,
+    "cosmetic_hosts_checked": 62210,
+    "cosmetic_hosts_total": 75155,
+    "cosmetic_light_procedural": 352,
+    "cosmetic_rules": 69507,
     "cosmetic_vetted_scriptlet": 23926,
     "decision_mismatches": 0,
     "directives": 101,
-    "duplicates_exact": 47922,
-    "duplicates_semantic": 2910,
-    "effective_cosmetic_rules": 93593,
-    "effective_network_rules": 684105,
-    "eligible": 756862,
+    "duplicates_exact": 47945,
+    "duplicates_semantic": 2913,
+    "effective_cosmetic_rules": 93831,
+    "effective_network_rules": 684109,
+    "eligible": 757143,
     "empty_lines": 4006,
-    "excluded_by_gate": 23132,
+    "excluded_by_gate": 22858,
     "golden_rule_violations": 0,
     "metadata": 38,
-    "network_rules": 591727,
-    "network_rules_probed": 243484,
-    "network_rules_total": 675282,
-    "output_fast_native_css": 48168,
-    "output_light_procedural": 115,
-    "output_lines": 661020,
+    "network_rules": 591768,
+    "network_rules_probed": 243497,
+    "network_rules_total": 675326,
+    "output_fast_native_css": 48170,
+    "output_light_procedural": 327,
+    "output_lines": 661275,
     "output_vetted_scriptlet": 21010,
-    "parse_errors": 2296,
-    "raw_lines": 842203,
-    "receipts_exercised": 50309,
-    "rewrites_applied": 51932,
+    "parse_errors": 2061,
+    "raw_lines": 842210,
+    "receipts_exercised": 50924,
+    "rewrites_applied": 52169,
     "semantic_gaps_accepted": 70772,
     "semantic_gaps_accepted_all": 70772,
     "semantic_gaps_excluded": 517,
@@ -56,9 +56,3299 @@
     "semantic_gaps_unresolved_ubo_bare_hostname": 1,
     "semantic_gaps_unresolved_upward": 326,
     "semantic_gaps_unresolved_xpath": 29,
-    "verify_cases": 458948
+    "verify_cases": 458960
   },
   "receipts": [
+    {
+      "id": "d6_literal_contains-27addde0e56a",
+      "family": "d6_literal_contains",
+      "before": [
+        "gazzetta.gr##.sticky-inside > h3:contains(CASINO)"
+      ],
+      "after": "gazzetta.gr##.sticky-inside > h3:has-text(CASINO)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-e84252c84b6f",
+      "family": "d6_literal_contains",
+      "before": [
+        "goldtraders.or.th##header + div.flex > .px-4:contains(ADVERTISEMENT)"
+      ],
+      "after": "goldtraders.or.th##header + div.flex > .px-4:has-text(ADVERTISEMENT)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5588037ad214",
+      "family": "d6_literal_contains",
+      "before": [
+        "iceporn.net##.video-options > div[style^=\"padding: 2px\"]:contains(Advertising)"
+      ],
+      "after": "iceporn.net##.video-options > div[style^=\"padding: 2px\"]:has-text(Advertising)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-61690ab9b95e",
+      "family": "d6_literal_contains",
+      "before": [
+        "boyfriend.tv##.side-content-block > div:contains(Advertisment)"
+      ],
+      "after": "boyfriend.tv##.side-content-block > div:has-text(Advertisment)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-25898d18b952",
+      "family": "d6_literal_contains",
+      "before": [
+        "porngameshub.com##button.inline-flex:contains(AI Jerk)"
+      ],
+      "after": "porngameshub.com##button.inline-flex:has-text(AI Jerk)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-22cc7b5778e8",
+      "family": "d6_literal_contains",
+      "before": [
+        "shemale.taxi##.player-detail__tabs > div.player-detail__tab:contains(Advertisement)"
+      ],
+      "after": "shemale.taxi##.player-detail__tabs > div.player-detail__tab:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-9420fa1ab4f1",
+      "family": "d6_literal_contains",
+      "before": [
+        "proporn.*##.player-live-title:contains(Advertising)"
+      ],
+      "after": "proporn.*##.player-live-title:has-text(Advertising)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-3f5eb76ca43f",
+      "family": "d6_literal_contains",
+      "before": [
+        "porntop.com##.related-videos > h4:contains(Advertisement)"
+      ],
+      "after": "porntop.com##.related-videos > h4:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-1d084a576308",
+      "family": "d6_literal_contains",
+      "before": [
+        "pornhex.com##.related-items > div > p.text-xs:contains(ads)"
+      ],
+      "after": "pornhex.com##.related-items > div > p.text-xs:has-text(ads)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-f55a2f617619",
+      "family": "d6_literal_contains",
+      "before": [
+        "onscreens.me##aside > h1:contains(See more here)"
+      ],
+      "after": "onscreens.me##aside > h1:has-text(See more here)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-652c0c480a29",
+      "family": "d6_literal_contains",
+      "before": [
+        "luxuretv.com##.title-wrapper > .title > .title-right:contains(AI and Games LuxureTV)"
+      ],
+      "after": "luxuretv.com##.title-wrapper > .title > .title-right:has-text(AI and Games LuxureTV)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-67a4b3d7b162",
+      "family": "d6_literal_contains",
+      "before": [
+        "elamigos-games.net##.container > .my-4:contains(Advertising)"
+      ],
+      "after": "elamigos-games.net##.container > .my-4:has-text(Advertising)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4902ea38eeaa",
+      "family": "d6_literal_contains",
+      "before": [
+        "hqbang.com,starwank.com##center:contains(Advertisement)"
+      ],
+      "after": "hqbang.com,starwank.com##center:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d763f3675fd4",
+      "family": "d6_literal_contains",
+      "before": [
+        "a-z-animals.com##.post > p.font-weight-light:contains(Advertisement)"
+      ],
+      "after": "a-z-animals.com##.post > p.font-weight-light:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-99012792914a",
+      "family": "d6_literal_contains",
+      "before": [
+        "4wank.com##.related-videos > center:contains(Advertisement)"
+      ],
+      "after": "4wank.com##.related-videos > center:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-acf89637990f",
+      "family": "d6_literal_contains",
+      "before": [
+        "2ip.*##.ipblockgradient > div.ip + div[class]:contains(IP)"
+      ],
+      "after": "2ip.*##.ipblockgradient > div.ip + div[class]:has-text(IP)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4e1afb98f0c8",
+      "family": "d6_literal_contains",
+      "before": [
+        "iplocation.net##.col_4_of_12 > .widget:contains(Advertisement)"
+      ],
+      "after": "iplocation.net##.col_4_of_12 > .widget:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-1f568c3f18f3",
+      "family": "d6_literal_contains",
+      "before": [
+        "hotmovs.*##.video-page > div.block_label > div:contains(Advertisement)"
+      ],
+      "after": "hotmovs.*##.video-page > div.block_label > div:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-13e89522816a",
+      "family": "d6_literal_contains",
+      "before": [
+        "dailyhealthpost.com##.code-block-label:contains(Advertisement)"
+      ],
+      "after": "dailyhealthpost.com##.code-block-label:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-6c4a7328e547",
+      "family": "d6_literal_contains",
+      "before": [
+        "webbrowsertools.com##div[class^=\"card shadow\"]:contains(Advertisement)"
+      ],
+      "after": "webbrowsertools.com##div[class^=\"card shadow\"]:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ca0ff1e77fa9",
+      "family": "d6_literal_contains",
+      "before": [
+        "creepypasta.com###page > center:contains(Advertisement)"
+      ],
+      "after": "creepypasta.com###page > center:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-619f1dfc96d2",
+      "family": "d6_literal_contains",
+      "before": [
+        "xcum.com##.heading > h2:contains(Suggested for you)"
+      ],
+      "after": "xcum.com##.heading > h2:has-text(Suggested for you)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-e2b8df46bf9d",
+      "family": "d6_literal_contains",
+      "before": [
+        "javhay.net###sidebar-border > h3:contains(Advertisement)"
+      ],
+      "after": "javhay.net###sidebar-border > h3:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5bd87a89e924",
+      "family": "d6_literal_contains",
+      "before": [
+        "studylib.net##.sidebar-top-content > span:contains(advertisement)"
+      ],
+      "after": "studylib.net##.sidebar-top-content > span:has-text(advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-26db0c8e0344",
+      "family": "d6_literal_contains",
+      "before": [
+        "fapnado.com##a:contains(Remove this ad)"
+      ],
+      "after": "fapnado.com##a:has-text(Remove this ad)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5b0b3239b5a9",
+      "family": "d6_literal_contains",
+      "before": [
+        "videosection.com##.player-detail__tabs > div.player-detail__tab:contains(Advertisement)"
+      ],
+      "after": "videosection.com##.player-detail__tabs > div.player-detail__tab:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-b0e852ce97b8",
+      "family": "d6_literal_contains",
+      "before": [
+        "tunefind.com##.media-body:contains(advertisement)"
+      ],
+      "after": "tunefind.com##.media-body:has-text(advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-07d8ce2d26c2",
+      "family": "d6_literal_contains",
+      "before": [
+        "icegay.tv##.b-secondary-column__randoms > div.b-head > h3:contains(Sponsored)"
+      ],
+      "after": "icegay.tv##.b-secondary-column__randoms > div.b-head > h3:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d3a4db47c98a",
+      "family": "d6_literal_contains",
+      "before": [
+        "nuvid.*##.aside > h2:contains(Advertising)"
+      ],
+      "after": "nuvid.*##.aside > h2:has-text(Advertising)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-9ca178de7ee6",
+      "family": "d6_literal_contains",
+      "before": [
+        "ghacks.net###sidebar > strong:contains(Advertisement)"
+      ],
+      "after": "ghacks.net###sidebar > strong:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-a1fce4103e0b",
+      "family": "d6_literal_contains",
+      "before": [
+        "celebitchy.com###sidebar > .hotposts:contains(Advertisements)"
+      ],
+      "after": "celebitchy.com###sidebar > .hotposts:has-text(Advertisements)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-c7a373f11676",
+      "family": "d6_literal_contains",
+      "before": [
+        "learn-c.org,learn-cpp.org,learn-golang.org,learn-html.org,learn-js.org,learn-perl.org,learn-php.org,learncs.org,learnjavaonline.org,learnpython.org,learnrubyonline.org,learnscala.org,learnshell.org,learnsqlonline.org###google-ad-right > h4:contains(Sponsors)"
+      ],
+      "after": "learn-c.org,learn-cpp.org,learn-golang.org,learn-html.org,learn-js.org,learn-perl.org,learn-php.org,learncs.org,learnjavaonline.org,learnpython.org,learnrubyonline.org,learnscala.org,learnshell.org,learnsqlonline.org###google-ad-right > h4:has-text(Sponsors)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-8f904fc400ed",
+      "family": "d6_literal_contains",
+      "before": [
+        "theblock.co##.py-4.my-6:contains(Advertisement)"
+      ],
+      "after": "theblock.co##.py-4.my-6:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-2cbbf11e86b9",
+      "family": "d6_literal_contains",
+      "before": [
+        "haveibeenpwned.com##.card-glow:contains(Sponsored)"
+      ],
+      "after": "haveibeenpwned.com##.card-glow:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-b5c1d81918c6",
+      "family": "d6_literal_contains",
+      "before": [
+        "bleepingcomputer.com##ul#bc-home-news-main-wrap > li:contains(Sponsored)"
+      ],
+      "after": "bleepingcomputer.com##ul#bc-home-news-main-wrap > li:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-1cbea0e7af43",
+      "family": "d6_literal_contains",
+      "before": [
+        "thedailywtf.com##.article-body > p ~ div:contains(Advertisement)"
+      ],
+      "after": "thedailywtf.com##.article-body > p ~ div:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-f21aa6d0ee0d",
+      "family": "d6_literal_contains",
+      "before": [
+        "motortrend.com##.max-lg\\:hidden:contains(ADVERTISEMENT)"
+      ],
+      "after": "motortrend.com##.max-lg\\:hidden:has-text(ADVERTISEMENT)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-75326c6069fa",
+      "family": "d6_literal_contains",
+      "before": [
+        "foodbible.com,gamingbible.com,ladbible.com,sportbible.com,tyla.com,unilad.com,uniladtech.com##.content-template_rightColumn__ika9G:contains(Advert)"
+      ],
+      "after": "foodbible.com,gamingbible.com,ladbible.com,sportbible.com,tyla.com,unilad.com,uniladtech.com##.content-template_rightColumn__ika9G:has-text(Advert)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5720f9d74f76",
+      "family": "d6_literal_contains",
+      "before": [
+        "app.daily.dev##article:contains(Promoted)"
+      ],
+      "after": "app.daily.dev##article:has-text(Promoted)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5352a99234fb",
+      "family": "d6_literal_contains",
+      "before": [
+        "backpack.tf,backpacktf.com##.panel:contains(createAd)"
+      ],
+      "after": "backpack.tf,backpacktf.com##.panel:has-text(createAd)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-73f56f56abe0",
+      "family": "d6_literal_contains",
+      "before": [
+        "beaumontenterprise.com,chron.com,ctinsider.com,ctpost.com,expressnews.com,greenwichtime.com,houstonchronicle.com,lmtonline.com,manisteenews.com,michigansthumb.com,middletownpress.com,mrt.com,myjournalcourier.com,myplainview.com,mysanantonio.com,newstimes.com,nhregister.com,ourmidland.com,registercitizen.com,sfchronicle.com,stamfordadvocate.com,thehour.com,theintelligencer.com##.b-gray300:contains(Advertisement)"
+      ],
+      "after": "beaumontenterprise.com,chron.com,ctinsider.com,ctpost.com,expressnews.com,greenwichtime.com,houstonchronicle.com,lmtonline.com,manisteenews.com,michigansthumb.com,middletownpress.com,mrt.com,myjournalcourier.com,myplainview.com,mysanantonio.com,newstimes.com,nhregister.com,ourmidland.com,registercitizen.com,sfchronicle.com,stamfordadvocate.com,thehour.com,theintelligencer.com##.b-gray300:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-f91f1e1b2430",
+      "family": "d6_literal_contains",
+      "before": [
+        "bitchute.com##.row.justify-center:contains(Advertisement)"
+      ],
+      "after": "bitchute.com##.row.justify-center:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-b5c1d81918c6",
+      "family": "d6_literal_contains",
+      "before": [
+        "bleepingcomputer.com##ul#bc-home-news-main-wrap > li:contains(Sponsored)"
+      ],
+      "after": "bleepingcomputer.com##ul#bc-home-news-main-wrap > li:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-df67a2c2a1a4",
+      "family": "d6_literal_contains",
+      "before": [
+        "deccanherald.com##span.container-text:contains(ADVERTISEMENT)"
+      ],
+      "after": "deccanherald.com##span.container-text:has-text(ADVERTISEMENT)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5a8edd88b635",
+      "family": "d6_literal_contains",
+      "before": [
+        "deviantart.com##[role=\"complementary\"] ._ern3r:contains(Promoted)"
+      ],
+      "after": "deviantart.com##[role=\"complementary\"] ._ern3r:has-text(Promoted)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-240ef9fc65b2",
+      "family": "d6_literal_contains",
+      "before": [
+        "dexscreener.com##.chakra-link:contains(Advertise)"
+      ],
+      "after": "dexscreener.com##.chakra-link:has-text(Advertise)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ef885e362465",
+      "family": "d6_literal_contains",
+      "before": [
+        "dictionary.com,thesaurus.com##[class] > p:contains(Advertisement)"
+      ],
+      "after": "dictionary.com,thesaurus.com##[class] > p:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-f695a9a60845",
+      "family": "d6_literal_contains",
+      "before": [
+        "downforeveryoneorjustme.com##.relative.bg-white:contains(PolyBuzz)"
+      ],
+      "after": "downforeveryoneorjustme.com##.relative.bg-white:has-text(PolyBuzz)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ee0fb2e6d8aa",
+      "family": "d6_literal_contains",
+      "before": [
+        "dropstab.com##.bg-slate-100:contains(Ad)"
+      ],
+      "after": "dropstab.com##.bg-slate-100:has-text(Ad)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-49bdb8f28062",
+      "family": "d6_literal_contains",
+      "before": [
+        "engadget.com##.justify-center:contains(Advertisement)"
+      ],
+      "after": "engadget.com##.justify-center:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5f7a7f98f582",
+      "family": "d6_literal_contains",
+      "before": [
+        "kogan.com##._2EeeR:contains(Sponsored)"
+      ],
+      "after": "kogan.com##._2EeeR:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-febb97a375a1",
+      "family": "d6_literal_contains",
+      "before": [
+        "kogan.com##.rs-infinite-scroll > div:contains(Sponsored)"
+      ],
+      "after": "kogan.com##.rs-infinite-scroll > div:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-aa404db978f8",
+      "family": "d6_literal_contains",
+      "before": [
+        "mobalytics.gg##aside > [class]:contains(Advertisement)"
+      ],
+      "after": "mobalytics.gg##aside > [class]:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-da6f44d7e3b3",
+      "family": "d6_literal_contains",
+      "before": [
+        "nordstrom.com##ul[style^=\"padding: 0px; position: relative;\"] > li[class]:contains(Sponsored)"
+      ],
+      "after": "nordstrom.com##ul[style^=\"padding: 0px; position: relative;\"] > li[class]:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-37d61e838df9",
+      "family": "d6_literal_contains",
+      "before": [
+        "nordstromrack.com##[data-container-type=\"product-grid\"] article:contains(Sponsored)"
+      ],
+      "after": "nordstromrack.com##[data-container-type=\"product-grid\"] article:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-1962fb715b95",
+      "family": "d6_literal_contains",
+      "before": [
+        "perplexity.ai##.py-sm.group:contains(Sponsored)"
+      ],
+      "after": "perplexity.ai##.py-sm.group:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-7bf600937ce9",
+      "family": "d6_literal_contains",
+      "before": [
+        "pushsquare.com##span:contains(or Subscribe)"
+      ],
+      "after": "pushsquare.com##span:has-text(or Subscribe)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-0372f72d8cc9",
+      "family": "d6_literal_contains",
+      "before": [
+        "qvc.com##.qModule:contains(Sponsored)"
+      ],
+      "after": "qvc.com##.qModule:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5c93bb6717b4",
+      "family": "d6_literal_contains",
+      "before": [
+        "regex101.com##div > header + div > div + div:contains(Sponsors)"
+      ],
+      "after": "regex101.com##div > header + div > div + div:has-text(Sponsors)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-df15374339d3",
+      "family": "d6_literal_contains",
+      "before": [
+        "rome2rio.com##div[aria-labelledby=\"schedules-header\"] > div > div:contains(Ad)"
+      ],
+      "after": "rome2rio.com##div[aria-labelledby=\"schedules-header\"] > div > div:has-text(Ad)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5456913fa912",
+      "family": "d6_literal_contains",
+      "before": [
+        "sciencenews.org##p:contains(Sponsor Message)"
+      ],
+      "after": "sciencenews.org##p:has-text(Sponsor Message)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-daaf7757287e",
+      "family": "d6_literal_contains",
+      "before": [
+        "stocktwits.com##.is-visible:contains(Remove ads)"
+      ],
+      "after": "stocktwits.com##.is-visible:has-text(Remove ads)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-687f6a8575ba",
+      "family": "d6_literal_contains",
+      "before": [
+        "target.com##[data-test=\"productCardVariantRecommendation\"]:contains(Sponsored)"
+      ],
+      "after": "target.com##[data-test=\"productCardVariantRecommendation\"]:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-a17e008fe0a1",
+      "family": "d6_literal_contains",
+      "before": [
+        "tripadvisor.com##.tkvEM:contains(Sponsored)"
+      ],
+      "after": "tripadvisor.com##.tkvEM:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5ab4d4f4e408",
+      "family": "d6_literal_contains",
+      "before": [
+        "weather.com##.bg-gray-100:contains(Advertisement)"
+      ],
+      "after": "weather.com##.bg-gray-100:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-c190070060ca",
+      "family": "d6_literal_contains",
+      "before": [
+        "www.yahoo.com##.uppercase.text-xs:contains(Advertisement)"
+      ],
+      "after": "www.yahoo.com##.uppercase.text-xs:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-1effc440a5d9",
+      "family": "d6_literal_contains",
+      "before": [
+        "yahoo.com##.leading-3:contains(Advertisement)"
+      ],
+      "after": "yahoo.com##.leading-3:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-c18cfbf850dd",
+      "family": "d6_literal_contains",
+      "before": [
+        "yahoo.com##div.md\\:block.pb-5:contains(Advertisement)"
+      ],
+      "after": "yahoo.com##div.md\\:block.pb-5:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-86537bac08e6",
+      "family": "d6_literal_contains",
+      "before": [
+        "bing.com##.ta_c:contains(Sponsored)"
+      ],
+      "after": "bing.com##.ta_c:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ffb414d0ba7f",
+      "family": "d6_literal_contains",
+      "before": [
+        "walmart.*##div > div[io-id]:contains(Sponsored)"
+      ],
+      "after": "walmart.*##div > div[io-id]:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-284a6f0c44de",
+      "family": "d6_literal_contains",
+      "before": [
+        "yelp.*##main[class^=\"searchResultsContainer\"] li h2:contains(Sponsored)"
+      ],
+      "after": "yelp.*##main[class^=\"searchResultsContainer\"] li h2:has-text(Sponsored)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5fe35445025c",
+      "family": "d6_literal_contains",
+      "before": [
+        "yts.*##.bbj:contains(Warning)"
+      ],
+      "after": "yts.*##.bbj:has-text(Warning)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-2442f587907b",
+      "family": "d6_literal_contains",
+      "before": [
+        "hotmovs.com##.block_label--last:contains(Advertisement)"
+      ],
+      "after": "hotmovs.com##.block_label--last:has-text(Advertisement)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-b01530690928",
+      "family": "d6_literal_contains",
+      "before": [
+        "okxxx1.com##.bn-title:contains(Advertising)"
+      ],
+      "after": "okxxx1.com##.bn-title:has-text(Advertising)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-7c8f45bd563b",
+      "family": "d6_literal_contains",
+      "before": [
+        "porn-w.org##.row:contains(Promotion Bot)"
+      ],
+      "after": "porn-w.org##.row:has-text(Promotion Bot)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-b27133a270eb",
+      "family": "d6_literal_contains",
+      "before": [
+        "pornhub.com##.noBottom:contains(Remove Ads)"
+      ],
+      "after": "pornhub.com##.noBottom:has-text(Remove Ads)",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-a23543c72384",
+      "family": "d6_literal_contains",
+      "before": [
+        "nishispo.nishinippon.co.jp###access-ranking:contains(Recent Articles)"
+      ],
+      "after": "nishispo.nishinippon.co.jp###access-ranking:has-text(Recent Articles)",
+      "source_id": "ag-tracking",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-6f4cd068baf4",
+      "family": "d6_literal_contains",
+      "before": [
+        "business.nikkei.com##.l-content_footer.recommendesInfomation:contains(あなたにオススメ)"
+      ],
+      "after": "business.nikkei.com##.l-content_footer.recommendesInfomation:has-text(あなたにオススメ)",
+      "source_id": "ag-tracking",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-0431e89191eb",
+      "family": "d6_literal_contains",
+      "before": [
+        "pryamoj-efir.ru##.layout-post-right > h1.playmaker-list:contains(Статистика)"
+      ],
+      "after": "pryamoj-efir.ru##.layout-post-right > h1.playmaker-list:has-text(Статистика)",
+      "source_id": "ag-tracking",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-c8eb22ad5eb6",
+      "family": "d6_literal_contains",
+      "before": [
+        "uniongang.org##td[align=\"center\"][height=\"27\"]:contains(Счётчики)"
+      ],
+      "after": "uniongang.org##td[align=\"center\"][height=\"27\"]:has-text(Счётчики)",
+      "source_id": "ag-tracking",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-6bd174ceaa1c",
+      "family": "d6_literal_contains",
+      "before": [
+        "novate.ru###right > h2:contains(Рекомендуем)"
+      ],
+      "after": "novate.ru###right > h2:has-text(Рекомендуем)",
+      "source_id": "ag-tracking",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-9cc5828fdf70",
+      "family": "d6_literal_contains",
+      "before": [
+        "prjaga.ru###right > div#right_nav > h3:contains(Онлайн статистика)"
+      ],
+      "after": "prjaga.ru###right > div#right_nav > h3:has-text(Онлайн статистика)",
+      "source_id": "ag-tracking",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d5f7946901c0",
+      "family": "d6_literal_contains",
+      "before": [
+        "book.squareup.com##div.w-full > .market-link > span.underline:contains(Cookie)"
+      ],
+      "after": "book.squareup.com##div.w-full > .market-link > span.underline:has-text(Cookie)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-c82e27482843",
+      "family": "d6_literal_contains",
+      "before": [
+        "mega.lol###alertBackground:contains(cookies)"
+      ],
+      "after": "mega.lol###alertBackground:has-text(cookies)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-36aeef641b8c",
+      "family": "d6_literal_contains",
+      "before": [
+        "jobs.idealo.com##div[role=\"dialog\"] > div[class^=\"sc-\"]:contains(Cookies)"
+      ],
+      "after": "jobs.idealo.com##div[role=\"dialog\"] > div[class^=\"sc-\"]:has-text(Cookies)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ddfa4a640352",
+      "family": "d6_literal_contains",
+      "before": [
+        "juzaphoto.com##.s_main_div_flex > div.s_bluebox:contains(cookies)"
+      ],
+      "after": "juzaphoto.com##.s_main_div_flex > div.s_bluebox:has-text(cookies)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-92a680f340d2",
+      "family": "d6_literal_contains",
+      "before": [
+        "80.lv###__next > div.Layout_default + div > div:contains(We need your consent)"
+      ],
+      "after": "80.lv###__next > div.Layout_default + div > div:has-text(We need your consent)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-34a2220e2d4d",
+      "family": "d6_literal_contains",
+      "before": [
+        "online.sberbank.ru##footer div + div:contains(Cookies)"
+      ],
+      "after": "online.sberbank.ru##footer div + div:has-text(Cookies)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ddac08888495",
+      "family": "d6_literal_contains",
+      "before": [
+        "krasnoeibeloe.ru###age_popup_container > div.popup_bottom_bl > div.popup_bottom_bl__text:contains(файлы cookie)"
+      ],
+      "after": "krasnoeibeloe.ru###age_popup_container > div.popup_bottom_bl > div.popup_bottom_bl__text:has-text(файлы cookie)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-e340b15d53c0",
+      "family": "d6_literal_contains",
+      "before": [
+        "1fichier.com##form > .ct_warn:contains(disable any advertising)"
+      ],
+      "after": "1fichier.com##form > .ct_warn:has-text(disable any advertising)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-911ba4bf875c",
+      "family": "d6_literal_contains",
+      "before": [
+        "cdn.vuukle.com##form > div[style]:contains(Ad Blocker)"
+      ],
+      "after": "cdn.vuukle.com##form > div[style]:has-text(Ad Blocker)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-7fc36dd0ed9e",
+      "family": "d6_literal_contains",
+      "before": [
+        "18comic.vip##.modal-footer > div[style]:contains(ADBLOCK)"
+      ],
+      "after": "18comic.vip##.modal-footer > div[style]:has-text(ADBLOCK)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-b4c2b8d52a00",
+      "family": "d6_literal_contains",
+      "before": [
+        "hentaicomic.*,wnacg1.cc,wnacg.*##.result:contains(廣告)"
+      ],
+      "after": "hentaicomic.*,wnacg1.cc,wnacg.*##.result:has-text(廣告)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-09a84e2cc6b7",
+      "family": "d6_literal_contains",
+      "before": [
+        "online-fix.me##.sidebar > div.sidebar-block:contains(Adblock)"
+      ],
+      "after": "online-fix.me##.sidebar > div.sidebar-block:has-text(Adblock)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5ffc067fc3ac",
+      "family": "d6_literal_contains",
+      "before": [
+        "duck.ai##div[data-testid=\"ChatsList\"] > div[class]:not([style*=\"opacity\"]):contains(How It Works)"
+      ],
+      "after": "duck.ai##div[data-testid=\"ChatsList\"] > div[class]:not([style*=\"opacity\"]):has-text(How It Works)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-1727546878f6",
+      "family": "d6_literal_contains",
+      "before": [
+        "laftel.net##div[class*=\" \"] > video ~ div:not([class]) > div[style] > div:contains(광고없이 고화질로 끊김없이 감상해보세요!)"
+      ],
+      "after": "laftel.net##div[class*=\" \"] > video ~ div:not([class]) > div[style] > div:has-text(광고없이 고화질로 끊김없이 감상해보세요!)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-2f2f00cf2a80",
+      "family": "d6_literal_contains",
+      "before": [
+        "nypost.com##h2.wp-block-heading:contains(Download The California Post App)"
+      ],
+      "after": "nypost.com##h2.wp-block-heading:has-text(Download The California Post App)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-741c5ecb5fc7",
+      "family": "d6_literal_contains",
+      "before": [
+        "iflscience.com##.article__bottom__meta__text:contains(Add us as a Google preferred source)"
+      ],
+      "after": "iflscience.com##.article__bottom__meta__text:has-text(Add us as a Google preferred source)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-cec92fb621d3",
+      "family": "d6_literal_contains",
+      "before": [
+        "inews.zoombangla.com##blockquote.modern-quote > strong:contains(Follow)"
+      ],
+      "after": "inews.zoombangla.com##blockquote.modern-quote > strong:has-text(Follow)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-91592ec0ccf4",
+      "family": "d6_literal_contains",
+      "before": [
+        "securityaffairs.com##.right-sidebar > h6:contains(Subscribe to my email)"
+      ],
+      "after": "securityaffairs.com##.right-sidebar > h6:has-text(Subscribe to my email)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-45396622f114",
+      "family": "d6_literal_contains",
+      "before": [
+        "sendpulse.com,sendpulse.ua##.sidebar-article > p.blog-title:contains(Подпишись на нашу рассылку)"
+      ],
+      "after": "sendpulse.com,sendpulse.ua##.sidebar-article > p.blog-title:has-text(Подпишись на нашу рассылку)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-33ab69f19d60",
+      "family": "d6_literal_contains",
+      "before": [
+        "news-gazette.com###tncms-region-global-side-secondary > .tncms-block:contains(News in your Inbox)"
+      ],
+      "after": "news-gazette.com###tncms-region-global-side-secondary > .tncms-block:has-text(News in your Inbox)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d3082bc219cd",
+      "family": "d6_literal_contains",
+      "before": [
+        "gizmodo.com##section ~ div[class^=\"sc-\"][class*=\" \"]:has([href=\"https://gizmodo.com\"]):contains(Newsletters)"
+      ],
+      "after": "gizmodo.com##section ~ div[class^=\"sc-\"][class*=\" \"]:has([href=\"https://gizmodo.com\"]):has-text(Newsletters)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-371fb668d1ff",
+      "family": "d6_literal_contains",
+      "before": [
+        "croatiaweek.com##.clearfix > h3:contains(Sign up to receive the Croatia Week Newsletter)"
+      ],
+      "after": "croatiaweek.com##.clearfix > h3:has-text(Sign up to receive the Croatia Week Newsletter)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-272f4e68fdfa",
+      "family": "d6_literal_contains",
+      "before": [
+        "niebezpiecznik.pl###sidebar > ul > li.widget > h2.widgettitle:contains(Artykuły na e-mail)"
+      ],
+      "after": "niebezpiecznik.pl###sidebar > ul > li.widget > h2.widgettitle:has-text(Artykuły na e-mail)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ca326212b4d9",
+      "family": "d6_literal_contains",
+      "before": [
+        "quotes.net###content-body > * > .translate > hgroup > h4:contains(delivered to your inbox daily)"
+      ],
+      "after": "quotes.net###content-body > * > .translate > hgroup > h4:has-text(delivered to your inbox daily)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-0380cb4ec394",
+      "family": "d6_literal_contains",
+      "before": [
+        "masterpaiki.ru###secondary .widget-title:contains(Новые статьи на почту)"
+      ],
+      "after": "masterpaiki.ru###secondary .widget-title:has-text(Новые статьи на почту)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-f30305817224",
+      "family": "d6_literal_contains",
+      "before": [
+        "cars.com##.global-footer-heading:contains(Mobile App)"
+      ],
+      "after": "cars.com##.global-footer-heading:has-text(Mobile App)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-aeecdfca49af",
+      "family": "d6_literal_contains",
+      "before": [
+        "taobao.com##body > button[style*=\"position: fixed;\"][style*=\"z-index: 1000000;\"]:contains(App)"
+      ],
+      "after": "taobao.com##body > button[style*=\"position: fixed;\"][style*=\"z-index: 1000000;\"]:has-text(App)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-73e76d971233",
+      "family": "d6_literal_contains",
+      "before": [
+        "reddit.com,reddittorjg6rue252oqsxryoxengawnmo46qy4kyii5wtqnwfj4ooad.onion###nsfw-qr-dialog:contains(Scan this QR code to download the app now)"
+      ],
+      "after": "reddit.com,reddittorjg6rue252oqsxryoxengawnmo46qy4kyii5wtqnwfj4ooad.onion###nsfw-qr-dialog:has-text(Scan this QR code to download the app now)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-c1bc2b61a6a0",
+      "family": "d6_literal_contains",
+      "before": [
+        "operanewsapp.com##.header-wrapper > button:contains(Open in App)"
+      ],
+      "after": "operanewsapp.com##.header-wrapper > button:has-text(Open in App)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-7bdf6ef77d6e",
+      "family": "d6_literal_contains",
+      "before": [
+        "wear.jp##.xl\\:hidden > div.bg-gray-200.py-2:contains(アプリなら)"
+      ],
+      "after": "wear.jp##.xl\\:hidden > div.bg-gray-200.py-2:has-text(アプリなら)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-fc15ae4df9b3",
+      "family": "d6_literal_contains",
+      "before": [
+        "wear.jp##.sticky.top-0.z-header.xl\\:hidden:contains(アプリで開く)"
+      ],
+      "after": "wear.jp##.sticky.top-0.z-header.xl\\:hidden:has-text(アプリで開く)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-8e5895793080",
+      "family": "d6_literal_contains",
+      "before": [
+        "kavkaz-uzel.eu##.text-block > p:contains(КАСАЕТСЯ ДЕЯТЕЛЬНОСТИ ИНОСТРАННОГО АГЕНТА)"
+      ],
+      "after": "kavkaz-uzel.eu##.text-block > p:has-text(КАСАЕТСЯ ДЕЯТЕЛЬНОСТИ ИНОСТРАННОГО АГЕНТА)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-f3f51165f4ad",
+      "family": "d6_literal_contains",
+      "before": [
+        "techtarget.com##.resources-bar-header:contains(Sponsored News)"
+      ],
+      "after": "techtarget.com##.resources-bar-header:has-text(Sponsored News)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-71b9f1e5051f",
+      "family": "d6_literal_contains",
+      "before": [
+        "gagadget.com##.l-container p[class]:contains(Подписывайтесь)"
+      ],
+      "after": "gagadget.com##.l-container p[class]:has-text(Подписывайтесь)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-1a891d357fe2",
+      "family": "d6_literal_contains",
+      "before": [
+        "luxuretv.com##.title > div:contains(Webcam LuxureTV Club)"
+      ],
+      "after": "luxuretv.com##.title > div:has-text(Webcam LuxureTV Club)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-e8df31eabb17",
+      "family": "d6_literal_contains",
+      "before": [
+        "privatter.net##.col-lg-4 > strong.small:contains(おすすめ文章作成エディタ)"
+      ],
+      "after": "privatter.net##.col-lg-4 > strong.small:has-text(おすすめ文章作成エディタ)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-eb0cbd5fbc71",
+      "family": "d6_literal_contains",
+      "before": [
+        "bunshun.jp##.block-header:contains(SPECIAL)"
+      ],
+      "after": "bunshun.jp##.block-header:has-text(SPECIAL)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ff9df8e5e94f",
+      "family": "d6_literal_contains",
+      "before": [
+        "kakaku.com##.alignC > div.mTop10 > div[style=\"border:1px solid #ccc;\"]:contains(-PR-)"
+      ],
+      "after": "kakaku.com##.alignC > div.mTop10 > div[style=\"border:1px solid #ccc;\"]:has-text(-PR-)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-da513df91ded",
+      "family": "d6_literal_contains",
+      "before": [
+        "ficbook.net##.home-block > h3:contains(Промо фанфиков)"
+      ],
+      "after": "ficbook.net##.home-block > h3:has-text(Промо фанфиков)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-315515976e19",
+      "family": "d6_literal_contains",
+      "before": [
+        "jumpsokuhou.com##.article-body > h3.clearfix:contains(オススメサイト最新記事)"
+      ],
+      "after": "jumpsokuhou.com##.article-body > h3.clearfix:has-text(オススメサイト最新記事)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4cf7a223cc12",
+      "family": "d6_literal_contains",
+      "before": [
+        "pachinkopachisro.com##.plugin-memo:contains(オススメ記事（他サイト様）)"
+      ],
+      "after": "pachinkopachisro.com##.plugin-memo:has-text(オススメ記事（他サイト様）)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-81310aaada9f",
+      "family": "d6_literal_contains",
+      "before": [
+        "himasoku.com##.article-body-more > span[style]:contains(おすすめ記事)"
+      ],
+      "after": "himasoku.com##.article-body-more > span[style]:has-text(おすすめ記事)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-39226000cb88",
+      "family": "d6_literal_contains",
+      "before": [
+        "joker004.blog.fc2.com##.t_h2:contains(他記事)"
+      ],
+      "after": "joker004.blog.fc2.com##.t_h2:has-text(他記事)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-474fae72c07e",
+      "family": "d6_literal_contains",
+      "before": [
+        "tozanchannel.blog.jp##.menuLineLightW-3:contains(人気記事)"
+      ],
+      "after": "tozanchannel.blog.jp##.menuLineLightW-3:has-text(人気記事)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4f4676fbe3c6",
+      "family": "d6_literal_contains",
+      "before": [
+        "chaos2ch.com##.article-title-outer-h:contains(ヘッドライン)"
+      ],
+      "after": "chaos2ch.com##.article-title-outer-h:has-text(ヘッドライン)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-813ad906fff3",
+      "family": "d6_literal_contains",
+      "before": [
+        "anicobin.ldblog.jp##.related-wadai:contains(新着ニュース)"
+      ],
+      "after": "anicobin.ldblog.jp##.related-wadai:has-text(新着ニュース)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-a660f559d0db",
+      "family": "d6_literal_contains",
+      "before": [
+        "gfoodd.com##.code-block > div.sponserdrink:contains(RSS)"
+      ],
+      "after": "gfoodd.com##.code-block > div.sponserdrink:has-text(RSS)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ef6b3cd06c88",
+      "family": "d6_literal_contains",
+      "before": [
+        "ddd-smart.net##aside > h4.card-panel:contains(色々な同人誌)"
+      ],
+      "after": "ddd-smart.net##aside > h4.card-panel:has-text(色々な同人誌)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-0d7070dee019",
+      "family": "d6_literal_contains",
+      "before": [
+        "namu.wiki##div[class*=\" \"] > div[class*=\" \"]:has(> a[target=\"_blank\"][rel=\"noopener\"]):contains(더 보기)"
+      ],
+      "after": "namu.wiki##div[class*=\" \"] > div[class*=\" \"]:has(> a[target=\"_blank\"][rel=\"noopener\"]):has-text(더 보기)",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-8b9434881920",
+      "family": "d6_literal_contains",
+      "before": [
+        "github.com##.dashboard-changelog:contains(Latest from our changelog)"
+      ],
+      "after": "github.com##.dashboard-changelog:has-text(Latest from our changelog)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-7716d7d71d78",
+      "family": "d6_literal_contains",
+      "before": [
+        "theintercept.com##.text-\\[18px\\]:contains(Support Us)"
+      ],
+      "after": "theintercept.com##.text-\\[18px\\]:has-text(Support Us)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5747535833e5",
+      "family": "d6_literal_contains",
+      "before": [
+        "votes.decisiondeskhq.com##.z-9999:contains(free account)"
+      ],
+      "after": "votes.decisiondeskhq.com##.z-9999:has-text(free account)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-e376f09e54e2",
+      "family": "d6_literal_contains",
+      "before": [
+        "google.com##.Ryrdad:contains(Please help us improve)"
+      ],
+      "after": "google.com##.Ryrdad:has-text(Please help us improve)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-2ee492f39346",
+      "family": "d6_literal_contains",
+      "before": [
+        "www.youtube.com###content > .ytd-rich-section-renderer:contains(YouTube Playables)"
+      ],
+      "after": "www.youtube.com###content > .ytd-rich-section-renderer:has-text(YouTube Playables)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ce7e5c9c0e38",
+      "family": "d6_literal_contains",
+      "before": [
+        "fortune.com##.info-surface:contains(Add Fortune on Google)"
+      ],
+      "after": "fortune.com##.info-surface:has-text(Add Fortune on Google)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-e556daa18407",
+      "family": "d6_literal_contains",
+      "before": [
+        "abc.net.au##.Button_root__UZ8td:contains(Share)"
+      ],
+      "after": "abc.net.au##.Button_root__UZ8td:has-text(Share)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-34e653006354",
+      "family": "d6_literal_contains",
+      "before": [
+        "carnewschina.com##.article_detail__top_stories:contains(Follow us for ev updates)"
+      ],
+      "after": "carnewschina.com##.article_detail__top_stories:has-text(Follow us for ev updates)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-6028f72e2360",
+      "family": "d6_literal_contains",
+      "before": [
+        "cbsnews.com##.FooterLinks-group:contains(Follow Us On)"
+      ],
+      "after": "cbsnews.com##.FooterLinks-group:has-text(Follow Us On)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-de296d6734b2",
+      "family": "d6_literal_contains",
+      "before": [
+        "cybersecuritynews.com##.has-background:contains(Follow us)"
+      ],
+      "after": "cybersecuritynews.com##.has-background:has-text(Follow us)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-460821b9ddd9",
+      "family": "d6_literal_contains",
+      "before": [
+        "cybersecuritynews.com##.tdm_block_button_simplified:contains(Follow on LinkedIn)"
+      ],
+      "after": "cybersecuritynews.com##.tdm_block_button_simplified:has-text(Follow on LinkedIn)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d6742028c0c6",
+      "family": "d6_literal_contains",
+      "before": [
+        "economictimes.indiatimes.com##.Pbanner:contains(as a Reliable and Trusted News Source)"
+      ],
+      "after": "economictimes.indiatimes.com##.Pbanner:has-text(as a Reliable and Trusted News Source)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-95b25c60267a",
+      "family": "d6_literal_contains",
+      "before": [
+        "gizmodo.com##.border-t-grey-200:contains(Share this story)"
+      ],
+      "after": "gizmodo.com##.border-t-grey-200:has-text(Share this story)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4423772e9f2f",
+      "family": "d6_literal_contains",
+      "before": [
+        "gpone.com##.stickyarticle:contains(Follow)"
+      ],
+      "after": "gpone.com##.stickyarticle:has-text(Follow)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ce3be9517bf8",
+      "family": "d6_literal_contains",
+      "before": [
+        "houstonchronicle.com,nhregister.com,registercitizen.com,sfchronicle.com,sfgate.com,stamfordadvocate.com##.deep:contains(Google)"
+      ],
+      "after": "houstonchronicle.com,nhregister.com,registercitizen.com,sfchronicle.com,sfgate.com,stamfordadvocate.com##.deep:has-text(Google)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-6dcff54adc5f",
+      "family": "d6_literal_contains",
+      "before": [
+        "ign.com##.promo-card:contains(Follow us!)"
+      ],
+      "after": "ign.com##.promo-card:has-text(Follow us!)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d6d743f951eb",
+      "family": "d6_literal_contains",
+      "before": [
+        "nytimes.com##.gps-module:contains(on Google)"
+      ],
+      "after": "nytimes.com##.gps-module:has-text(on Google)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-a1fe9e8ccce7",
+      "family": "d6_literal_contains",
+      "before": [
+        "theintercept.com##[data-ga-track-action]:contains(Join The Conversation)"
+      ],
+      "after": "theintercept.com##[data-ga-track-action]:has-text(Join The Conversation)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-8fcf8a4adf01",
+      "family": "d6_literal_contains",
+      "before": [
+        "yahoo.com##.py-\\[10px\\]:contains(Add Yahoo on Google)"
+      ],
+      "after": "yahoo.com##.py-\\[10px\\]:has-text(Add Yahoo on Google)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-adf9b679e0df",
+      "family": "d6_literal_contains",
+      "before": [
+        "begiant.ca##.z-1300.inset-0:contains(Your Privacy)"
+      ],
+      "after": "begiant.ca##.z-1300.inset-0:has-text(Your Privacy)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-41f9109284ab",
+      "family": "d6_literal_contains",
+      "before": [
+        "sberdevices.ru##div[data-testid=\"snackbar\"]:contains(cookie)"
+      ],
+      "after": "sberdevices.ru##div[data-testid=\"snackbar\"]:has-text(cookie)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-0703a197e985",
+      "family": "d6_literal_contains",
+      "before": [
+        "people.com##.theme-generic.mntl-sc-block-universal-callout:contains(daily newsletter)"
+      ],
+      "after": "people.com##.theme-generic.mntl-sc-block-universal-callout:has-text(daily newsletter)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-12e25f5cfcdb",
+      "family": "d6_literal_contains",
+      "before": [
+        "theguardian.com##[data-spacefinder-role=\"inline\"]:contains(Sign up)"
+      ],
+      "after": "theguardian.com##[data-spacefinder-role=\"inline\"]:has-text(Sign up)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-db9950136022",
+      "family": "d6_literal_contains",
+      "before": [
+        "chron.com##.mb32.sy32:contains(free newsletter)"
+      ],
+      "after": "chron.com##.mb32.sy32:has-text(free newsletter)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d6a2cd52bd7f",
+      "family": "d6_literal_contains",
+      "before": [
+        "chron.com,sfgate.com##.col1span3:contains(Newsletters)"
+      ],
+      "after": "chron.com,sfgate.com##.col1span3:has-text(Newsletters)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-544e48bf4b32",
+      "family": "d6_literal_contains",
+      "before": [
+        "gizmodo.com##.max-w-screen-2xl.py-10:contains(Sign up)"
+      ],
+      "after": "gizmodo.com##.max-w-screen-2xl.py-10:has-text(Sign up)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d53b6ad37978",
+      "family": "d6_literal_contains",
+      "before": [
+        "health.harvard.edu##.bg-gray-200:contains(Sign Up)"
+      ],
+      "after": "health.harvard.edu##.bg-gray-200:has-text(Sign Up)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-a0c0da55a20b",
+      "family": "d6_literal_contains",
+      "before": [
+        "ign.com##.box-wrapper:contains(Stay up to date)"
+      ],
+      "after": "ign.com##.box-wrapper:has-text(Stay up to date)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-2c8ffff914b2",
+      "family": "d6_literal_contains",
+      "before": [
+        "kotaku.com##.mt-10:contains(Level up your inbox)"
+      ],
+      "after": "kotaku.com##.mt-10:has-text(Level up your inbox)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-a13caf7b69c9",
+      "family": "d6_literal_contains",
+      "before": [
+        "kotaku.com##div.mt-10:contains(newsletter)"
+      ],
+      "after": "kotaku.com##div.mt-10:has-text(newsletter)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5bda768f334f",
+      "family": "d6_literal_contains",
+      "before": [
+        "phys.org##.article-main__more:contains(Sign up)"
+      ],
+      "after": "phys.org##.article-main__more:has-text(Sign up)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d86b754162b7",
+      "family": "d6_literal_contains",
+      "before": [
+        "reuters.com##.article-body-module__promo-box__hVl8h:contains(newsletter)"
+      ],
+      "after": "reuters.com##.article-body-module__promo-box__hVl8h:has-text(newsletter)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-74d2c078354b",
+      "family": "d6_literal_contains",
+      "before": [
+        "thetransmitter.org##.bg-cover:contains(Sign up)"
+      ],
+      "after": "thetransmitter.org##.bg-cover:has-text(Sign up)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4396e2105bb2",
+      "family": "d6_literal_contains",
+      "before": [
+        "begiant.ca##.z-1200.inset-0.fixed:contains(Get a free book!)"
+      ],
+      "after": "begiant.ca##.z-1200.inset-0.fixed:has-text(Get a free book!)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4396e2105bb2",
+      "family": "d6_literal_contains",
+      "before": [
+        "begiant.ca##.z-1200.inset-0.fixed:contains(Get a free book!)"
+      ],
+      "after": "begiant.ca##.z-1200.inset-0.fixed:has-text(Get a free book!)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ea9b1dcff10e",
+      "family": "d6_literal_contains",
+      "before": [
+        "wnky.com##.vc_btn3-center:contains(Download)"
+      ],
+      "after": "wnky.com##.vc_btn3-center:has-text(Download)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d52b3463b1aa",
+      "family": "d6_literal_contains",
+      "before": [
+        "linkedin.com##div#public_post_contextual-sign-in:contains(Sign in to view more content)"
+      ],
+      "after": "linkedin.com##div#public_post_contextual-sign-in:has-text(Sign in to view more content)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-19aa0a857555",
+      "family": "d6_literal_contains",
+      "before": [
+        "speedtest.net##.\\!z-\\[3500\\]:contains(Speedtest is better with the app)"
+      ],
+      "after": "speedtest.net##.\\!z-\\[3500\\]:has-text(Speedtest is better with the app)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-cd69abbbef66",
+      "family": "d6_literal_contains",
+      "before": [
+        "x.com##[role=\"dialog\"]:contains(See this post in the app)"
+      ],
+      "after": "x.com##[role=\"dialog\"]:has-text(See this post in the app)",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ce7e5c9c0e38",
+      "family": "d6_literal_contains",
+      "before": [
+        "fortune.com##.info-surface:contains(Add Fortune on Google)"
+      ],
+      "after": "fortune.com##.info-surface:has-text(Add Fortune on Google)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-e556daa18407",
+      "family": "d6_literal_contains",
+      "before": [
+        "abc.net.au##.Button_root__UZ8td:contains(Share)"
+      ],
+      "after": "abc.net.au##.Button_root__UZ8td:has-text(Share)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4ab6c595b51d",
+      "family": "d6_literal_contains",
+      "before": [
+        "appleinsider.com##.col-xs-12 > div:contains(Follow AppleInsider)"
+      ],
+      "after": "appleinsider.com##.col-xs-12 > div:has-text(Follow AppleInsider)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-071ae201f293",
+      "family": "d6_literal_contains",
+      "before": [
+        "archaeologymag.com##.widget_custom_html:contains(Follow us)"
+      ],
+      "after": "archaeologymag.com##.widget_custom_html:has-text(Follow us)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-bda8274e4e4b",
+      "family": "d6_literal_contains",
+      "before": [
+        "bitcoinsensus.com##.elementor-heading-title:contains(SHARE)"
+      ],
+      "after": "bitcoinsensus.com##.elementor-heading-title:has-text(SHARE)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-da533f340621",
+      "family": "d6_literal_contains",
+      "before": [
+        "browserstack.com##.custom-footer-wrapper__heading:contains(Social)"
+      ],
+      "after": "browserstack.com##.custom-footer-wrapper__heading:has-text(Social)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-48daa4154c5d",
+      "family": "d6_literal_contains",
+      "before": [
+        "carexpert.co.nz,carexpert.com.au##._1ivmml5u3:contains(Add Preferred Source)"
+      ],
+      "after": "carexpert.co.nz,carexpert.com.au##._1ivmml5u3:has-text(Add Preferred Source)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-34e653006354",
+      "family": "d6_literal_contains",
+      "before": [
+        "carnewschina.com##.article_detail__top_stories:contains(Follow us for ev updates)"
+      ],
+      "after": "carnewschina.com##.article_detail__top_stories:has-text(Follow us for ev updates)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-6028f72e2360",
+      "family": "d6_literal_contains",
+      "before": [
+        "cbsnews.com##.FooterLinks-group:contains(Follow Us On)"
+      ],
+      "after": "cbsnews.com##.FooterLinks-group:has-text(Follow Us On)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-8f3e5536b8bf",
+      "family": "d6_literal_contains",
+      "before": [
+        "club386.com##.td-block-title:contains(Share)"
+      ],
+      "after": "club386.com##.td-block-title:has-text(Share)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d6da46eee42f",
+      "family": "d6_literal_contains",
+      "before": [
+        "clubic.com##[style=\"position: sticky; top: 55px;\"]:contains(Inscrivez-vous à notre newsletter quotidienne !)"
+      ],
+      "after": "clubic.com##[style=\"position: sticky; top: 55px;\"]:has-text(Inscrivez-vous à notre newsletter quotidienne !)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-26fa54a4fd5a",
+      "family": "d6_literal_contains",
+      "before": [
+        "cryptotimes.io##.heading-title:contains(Follow US)"
+      ],
+      "after": "cryptotimes.io##.heading-title:has-text(Follow US)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-de296d6734b2",
+      "family": "d6_literal_contains",
+      "before": [
+        "cybersecuritynews.com##.has-background:contains(Follow us)"
+      ],
+      "after": "cybersecuritynews.com##.has-background:has-text(Follow us)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-460821b9ddd9",
+      "family": "d6_literal_contains",
+      "before": [
+        "cybersecuritynews.com##.tdm_block_button_simplified:contains(Follow on LinkedIn)"
+      ],
+      "after": "cybersecuritynews.com##.tdm_block_button_simplified:has-text(Follow on LinkedIn)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d6742028c0c6",
+      "family": "d6_literal_contains",
+      "before": [
+        "economictimes.indiatimes.com##.Pbanner:contains(as a Reliable and Trusted News Source)"
+      ],
+      "after": "economictimes.indiatimes.com##.Pbanner:has-text(as a Reliable and Trusted News Source)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-2a2b6048b791",
+      "family": "d6_literal_contains",
+      "before": [
+        "freethoughtnow.org##.elementor-widget-container > h2:contains(Please share)"
+      ],
+      "after": "freethoughtnow.org##.elementor-widget-container > h2:has-text(Please share)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-95b25c60267a",
+      "family": "d6_literal_contains",
+      "before": [
+        "gizmodo.com##.border-t-grey-200:contains(Share this story)"
+      ],
+      "after": "gizmodo.com##.border-t-grey-200:has-text(Share this story)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4423772e9f2f",
+      "family": "d6_literal_contains",
+      "before": [
+        "gpone.com##.stickyarticle:contains(Follow)"
+      ],
+      "after": "gpone.com##.stickyarticle:has-text(Follow)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-0f40f620b98c",
+      "family": "d6_literal_contains",
+      "before": [
+        "heritagedaily.com##.tds-button:contains(FOLLOW ON GOOGLE NEWS)"
+      ],
+      "after": "heritagedaily.com##.tds-button:has-text(FOLLOW ON GOOGLE NEWS)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ce3be9517bf8",
+      "family": "d6_literal_contains",
+      "before": [
+        "houstonchronicle.com,nhregister.com,registercitizen.com,sfchronicle.com,sfgate.com,stamfordadvocate.com##.deep:contains(Google)"
+      ],
+      "after": "houstonchronicle.com,nhregister.com,registercitizen.com,sfchronicle.com,sfgate.com,stamfordadvocate.com##.deep:has-text(Google)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-6dcff54adc5f",
+      "family": "d6_literal_contains",
+      "before": [
+        "ign.com##.promo-card:contains(Follow us!)"
+      ],
+      "after": "ign.com##.promo-card:has-text(Follow us!)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-b8f3111075a0",
+      "family": "d6_literal_contains",
+      "before": [
+        "jacobin.com##.po-fr__heading:contains(Share this article)"
+      ],
+      "after": "jacobin.com##.po-fr__heading:has-text(Share this article)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-69541d481252",
+      "family": "d6_literal_contains",
+      "before": [
+        "lifenews.com##.post_style_zk > p:contains(Please subscribe)"
+      ],
+      "after": "lifenews.com##.post_style_zk > p:has-text(Please subscribe)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-5b76e5c4a718",
+      "family": "d6_literal_contains",
+      "before": [
+        "livpost.co.uk##.kg-align-center.kg-button-card:contains(Share this story)"
+      ],
+      "after": "livpost.co.uk##.kg-align-center.kg-button-card:has-text(Share this story)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-3b9b09166019",
+      "family": "d6_literal_contains",
+      "before": [
+        "min.io##.display-xs.alpha-white-70:contains(Get in Touch)"
+      ],
+      "after": "min.io##.display-xs.alpha-white-70:has-text(Get in Touch)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-0277710f685d",
+      "family": "d6_literal_contains",
+      "before": [
+        "nbcsports.com##p.cms-textAlign-center:contains(follow NBC Sports)"
+      ],
+      "after": "nbcsports.com##p.cms-textAlign-center:has-text(follow NBC Sports)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4b182cb4b4a2",
+      "family": "d6_literal_contains",
+      "before": [
+        "newskarnataka.com##.elementor-button-wrapper:contains(Social Media)"
+      ],
+      "after": "newskarnataka.com##.elementor-button-wrapper:has-text(Social Media)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-f6263994db93",
+      "family": "d6_literal_contains",
+      "before": [
+        "newsroom.ucla.edu##.promo-card-muted:contains(RSS feed)"
+      ],
+      "after": "newsroom.ucla.edu##.promo-card-muted:has-text(RSS feed)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-d6d743f951eb",
+      "family": "d6_literal_contains",
+      "before": [
+        "nytimes.com##.gps-module:contains(on Google)"
+      ],
+      "after": "nytimes.com##.gps-module:has-text(on Google)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-94277743e729",
+      "family": "d6_literal_contains",
+      "before": [
+        "openculture.com##.execphpwidget:contains(FREE UPDATES!)"
+      ],
+      "after": "openculture.com##.execphpwidget:has-text(FREE UPDATES!)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-c58ba03b5f62",
+      "family": "d6_literal_contains",
+      "before": [
+        "qodo.ai##.block-single-post__aside-heading:contains(Share)"
+      ],
+      "after": "qodo.ai##.block-single-post__aside-heading:has-text(Share)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-b727eab3a566",
+      "family": "d6_literal_contains",
+      "before": [
+        "ruwix.com##.widget-title:contains(Share this page!)"
+      ],
+      "after": "ruwix.com##.widget-title:has-text(Share this page!)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-f73f5e18e10a",
+      "family": "d6_literal_contains",
+      "before": [
+        "sfchronicle.com##.br4.deep:contains(Want more SF Chronicle)"
+      ],
+      "after": "sfchronicle.com##.br4.deep:has-text(Want more SF Chronicle)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ffe9a59466e1",
+      "family": "d6_literal_contains",
+      "before": [
+        "sfgate.com##.br4.deep.fdc:contains(Google)"
+      ],
+      "after": "sfgate.com##.br4.deep.fdc:has-text(Google)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-1ce9a49af214",
+      "family": "d6_literal_contains",
+      "before": [
+        "stuff.co.nz##.edproj-share-video-wrapper:contains(Share your video)"
+      ],
+      "after": "stuff.co.nz##.edproj-share-video-wrapper:has-text(Share your video)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-a03a1abbf6a5",
+      "family": "d6_literal_contains",
+      "before": [
+        "stuff.co.nz##.edproj-speedhub-wrapper:contains(read now)"
+      ],
+      "after": "stuff.co.nz##.edproj-speedhub-wrapper:has-text(read now)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-a07c517f9f22",
+      "family": "d6_literal_contains",
+      "before": [
+        "stuff.co.nz##.free-body.text-block > p.content-item:contains(Email)"
+      ],
+      "after": "stuff.co.nz##.free-body.text-block > p.content-item:has-text(Email)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-b380f68212dd",
+      "family": "d6_literal_contains",
+      "before": [
+        "techissuestoday.com##.mar-b-6:contains(Follow Us)"
+      ],
+      "after": "techissuestoday.com##.mar-b-6:has-text(Follow Us)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-8e5b3488b66a",
+      "family": "d6_literal_contains",
+      "before": [
+        "thedailyeconomy.org##.wp-block-group-is-layout-flow:contains(Share This Article)"
+      ],
+      "after": "thedailyeconomy.org##.wp-block-group-is-layout-flow:has-text(Share This Article)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-e61fe457b739",
+      "family": "d6_literal_contains",
+      "before": [
+        "thedispatch.com##.border-y.py-2:contains(Share)"
+      ],
+      "after": "thedispatch.com##.border-y.py-2:has-text(Share)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-9ff187973dc5",
+      "family": "d6_literal_contains",
+      "before": [
+        "theguardian.com##.dcr-4gwv1z > ul:contains(Get our)"
+      ],
+      "after": "theguardian.com##.dcr-4gwv1z > ul:has-text(Get our)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-a1fe9e8ccce7",
+      "family": "d6_literal_contains",
+      "before": [
+        "theintercept.com##[data-ga-track-action]:contains(Join The Conversation)"
+      ],
+      "after": "theintercept.com##[data-ga-track-action]:has-text(Join The Conversation)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-c8121a4e5347",
+      "family": "d6_literal_contains",
+      "before": [
+        "thenarwhal.ca##.text-and-button__container:contains(Add The Narwhal)"
+      ],
+      "after": "thenarwhal.ca##.text-and-button__container:has-text(Add The Narwhal)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-dac5d987cce8",
+      "family": "d6_literal_contains",
+      "before": [
+        "theshovel.com.au##.padding-top-small > .widgetizedArea:contains(Like this)"
+      ],
+      "after": "theshovel.com.au##.padding-top-small > .widgetizedArea:has-text(Like this)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-c74dc865db01",
+      "family": "d6_literal_contains",
+      "before": [
+        "tvblackbox.com.au##.tdm-descr:contains(Share)"
+      ],
+      "after": "tvblackbox.com.au##.tdm-descr:has-text(Share)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-aed5e30425e6",
+      "family": "d6_literal_contains",
+      "before": [
+        "twitch.tv##.tw-balloon:contains(Share To)"
+      ],
+      "after": "twitch.tv##.tw-balloon:has-text(Share To)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-8fcf8a4adf01",
+      "family": "d6_literal_contains",
+      "before": [
+        "yahoo.com##.py-\\[10px\\]:contains(Add Yahoo on Google)"
+      ],
+      "after": "yahoo.com##.py-\\[10px\\]:has-text(Add Yahoo on Google)",
+      "source_id": "fanboy-social",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-426fd81aca22",
+      "family": "d6_literal_contains",
+      "before": [
+        "scrolller.com##.popup--sticky:contains(adblock)"
+      ],
+      "after": "scrolller.com##.popup--sticky:has-text(adblock)",
+      "source_id": "warning-removal",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-45c9ad8d1e36",
+      "family": "d6_literal_contains",
+      "before": [
+        "drivereasy.com##.pakb-content p:contains(Driver Easy)"
+      ],
+      "after": "drivereasy.com##.pakb-content p:has-text(Driver Easy)",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-aa150b3384c5",
+      "family": "d6_literal_contains",
+      "before": [
+        "drivereasy.com##.pakb-content p:contains(the FREE version)"
+      ],
+      "after": "drivereasy.com##.pakb-content p:has-text(the FREE version)",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-73ad3864c98c",
+      "family": "d6_literal_contains",
+      "before": [
+        "drivereasy.com##.pakb-content p:contains(the Pro version)"
+      ],
+      "after": "drivereasy.com##.pakb-content p:has-text(the Pro version)",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4212a405a27c",
+      "family": "d6_literal_contains",
+      "before": [
+        "drivereasy.com##.pakb-content p:contains(click Update All)"
+      ],
+      "after": "drivereasy.com##.pakb-content p:has-text(click Update All)",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-405db2aa1e4f",
+      "family": "d6_literal_contains",
+      "before": [
+        "bing.com###b_pole:contains(Microsoft Edge)"
+      ],
+      "after": "bing.com###b_pole:has-text(Microsoft Edge)",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-4acb4fc0b3d9",
+      "family": "d6_literal_contains",
+      "before": [
+        "cofers.com##.widget:contains(Download our App!)"
+      ],
+      "after": "cofers.com##.widget:has-text(Download our App!)",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-86b50efcddf7",
+      "family": "d6_literal_contains",
+      "before": [
+        "trondelagkraft.no##.article__ingress > p:contains(Med appen vår )"
+      ],
+      "after": "trondelagkraft.no##.article__ingress > p:has-text(Med appen vår )",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-50d508664177",
+      "family": "d6_literal_contains",
+      "before": [
+        "trondelagkraft.no##.editorButton.button__action:contains(Last ned vår fordelsapp)"
+      ],
+      "after": "trondelagkraft.no##.editorButton.button__action:has-text(Last ned vår fordelsapp)",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-ca63b508f37b",
+      "family": "d6_literal_contains",
+      "before": [
+        "doctolib.fr##.MuiModal-root:contains(application)"
+      ],
+      "after": "doctolib.fr##.MuiModal-root:has-text(application)",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-03e0f4d7475a",
+      "family": "d6_literal_contains",
+      "before": [
+        "tvtropes.org##.announcement-banner:contains( App )"
+      ],
+      "after": "tvtropes.org##.announcement-banner:has-text( App )",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-0868198bdff8",
+      "family": "d6_literal_contains",
+      "before": [
+        "thewindowsclub.com##.entry-content > div > strong:contains(find & fix Windows error)"
+      ],
+      "after": "thewindowsclub.com##.entry-content > div > strong:has-text(find & fix Windows error)",
+      "source_id": "ubo-badware",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-c84c3933bdf2",
+      "family": "d6_literal_contains",
+      "before": [
+        "2-spyware.com,novirus.uk,faravirus.ro,uirusu.jp,virusi.hr,wubingdu.cn,avirus.hu,odstranitvirus.cz,tanpavirus.web.id,utanvirus.se,virukset.fi,losvirus.es,virusler.info.tr,semvirus.pt,lesvirus.fr,senzavirus.it,dieviren.de,viruset.no,usunwirusa.pl,zondervirus.nl,bedynet.ru,virusai.lt,virusi.bg,viirused.ee,udenvirus.dk##.attention-button-wrap:contains(Reimage)"
+      ],
+      "after": "2-spyware.com,novirus.uk,faravirus.ro,uirusu.jp,virusi.hr,wubingdu.cn,avirus.hu,odstranitvirus.cz,tanpavirus.web.id,utanvirus.se,virukset.fi,losvirus.es,virusler.info.tr,semvirus.pt,lesvirus.fr,senzavirus.it,dieviren.de,viruset.no,usunwirusa.pl,zondervirus.nl,bedynet.ru,virusai.lt,virusi.bg,viirused.ee,udenvirus.dk##.attention-button-wrap:has-text(Reimage)",
+      "source_id": "ubo-badware",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-582dbc6bf5e1",
+      "family": "d6_literal_contains",
+      "before": [
+        "2-spyware.com,novirus.uk,faravirus.ro,uirusu.jp,virusi.hr,wubingdu.cn,avirus.hu,odstranitvirus.cz,tanpavirus.web.id,utanvirus.se,virukset.fi,losvirus.es,virusler.info.tr,semvirus.pt,lesvirus.fr,senzavirus.it,dieviren.de,viruset.no,usunwirusa.pl,zondervirus.nl,bedynet.ru,virusai.lt,virusi.bg,viirused.ee,udenvirus.dk##.nfc-bottom-right:contains(Reimage)"
+      ],
+      "after": "2-spyware.com,novirus.uk,faravirus.ro,uirusu.jp,virusi.hr,wubingdu.cn,avirus.hu,odstranitvirus.cz,tanpavirus.web.id,utanvirus.se,virukset.fi,losvirus.es,virusler.info.tr,semvirus.pt,lesvirus.fr,senzavirus.it,dieviren.de,viruset.no,usunwirusa.pl,zondervirus.nl,bedynet.ru,virusai.lt,virusi.bg,viirused.ee,udenvirus.dk##.nfc-bottom-right:has-text(Reimage)",
+      "source_id": "ubo-badware",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-467f473dec73",
+      "family": "d6_literal_contains",
+      "before": [
+        "2-spyware.com,novirus.uk,faravirus.ro,uirusu.jp,virusi.hr,wubingdu.cn,avirus.hu,odstranitvirus.cz,tanpavirus.web.id,utanvirus.se,virukset.fi,losvirus.es,virusler.info.tr,semvirus.pt,lesvirus.fr,senzavirus.it,dieviren.de,viruset.no,usunwirusa.pl,zondervirus.nl,bedynet.ru,virusai.lt,virusi.bg,viirused.ee,udenvirus.dk##a:contains(Reimage)"
+      ],
+      "after": "2-spyware.com,novirus.uk,faravirus.ro,uirusu.jp,virusi.hr,wubingdu.cn,avirus.hu,odstranitvirus.cz,tanpavirus.web.id,utanvirus.se,virukset.fi,losvirus.es,virusler.info.tr,semvirus.pt,lesvirus.fr,senzavirus.it,dieviren.de,viruset.no,usunwirusa.pl,zondervirus.nl,bedynet.ru,virusai.lt,virusi.bg,viirused.ee,udenvirus.dk##a:has-text(Reimage)",
+      "source_id": "ubo-badware",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-01f7eece6575",
+      "family": "d6_literal_contains",
+      "before": [
+        "howtoremove.guide##.entry-content > div:contains(Special Offer)"
+      ],
+      "after": "howtoremove.guide##.entry-content > div:has-text(Special Offer)",
+      "source_id": "ubo-badware",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-0cb2ebfdfcdd",
+      "family": "d6_literal_contains",
+      "before": [
+        "howtoremove.guide###alt_content_main_div > p:contains(SpyHunter)"
+      ],
+      "after": "howtoremove.guide###alt_content_main_div > p:has-text(SpyHunter)",
+      "source_id": "ubo-badware",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "d6_literal_contains-180e23cb4de2",
+      "family": "d6_literal_contains",
+      "before": [
+        "2-spyware.com,novirus.uk,faravirus.ro,uirusu.jp,virusi.hr,wubingdu.cn,avirus.hu,odstranitvirus.cz,tanpavirus.web.id,utanvirus.se,virukset.fi,losvirus.es,virusler.info.tr,semvirus.pt,lesvirus.fr,senzavirus.it,dieviren.de,viruset.no,usunwirusa.pl,zondervirus.nl,bedynet.ru,virusai.lt,virusi.bg,viirused.ee,udenvirus.dk##a:contains(SpyHunter)"
+      ],
+      "after": "2-spyware.com,novirus.uk,faravirus.ro,uirusu.jp,virusi.hr,wubingdu.cn,avirus.hu,odstranitvirus.cz,tanpavirus.web.id,utanvirus.se,virukset.fi,losvirus.es,virusler.info.tr,semvirus.pt,lesvirus.fr,senzavirus.it,dieviren.de,viruset.no,usunwirusa.pl,zondervirus.nl,bedynet.ru,virusai.lt,virusi.bg,viirused.ee,udenvirus.dk##a:has-text(SpyHunter)",
+      "source_id": "ubo-badware",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
     {
       "id": "type_union-9b6f81b37b28",
       "family": "type_union",
@@ -670730,6 +674020,20 @@
       ]
     },
     {
+      "id": "network_canonicalization-204bcebeefe8",
+      "family": "network_canonicalization",
+      "before": [
+        "&subAffId={SUBAFFID}^$script,subdocument,3p"
+      ],
+      "after": "&subAffId={SUBAFFID}^$script,subdocument,third-party",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
       "id": "network_canonicalization-66fa731f24ab",
       "family": "network_canonicalization",
       "before": [
@@ -751356,12 +754660,12 @@
       ]
     },
     {
-      "id": "network_canonicalization-5621d1f72983",
+      "id": "network_canonicalization-62234d3417cd",
       "family": "network_canonicalization",
       "before": [
-        "@@||vhit.io/scripts/vhit.js$script,domain=cuttty.com|cety.app|cutlink.net|cutnet.net|cuttlinks.com|exe-links.com|exe-urls.com|exego.app|exeygo.com|exnion.com"
+        "@@||vhit.io/scripts/vhit.js$script,domain=cuttty.com|cutlink.net|cutnet.net|exe-urls.com|exeygo.com|exnion.com"
       ],
-      "after": "@@||vhit.io/scripts/vhit.js$domain=cety.app|cutlink.net|cutnet.net|cuttlinks.com|cuttty.com|exe-links.com|exe-urls.com|exego.app|exeygo.com|exnion.com,script",
+      "after": "@@||vhit.io/scripts/vhit.js$domain=cutlink.net|cutnet.net|cuttty.com|exe-urls.com|exeygo.com|exnion.com,script",
       "source_id": "ubo-filters-min",
       "checks": [
         "reparse-equal",
@@ -751370,12 +754674,12 @@
       ]
     },
     {
-      "id": "network_canonicalization-70a90662ecf3",
+      "id": "network_canonicalization-69733ea0f353",
       "family": "network_canonicalization",
       "before": [
-        "@@||vhit.io/scripts/vhit.js$script,domain=upfilesgo.com|upfion.com|upfiles.app|upfiles-urls.com"
+        "@@||vhit.io/scripts/vhit.js$script,domain=upfilesgo.com|upfiles.app|upfiles-urls.com"
       ],
-      "after": "@@||vhit.io/scripts/vhit.js$domain=upfiles-urls.com|upfiles.app|upfilesgo.com|upfion.com,script",
+      "after": "@@||vhit.io/scripts/vhit.js$domain=upfiles-urls.com|upfiles.app|upfilesgo.com,script",
       "source_id": "ubo-filters-min",
       "checks": [
         "reparse-equal",
@@ -770592,6 +773896,20 @@
       ]
     },
     {
+      "id": "network_canonicalization-5616031fa1b9",
+      "family": "network_canonicalization",
+      "before": [
+        "||camsmut.com/o|$xhr"
+      ],
+      "after": "||camsmut.com/o|$xmlhttprequest",
+      "source_id": "ubo-filters-min",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
       "id": "network_canonicalization-fe050afc9a67",
       "family": "network_canonicalization",
       "before": [
@@ -772149,27 +775467,27 @@
   "verification": {
     "required": true,
     "mismatches": [],
-    "cases_checked": 458948,
+    "cases_checked": 458960,
     "golden_rule_violations": 0,
     "emit_order_violations": 0,
     "coverage": {
-      "network_rules_total": 675282,
-      "network_rules_probed": 243484,
-      "rewrite_receipts_total": 51932,
-      "rewrite_receipts_exercised": 50309,
-      "cosmetic_hosts_total": 74215,
-      "cosmetic_hosts_checked": 2048
+      "network_rules_total": 675326,
+      "network_rules_probed": 243497,
+      "rewrite_receipts_total": 52169,
+      "rewrite_receipts_exercised": 50924,
+      "cosmetic_hosts_total": 75155,
+      "cosmetic_hosts_checked": 62210
     }
   },
   "bench": {
-    "admitted_opt_bytes": 41978421,
-    "candidate_opt_bytes": 37877341,
-    "admitted_noopt_bytes": 41978493,
-    "candidate_noopt_bytes": 37877413,
-    "admitted_build_ms": 490,
-    "candidate_build_ms": 422,
-    "admitted_qps": 285105.9846715086,
-    "candidate_qps": 290738.14809873933,
+    "admitted_opt_bytes": 42020517,
+    "candidate_opt_bytes": 37916157,
+    "admitted_noopt_bytes": 42020589,
+    "candidate_noopt_bytes": 37916229,
+    "admitted_build_ms": 664,
+    "candidate_build_ms": 565,
+    "admitted_qps": 171482.11500416033,
+    "candidate_qps": 173106.4160292906,
     "emit_order": "compiler-friendly-v1"
   }
 }

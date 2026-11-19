@@ -171061,17 +171061,6 @@
     "reason": null
   },
   {
-    "name": "set",
-    "canonical_name": "set-constant.js",
-    "grade": "standard",
-    "digest": "6483d84d8211ee1b84ab64a8a4d2687270ce789a486ce6efc3ba56a059e10746",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
     "name": "no-fetch-if",
     "canonical_name": "prevent-fetch.js",
     "grade": "standard",
@@ -252256,6 +252245,17 @@
     "canonical_name": "prevent-window-open.js",
     "grade": "standard",
     "digest": "d2b05007a2ce02a5f81d0fe07e60cb5e19b87269135d2a5d7fc4d06b01679acc",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "rmnt",
+    "canonical_name": "remove-node-text.js",
+    "grade": "standard",
+    "digest": "0d37ecc290c6b82cd54146f8f17bf9349cab907a67f4c69946b98b2f013a276d",
     "permission": 0,
     "source_id": "ubo-filters-min",
     "source_permissions": 0,

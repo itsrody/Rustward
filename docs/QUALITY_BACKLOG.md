@@ -3,10 +3,10 @@
 Queued from the quality review. Items 1–2 are implemented; the rest are recorded here so they are
 not lost.
 
-1. **Literal-anchor regex recovery** — done. `^`-separator patterns are admitted as the
-   `literal-boundary` class under `admit.literal_boundary_regex`; REGEX exclusions fell from 55,994
-   to 13,720 and the output grew by ~42k rules.
-2. **Verification coverage + coverage reporting** — done. 420,580 cases (up from 5,000), per-receipt
+1. **Literal-anchor regex recovery** — done. `^`-separator patterns (including literal query
+   strings) are admitted as the `literal-boundary` class under `admit.literal_boundary_regex`.
+   REGEX exclusions fell from 55,994 to 7,834 and the output grew by ~48k rules.
+2. **Verification coverage + coverage reporting** — done. 420,588 cases (up from 5,000), per-receipt
    probes, strided cosmetic hosts, and coverage fields in `verify.json` / `build.md`.
 3. **Byte-deterministic output metadata** — replace the wall-clock `! Last modified` header with a
    value derived from pinned inputs; add a two-build determinism test.

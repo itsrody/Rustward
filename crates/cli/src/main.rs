@@ -133,6 +133,7 @@ impl Pipeline {
             candidate_text,
             &self.emit.text,
             &self.resources,
+            &self.rewrite.receipts,
         )
     }
 
@@ -202,6 +203,7 @@ fn build(root: &Path, config_path: &Path, no_verify: bool, fetch_mode: FetchMode
             cases_checked: 0,
             golden_rule_violations: 0,
             emit_order_violations: 0,
+            ..Default::default()
         }
     } else {
         pipeline.verify(&pipeline.emit.text)?
@@ -492,6 +494,27 @@ fn build_report(
         verification.golden_rule_violations,
     );
     report.metric("decision_mismatches", verification.mismatches.len());
+    report.metric("verify_cases", verification.cases_checked);
+    report.metric(
+        "network_rules_probed",
+        verification.coverage.network_rules_probed,
+    );
+    report.metric(
+        "network_rules_total",
+        verification.coverage.network_rules_total,
+    );
+    report.metric(
+        "receipts_exercised",
+        verification.coverage.rewrite_receipts_exercised,
+    );
+    report.metric(
+        "cosmetic_hosts_checked",
+        verification.coverage.cosmetic_hosts_checked,
+    );
+    report.metric(
+        "cosmetic_hosts_total",
+        verification.coverage.cosmetic_hosts_total,
+    );
     report.receipts = pipeline.rewrite.receipts.clone();
     report.verification = verification.clone();
     report.bench = bench.clone();
@@ -553,6 +576,16 @@ fn build_markdown(
     output.push_str(&format!(
         "- mismatches: `{}`\n",
         verification.mismatches.len()
+    ));
+    output.push_str(&format!(
+        "- verification cases: `{}` (network rules `{}`/`{}`, receipts `{}`/`{}`, cosmetic hosts `{}`/`{}`)\n",
+        verification.cases_checked,
+        verification.coverage.network_rules_probed,
+        verification.coverage.network_rules_total,
+        verification.coverage.rewrite_receipts_exercised,
+        verification.coverage.rewrite_receipts_total,
+        verification.coverage.cosmetic_hosts_checked,
+        verification.coverage.cosmetic_hosts_total,
     ));
     output.push_str(&format!(
         "- flatbuffer bytes: admitted `{}`, candidate `{}`\n",

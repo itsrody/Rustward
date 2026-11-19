@@ -16,9 +16,15 @@ description = "Rust-verified rules list for Brave Browser."
 required = true
 corpus = ["generated", "fixtures"]
 max_mismatches = 0
-max_cases = 5000
-max_cosmetic_hosts = 256
+# Large enough to probe a meaningful slice of every admitted rule family and rewrite receipt.
+max_cases = 250000
+max_cosmetic_hosts = 2048
 bench_iterations = 3
+
+[admit]
+# `^`-anchored URL patterns are flagged as regex by adblock but compile to bounded literal
+# matchers. Admit them so literal phishing/malware URL coverage is not lost.
+literal_boundary_regex = true
 
 [directives]
 enabled = true

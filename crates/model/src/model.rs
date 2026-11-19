@@ -202,6 +202,8 @@ pub struct NetworkRule {
     pub right_anchor: bool,
     pub hostname_anchor: bool,
     pub is_regex: bool,
+    /// `IS_REGEX` caused only by `^` separators, with no true regex metacharacters.
+    pub is_literal_boundary_regex: bool,
     pub is_complete_regex: bool,
     pub is_hostname_regex: bool,
     pub is_exception: bool,
@@ -429,6 +431,16 @@ pub struct Mismatch {
     pub detail: String,
 }
 
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct VerifyCoverage {
+    pub network_rules_total: usize,
+    pub network_rules_probed: usize,
+    pub rewrite_receipts_total: usize,
+    pub rewrite_receipts_exercised: usize,
+    pub cosmetic_hosts_total: usize,
+    pub cosmetic_hosts_checked: usize,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VerifyReport {
     pub required: bool,
@@ -436,6 +448,8 @@ pub struct VerifyReport {
     pub cases_checked: usize,
     pub golden_rule_violations: usize,
     pub emit_order_violations: usize,
+    #[serde(default)]
+    pub coverage: VerifyCoverage,
 }
 
 impl Default for VerifyReport {
@@ -446,6 +460,7 @@ impl Default for VerifyReport {
             cases_checked: 0,
             golden_rule_violations: 0,
             emit_order_violations: 0,
+            coverage: VerifyCoverage::default(),
         }
     }
 }

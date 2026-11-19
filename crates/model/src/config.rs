@@ -278,6 +278,22 @@ impl Default for RewriteConfig {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AdmitConfig {
+    /// Admit patterns the engine flags as regex only because they contain `^` separators.
+    /// These compile to bounded literal matchers rather than user-authored regular expressions.
+    #[serde(default = "default_true")]
+    pub literal_boundary_regex: bool,
+}
+
+impl Default for AdmitConfig {
+    fn default() -> Self {
+        Self {
+            literal_boundary_regex: true,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SourceConfig {
     pub id: String,
     pub url: String,
@@ -327,6 +343,8 @@ pub struct Config {
     pub cosmetic: CosmeticConfig,
     #[serde(default)]
     pub rewrite: RewriteConfig,
+    #[serde(default)]
+    pub admit: AdmitConfig,
     #[serde(default)]
     pub source: Vec<SourceConfig>,
 }

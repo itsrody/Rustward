@@ -107,6 +107,13 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     );
     assert_eq!(verify["golden_rule_violations"], 0);
     assert_eq!(verify["emit_order_violations"], 0);
+    let coverage = &verify["coverage"];
+    assert!(coverage["network_rules_total"].as_u64().unwrap_or(0) > 0);
+    assert!(coverage["network_rules_probed"].as_u64().unwrap_or(0) > 0);
+    assert!(coverage["rewrite_receipts_total"].as_u64().unwrap_or(0) > 0);
+    assert!(coverage["rewrite_receipts_exercised"].as_u64().unwrap_or(0) > 0);
+    assert!(coverage["cosmetic_hosts_total"].as_u64().unwrap_or(0) > 0);
+    assert!(coverage["cosmetic_hosts_checked"].as_u64().unwrap_or(0) > 0);
 
     let build: Value =
         serde_json::from_slice(&fs::read(root.join("reports/build.json")).expect("read build"))

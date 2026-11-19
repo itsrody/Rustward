@@ -2773,6 +2773,7 @@ domain_subsumption-e205f6cad453	domain_subsumption	||analytics.google.com^ || ||
 domain_subsumption-b3a165828846	domain_subsumption	@@||gemius.pl/gstream.js || @@||gemius.pl/gstream.js$domain=player.antyradio.pl|player.radiozet.pl|player.chillizet.pl|player.meloradio.pl	structural-subsumption;reparse-equal;engine-differential	@@||gemius.pl/gstream.js
 domain_subsumption-bc9ce90b457d	domain_subsumption	||acustomizedgift.com^ || ||acustomizedgift.com^$domain=masslive.com|silive.com	structural-subsumption;reparse-equal;engine-differential	||acustomizedgift.com^
 domain_subsumption-9ca88536f77c	domain_subsumption	||succeedscene.com^ || ||succeedscene.com^$domain=theguardian.com	structural-subsumption;reparse-equal;engine-differential	||succeedscene.com^
+domain_subsumption-b91c7a1c4ee6	domain_subsumption	/fingerprint.js^ || /fingerprint.js^$domain=~github.com	structural-subsumption;reparse-equal;engine-differential	/fingerprint.js^
 domain_subsumption-93091e5bfa99	domain_subsumption	/plausible.js || /plausible.js$domain=~plausible.io	structural-subsumption;reparse-equal;engine-differential	/plausible.js
 domain_subsumption-7af7ab1503c6	domain_subsumption	/smartpixel. || /smartpixel.$domain=~smartpixel.com|~smartpixel.tv	structural-subsumption;reparse-equal;engine-differential	/smartpixel.
 domain_subsumption-3e517661c86e	domain_subsumption	/sxp/i/*$script,3p || /sxp/i/*$script,3p,domain=~linkvertise.com	structural-subsumption;reparse-equal;engine-differential	/sxp/i/*$script,3p
@@ -5390,6 +5391,8 @@ hostname_subsumption-12be467dc0be	hostname_subsumption	||awstrack.me^ || ||xpgsy
 hostname_subsumption-8d6cc4e43e67	hostname_subsumption	||awstrack.me^ || ||xq9858q1.r.ap-southeast-1.awstrack.me^$all	structural-subsumption;reparse-equal;engine-differential	||awstrack.me^
 hostname_subsumption-0643a948100f	hostname_subsumption	||oper5303662.pro^$all || ||youssef.oper5303662.pro^$all	structural-subsumption;reparse-equal;engine-differential	||oper5303662.pro^$all
 hostname_subsumption-8cf34059934d	hostname_subsumption	||clickfunnels.com^ || ||yuiyuiytretyutytre.clickfunnels.com^$all	structural-subsumption;reparse-equal;engine-differential	||clickfunnels.com^
+hostname_subsumption-bd090c65f152	hostname_subsumption	||jotform.com/app/250722130285347^$all || ||eu.jotform.com/app/250722130285347^$all	structural-subsumption;reparse-equal;engine-differential	||jotform.com/app/250722130285347^$all
+hostname_subsumption-4738bcafec62	hostname_subsumption	||jotform.com/app/250724235886362^$all || ||eu.jotform.com/app/250724235886362^$all	structural-subsumption;reparse-equal;engine-differential	||jotform.com/app/250724235886362^$all
 hostname_subsumption-204387b7fdb1	hostname_subsumption	||eset.co.il^$all || ||backend.store.eset.co.il^$all	structural-subsumption;reparse-equal;engine-differential	||eset.co.il^$all
 hostname_subsumption-078152773034	hostname_subsumption	||company.site^ || ||blackabdo.company.site^$all	structural-subsumption;reparse-equal;engine-differential	||company.site^
 hostname_subsumption-6d16edf5fdc6	hostname_subsumption	||go2cloud.org^ || ||glitchy.go2cloud.org^$all	structural-subsumption;reparse-equal;engine-differential	||go2cloud.org^

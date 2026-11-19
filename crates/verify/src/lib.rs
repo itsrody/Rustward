@@ -8,8 +8,8 @@ use adblock::{
 };
 use anyhow::Result;
 use model::{
-    BenchReport, Config, CosmeticPayload, Eligibility, ExclusionReason, Mismatch, Rule,
-    VerifyReport,
+    BenchReport, Config, CosmeticPayload, Eligibility, ExclusionReason, Mismatch, RewriteReceipt,
+    Rule, VerifyCoverage, VerifyReport,
 };
 use serde::Serialize;
 use std::{collections::BTreeSet, time::Instant};
@@ -78,6 +78,7 @@ pub fn verify(
     candidate_text: &str,
     canonical_text: &str,
     resources: &[Resource],
+    receipts: &[RewriteReceipt],
 ) -> Result<VerifyReport> {
     let admitted = build_engine(&admitted_lists(admitted_rules), resources, true);
     let candidate = build_engine(
@@ -85,7 +86,11 @@ pub fn verify(
         resources,
         true,
     );
-    let corpus = generate_corpus(admitted_rules, config.verify.max_cases);
+    let (mut corpus, network_rules_probed) =
+        generate_corpus(admitted_rules, config.verify.max_cases);
+    let (receipt_corpus, rewrite_receipts_exercised) =
+        generate_receipt_corpus(receipts, config.verify.max_cases);
+    corpus.extend(receipt_corpus);
     let mut mismatches = Vec::new();
 
     for case in &corpus {
@@ -107,10 +112,14 @@ pub fn verify(
         }
     }
 
-    for host in cosmetic_hosts(admitted_rules)
-        .into_iter()
-        .take(config.verify.max_cosmetic_hosts.max(1))
-    {
+    let cosmetic_hosts = cosmetic_hosts(admitted_rules);
+    let cosmetic_hosts_total = cosmetic_hosts.len();
+    let selected_hosts = stride_sample(
+        cosmetic_hosts.into_iter().collect(),
+        config.verify.max_cosmetic_hosts.max(1),
+    );
+    let cosmetic_hosts_checked = selected_hosts.len();
+    for host in selected_hosts {
         let url = format!("https://{host}/");
         let before = cosmetic_snapshot(&admitted.url_cosmetic_resources(&url));
         let after = cosmetic_snapshot(&candidate.url_cosmetic_resources(&url));
@@ -125,9 +134,13 @@ pub fn verify(
         }
     }
 
+    let network_rules_total = admitted_rules
+        .iter()
+        .filter(|rule| matches!(rule, Rule::Network(_)))
+        .count();
     let golden_rule_violations = candidate_rules
         .iter()
-        .filter(|rule| !passes_golden_rule(rule))
+        .filter(|rule| !passes_golden_rule(rule, config))
         .count();
     let emit_order_violations = usize::from(candidate_text != canonical_text);
     if golden_rule_violations > 0 {
@@ -149,6 +162,14 @@ pub fn verify(
         cases_checked: corpus.len(),
         golden_rule_violations,
         emit_order_violations,
+        coverage: VerifyCoverage {
+            network_rules_total,
+            network_rules_probed,
+            rewrite_receipts_total: receipts.len(),
+            rewrite_receipts_exercised,
+            cosmetic_hosts_total,
+            cosmetic_hosts_checked,
+        },
     })
 }
 
@@ -171,7 +192,7 @@ pub fn bench(
     let admitted_noopt = build_engine(&admitted_lists, resources, false);
     let candidate_noopt = build_engine(&candidate_lists, resources, false);
 
-    let corpus = generate_corpus(admitted_rules, config.verify.max_cases);
+    let (corpus, _) = generate_corpus(admitted_rules, config.verify.max_cases);
     let iterations = config.verify.bench_iterations.max(1);
     let admitted_qps = throughput(&admitted_opt, &corpus, iterations);
     let candidate_qps = throughput(&candidate_opt, &corpus, iterations);
@@ -258,10 +279,11 @@ const REQUEST_TYPE_BITS: [(&str, u32); 13] = [
 
 const METHOD_BITS: [(&str, u32); 3] = [("GET", 1 << 26), ("HEAD", 1 << 27), ("POST", 1 << 30)];
 
-fn generate_corpus(rules: &[Rule], max_cases: usize) -> Vec<CorpusCase> {
+fn generate_corpus(rules: &[Rule], max_cases: usize) -> (Vec<CorpusCase>, usize) {
     let max_cases = max_cases.max(1);
     let mut cases = Vec::new();
     let mut seen = BTreeSet::new();
+    let mut probed_rules = BTreeSet::new();
 
     fn push(
         cases: &mut Vec<CorpusCase>,
@@ -434,11 +456,15 @@ fn generate_corpus(rules: &[Rule], max_cases: usize) -> Vec<CorpusCase> {
                 }
             }
         }
-        cases.extend(prioritized_sample(rule_cases, per_rule_limit));
+        let sampled = prioritized_sample(rule_cases, per_rule_limit);
+        if !sampled.is_empty() {
+            probed_rules.insert(network.engine_id);
+        }
+        cases.extend(sampled);
     }
 
     cases.truncate(max_cases);
-    cases
+    (cases, probed_rules.len())
 }
 
 fn mask_types(mask: u32) -> Vec<&'static str> {
@@ -591,6 +617,90 @@ fn evenly_sample(cases: Vec<CorpusCase>, limit: usize) -> Vec<CorpusCase> {
         .collect()
 }
 
+/// Select at most `limit` values evenly across the whole input, so a capped probe set still
+/// covers every source instead of only the lexicographically first ones.
+fn stride_sample<T: Clone>(values: Vec<T>, limit: usize) -> Vec<T> {
+    if values.len() <= limit || limit == 0 {
+        return values;
+    }
+    let step = values.len() / limit;
+    (0..limit)
+        .filter_map(|index| values.get(index * step).cloned())
+        .collect()
+}
+
+/// Build one or two targeted differential probes from every rewrite receipt. Global rule
+/// sampling alone can miss a rewrite entirely when its removed rule is not selected.
+fn generate_receipt_corpus(
+    receipts: &[RewriteReceipt],
+    budget: usize,
+) -> (Vec<CorpusCase>, usize) {
+    if budget == 0 || receipts.is_empty() {
+        return (Vec::new(), 0);
+    }
+    let mut cases = Vec::new();
+    let mut seen = BTreeSet::new();
+    let mut exercised = 0;
+    let stride = (receipts.len() / budget).max(1);
+    for (index, receipt) in receipts.iter().enumerate() {
+        if cases.len() >= budget {
+            break;
+        }
+        if index % stride != 0 {
+            continue;
+        }
+        let mut added = false;
+        for (side, text) in receipt
+            .before
+            .iter()
+            .map(|text| ("before", text))
+            .chain(std::iter::once(("after", &receipt.after)))
+        {
+            let Ok(parsed) = parse_filter(text, false, ParseOptions::default()) else {
+                continue;
+            };
+            let ParsedLine::Network(filter) = parsed else {
+                continue;
+            };
+            let mut urls = Vec::new();
+            if let Some(host) = filter.hostname.as_deref() {
+                urls.push(format!("https://{host}/rs-probe.js"));
+            }
+            if let Some(body) = filter.filter.string_view() {
+                let body = body.trim_matches(|c: char| c == '|' || c == '^');
+                if !body.is_empty() {
+                    urls.push(format!("https://neutral.example/path/{body}"));
+                }
+            }
+            for (url_index, url) in urls.into_iter().take(2).enumerate() {
+                for kind in ["script", "image"] {
+                    let label = format!(
+                        "receipt:{}:{}:{side}:{url_index}:{kind}",
+                        receipt.id, receipt.family
+                    );
+                    if seen.insert(label.clone()) {
+                        cases.push(CorpusCase {
+                            url: url.clone(),
+                            source_url: format!("https://{}.example/", receipt.source_id),
+                            request_type: kind,
+                            method: "GET",
+                            label,
+                        });
+                        added = true;
+                    }
+                }
+            }
+            if cases.len() >= budget {
+                break;
+            }
+        }
+        if added {
+            exercised += 1;
+        }
+    }
+    (cases, exercised)
+}
+
 fn cosmetic_hosts(rules: &[Rule]) -> BTreeSet<String> {
     let mut hosts = BTreeSet::new();
     for rule in rules {
@@ -697,15 +807,17 @@ fn join_lines(lines: &[&str]) -> String {
     text
 }
 
-fn passes_golden_rule(rule: &Rule) -> bool {
+fn passes_golden_rule(rule: &Rule, config: &Config) -> bool {
     if rule.eligibility() != &Eligibility::Eligible {
         return false;
     }
     match rule {
         Rule::Network(network) => {
-            !network.is_regex
-                && !network.is_complete_regex
+            let regex_ok = !network.is_complete_regex
                 && !network.is_hostname_regex
+                && (!network.is_regex
+                    || (config.admit.literal_boundary_regex && network.is_literal_boundary_regex));
+            regex_ok
                 && !network.match_case
                 && !network
                     .dialect_gaps

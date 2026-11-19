@@ -41,6 +41,10 @@ A successful build publishes all artifacts under `dist/`:
 
 Verification is a hard publish gate: with `verify.required = true`, any mismatch beyond
 `max_mismatches = 0` leaves artifacts in `out/.staging-<build-id>` and exits with status 2.
+`verify.json` also records probe coverage (rules, rewrite receipts, and cosmetic hosts sampled vs.
+total) so a zero-mismatch result is interpretable. Network patterns using `^` as a separator are
+admitted as literal-boundary matchers; full regexes, hostname wildcards, and path wildcards remain
+excluded.
 
 ## GitHub Actions
 

@@ -158,7 +158,11 @@ fn admit_network(
                 .unwrap_or_else(|| "unsupported syntax".to_string()),
         ));
     }
-    if rule.is_regex || rule.is_complete_regex || rule.is_hostname_regex {
+    let regex_excluded = rule.is_complete_regex
+        || rule.is_hostname_regex
+        || (rule.is_regex
+            && !(config.admit.literal_boundary_regex && rule.is_literal_boundary_regex));
+    if regex_excluded {
         return Err(ExclusionReason::Regex);
     }
     if rule.match_case {

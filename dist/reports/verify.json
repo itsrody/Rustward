@@ -1,7 +1,15 @@
 {
   "required": true,
   "mismatches": [],
-  "cases_checked": 5000,
+  "cases_checked": 420580,
   "golden_rule_violations": 0,
-  "emit_order_violations": 0
+  "emit_order_violations": 0,
+  "coverage": {
+    "network_rules_total": 669559,
+    "network_rules_probed": 243380,
+    "rewrite_receipts_total": 43886,
+    "rewrite_receipts_exercised": 42499,
+    "cosmetic_hosts_total": 74282,
+    "cosmetic_hosts_checked": 2048
+  }
 }

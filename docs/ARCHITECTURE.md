@@ -118,6 +118,14 @@ properties:
 | Cosmetic hide / unhide | Single native CSS selector, or one allowlisted lightweight procedural operator | Normalize only if result stays eligible; otherwise exclude |
 | Scriptlet rules | `##+js(...)` from the official library, grade recorded, permission + realization gates pass | D11 admits or excludes; no pass-through |
 | Injected CSS/JS, HTML filters, action operators, complex procedural operators | Never | Exclude; D5/D7/R11 stay removed/disabled |
+| Network patterns flagged `IS_REGEX` only because of `^` separators | Literal apart from the separator token, with no `*`, `/.../`, or hostname wildcard | **Allowed** when `admit.literal_boundary_regex = true`; the engine compiles these to a bounded generated matcher, not a user-authored regex |
+
+adblock sets `IS_REGEX` whenever a pattern contains `*` or `^`. A pattern whose only special token is
+`^` is still a literal URL matcher: the engine escapes every other character and expands `^` to a
+separator class. These rules are admitted as the `literal-boundary` class; full regexes (`/.../`),
+hostname wildcards (`IS_HOSTNAME_REGEX`), and path wildcards (`*`) remain excluded. The class is
+controlled by `admit.literal_boundary_regex` and is checked by both ADMIT and the golden-rule
+assertion in verification.
 
 **Rewrite-or-exclude.** `analyze` labels every rule `ELIGIBLE`,
 `REWRITABLE_TO_ELIGIBLE`, or `INELIGIBLE`. Rules in the second class are handed to the rewriter;
@@ -887,8 +895,17 @@ value covering block, `important`, exception (queried with `force_check_exceptio
 `redirect`, `rewritten_url`, and `get_csp_directives()`. A rule-only block/exception comparison would
 miss silent regressions in special actions, `$domain`/`$to` targeting, `removeparam`, and request
 type/method narrowing, so the corpus also samples across the whole list by stride and adds
-special-action, domain/to-domain, query-parameter, and expanded method probes. `verify.max_mismatches`
-is **0** in production and cannot be relaxed: any mismatch blocks publication with exit code 2.
+special-action, domain/to-domain, query-parameter, and expanded method probes. Verification also
+builds targeted probes from every rewrite receipt's before/after text, so a rewrite whose removed rule
+is missed by global stride sampling is still exercised. Cosmetic hosts are selected by stride across
+the full host set instead of taking the first `max_cosmetic_hosts` entries.
+
+`reports/verify.json` reports coverage alongside mismatches: `network_rules_total` /
+`network_rules_probed`, `rewrite_receipts_total` / `rewrite_receipts_exercised`, and
+`cosmetic_hosts_total` / `cosmetic_hosts_checked`. `verify.max_cases` is set high enough to probe a
+representative slice of every family; raise it when new large rule families are admitted.
+`verify.max_mismatches` is **0** in production and cannot be relaxed: any mismatch blocks publication
+with exit code 2.
 
 For cosmetic filters, for each host in the union of cosmetic host sets:
 

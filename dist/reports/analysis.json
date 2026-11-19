@@ -1,6 +1,6 @@
 {
   "metrics": {
-    "badfilter_resolved": 126,
+    "badfilter_resolved": 129,
     "badfilter_targets_pruned": 30,
     "comments": 58067,
     "cosmetic_fast_native": 57713,
@@ -10,11 +10,11 @@
     "directives": 101,
     "effective_cosmetic_rules": 93576,
     "effective_network_rules": 683999,
-    "eligible": 708926,
+    "eligible": 751170,
     "empty_lines": 4006,
-    "excluded_by_gate": 70947,
+    "excluded_by_gate": 28703,
     "metadata": 38,
-    "network_rules": 543867,
+    "network_rules": 585989,
     "output_fast_native_css": 48183,
     "output_light_procedural": 127,
     "output_vetted_scriptlet": 21011,
@@ -40,6 +40,6 @@
     "xpath:SEMANTIC_GAP": 29
   },
   "eligibility": {
-    "ELIGIBLE": 708926
+    "ELIGIBLE": 751170
   }
 }

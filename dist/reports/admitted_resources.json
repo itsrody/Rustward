@@ -44,6 +44,17 @@
     "reason": "ENGINE_TRUST: engine did not realize googlesyndication_adsbygoogle.js"
   },
   {
+    "name": "noop.json",
+    "canonical_name": "noop.json",
+    "grade": "standard",
+    "digest": "dbcade873edd9cc5b6f49d554de4855bc1f6dbc9b8957d121b297440156d8520",
+    "permission": 0,
+    "source_id": "ag-base-easylist",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.json"
+  },
+  {
     "name": "noop.js",
     "canonical_name": "noop.js",
     "grade": "standard",
@@ -43373,6 +43384,28 @@
     "reason": "ENGINE_TRUST: engine did not realize noop.txt"
   },
   {
+    "name": "noop.txt",
+    "canonical_name": "noop.txt",
+    "grade": "standard",
+    "digest": "029c58a6f8077a578789dda5c5f9c05309def9806c7329850005862fd2db424a",
+    "permission": 0,
+    "source_id": "ag-tracking",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.txt"
+  },
+  {
+    "name": "noop.txt",
+    "canonical_name": "noop.txt",
+    "grade": "standard",
+    "digest": "029c58a6f8077a578789dda5c5f9c05309def9806c7329850005862fd2db424a",
+    "permission": 0,
+    "source_id": "ag-tracking",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.txt"
+  },
+  {
     "name": "noop.js",
     "canonical_name": "noop.js",
     "grade": "standard",
@@ -44471,6 +44504,17 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
+  },
+  {
+    "name": "noop.json",
+    "canonical_name": "noop.json",
+    "grade": "standard",
+    "digest": "dbcade873edd9cc5b6f49d554de4855bc1f6dbc9b8957d121b297440156d8520",
+    "permission": 0,
+    "source_id": "ag-tracking",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.json"
   },
   {
     "name": "noop.json",
@@ -186373,6 +186417,28 @@
     "reason": null
   },
   {
+    "name": "noopjs",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
+  },
+  {
+    "name": "noopjs",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
+  },
+  {
     "name": "nostif",
     "canonical_name": "prevent-setTimeout.js",
     "grade": "standard",
@@ -197098,6 +197164,17 @@
     "reason": null
   },
   {
+    "name": "google-analytics_analytics.js",
+    "canonical_name": "google-analytics_analytics.js",
+    "grade": "standard",
+    "digest": "45dfe45fff8625f0b8bd0a2422718caec53a4f5a2b49d9f00c2cf79b2c92fc50",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize google-analytics_analytics.js"
+  },
+  {
     "name": "aeld",
     "canonical_name": "prevent-addEventListener.js",
     "grade": "standard",
@@ -197569,6 +197646,17 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
+  },
+  {
+    "name": "noopjs",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
   },
   {
     "name": "nostif",
@@ -200297,6 +200385,17 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
+  },
+  {
+    "name": "32x32.png",
+    "canonical_name": "32x32.png",
+    "grade": "standard",
+    "digest": "421e9b4486fdf16be2e843ca4d402cd63688897bcb6536bf27c0b0d258baaaef",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize 32x32.png"
   },
   {
     "name": "nowoif",
@@ -206437,6 +206536,17 @@
     "reason": "ENGINE_TRUST: engine did not realize google-ima.js"
   },
   {
+    "name": "noopjs",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
+  },
+  {
     "name": "nostif",
     "canonical_name": "prevent-setTimeout.js",
     "grade": "standard",
@@ -212454,6 +212564,17 @@
     "reason": null
   },
   {
+    "name": "noop.js",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
+  },
+  {
     "name": "noopmp4-1s",
     "canonical_name": "noop-1s.mp4",
     "grade": "standard",
@@ -216744,6 +216865,17 @@
     "reason": null
   },
   {
+    "name": "noop.js",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
+  },
+  {
     "name": "noop.css",
     "canonical_name": "noop.css",
     "grade": "standard",
@@ -218557,6 +218689,17 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
+  },
+  {
+    "name": "noop.txt",
+    "canonical_name": "noop.txt",
+    "grade": "standard",
+    "digest": "029c58a6f8077a578789dda5c5f9c05309def9806c7329850005862fd2db424a",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.txt"
   },
   {
     "name": "nosiif",
@@ -224125,6 +224268,17 @@
     "reason": null
   },
   {
+    "name": "noopframe",
+    "canonical_name": "noop.html",
+    "grade": "standard",
+    "digest": "6b97b9fae0b969e63380966f12d8a8e8a26d33eeee746a55d3525bfcd8cb1e99",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.html"
+  },
+  {
     "name": "no-fetch-if",
     "canonical_name": "prevent-fetch.js",
     "grade": "standard",
@@ -227843,6 +227997,17 @@
     "reason": "ENGINE_TRUST: engine did not realize noop-1s.mp4"
   },
   {
+    "name": "noop-1s.mp4",
+    "canonical_name": "noop-1s.mp4",
+    "grade": "standard",
+    "digest": "57aa7b7861f305f75f49d819148c4e2155bbc89b191964a35770fde22edff986",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop-1s.mp4"
+  },
+  {
     "name": "aost",
     "canonical_name": "abort-on-stack-trace.js",
     "grade": "standard",
@@ -228767,6 +228932,17 @@
     "reason": null
   },
   {
+    "name": "noop-0.1s.mp3",
+    "canonical_name": "noop-0.1s.mp3",
+    "grade": "standard",
+    "digest": "b2ef580f22c63f3858c1300253c3557f21c9e1d4b39c44ff2e261aa5b5fde539",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop-0.1s.mp3"
+  },
+  {
     "name": "no-fetch-if",
     "canonical_name": "prevent-fetch.js",
     "grade": "standard",
@@ -229106,6 +229282,17 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
+  },
+  {
+    "name": "noopjs",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
   },
   {
     "name": "no-fetch-if",
@@ -230615,6 +230802,17 @@
     "reason": null
   },
   {
+    "name": "google-ima.js",
+    "canonical_name": "google-ima.js",
+    "grade": "standard",
+    "digest": "07337c867c40965ee6daedc0ad1adea6aef69a140ba43635124929be2af2fd22",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize google-ima.js"
+  },
+  {
     "name": "trusted-replace-outbound-text",
     "canonical_name": "trusted-replace-outbound-text.js",
     "grade": "trusted",
@@ -230712,6 +230910,17 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
+  },
+  {
+    "name": "noopjs",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
   },
   {
     "name": "aeld",
@@ -234661,6 +234870,17 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
+  },
+  {
+    "name": "noopjs",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
   },
   {
     "name": "nostif",
@@ -242130,6 +242350,17 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
+  },
+  {
+    "name": "noopjs",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
   },
   {
     "name": "nowoif",
@@ -253055,6 +253286,17 @@
     "reason": null
   },
   {
+    "name": "fingerprint2.js",
+    "canonical_name": "fingerprint2.js",
+    "grade": "standard",
+    "digest": "792f41c2a592af7f1913ee5c8c5f7297677cad27a054eed78b17261a368d9768",
+    "permission": 0,
+    "source_id": "ubo-privacy-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize fingerprint2.js"
+  },
+  {
     "name": "aopr",
     "canonical_name": "abort-on-property-read.js",
     "grade": "standard",
@@ -253110,6 +253352,28 @@
     "reason": null
   },
   {
+    "name": "noop.css",
+    "canonical_name": "noop.css",
+    "grade": "standard",
+    "digest": "a5199465550e8d39252c96276c5f73dab5a55feb4581ac9d21c64495dd95aeae",
+    "permission": 0,
+    "source_id": "ubo-privacy-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.css"
+  },
+  {
+    "name": "noop.css",
+    "canonical_name": "noop.css",
+    "grade": "standard",
+    "digest": "a5199465550e8d39252c96276c5f73dab5a55feb4581ac9d21c64495dd95aeae",
+    "permission": 0,
+    "source_id": "ubo-privacy-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.css"
+  },
+  {
     "name": "remove-cookie",
     "canonical_name": "remove-cookie.js",
     "grade": "standard",
@@ -253163,6 +253427,17 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
+  },
+  {
+    "name": "1x1.gif",
+    "canonical_name": "1x1.gif",
+    "grade": "standard",
+    "digest": "48d71754d62bf1dd1921494ee9576e8a9a8f83cde27d672850435b4dad428302",
+    "permission": 0,
+    "source_id": "ubo-privacy-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize 1x1.gif"
   },
   {
     "name": "json-prune",
@@ -264174,6 +264449,17 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
+  },
+  {
+    "name": "noopjs",
+    "canonical_name": "noop.js",
+    "grade": "standard",
+    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ubo-annoyances-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.js"
   },
   {
     "name": "nostif",

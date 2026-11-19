@@ -230,6 +230,14 @@ fn parse_line(
 
     match parse_filter(trimmed, true, opts) {
         Ok(ParsedLine::Network(filter)) => {
+            let body = filter.filter.string_view().unwrap_or_default();
+            let is_regex = filter.is_regex();
+            let is_literal_boundary_regex = is_regex
+                && !filter.is_complete_regex()
+                && !filter
+                    .mask
+                    .contains(adblock::filters::network::NetworkFilterMask::IS_HOSTNAME_REGEX)
+                && is_literal_boundary_body(&body);
             let canonical_text = if matches!(format, FilterFormat::Hosts) {
                 hosts_canonical_text(trimmed).unwrap_or_else(|| trimmed.to_string())
             } else {
@@ -248,7 +256,8 @@ fn parse_line(
                 left_anchor: filter.is_left_anchor(),
                 right_anchor: filter.is_right_anchor(),
                 hostname_anchor: filter.is_hostname_anchor(),
-                is_regex: filter.is_regex(),
+                is_regex,
+                is_literal_boundary_regex,
                 is_complete_regex: filter.is_complete_regex(),
                 is_hostname_regex: filter
                     .mask
@@ -295,6 +304,18 @@ fn parse_line(
             Ok(base(ParsedOutcome::Unsupported { reason, gap }))
         }
     }
+}
+
+/// The engine flags any pattern containing `^` or `*` as `IS_REGEX`, but those are adblock's
+/// separator and wildcard tokens, not user-authored regular expressions. A body whose only
+/// special token is `^` compiles to a bounded literal + separator matcher, which is safe to
+/// admit once the complete-regex and hostname-wildcard families have been excluded.
+fn is_literal_boundary_body(body: &str) -> bool {
+    body.contains('^')
+        && !body.contains('*')
+        && !body
+            .chars()
+            .any(|c| matches!(c, '[' | ']' | '(' | ')' | '{' | '}' | '\\' | '+' | '?'))
 }
 
 fn effective_dialect(source: &model::SourceConfig) -> Dialect {
@@ -765,4 +786,78 @@ fn option_map(options: &[(String, Vec<String>)]) -> HashMap<String, String> {
         }
     }
     map
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use fetch::FetchedSource;
+    use model::SourceConfig;
+    use std::collections::BTreeMap;
+
+    fn classify(text: &str) -> model::NetworkRule {
+        let source = FetchedSource {
+            config: SourceConfig {
+                id: "test".to_string(),
+                url: "https://example.test/list.txt".to_string(),
+                path: None,
+                sha256: None,
+                include_sha256: BTreeMap::new(),
+                dialect: Dialect::Ubo,
+                format: SourceFormat::Standard,
+                host_semantics: None,
+                priority: 50,
+                enabled: true,
+                trusted: false,
+                permissions: 0,
+                license: String::new(),
+            },
+            text: String::new(),
+            sha256: String::new(),
+            final_url: String::new(),
+            includes: BTreeMap::new(),
+        };
+        let config_path = Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../..")
+            .join("tests/fixtures/sources.toml");
+        let config = Config::load(&config_path).expect("load fixture config");
+        let record = parse_line(
+            &source,
+            EffectiveLine {
+                line_no: 1,
+                text: text.to_string(),
+            },
+            &config,
+        )
+        .expect("parse line");
+        match record.outcome {
+            ParsedOutcome::Network(rule) => rule,
+            other => panic!("expected network rule, got {:?}", other),
+        }
+    }
+
+    #[test]
+    fn literal_boundary_regex_only_marks_separator_patterns() {
+        let anchored = classify("||0.gravatar.com/avatar/abc123^$all");
+        assert!(anchored.is_regex);
+        assert!(anchored.is_literal_boundary_regex);
+        assert!(!anchored.is_complete_regex);
+        assert!(!anchored.is_hostname_regex);
+
+        let complete = classify("/^139\\.45\\.197\\.24/");
+        assert!(complete.is_complete_regex);
+        assert!(!complete.is_literal_boundary_regex);
+
+        let wildcard = classify("||ads.livetv*.me^");
+        assert!(wildcard.is_hostname_regex);
+        assert!(!wildcard.is_literal_boundary_regex);
+
+        let path_wildcard = classify("||ads.example/path/*/banner^");
+        assert!(path_wildcard.is_regex);
+        assert!(!path_wildcard.is_literal_boundary_regex);
+
+        let plain = classify("||ads.example^$script");
+        assert!(!plain.is_regex);
+        assert!(!plain.is_literal_boundary_regex);
+    }
 }

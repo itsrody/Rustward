@@ -4,23 +4,23 @@
     "badfilter_targets_pruned": 30,
     "batch_excluded_nested_procedural": 439,
     "comments": 58064,
-    "cosmetic_fast_native": 57698,
+    "cosmetic_fast_native": 57699,
     "cosmetic_light_procedural": 352,
-    "cosmetic_rules": 69507,
+    "cosmetic_rules": 69508,
     "cosmetic_vetted_scriptlet": 23926,
     "directives": 101,
-    "effective_cosmetic_rules": 93831,
-    "effective_network_rules": 684109,
-    "eligible": 757143,
+    "effective_cosmetic_rules": 93832,
+    "effective_network_rules": 684120,
+    "eligible": 757155,
     "empty_lines": 4006,
     "excluded_by_gate": 22858,
     "metadata": 38,
-    "network_rules": 591008,
-    "output_fast_native_css": 48170,
+    "network_rules": 590224,
+    "output_fast_native_css": 48171,
     "output_light_procedural": 327,
     "output_vetted_scriptlet": 21010,
     "parse_errors": 2061,
-    "raw_lines": 842210,
+    "raw_lines": 842222,
     "semantic_gaps_accepted": 70772,
     "semantic_gaps_accepted_all": 70772,
     "semantic_gaps_excluded": 517,
@@ -42,7 +42,7 @@
   },
   "dialects": {
     "hosts": 92056,
-    "ubo": 750154
+    "ubo": 750166
   },
   "gaps": {
     "all:SEMANTIC_GAP": 70772,
@@ -59,6 +59,6 @@
     "xpath:SEMANTIC_GAP": 29
   },
   "eligibility": {
-    "ELIGIBLE": 757143
+    "ELIGIBLE": 757155
   }
 }

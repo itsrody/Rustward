@@ -4580,7 +4580,7 @@ ag-base-easylist	20319	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 ag-base-easylist	20320	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20321	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20326	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	47370	ubo	xpath	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	47381	ubo	xpath	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-tracking	9	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	10	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	11	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -7969,103 +7969,102 @@ ag-annoyances	26354	ubo	matches-path	SEMANTIC_GAP	procedural operator requires a
 ag-annoyances	26355	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-annoyances	26373	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-annoyances	26381	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	26393	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26447	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26480	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26394	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26448	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	26481	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26555	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26557	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26594	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26604	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26649	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26688	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26710	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26729	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26482	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26556	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26558	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26595	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26605	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26650	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26689	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26711	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	26730	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26744	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26731	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	26745	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26751	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26776	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26854	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26899	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26918	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26934	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26954	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	26967	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27002	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26746	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26752	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26777	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26855	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26900	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26919	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26935	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26955	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	26968	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	27003	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27010	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27004	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	27011	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27016	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27045	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27012	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27017	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	27046	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27052	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27075	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27047	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27053	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	27076	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27099	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27185	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27216	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27221	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	27313	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27315	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27318	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27377	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27441	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	27510	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27687	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27837	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	27906	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	27944	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28005	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28018	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28060	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28121	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	28234	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28236	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28273	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	28489	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	28491	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	28527	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28620	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28658	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27077	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27100	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27186	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27217	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27222	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	27314	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27316	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27319	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27378	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27442	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	27511	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27688	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27838	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	27907	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	27945	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28006	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28019	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28061	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28122	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	28235	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28237	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28274	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	28490	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	28492	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	28528	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28621	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	28659	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28684	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28660	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	28685	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28693	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28718	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28724	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28744	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28772	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28776	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28818	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	28827	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	28854	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	28886	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28686	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28694	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28719	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28725	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28745	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28773	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28777	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28819	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	28828	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	28855	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-annoyances	28887	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28902	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28923	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28888	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28903	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	28924	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28942	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	28976	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	29030	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	29061	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29065	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29111	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	29156	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29193	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28925	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28943	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	28977	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	29031	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	29062	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29066	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29112	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	29157	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29194	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29195	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29214	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29196	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29215	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29218	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29220	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	29226	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29262	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29265	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	29296	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29216	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29219	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29221	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	29227	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29263	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29266	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-annoyances	29297	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29298	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29300	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29299	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29301	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29302	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29303	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -8084,7 +8083,7 @@ ag-annoyances	29315	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualifica
 ag-annoyances	29316	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29317	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29318	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29320	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29319	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29321	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29322	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29323	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -8319,7 +8318,7 @@ ag-annoyances	29551	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualifica
 ag-annoyances	29552	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29553	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29554	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29556	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29555	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29557	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29558	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29559	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -8391,7 +8390,7 @@ ag-annoyances	29624	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualifica
 ag-annoyances	29625	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29626	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29627	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29629	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29628	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29630	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29631	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29632	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -8593,26 +8592,26 @@ ag-annoyances	29827	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualifica
 ag-annoyances	29828	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29829	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29830	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29832	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29831	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29833	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29835	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29834	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29836	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29837	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29838	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29840	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29842	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29839	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29841	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29843	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29844	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29845	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29846	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29847	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29848	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29850	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29849	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29851	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29852	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29857	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29870	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-annoyances	29928	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29853	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29858	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29871	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-annoyances	29929	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29930	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29931	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -8678,7 +8677,7 @@ ag-annoyances	29990	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualifica
 ag-annoyances	29991	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29992	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29993	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	29995	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	29994	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29996	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29997	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	29998	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -8804,32 +8803,33 @@ ag-annoyances	30117	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualifica
 ag-annoyances	30118	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	30119	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	30120	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	30176	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	30262	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	30482	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	30538	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	30882	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	30893	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	30900	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	30903	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	30908	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	30916	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30121	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	30177	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30263	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	30483	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30539	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30883	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30894	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30901	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30904	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30909	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-annoyances	30917	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	30934	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	30952	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30918	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30935	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-annoyances	30953	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	31220	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	31332	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-annoyances	31465	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	31550	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	31557	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	31565	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	31574	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	31578	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	31648	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	31684	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-annoyances	31699	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	31707	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	30954	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	31221	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	31333	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-annoyances	31466	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	31551	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	31558	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	31566	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	31575	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	31579	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	31649	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	31685	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-annoyances	31700	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-annoyances	31708	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 easyprivacy	6951	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 easyprivacy	11477	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 easyprivacy	11478	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification

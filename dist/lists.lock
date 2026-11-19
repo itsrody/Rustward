@@ -2,9 +2,9 @@
   "sources": {
     "ag-annoyances": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/14_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/1bc707502a00703b73b777bf54061c841354588dea8021810c96567959be0401",
-      "sha256": "1bc707502a00703b73b777bf54061c841354588dea8021810c96567959be0401",
-      "bytes": 2045212,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/6aac16b62d4575bd0ff1abec78ee8a4b95d5b1e1ab91577e476a3a69acfc322e",
+      "sha256": "6aac16b62d4575bd0ff1abec78ee8a4b95d5b1e1ab91577e476a3a69acfc322e",
+      "bytes": 2045291,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -13,14 +13,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "AdGuard Annoyances; see upstream ! Title/! Description metadata",
-      "etag": "\"c0adcc107bb9bf16a71726baf3898f49\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:16 GMT"
+      "etag": "\"de86cb02796419e0f7e73f057fc2f90a\"",
+      "last_modified": "Thu, 19 Nov 2026 12:57:33 GMT"
     },
     "ag-base-easylist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/2f1ff3c29e2f3060e917e973b4928a29ca4ce3b11c72646c2e3cbf43e2641aa8",
-      "sha256": "2f1ff3c29e2f3060e917e973b4928a29ca4ce3b11c72646c2e3cbf43e2641aa8",
-      "bytes": 2418259,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/6cb12007f235390d3336f7f54635eca4e292a519128c68f8a49b59ae3d7afbdf",
+      "sha256": "6cb12007f235390d3336f7f54635eca4e292a519128c68f8a49b59ae3d7afbdf",
+      "bytes": 2418512,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -29,8 +29,8 @@
       "trusted": false,
       "permissions": 0,
       "license": "AdGuard Base filter + EasyList; see upstream ! Title/! Description metadata",
-      "etag": "\"fc98ce15a644aec81bcc892b5a7a3f65\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:18 GMT"
+      "etag": "\"8cf9edaa5c2c55446a287b561a1b4552\"",
+      "last_modified": "Thu, 19 Nov 2026 12:57:34 GMT"
     },
     "ag-tracking": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt",
@@ -46,7 +46,7 @@
       "permissions": 0,
       "license": "AdGuard Tracking Protection; see upstream ! Title/! Description metadata",
       "etag": "\"3710fed2a0ab5d74c606d27727af6f56\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:28 GMT"
+      "last_modified": "Thu, 19 Nov 2026 12:57:45 GMT"
     },
     "dandelion-annoyances": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/250_optimized.txt",
@@ -62,7 +62,7 @@
       "permissions": 0,
       "license": "Dandelion Sprout's Annoyances; see upstream ! Title/! Description metadata",
       "etag": "\"3c34b96b8ea36ccf39488796a9357b31\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:16 GMT"
+      "last_modified": "Thu, 19 Nov 2026 12:57:33 GMT"
     },
     "easyprivacy": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/118_optimized.txt",
@@ -78,7 +78,7 @@
       "permissions": 0,
       "license": "EasyPrivacy; see upstream ! Title/! Description metadata",
       "etag": "\"1d760daace7f133033f1bc85b307844b\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:16 GMT"
+      "last_modified": "Thu, 19 Nov 2026 12:57:33 GMT"
     },
     "fanboy-annoyances": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/122_optimized.txt",
@@ -94,7 +94,7 @@
       "permissions": 0,
       "license": "Fanboy's Annoyances; see upstream ! Title/! Description metadata",
       "etag": "\"4d39e7b37bf4e002aa37180f3ea98552\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:17 GMT"
+      "last_modified": "Thu, 19 Nov 2026 12:57:34 GMT"
     },
     "fanboy-social": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/123_optimized.txt",
@@ -110,7 +110,7 @@
       "permissions": 0,
       "license": "Fanboy's Social Blocking; see upstream ! Title/! Description metadata",
       "etag": "\"9a6277773f55eb996430dcb34964bc46\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:15 GMT"
+      "last_modified": "Thu, 19 Nov 2026 12:57:32 GMT"
     },
     "malicious-url": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/208_optimized.txt",
@@ -126,7 +126,7 @@
       "permissions": 0,
       "license": "Online Malicious URL Blocklist; see upstream ! Title/! Description metadata",
       "etag": "\"ce63eeae588f1869a6ddaf9264deeda3\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:17 GMT"
+      "last_modified": "Thu, 19 Nov 2026 12:57:34 GMT"
     },
     "phishing-url": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/255_optimized.txt",
@@ -142,7 +142,7 @@
       "permissions": 0,
       "license": "Phishing URL Blocklist; see upstream ! Title/! Description metadata",
       "etag": "\"1cbdd4a31d47d93a1ff635ea89818d9d\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:18 GMT"
+      "last_modified": "Thu, 19 Nov 2026 12:57:35 GMT"
     },
     "scam-blocklist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/256_optimized.txt",
@@ -158,7 +158,7 @@
       "permissions": 0,
       "license": "Scam Blocklist by DurableNapkin; see upstream ! Title/! Description metadata",
       "etag": "\"1ab3c18ff53436f74a76a50658d78ada\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:16 GMT"
+      "last_modified": "Thu, 19 Nov 2026 12:57:33 GMT"
     },
     "stevenblack-fakenews-gambling": {
       "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts",
@@ -220,7 +220,7 @@
       "permissions": 0,
       "license": "uBlock Origin Badware Risks; see upstream ! Title/! Description metadata",
       "etag": "\"96892cb0edd968f2abe24fb8472de4c1\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:15 GMT"
+      "last_modified": "Thu, 19 Nov 2026 12:57:32 GMT"
     },
     "ubo-badware-min": {
       "url": "https://ublockorigin.pages.dev/filters/badware.min.txt",
@@ -281,7 +281,7 @@
       "permissions": 0,
       "license": "Adblock Warning Removal; see upstream ! Title/! Description metadata",
       "etag": "\"f767a036620d7ba64a7b2d127a8eecde\"",
-      "last_modified": "Thu, 19 Nov 2026 11:48:16 GMT"
+      "last_modified": "Thu, 19 Nov 2026 12:57:33 GMT"
     },
     "web-annoyances-ultralist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/201_optimized.txt",

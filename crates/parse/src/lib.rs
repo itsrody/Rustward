@@ -315,7 +315,7 @@ fn is_literal_boundary_body(body: &str) -> bool {
         && !body.contains('*')
         && !body
             .chars()
-            .any(|c| matches!(c, '[' | ']' | '(' | ')' | '{' | '}' | '\\' | '+' | '?'))
+            .any(|c| matches!(c, '[' | ']' | '(' | ')' | '{' | '}' | '\\' | '+'))
 }
 
 fn effective_dialect(source: &model::SourceConfig) -> Dialect {
@@ -843,6 +843,9 @@ mod tests {
         assert!(anchored.is_literal_boundary_regex);
         assert!(!anchored.is_complete_regex);
         assert!(!anchored.is_hostname_regex);
+
+        let query = classify("||docs.google.com/uc?export=download&id=abc123^$all");
+        assert!(query.is_literal_boundary_regex);
 
         let complete = classify("/^139\\.45\\.197\\.24/");
         assert!(complete.is_complete_regex);

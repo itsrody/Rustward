@@ -80,6 +80,10 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(!first_list.contains("cancelled.example"));
     assert!(!first_list.contains("exception-cancelled.example"));
 
+    let excluded = fs::read_to_string(root.join("reports/excluded.tsv")).expect("read excluded");
+    assert!(excluded.contains("BATCH_EXCLUDED"));
+    assert!(excluded.contains("example.com##.ad:matches-css(display: none)"));
+
     for artifact in [
         "RustShield.txt.sha256",
         "lists.lock",

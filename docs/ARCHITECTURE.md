@@ -146,6 +146,14 @@ barriers — never rewritten, deduplicated, or subsumed.
 | Complex/chained procedural operators, regex-valued procedural args | `procedural_action` JSON | Slow/complex | Rewrite if provably eligible; else exclude |
 | Action operators, `#$#`, `#%#`, HTML filters, unknown scriptlets | extra machinery | Slow/unsupported | **Excluded** |
 
+**Batch slow/complex exclusion.** ADMIT first removes whole rule families named in
+`admit.exclude_families`, recording each removal as `BATCH_EXCLUDED` with the family in the analysis
+metrics. The default is `["nested_procedural"]`: adblock folds some nested slow operators into a
+single `CssSelector`, so they would otherwise pass the tier-0 shape check. The classifier also
+recognizes `regex`, `literal_boundary_regex`, `light_procedural`, `vetted_scriptlet`,
+`action_operator`, and `semantic_gap` for future batch gates; those are not excluded by default.
+VERIFY applies the same family gate to its golden-rule assertion.
+
 Allowed native CSS is any selector parsing to a single `CssSelector` with no action — including
 `:has()`, `:not()`, combinators, attribute selectors, and non-procedural pseudo-classes. The default
 lightweight procedural allowlist is `:has-text(literal)` and `:matches-attr(literal-name)`; literal
@@ -621,7 +629,7 @@ guess semantics.
 | Native CSS pseudo-classes (`:has()`, `:not()`, combinators, attribute selectors) | all | Parsed as a single `CssSelector` | Allowed as fast native CSS |
 | `#?#`, `#@?#` | ABP / AG extended CSS | Supported; engine translates some ABP/AG operators (`-abp-contains`, `contains` → `has-text`, etc.) | Allowed only if translation yields exactly one allowlisted lightweight operator; otherwise D10 |
 | `:has-text(literal)`, `:matches-attr(literal-name)` | uBO / AG | Parsed as lightweight procedural operators | Allowed as `LIGHT_PROCEDURAL`; literal args only, no `/regex/`, single operator |
-| `:matches-css*`, `:matches-path`, `:min-text-length`, `:upward`, `:xpath`, chained operators, regex-valued procedural args | uBO / AG | Parsed as procedural operators | **Excluded as `SLOW_COSMETIC_OPERATOR` (D10)** unless D6 yields an eligible form |
+| `:matches-css*`, `:matches-path`, `:min-text-length`, `:upward`, `:xpath`, chained operators, regex-valued procedural args | uBO / AG | Parsed as procedural operators; some nested forms fold into a single `CssSelector` | **Excluded as `SLOW_COSMETIC_OPERATOR` (D10) or `BATCH_EXCLUDED` (`nested_procedural`)** unless D6 yields an eligible form |
 | `#$#`, `#@$#` | AG CSS injection | **Explicitly rejected** by the parser | D10; D5 removed from the active catalog |
 | `#%#`, `#@%#` | AG JS injection | **Explicitly rejected** | D10 |
 | `##+js(...)` | uBO | Supported (scriptlet args + `PermissionMask`) | D11 admits only official-library scriptlets whose grade, permission gate, and engine realization pass; otherwise excluded |
@@ -990,6 +998,11 @@ bench_iterations = 3
 enabled = true
 env = ["chromium", "ext_ublock"]          # pinned !#if environment
 include_root = "config/includes"          # content-addressed !#include tree
+
+[admit]
+# Slow/complex families removed in one batch before per-rule admission.
+exclude_families = ["nested_procedural"]
+literal_boundary_regex = true
 
 [golden_rule]
 # Allowlist for the whole list, not only cosmetics.

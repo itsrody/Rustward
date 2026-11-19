@@ -63,6 +63,7 @@ pub enum ExclusionReason {
     BadfilterTarget(String),
     Policy(String),
     RewriteFailed(String),
+    BatchExcluded(String),
 }
 
 impl ExclusionReason {
@@ -80,6 +81,7 @@ impl ExclusionReason {
             Self::BadfilterTarget(_) => "BADFILTER_TARGET",
             Self::Policy(_) => "POLICY",
             Self::RewriteFailed(_) => "REWRITE_FAILED",
+            Self::BatchExcluded(_) => "BATCH_EXCLUDED",
         }
     }
 
@@ -97,6 +99,7 @@ impl ExclusionReason {
             Self::Regex => "regex rules are not fast-native",
             Self::MatchCase => "match-case requires regex machinery",
             Self::ActionOperator => "DOM action operators are excluded",
+            Self::BatchExcluded(s) => s,
         }
     }
 }
@@ -162,6 +165,40 @@ impl ScriptletGrade {
             Self::Standard => "standard",
             Self::Trusted => "trusted",
         }
+    }
+}
+
+/// A slow or complex rule class that can be excluded in one batch from `admit.exclude_families`.
+/// Plain network rules and plain native CSS have no family and are never batch-excluded.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum RuleFamily {
+    Regex,
+    LiteralBoundaryRegex,
+    NestedProcedural,
+    LightProcedural,
+    VettedScriptlet,
+    ActionOperator,
+    SemanticGap,
+}
+
+impl RuleFamily {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Regex => "regex",
+            Self::LiteralBoundaryRegex => "literal_boundary_regex",
+            Self::NestedProcedural => "nested_procedural",
+            Self::LightProcedural => "light_procedural",
+            Self::VettedScriptlet => "vetted_scriptlet",
+            Self::ActionOperator => "action_operator",
+            Self::SemanticGap => "semantic_gap",
+        }
+    }
+}
+
+impl std::fmt::Display for RuleFamily {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(self.as_str())
     }
 }
 
@@ -323,12 +360,72 @@ impl Rule {
         matches!(self, Self::Network(rule) if rule.is_badfilter)
     }
 
+    /// Classify slow or complex rules so callers can exclude whole families at once.
+    /// Returns `None` for plain network rules and plain native CSS.
+    pub fn family(&self) -> Option<RuleFamily> {
+        match self {
+            Self::Network(network) => network_family(network),
+            Self::Cosmetic(cosmetic) => cosmetic_family(cosmetic),
+        }
+    }
+
     pub fn provenance(&self) -> &[Origin] {
         match self {
             Self::Network(rule) => &rule.provenance,
             Self::Cosmetic(rule) => &rule.provenance,
         }
     }
+}
+
+/// adblock folds nested procedural operators into a single `CssSelector`, so a cosmetic rule can
+/// carry slow machinery while still looking like plain native CSS to the engine. Detect those
+/// tokens in the original text; a top-level operator is already handled by `selector_ops`.
+fn network_family(network: &NetworkRule) -> Option<RuleFamily> {
+    if network.is_complete_regex
+        || network.is_hostname_regex
+        || (network.is_regex && !network.is_literal_boundary_regex)
+    {
+        Some(RuleFamily::Regex)
+    } else if network.is_literal_boundary_regex {
+        Some(RuleFamily::LiteralBoundaryRegex)
+    } else if network
+        .dialect_gaps
+        .iter()
+        .any(|gap| gap.class == GapClass::SemanticGap)
+    {
+        Some(RuleFamily::SemanticGap)
+    } else {
+        None
+    }
+}
+
+fn cosmetic_family(cosmetic: &CosmeticRule) -> Option<RuleFamily> {
+    if cosmetic.action_detail.is_some() {
+        Some(RuleFamily::ActionOperator)
+    } else if matches!(cosmetic.payload, CosmeticPayload::VettedScriptlet { .. }) {
+        Some(RuleFamily::VettedScriptlet)
+    } else if matches!(cosmetic.payload, CosmeticPayload::LightProcedural { .. }) {
+        Some(RuleFamily::LightProcedural)
+    } else if has_nested_slow_operator(&cosmetic.text) {
+        Some(RuleFamily::NestedProcedural)
+    } else {
+        None
+    }
+}
+
+fn has_nested_slow_operator(text: &str) -> bool {
+    const MARKERS: &[&str] = &[
+        ":matches-css",
+        ":matches-path",
+        ":min-text-length",
+        ":upward",
+        ":xpath",
+        ":-abp-",
+        "#?#",
+        ":has-text(/",
+        ":matches-attr(/",
+    ];
+    MARKERS.iter().any(|marker| text.contains(marker))
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -353,6 +450,16 @@ pub enum ParsedOutcome {
         reason: ExclusionReason,
         gap: Option<DialectGap>,
     },
+}
+
+impl ParsedOutcome {
+    pub fn family(&self) -> Option<RuleFamily> {
+        match self {
+            Self::Network(network) => network_family(network),
+            Self::Cosmetic(cosmetic) => cosmetic_family(cosmetic),
+            _ => None,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

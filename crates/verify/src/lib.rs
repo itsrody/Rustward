@@ -631,10 +631,7 @@ fn stride_sample<T: Clone>(values: Vec<T>, limit: usize) -> Vec<T> {
 
 /// Build one or two targeted differential probes from every rewrite receipt. Global rule
 /// sampling alone can miss a rewrite entirely when its removed rule is not selected.
-fn generate_receipt_corpus(
-    receipts: &[RewriteReceipt],
-    budget: usize,
-) -> (Vec<CorpusCase>, usize) {
+fn generate_receipt_corpus(receipts: &[RewriteReceipt], budget: usize) -> (Vec<CorpusCase>, usize) {
     if budget == 0 || receipts.is_empty() {
         return (Vec::new(), 0);
     }
@@ -809,6 +806,12 @@ fn join_lines(lines: &[&str]) -> String {
 
 fn passes_golden_rule(rule: &Rule, config: &Config) -> bool {
     if rule.eligibility() != &Eligibility::Eligible {
+        return false;
+    }
+    if rule
+        .family()
+        .is_some_and(|family| config.admit.exclude_families.contains(&family))
+    {
         return false;
     }
     match rule {

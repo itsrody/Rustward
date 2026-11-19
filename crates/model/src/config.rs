@@ -8,7 +8,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use crate::util::sha256_hex;
+use crate::{model::RuleFamily, util::sha256_hex};
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, Hash)]
 #[serde(rename_all = "snake_case")]
@@ -283,12 +283,20 @@ pub struct AdmitConfig {
     /// These compile to bounded literal matchers rather than user-authored regular expressions.
     #[serde(default = "default_true")]
     pub literal_boundary_regex: bool,
+    /// Slow or complex families removed in one batch before per-rule admission.
+    #[serde(default = "default_exclude_families")]
+    pub exclude_families: Vec<RuleFamily>,
+}
+
+fn default_exclude_families() -> Vec<RuleFamily> {
+    vec![RuleFamily::NestedProcedural]
 }
 
 impl Default for AdmitConfig {
     fn default() -> Self {
         Self {
             literal_boundary_regex: true,
+            exclude_families: default_exclude_families(),
         }
     }
 }

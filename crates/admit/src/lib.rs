@@ -32,6 +32,18 @@ pub fn admit(records: &[ParsedRecord], config: &Config, root: &Path) -> Result<A
     let mut resource_decisions = Vec::new();
 
     for record in records {
+        if let Some(family) = record.outcome.family() {
+            if config.admit.exclude_families.contains(&family) {
+                excluded.push(ExclusionRecord {
+                    source_id: record.source_id.clone(),
+                    line_no: record.line_no,
+                    dialect: record.dialect,
+                    text: record.raw_text.clone(),
+                    reason: ExclusionReason::BatchExcluded(family.as_str().to_string()),
+                });
+                continue;
+            }
+        }
         match &record.outcome {
             ParsedOutcome::Network(rule) => match admit_network(
                 rule,

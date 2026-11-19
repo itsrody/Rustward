@@ -2,8 +2,8 @@
 
 use anyhow::Result;
 use model::{
-    AdmissionResult, AnalysisReport, CosmeticPayload, Dialect, Eligibility, ParsedOutcome, Rule,
-    model::ParsedRecord,
+    AdmissionResult, AnalysisReport, CosmeticPayload, Dialect, Eligibility, ExclusionReason,
+    ParsedOutcome, Rule, model::ParsedRecord,
 };
 use serde_json::json;
 use std::collections::BTreeMap;
@@ -106,6 +106,11 @@ pub fn analyze(
         }
     }
     set(&mut metrics, "excluded_by_gate", admission.excluded.len());
+    for exclusion in &admission.excluded {
+        if let ExclusionReason::BatchExcluded(family) = &exclusion.reason {
+            bump(&mut metrics, &format!("batch_excluded_{family}"));
+        }
+    }
 
     for rule in output_rules {
         if let Rule::Cosmetic(cosmetic) = rule {

@@ -44,6 +44,19 @@ pub fn admit(records: &[ParsedRecord], config: &Config, root: &Path) -> Result<A
                 continue;
             }
         }
+        if let Some(kind) = record
+            .outcome
+            .unaccepted_semantic_gap(&config.admit.accepted_semantic_gaps)
+        {
+            excluded.push(ExclusionRecord {
+                source_id: record.source_id.clone(),
+                line_no: record.line_no,
+                dialect: record.dialect,
+                text: record.raw_text.clone(),
+                reason: ExclusionReason::SemanticGap(kind.to_string()),
+            });
+            continue;
+        }
         match &record.outcome {
             ParsedOutcome::Network(rule) => match admit_network(
                 rule,

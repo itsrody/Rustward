@@ -286,10 +286,21 @@ pub struct AdmitConfig {
     /// Slow or complex families removed in one batch before per-rule admission.
     #[serde(default = "default_exclude_families")]
     pub exclude_families: Vec<RuleFamily>,
+    /// Semantic gaps that are knowingly accepted. All other `SemanticGap` rules are excluded.
+    #[serde(default = "default_accepted_semantic_gaps")]
+    pub accepted_semantic_gaps: Vec<String>,
 }
 
 fn default_exclude_families() -> Vec<RuleFamily> {
     vec![RuleFamily::NestedProcedural]
+}
+
+fn default_accepted_semantic_gaps() -> Vec<String> {
+    vec![
+        "all".to_string(),
+        "dropped_method".to_string(),
+        "dropped_scheme".to_string(),
+    ]
 }
 
 impl Default for AdmitConfig {
@@ -297,6 +308,7 @@ impl Default for AdmitConfig {
         Self {
             literal_boundary_regex: true,
             exclude_families: default_exclude_families(),
+            accepted_semantic_gaps: default_accepted_semantic_gaps(),
         }
     }
 }

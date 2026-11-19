@@ -589,6 +589,21 @@ fn classify_selector(operators: &[CosmeticFilterOperator], config: &Config) -> C
     CosmeticPayload::NativeCss(detail)
 }
 
+/// Only a syntactically valid bare hostname has the uBO host-intent ambiguity. URL fragments and
+/// partial patterns are plain substring filters in every dialect and must not be flagged here.
+fn is_bare_hostname(text: &str) -> bool {
+    if text.is_empty() || text.len() > 253 || !text.contains('.') {
+        return false;
+    }
+    text.split('.').all(|label| {
+        !label.is_empty()
+            && label.len() <= 63
+            && label.starts_with(|c: char| c.is_ascii_alphanumeric())
+            && label.ends_with(|c: char| c.is_ascii_alphanumeric())
+            && label.chars().all(|c| c.is_ascii_alphanumeric() || c == '-')
+    })
+}
+
 fn detect_network_gaps(text: &str, source: &model::SourceConfig) -> Vec<DialectGap> {
     let mut gaps = Vec::new();
     if let Some(parsed) = parse_network_options(text) {
@@ -664,10 +679,7 @@ fn detect_network_gaps(text: &str, source: &model::SourceConfig) -> Vec<DialectG
     }
     if source.format == SourceFormat::Standard
         && source.dialect == Dialect::Ubo
-        && !text.starts_with("||")
-        && !text.starts_with('|')
-        && !text.contains('$')
-        && !text.contains('/')
+        && is_bare_hostname(text)
     {
         gaps.push(DialectGap::new(
             "ubo_bare_hostname",
@@ -862,5 +874,15 @@ mod tests {
         let plain = classify("||ads.example^$script");
         assert!(!plain.is_regex);
         assert!(!plain.is_literal_boundary_regex);
+    }
+
+    #[test]
+    fn bare_hostname_gap_only_matches_valid_host_literals() {
+        assert!(super::is_bare_hostname("ads.example.com"));
+        assert!(super::is_bare_hostname("xn--bcher-kva.example"));
+        assert!(!super::is_bare_hostname("&ag_custom_vlmspot="));
+        assert!(!super::is_bare_hostname(".go?pid=1"));
+        assert!(!super::is_bare_hostname("localhost"));
+        assert!(!super::is_bare_hostname("ads.example.com/path"));
     }
 }

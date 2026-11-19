@@ -148,7 +148,12 @@ impl Pipeline {
     }
 
     fn analysis(&self) -> Result<AnalysisReportImpl> {
-        analyze::analyze(&self.records, &self.admission, &self.emit.rules)
+        analyze::analyze(
+            &self.records,
+            &self.admission,
+            &self.emit.rules,
+            &self.config,
+        )
     }
 }
 

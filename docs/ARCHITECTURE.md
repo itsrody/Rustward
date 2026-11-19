@@ -653,6 +653,15 @@ guess semantics.
   `env_firefox`, `env_mobile`, `ext_ublock`, `adguard`, etc.), otherwise the same lockfile could
   produce different lists on different machines.
 
+**Semantic-gap acceptance policy.** `admit.accepted_semantic_gaps` is the explicit allowlist of
+`SemanticGap` classes that may pass ADMIT. The default accepts `all` (rust-adblock narrows popup and
+inline bits but the remaining type bits are useful), `dropped_method`, and `dropped_scheme` (the
+rule still works for supported values). All other semantic gaps are excluded with
+`SEMANTIC_GAP_POLICY` and reported separately: entity domains hash as literal `example.*` strings,
+bare uBO hostnames are substring patterns rather than host anchors unless a valid hostname is
+detected, and `$match-case` requires regex machinery. `analysis.json` records accepted, unresolved,
+and excluded semantic gaps by kind. VERIFY mirrors the policy in its golden-rule assertion.
+
 #### 7.6.3 Rewrite catalog
 
 The `R` family is dialect-independent optimization. The `D` family is dialect-aware normalization
@@ -674,8 +683,8 @@ and intent preservation. All entries still go through the same reparse and diffe
 | R12 | Cosmetic generic promotion | host-specific plain-CSS hide with *all* known hosts → generic `##.ad` | Only when host set covers configured corpus domains; off by default |
 | D1 | uBO bare-hostname intent *(opt-in, off by default)* | `example.com` → `||example.com^` for Standard-format uBO sources | Only when source sets `host_semantics = "ubo"`; never for ABP/AdGuard/hosts sources; must pass document-vs-substring differential corpus |
 | D2 | ABP redirect alias | `rewrite=abp-resource:X` → engine-native `redirect=X` spelling | Engine already aliases both forms (identical mask/modifier); this is spelling normalization only; resource names are not translated |
-| D3 | Dialect alias canonicalization | `from`→`domain`, `3p`→`third-party`, `1p`→`first-party`, `object-subrequest`→`object`, `css`→`stylesheet`, `frame`→`subdocument`, `xhr`→`xmlhttprequest`, `beacon`→`ping`, `doc`→`document`, `ghide`→`generichide` | Reparsed `mask`, `features_mask`, and modifier payload must be identical; aliases with silently dropped values are flagged, not "fixed" |
-| D4 | Option/pipe-order canonicalization | Sort `$` options and `\|`-delimited domain lists deterministically | Parsed fields must be byte-for-byte equal to the original; exception, important, badfilter, and modifier payloads preserved |
+| D3 | Dialect alias canonicalization *(implemented as `network_canonicalization`)* | `from`→`domain`, `3p`→`third-party`, `1p`→`first-party`, `object-subrequest`→`object`, `css`→`stylesheet`, `frame`→`subdocument`, `xhr`→`xmlhttprequest`, `beacon`→`ping`, `doc`→`document`, `ghide`→`generichide` | Reparsed `engine_id`, `mask`, and `features_mask` must be identical; aliases with silently dropped values are flagged, not "fixed" |
+| D4 | Option/pipe-order canonicalization *(implemented as `network_canonicalization`)* | Sort `$` options and `\|`-delimited domain lists deterministically | Mixed positive/negative domain lists keep their order to preserve last-match-wins; badfilter barriers and modifier payloads are never touched; every change passes reparse + engine differential gates |
 | D5 | *(removed)* AdGuard CSS injection | `example.com#$#.ad { color: red }` → `example.com##.ad:style(color: red)` | **No longer enabled.** `:style(...)` is a DOM-mutating action and fails the golden rule; route these rules to D10 |
 | D6 | Extended-CSS operator normalization | `:-abp-has(...)`→`:has(...)`, `:-abp-contains(...)`/`contains(...)`→`:has-text(...)` | Allowed only when result is native CSS or exactly one allowlisted lightweight operator with a literal argument; otherwise D10, not a "normalized" slow rule |
 | D7 | *(removed)* `$match-case` upgrade | `/BannerAd.gif$match-case` → escaping + full-regex form with `match-case` | **No longer enabled.** Regex rewriting is slow/complex; plain `$match-case` rules are quarantined via D10 |
@@ -1003,6 +1012,8 @@ include_root = "config/includes"          # content-addressed !#include tree
 # Slow/complex families removed in one batch before per-rule admission.
 exclude_families = ["nested_procedural"]
 literal_boundary_regex = true
+# Semantic gap classes that are knowingly accepted; others are excluded.
+accepted_semantic_gaps = ["all", "dropped_method", "dropped_scheme"]
 
 [golden_rule]
 # Allowlist for the whole list, not only cosmetics.
@@ -1037,7 +1048,7 @@ allow_js_injection = false          # #%#
 
 [rewrite]
 # Only engine-equivalent, reparse-verified families are enabled.
-enabled = ["type_union", "domain_union", "to_domain_union", "cosmetic_host_union"]
+enabled = ["network_canonicalization", "type_union", "domain_union", "to_domain_union", "cosmetic_host_union"]
 ubo_host_semantics = false
 regex_fusion = false
 

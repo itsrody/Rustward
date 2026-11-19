@@ -814,6 +814,12 @@ fn passes_golden_rule(rule: &Rule, config: &Config) -> bool {
     {
         return false;
     }
+    if rule
+        .unaccepted_semantic_gap(&config.admit.accepted_semantic_gaps)
+        .is_some()
+    {
+        return false;
+    }
     match rule {
         Rule::Network(network) => {
             let regex_ok = !network.is_complete_regex

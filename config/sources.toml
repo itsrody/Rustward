@@ -28,6 +28,10 @@ literal_boundary_regex = true
 # Slow/complex families removed in one batch before per-rule admission. `nested_procedural`
 # catches slow operators adblock folds into a single native CSS selector.
 exclude_families = ["nested_procedural"]
+# `$all` is intentionally accepted: rust-adblock narrows its popup/inline bits but the remaining
+# type bits are useful. Partially dropped method/scheme values stay accepted for the same reason.
+# Every other SemanticGap (entity domains, bare hostnames, match-case) is excluded.
+accepted_semantic_gaps = ["all", "dropped_method", "dropped_scheme"]
 
 [directives]
 enabled = true
@@ -65,6 +69,7 @@ allow_js_injection = false
 
 [rewrite]
 enabled = [
+    "network_canonicalization",
     "type_union",
     "domain_union",
     "to_domain_union",

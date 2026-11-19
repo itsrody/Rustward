@@ -38,6 +38,76 @@ pub fn normalize_list(bytes: &[u8]) -> Result<String> {
         .join("\n"))
 }
 
+/// Canonicalize network option aliases and ordering (D3/D4) without changing engine semantics.
+/// Returns `None` for rules that have no `$` options or carry an opaque modifier payload.
+pub fn canonical_network_text(text: &str) -> Option<String> {
+    let (prefix, options) = text.rsplit_once('$')?;
+    if prefix.contains('$') || options.is_empty() || options.contains('$') {
+        return None;
+    }
+
+    let mut canonical: Vec<String> = options
+        .split(',')
+        .map(|option| {
+            let (negated, body) = match option.strip_prefix('~') {
+                Some(body) => (true, body),
+                None => (false, option),
+            };
+            let (name, value) = match body.split_once('=') {
+                Some((name, value)) => (name, Some(value)),
+                None => (body, None),
+            };
+            let name = match name {
+                "3p" => "third-party",
+                "1p" => "first-party",
+                "ghide" => "generichide",
+                "object-subrequest" => "object",
+                "css" => "stylesheet",
+                "frame" => "subdocument",
+                "xhr" => "xmlhttprequest",
+                "beacon" => "ping",
+                "doc" => "document",
+                "from" => "domain",
+                other => other,
+            };
+            let value = value.map(|value| {
+                if matches!(name, "domain" | "to") {
+                    canonical_domain_list(value)
+                } else {
+                    value.to_string()
+                }
+            });
+            let mut result = String::new();
+            if negated {
+                result.push('~');
+            }
+            result.push_str(name);
+            if let Some(value) = value {
+                result.push('=');
+                result.push_str(&value);
+            }
+            result
+        })
+        .collect();
+    canonical.sort();
+    Some(format!("{prefix}${}", canonical.join(",")))
+}
+
+fn canonical_domain_list(value: &str) -> String {
+    let (positive, negative): (Vec<&str>, Vec<&str>) = value
+        .split('|')
+        .partition(|domain| !domain.starts_with('~'));
+    // `~a|a` and `a|~a` can differ by last-match-wins semantics, so preserve mixed lists.
+    if positive.is_empty() || negative.is_empty() {
+        let mut values: Vec<String> = value.split('|').map(|domain| domain.to_string()).collect();
+        values.sort();
+        values.dedup();
+        values.join("|")
+    } else {
+        value.to_string()
+    }
+}
+
 /// Conservative literal check for lightweight cosmetic operator arguments.
 pub fn is_literal_arg(value: &str) -> bool {
     if value.is_empty() {
@@ -186,7 +256,7 @@ fn civil_from_days(days: i64) -> (i64, i64, i64) {
 
 #[cfg(test)]
 mod tests {
-    use super::{format_rfc2822, is_literal_arg};
+    use super::{canonical_domain_list, canonical_network_text, format_rfc2822, is_literal_arg};
 
     #[test]
     fn formats_known_timestamps() {
@@ -194,6 +264,35 @@ mod tests {
         assert_eq!(
             format_rfc2822(1_794_661_516),
             "Sat, 14 Nov 2026 13:05:16 +0000"
+        );
+    }
+
+    #[test]
+    fn canonicalizes_network_aliases_and_option_order() {
+        assert_eq!(
+            canonical_network_text("||ads.example^$xhr,3p,domain=b.example|a.example"),
+            Some("||ads.example^$domain=a.example|b.example,third-party,xmlhttprequest".into())
+        );
+        assert_eq!(
+            canonical_network_text("@@||ads.example^$ghide,image"),
+            Some("@@||ads.example^$generichide,image".into())
+        );
+        assert_eq!(
+            canonical_network_text("||ads.example^$from=site.example,script"),
+            Some("||ads.example^$domain=site.example,script".into())
+        );
+        assert_eq!(canonical_network_text("||ads.example^"), None);
+    }
+
+    #[test]
+    fn preserves_mixed_negated_domain_lists() {
+        assert_eq!(
+            canonical_domain_list("b.example|~a.example"),
+            "b.example|~a.example"
+        );
+        assert_eq!(
+            canonical_domain_list("b.example|a.example|a.example"),
+            "a.example|b.example"
         );
     }
 

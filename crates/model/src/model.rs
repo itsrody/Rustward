@@ -64,6 +64,7 @@ pub enum ExclusionReason {
     Policy(String),
     RewriteFailed(String),
     BatchExcluded(String),
+    SemanticGap(String),
 }
 
 impl ExclusionReason {
@@ -82,6 +83,7 @@ impl ExclusionReason {
             Self::Policy(_) => "POLICY",
             Self::RewriteFailed(_) => "REWRITE_FAILED",
             Self::BatchExcluded(_) => "BATCH_EXCLUDED",
+            Self::SemanticGap(_) => "SEMANTIC_GAP_POLICY",
         }
     }
 
@@ -100,6 +102,7 @@ impl ExclusionReason {
             Self::MatchCase => "match-case requires regex machinery",
             Self::ActionOperator => "DOM action operators are excluded",
             Self::BatchExcluded(s) => s,
+            Self::SemanticGap(s) => s,
         }
     }
 }
@@ -375,6 +378,22 @@ impl Rule {
             Self::Cosmetic(rule) => &rule.provenance,
         }
     }
+
+    pub fn dialect_gaps(&self) -> &[DialectGap] {
+        match self {
+            Self::Network(rule) => &rule.dialect_gaps,
+            Self::Cosmetic(rule) => &rule.dialect_gaps,
+        }
+    }
+
+    /// First semantic gap that is not explicitly accepted by the admission policy.
+    pub fn unaccepted_semantic_gap(&self, accepted: &[String]) -> Option<&str> {
+        self.dialect_gaps()
+            .iter()
+            .filter(|gap| gap.class == GapClass::SemanticGap)
+            .map(|gap| gap.kind.as_str())
+            .find(|kind| !accepted.iter().any(|accepted| accepted == kind))
+    }
 }
 
 /// adblock folds nested procedural operators into a single `CssSelector`, so a cosmetic rule can
@@ -459,6 +478,18 @@ impl ParsedOutcome {
             Self::Cosmetic(cosmetic) => cosmetic_family(cosmetic),
             _ => None,
         }
+    }
+
+    pub fn unaccepted_semantic_gap(&self, accepted: &[String]) -> Option<&str> {
+        let gaps = match self {
+            Self::Network(network) => &network.dialect_gaps,
+            Self::Cosmetic(cosmetic) => &cosmetic.dialect_gaps,
+            _ => return None,
+        };
+        gaps.iter()
+            .filter(|gap| gap.class == GapClass::SemanticGap)
+            .map(|gap| gap.kind.as_str())
+            .find(|kind| !accepted.iter().any(|accepted| accepted == kind))
     }
 }
 

@@ -2,8 +2,8 @@
 
 use anyhow::Result;
 use model::{
-    AdmissionResult, AnalysisReport, CosmeticPayload, Dialect, Eligibility, ExclusionReason,
-    ParsedOutcome, Rule, model::ParsedRecord,
+    AdmissionResult, AnalysisReport, Config, CosmeticPayload, Dialect, Eligibility,
+    ExclusionReason, GapClass, ParsedOutcome, Rule, model::ParsedRecord,
 };
 use serde_json::json;
 use std::collections::BTreeMap;
@@ -12,6 +12,7 @@ pub fn analyze(
     records: &[ParsedRecord],
     admission: &AdmissionResult,
     output_rules: &[Rule],
+    config: &Config,
 ) -> Result<AnalysisReport> {
     let mut report = AnalysisReport::default();
     let mut metrics: BTreeMap<String, usize> = BTreeMap::new();
@@ -75,6 +76,20 @@ pub fn analyze(
         };
         for gap in gap_sources {
             bump(&mut gaps, format!("{}:{}", gap.kind, gap.class.as_str()));
+            if gap.class == GapClass::SemanticGap {
+                let key = if config
+                    .admit
+                    .accepted_semantic_gaps
+                    .iter()
+                    .any(|accepted| accepted == &gap.kind)
+                {
+                    "semantic_gaps_accepted"
+                } else {
+                    "semantic_gaps_unresolved"
+                };
+                bump(&mut metrics, key);
+                bump(&mut metrics, &format!("{key}_{}", gap.kind));
+            }
         }
         match &record.outcome {
             ParsedOutcome::Network(_) => bump(&mut metrics, "effective_network_rules"),
@@ -107,8 +122,15 @@ pub fn analyze(
     }
     set(&mut metrics, "excluded_by_gate", admission.excluded.len());
     for exclusion in &admission.excluded {
-        if let ExclusionReason::BatchExcluded(family) = &exclusion.reason {
-            bump(&mut metrics, &format!("batch_excluded_{family}"));
+        match &exclusion.reason {
+            ExclusionReason::BatchExcluded(family) => {
+                bump(&mut metrics, &format!("batch_excluded_{family}"));
+            }
+            ExclusionReason::SemanticGap(kind) => {
+                bump(&mut metrics, "semantic_gaps_excluded");
+                bump(&mut metrics, &format!("semantic_gaps_excluded_{kind}"));
+            }
+            _ => {}
         }
     }
 

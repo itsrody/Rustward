@@ -1,6 +1,7 @@
 use model::{
-    AdmitConfig, CosmeticPayload, Dialect, Eligibility, HideOrUnhide, Rule, RuleFamily, RuleState,
-    model::{CosmeticRule, NetworkRule},
+    AdmitConfig, CosmeticPayload, Dialect, Eligibility, GapClass, HideOrUnhide, Rule, RuleFamily,
+    RuleState,
+    model::{CosmeticRule, DialectGap, NetworkRule},
 };
 
 fn cosmetic(text: &str) -> Rule {
@@ -93,6 +94,33 @@ fn nested_slow_operators_are_classified_as_nested_procedural() {
         );
     }
     assert_eq!(cosmetic("example.com##div.ad > span:has(a)").family(), None);
+}
+
+#[test]
+fn semantic_gap_policy_finds_unaccepted_gaps() {
+    let mut rule = network();
+    match &mut rule {
+        Rule::Network(network) => {
+            network.dialect_gaps = vec![
+                DialectGap::new("all", GapClass::SemanticGap, "accepted"),
+                DialectGap::new("entity_domain", GapClass::SemanticGap, "rejected"),
+            ];
+        }
+        Rule::Cosmetic(_) => unreachable!(),
+    }
+    let accepted = AdmitConfig::default().accepted_semantic_gaps;
+    assert_eq!(
+        rule.unaccepted_semantic_gap(&accepted),
+        Some("entity_domain")
+    );
+    assert_eq!(
+        rule.unaccepted_semantic_gap(&["all".into()]),
+        Some("entity_domain")
+    );
+    assert_eq!(
+        rule.unaccepted_semantic_gap(&["all".into(), "entity_domain".into()]),
+        None
+    );
 }
 
 #[test]

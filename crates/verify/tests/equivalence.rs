@@ -28,6 +28,25 @@ fn domain_union_is_engine_equivalent() {
 }
 
 #[test]
+fn network_alias_and_option_order_are_engine_equivalent() {
+    let before = ["||ads.example^$xhr,3p,domain=b.example|a.example".to_string()];
+    assert!(
+        network_equivalence(
+            &before,
+            "||ads.example^$domain=a.example|b.example,third-party,xmlhttprequest",
+            0
+        )
+        .expect("equivalence check")
+    );
+
+    let before = ["@@||ads.example^$ghide,image".to_string()];
+    assert!(
+        network_equivalence(&before, "@@||ads.example^$generichide,image", 0)
+            .expect("equivalence check")
+    );
+}
+
+#[test]
 fn unrelated_rewrite_is_rejected() {
     let before = ["||ads.example^$script".to_string()];
     assert!(

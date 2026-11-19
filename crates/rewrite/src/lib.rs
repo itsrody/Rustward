@@ -1,10 +1,14 @@
 //! Conservative rewrite catalog with structural, reparse, and differential checks.
 
-use adblock::{filters::network::NetworkFilterMask as Mask, lists::ParseOptions};
+use adblock::{
+    filters::network::NetworkFilterMask as Mask,
+    lists::{FilterFormat, ParseOptions, parse_filter},
+    resources::PermissionMask,
+};
 use anyhow::Result;
 use model::{
     Config, CosmeticPayload, Eligibility, NetworkRule, Origin, RewriteReceipt, Rule, RuleState,
-    util::sha256_hex,
+    util::{canonical_network_text, sha256_hex},
 };
 use std::collections::{BTreeMap, HashSet};
 
@@ -25,6 +29,9 @@ pub fn rewrite(rules: Vec<Rule>, config: &Config) -> Result<RewriteResult> {
         })
         .collect();
 
+    if config.rewrite_enabled("network_canonicalization") {
+        canonicalize_network(&mut rules, &badfilter_targets, &mut receipts)?;
+    }
     if config.rewrite_enabled("type_union") {
         rewrite_network(
             &mut rules,
@@ -66,6 +73,87 @@ pub fn rewrite(rules: Vec<Rule>, config: &Config) -> Result<RewriteResult> {
     }
 
     Ok(RewriteResult { rules, receipts })
+}
+
+/// D3/D4: normalize option aliases and ordering before the union passes. Every change is held to
+/// reparse equality and engine differential equivalence, and badfilter rules remain barriers.
+fn canonicalize_network(
+    rules: &mut Vec<Rule>,
+    badfilter_targets: &HashSet<u64>,
+    receipts: &mut Vec<RewriteReceipt>,
+) -> Result<()> {
+    let mut planned: Vec<(usize, String, String)> = Vec::new();
+    for (index, rule) in rules.iter().enumerate() {
+        let Rule::Network(network) = rule else {
+            continue;
+        };
+        if network.is_badfilter
+            || badfilter_targets.contains(&network.engine_id)
+            || network.eligibility != Eligibility::Eligible
+            || network.state != RuleState::Active
+        {
+            continue;
+        }
+        let Some(candidate) = canonical_network_text(&network.text) else {
+            continue;
+        };
+        if candidate == network.text || !reparse_matches(network, &candidate) {
+            continue;
+        }
+        planned.push((index, network.text.clone(), candidate));
+    }
+
+    for (index, before, candidate) in planned {
+        let permissions = match &rules[index] {
+            Rule::Network(network) => network.source_permissions,
+            Rule::Cosmetic(_) => unreachable!(),
+        };
+        if !verify::network_equivalence(&[before.clone()], &candidate, permissions)? {
+            continue;
+        }
+        let id = format!(
+            "network_canonicalization-{}",
+            &sha256_hex(before.as_bytes())[..12]
+        );
+        let source_id = match &mut rules[index] {
+            Rule::Network(network) => {
+                network.text = candidate.clone();
+                network.state = RuleState::Rewritten(id.clone());
+                network.source_id.clone()
+            }
+            Rule::Cosmetic(_) => unreachable!(),
+        };
+        receipts.push(RewriteReceipt {
+            id,
+            family: "network_canonicalization".to_string(),
+            before: vec![before],
+            after: candidate,
+            source_id,
+            checks: vec![
+                "reparse-equal".to_string(),
+                "engine-differential".to_string(),
+                "golden-rule-postcondition".to_string(),
+            ],
+        });
+    }
+    Ok(())
+}
+
+fn reparse_matches(original: &NetworkRule, candidate: &str) -> bool {
+    let Ok(adblock::lists::ParsedLine::Network(filter)) = parse_filter(
+        candidate,
+        true,
+        ParseOptions {
+            format: FilterFormat::Standard,
+            rule_types: Default::default(),
+            permissions: PermissionMask::from_bits(original.source_permissions),
+        },
+    ) else {
+        return false;
+    };
+    filter.get_id() == original.engine_id
+        && filter.mask.bits() == original.mask
+        && filter.features_mask.bits() == original.features
 }
 
 #[derive(Debug, Clone)]

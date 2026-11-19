@@ -2342,6 +2342,7 @@ mask_subsumption-cc1cfc092ab6	mask_subsumption	||chartbeat.net^ || ||chartbeat.n
 mask_subsumption-3a67bb3dd066	mask_subsumption	||cityadstrack.com^ || ||cityadstrack.com^$3p	structural-subsumption;reparse-equal;engine-differential	||cityadstrack.com^
 mask_subsumption-2ca69e5a1fc8	mask_subsumption	||claydar.com^ || ||claydar.com^$3p	structural-subsumption;reparse-equal;engine-differential	||claydar.com^
 mask_subsumption-199de47ae439	mask_subsumption	||clientgear.com^ || ||clientgear.com^$3p	structural-subsumption;reparse-equal;engine-differential	||clientgear.com^
+mask_subsumption-5de0b880879b	mask_subsumption	||cognitivlabs.com^ || ||cognitivlabs.com^$3p	structural-subsumption;reparse-equal;engine-differential	||cognitivlabs.com^
 mask_subsumption-80a7170f6955	mask_subsumption	||colossusssp.com^ || ||colossusssp.com^$3p	structural-subsumption;reparse-equal;engine-differential	||colossusssp.com^
 mask_subsumption-3cdf845e5e67	mask_subsumption	||cpmstar.com^ || ||cpmstar.com^$3p	structural-subsumption;reparse-equal;engine-differential	||cpmstar.com^
 mask_subsumption-b4f8d3114214	mask_subsumption	||crashlytics.com^ || ||crashlytics.com^$3p	structural-subsumption;reparse-equal;engine-differential	||crashlytics.com^
@@ -7739,6 +7740,7 @@ hostname_subsumption-641628d843b3	hostname_subsumption	||clmbtech.com^ || ||cade
 hostname_subsumption-d5710583eec9	hostname_subsumption	||clmbtech.com^ || ||case.clmbtech.com^	structural-subsumption;reparse-equal;engine-differential	||clmbtech.com^
 hostname_subsumption-f93f493f7640	hostname_subsumption	||clmbtech.com^ || ||mxase.clmbtech.com^	structural-subsumption;reparse-equal;engine-differential	||clmbtech.com^
 hostname_subsumption-80212e81d94b	hostname_subsumption	||clmbtech.com^ || ||tml.clmbtech.com^	structural-subsumption;reparse-equal;engine-differential	||clmbtech.com^
+hostname_subsumption-4603431c02b8	hostname_subsumption	||cognitivlabs.com^ || ||lynx.cognitivlabs.com^	structural-subsumption;reparse-equal;engine-differential	||cognitivlabs.com^
 hostname_subsumption-74005e172651	hostname_subsumption	||lynx.cognitivlabs.com^ || ||beacon.lynx.cognitivlabs.com^	structural-subsumption;reparse-equal;engine-differential	||lynx.cognitivlabs.com^
 hostname_subsumption-5ef8cd2c1390	hostname_subsumption	||company-target.com^ || ||api.company-target.com^	structural-subsumption;reparse-equal;engine-differential	||company-target.com^
 hostname_subsumption-96bd23ac1ad4	hostname_subsumption	||company-target.com^ || ||segments.company-target.com^	structural-subsumption;reparse-equal;engine-differential	||company-target.com^

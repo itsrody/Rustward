@@ -1,43 +1,43 @@
 {
-  "build_id": "2ff6bbe93ab714076de1197dd1c9bd33a003b1137840d3a37bb62bc4815bc5ad",
-  "config_hash": "d1d6a0ab806534672a61f04db357cf392144ea30f08e3c7feaa0769d7ec4e4c0",
+  "build_id": "67d3464aace5e6665dbce44c0e74783316d967e77e1a155a7b63f96e862e4442",
+  "config_hash": "37b399cb61515464f0940f82408065c909525f31a32983965be3406cd862ca71",
   "profile_hash": "7523a0d8d369cd3ba756dd22e4c6bbb3e9bcfd0e8c4f97cefee9e7ee3023e475",
-  "lists_lock_hash": "73adbd7a252374305676ed5e0adbe8c9ea69c763712f94c5c487c8b110992532",
+  "lists_lock_hash": "b37d2f6601d48077a63f41b3731bd636cce10694615ab3ae916ac964317d26e9",
   "adblock_version": "=0.13.6",
   "emit_order": "compiler-friendly-v1",
   "metrics": {
     "badfilter_resolved": 129,
     "badfilter_targets_pruned": 30,
     "comments": 58067,
-    "cosmetic_fast_native": 57713,
+    "cosmetic_fast_native": 57714,
     "cosmetic_hosts_checked": 2048,
-    "cosmetic_hosts_total": 74282,
+    "cosmetic_hosts_total": 74281,
     "cosmetic_light_procedural": 129,
     "cosmetic_rules": 69321,
-    "cosmetic_vetted_scriptlet": 23928,
+    "cosmetic_vetted_scriptlet": 23927,
     "decision_mismatches": 0,
     "directives": 101,
-    "duplicates_exact": 47917,
+    "duplicates_exact": 47918,
     "duplicates_semantic": 2913,
     "effective_cosmetic_rules": 93576,
-    "effective_network_rules": 683999,
-    "eligible": 751170,
+    "effective_network_rules": 684018,
+    "eligible": 751189,
     "empty_lines": 4006,
     "excluded_by_gate": 28703,
     "golden_rule_violations": 0,
     "metadata": 38,
-    "network_rules": 585989,
-    "network_rules_probed": 243380,
-    "network_rules_total": 669559,
-    "output_fast_native_css": 48183,
+    "network_rules": 586005,
+    "network_rules_probed": 242872,
+    "network_rules_total": 669578,
+    "output_fast_native_css": 48184,
     "output_light_procedural": 127,
-    "output_lines": 655310,
-    "output_vetted_scriptlet": 21011,
+    "output_lines": 655326,
+    "output_vetted_scriptlet": 21010,
     "parse_errors": 2298,
-    "raw_lines": 842085,
-    "receipts_exercised": 42499,
-    "rewrites_applied": 43886,
-    "verify_cases": 420580
+    "raw_lines": 842104,
+    "receipts_exercised": 42501,
+    "rewrites_applied": 43888,
+    "verify_cases": 420588
   },
   "receipts": [
     {
@@ -36353,6 +36353,21 @@
       ],
       "after": "||clientgear.com^",
       "source_id": "stevenblack-fakenews-gambling",
+      "checks": [
+        "structural-subsumption",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "mask_subsumption-5de0b880879b",
+      "family": "mask_subsumption",
+      "before": [
+        "||cognitivlabs.com^",
+        "||cognitivlabs.com^$3p"
+      ],
+      "after": "||cognitivlabs.com^",
+      "source_id": "ag-tracking",
       "checks": [
         "structural-subsumption",
         "reparse-equal",
@@ -117308,6 +117323,21 @@
       ],
       "after": "||clmbtech.com^",
       "source_id": "ag-base-easylist",
+      "checks": [
+        "structural-subsumption",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "hostname_subsumption-4603431c02b8",
+      "family": "hostname_subsumption",
+      "before": [
+        "||cognitivlabs.com^",
+        "||lynx.cognitivlabs.com^"
+      ],
+      "after": "||cognitivlabs.com^",
+      "source_id": "ag-tracking",
       "checks": [
         "structural-subsumption",
         "reparse-equal",
@@ -659508,27 +659538,27 @@
   "verification": {
     "required": true,
     "mismatches": [],
-    "cases_checked": 420580,
+    "cases_checked": 420588,
     "golden_rule_violations": 0,
     "emit_order_violations": 0,
     "coverage": {
-      "network_rules_total": 669559,
-      "network_rules_probed": 243380,
-      "rewrite_receipts_total": 43886,
-      "rewrite_receipts_exercised": 42499,
-      "cosmetic_hosts_total": 74282,
+      "network_rules_total": 669578,
+      "network_rules_probed": 242872,
+      "rewrite_receipts_total": 43888,
+      "rewrite_receipts_exercised": 42501,
+      "cosmetic_hosts_total": 74281,
       "cosmetic_hosts_checked": 2048
     }
   },
   "bench": {
-    "admitted_opt_bytes": 40966309,
-    "candidate_opt_bytes": 36865597,
-    "admitted_noopt_bytes": 40966389,
-    "candidate_noopt_bytes": 36865669,
-    "admitted_build_ms": 412,
-    "candidate_build_ms": 347,
-    "admitted_qps": 245573.10480081916,
-    "candidate_qps": 252698.05000435107,
+    "admitted_opt_bytes": 40967117,
+    "candidate_opt_bytes": 36866269,
+    "admitted_noopt_bytes": 40967197,
+    "candidate_noopt_bytes": 36866341,
+    "admitted_build_ms": 634,
+    "candidate_build_ms": 528,
+    "admitted_qps": 183657.42225676755,
+    "candidate_qps": 188879.34696171593,
     "emit_order": "compiler-friendly-v1"
   }
 }

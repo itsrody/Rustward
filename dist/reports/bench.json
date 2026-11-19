@@ -1,11 +1,11 @@
 {
-  "admitted_opt_bytes": 40966309,
-  "candidate_opt_bytes": 36865597,
-  "admitted_noopt_bytes": 40966389,
-  "candidate_noopt_bytes": 36865669,
-  "admitted_build_ms": 412,
-  "candidate_build_ms": 347,
-  "admitted_qps": 245573.10480081916,
-  "candidate_qps": 252698.05000435107,
+  "admitted_opt_bytes": 40967117,
+  "candidate_opt_bytes": 36866269,
+  "admitted_noopt_bytes": 40967197,
+  "candidate_noopt_bytes": 36866341,
+  "admitted_build_ms": 634,
+  "candidate_build_ms": 528,
+  "admitted_qps": 183657.42225676755,
+  "candidate_qps": 188879.34696171593,
   "emit_order": "compiler-friendly-v1"
 }

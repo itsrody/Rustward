@@ -33000,17 +33000,6 @@
     "reason": null
   },
   {
-    "name": "no-window-open-if",
-    "canonical_name": "prevent-window-open.js",
-    "grade": "standard",
-    "digest": "d2b05007a2ce02a5f81d0fe07e60cb5e19b87269135d2a5d7fc4d06b01679acc",
-    "permission": 0,
-    "source_id": "ag-base-easylist",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
     "name": "abort-on-property-read",
     "canonical_name": "abort-on-property-read.js",
     "grade": "standard",

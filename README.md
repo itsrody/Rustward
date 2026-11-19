@@ -10,12 +10,13 @@ rewrite-to-eligible-or-exclude policy, compiler-friendly output ordering, and ve
 
 ## Sources
 
-`config/sources.toml` pins 18 upstream lists by SHA-256:
+`config/sources.toml` pins 19 upstream lists by SHA-256:
 
 - AdGuard `extension/ublock` optimized filters: `2`, `3`, `14`, `118`, `122`, `123`, `201`, `207`,
   `208`, `250`, `255`, `256`, `257`
 - uBO lists: `filters.min.txt`, `badware.min.txt`, `privacy.min.txt`, `annoyances.min.txt`,
   `annoyances-cookies.txt`
+- StevenBlack/hosts: `alternates/fakenews-gambling/hosts` (hosts format)
 
 Every HTTP(S) source must have a `sha256` pin. Raw bytes are cached in `cache/blobs/sha256/`;
 `--offline` builds only from a warm cache. Upstream changes are explicit: run

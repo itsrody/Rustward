@@ -73,7 +73,7 @@ regex_fusion = false
 [[source]]
 id = "ag-base-easylist"
 url = "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt"
-sha256 = "0742567e8714c9b40dfc4d485244073946db4f2e2a111343124a6aa67d1ed718"
+sha256 = "dbca45890d2c45f5ae9d2e72d21eb6c906a13d97a7bfd73cea1110af520270de"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -87,7 +87,7 @@ license = "AdGuard Base filter + EasyList; see upstream ! Title/! Description me
 [[source]]
 id = "ag-tracking"
 url = "https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt"
-sha256 = "2f4b944225ac18311308c0a8b43b01a36181fbcab325cf8a85c09cc446a97a3b"
+sha256 = "dae15fe18b26b68ce8b77308a56cbea1170279d3f1d21d7feb1a68e66a236fb0"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -101,7 +101,7 @@ license = "AdGuard Tracking Protection; see upstream ! Title/! Description metad
 [[source]]
 id = "ag-annoyances"
 url = "https://filters.adtidy.org/extension/ublock/filters/14_optimized.txt"
-sha256 = "8b7fff869efff7ccdb978829e61569adbb56b46d197e784ff733dbfccb194ba5"
+sha256 = "694db584fd4adc983767ec9e24456ac751c97836bbf96b4db3355a0c57a76ac3"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -115,7 +115,7 @@ license = "AdGuard Annoyances; see upstream ! Title/! Description metadata"
 [[source]]
 id = "easyprivacy"
 url = "https://filters.adtidy.org/extension/ublock/filters/118_optimized.txt"
-sha256 = "233305f451414ae9ee8b1cf62f85372e9189b6a07380864d39d0e7592e471e93"
+sha256 = "98fc9e3b12da5fd57b4611fdf6943aa6d9a7d8a53ae56b82148c8a619e403298"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -129,7 +129,7 @@ license = "EasyPrivacy; see upstream ! Title/! Description metadata"
 [[source]]
 id = "fanboy-annoyances"
 url = "https://filters.adtidy.org/extension/ublock/filters/122_optimized.txt"
-sha256 = "661071a32ef1dd0a095b21588b985ca16345aecd28e63ec63424c3a53d9ca177"
+sha256 = "86102399e5e356fc34806d8072f368d5ac44178cc82f37b999a15de68f1ee1d1"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -143,7 +143,7 @@ license = "Fanboy's Annoyances; see upstream ! Title/! Description metadata"
 [[source]]
 id = "fanboy-social"
 url = "https://filters.adtidy.org/extension/ublock/filters/123_optimized.txt"
-sha256 = "2d3b723254ed4b4cdb6d9dc821c686f5cb7f9d48cb1c62b2f969bb8bc56bc8f0"
+sha256 = "74d4a658e2fa0fa1ac8ad90255fd0d552e2ebb452d3bbd35378db3dd4350c4e0"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -171,7 +171,7 @@ license = "Web Annoyances Ultralist; see upstream ! Title/! Description metadata
 [[source]]
 id = "warning-removal"
 url = "https://filters.adtidy.org/extension/ublock/filters/207_optimized.txt"
-sha256 = "f8381dad42454f509cc0cde36574ce671699a33c70920990ce83f43a713582ce"
+sha256 = "58abfeee91568237d821ad99d46b00e520ead9e945a30d6ef4ea94b2b514f32c"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -213,7 +213,7 @@ license = "Dandelion Sprout's Annoyances; see upstream ! Title/! Description met
 [[source]]
 id = "phishing-url"
 url = "https://filters.adtidy.org/extension/ublock/filters/255_optimized.txt"
-sha256 = "f1399b09a7d4c14f594d1d453a5d414d8270a7a79a30994f98c6b9e68864f8d9"
+sha256 = "5ca9f030609aa1d8e25d94f2f9fc103ef85292e2390dd70839dab8d8ae9051b5"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -254,7 +254,7 @@ license = "uBlock Origin Badware Risks; see upstream ! Title/! Description metad
 [[source]]
 id = "ubo-filters-min"
 url = "https://ublockorigin.pages.dev/filters/filters.min.txt"
-sha256 = "4c06e212fd29a2f2b8bff133b5d03c35df1bac72b4dbfb3a22b7dbf34df3aa1c"
+sha256 = "a9287b15906cbc200af747f45f08b9631c749a73eb48845f9952a38219d9397a"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -267,7 +267,7 @@ license = "uBlock filters; GPL-3.0-or-later (uBlock Origin uAssets)"
 [[source]]
 id = "ubo-badware-min"
 url = "https://ublockorigin.pages.dev/filters/badware.min.txt"
-sha256 = "a34933d5c94efd986fa02f0057570f592cfc084dc1ef9dc74d65284fd17287b5"
+sha256 = "0afaf6b5bc584df2900ea4ba4f6ab8dfdb20cb33e3b9acd9657e11cff72122d2"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -280,7 +280,7 @@ license = "uBlock filters - Badware risks; GPL-3.0-or-later (uBlock Origin uAsse
 [[source]]
 id = "ubo-privacy-min"
 url = "https://ublockorigin.pages.dev/filters/privacy.min.txt"
-sha256 = "224823c8f046b783b657162d7507e13f613c6a6313753c49be4e4ddb05e6e353"
+sha256 = "1fb23e238672200f297dfd8e4934b2c58447e607c5440cb1caf7e594d0ef3131"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -293,7 +293,7 @@ license = "uBlock filters - Privacy; GPL-3.0-or-later (uBlock Origin uAssets)"
 [[source]]
 id = "ubo-annoyances-min"
 url = "https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt"
-sha256 = "d7046689cdb9ab8797691b7b51e6ec6ab29acd560863d1319d7931f8a2ed0d67"
+sha256 = "f2a56c33f4f69aecf31dce2ad4286c82aa615f082b1c222cdcf9627b6428a09c"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -315,4 +315,16 @@ enabled = true
 trusted = false
 permissions = 0
 license = "uBlock filters - Cookie Notices; GPL-3.0-or-later (uBlock Origin uAssets)"
+
+[[source]]
+id = "stevenblack-fakenews-gambling"
+url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts"
+sha256 = "7c1ee9df5719f5d4f8e37eda0caea3e8ad495dd299cbac7aae0175dfd51b2a80"
+dialect = "hosts"
+format = "hosts"
+priority = 68
+enabled = true
+trusted = false
+permissions = 0
+license = "StevenBlack/hosts (fakenews + gambling extensions); MIT (license.txt)"
 

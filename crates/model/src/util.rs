@@ -43,7 +43,10 @@ pub fn is_literal_arg(value: &str) -> bool {
     if value.is_empty() {
         return false;
     }
-    if (value.starts_with('/') && value.ends_with('/')) || value.starts_with("regex:") {
+    // A leading `/` is how uBO writes a regex literal, with optional flags after the closing
+    // slash (`/download/i`). Reject the whole shape rather than only `/.../`, otherwise flagged
+    // regex arguments are mistaken for literals.
+    if value.starts_with('/') || value.starts_with("regex:") {
         return false;
     }
     !value.chars().any(|c| {
@@ -183,7 +186,7 @@ fn civil_from_days(days: i64) -> (i64, i64, i64) {
 
 #[cfg(test)]
 mod tests {
-    use super::format_rfc2822;
+    use super::{format_rfc2822, is_literal_arg};
 
     #[test]
     fn formats_known_timestamps() {
@@ -192,5 +195,14 @@ mod tests {
             format_rfc2822(1_794_661_516),
             "Sat, 14 Nov 2026 13:05:16 +0000"
         );
+    }
+
+    #[test]
+    fn rejects_regex_literal_arguments_with_or_without_flags() {
+        assert!(is_literal_arg("Sponsored"));
+        assert!(is_literal_arg("href"));
+        assert!(!is_literal_arg("/Sponsored/"));
+        assert!(!is_literal_arg("/Sponsored/i"));
+        assert!(!is_literal_arg("regex:Sponsored"));
     }
 }

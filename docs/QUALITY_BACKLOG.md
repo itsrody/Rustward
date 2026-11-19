@@ -24,5 +24,6 @@ not lost.
 9. **Compression targets** — add CI gates for the documented 30–60% rule-count and ≥20% no-opt
    flatbuffer reductions, and add more union/canonicalization passes after item 1 lands.
 10. **Batch slow/complex exclusion** — done. ADMIT supports config-driven family batches, defaulting
-    to `nested_procedural`, which removes slow operators adblock folds into native CSS. Additional
-    families are classified but not excluded by default; VERIFY mirrors the gate.
+    to `nested_procedural`, which removes slow operators adblock folds into native CSS. Literal-arg
+    checking now also rejects regex literals with flags (`/ad/i`). Additional families are classified
+    but not excluded by default; VERIFY mirrors the gate.

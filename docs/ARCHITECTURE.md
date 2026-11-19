@@ -683,6 +683,8 @@ and intent preservation. All entries still go through the same reparse and diffe
 | R10 | Subsumption — domain | `P$domain=d1\|d2` dropped when `P` exists with otherwise identical fields | No exceptions between; pinned rules excluded |
 | R11 | Regex fusion *(experimental, off by default)* | many `||hostN^` → one full regex `/^https?:\/\/(?:h1\|h2\|...)(?:[\/^:?#]\|$)/` | Only with `full-regex-handling`; requires benchmark win and full differential gate; disabled by default because regex matching is usually slower |
 | R12 | Cosmetic generic promotion | host-specific plain-CSS hide with *all* known hosts → generic `##.ad` | Only when host set covers configured corpus domains; off by default |
+| R13 | Exception type union | `@@P$script` + `@@P$image` → `@@P$image,script` | Same pattern, hostname, domain sets, party, schemes, important, tag, modifier payload, and features; exception marker preserved; no badfilter pin |
+| R14 | Exception domain union | `@@P$domain=d1` + `@@P$domain=d2` → `@@P$domain=d1\|d2` | Positive `$domain=`/`$from=` lists only; no `~` values, no badfilter pin; parsed exception mask and non-domain fields must match; engine differential corpus covers every source domain |
 | D1 | uBO bare-hostname intent *(opt-in, off by default)* | `example.com` → `||example.com^` for Standard-format uBO sources | Only when source sets `host_semantics = "ubo"`; never for ABP/AdGuard/hosts sources; must pass document-vs-substring differential corpus |
 | D2 | ABP redirect alias | `rewrite=abp-resource:X` → engine-native `redirect=X` spelling | Engine already aliases both forms (identical mask/modifier); this is spelling normalization only; resource names are not translated |
 | D3 | Dialect alias canonicalization *(implemented as `network_canonicalization`)* | `from`→`domain`, `3p`→`third-party`, `1p`→`first-party`, `object-subrequest`→`object`, `css`→`stylesheet`, `frame`→`subdocument`, `xhr`→`xmlhttprequest`, `beacon`→`ping`, `doc`→`document`, `ghide`→`generichide` | Reparsed `engine_id`, `mask`, and `features_mask` must be identical; aliases with silently dropped values are flagged, not "fixed" |
@@ -697,8 +699,11 @@ and intent preservation. All entries still go through the same reparse and diffe
 
 Notes:
 
-- **R1/R2/R3 are the main workhorses** — verified equivalent, common in real lists, and reduce both
-  source size and flatbuffer size (probe: two rules → one rule saves 32 bytes in the flatbuffer).
+- **R1/R2/R3/R13/R14 are the main workhorses** — verified equivalent, common in real lists, and
+  reduce both source size and flatbuffer size (probe: two rules → one rule saves 32 bytes in the
+  flatbuffer). R14 is especially effective for per-site unbreak rules for third-party analytics;
+  collapsing thousands of single-domain `@@` rules into a few shared filter objects reduces the
+  exception index without changing matching behavior.
 - **R7–R10 are high-risk.** They are gated by strict structural predicates *and* differential
   verification, and each removal is logged with the subsuming rule id. R7/R8/R10 are implemented and
   enabled as `hostname_subsumption`, `mask_subsumption`, and `domain_subsumption` respectively. They
@@ -1051,7 +1056,15 @@ allow_js_injection = false          # #%#
 
 [rewrite]
 # Only engine-equivalent, reparse-verified families are enabled.
-enabled = ["network_canonicalization", "type_union", "domain_union", "to_domain_union", "cosmetic_host_union"]
+enabled = [
+  "network_canonicalization",
+  "type_union",
+  "domain_union",
+  "exception_type_union",
+  "exception_domain_union",
+  "to_domain_union",
+  "cosmetic_host_union",
+]
 ubo_host_semantics = false
 regex_fusion = false
 

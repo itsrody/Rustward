@@ -36,3 +36,8 @@ not lost.
     an ABP-extended VERIFY baseline, and procedural-action snapshots in cosmetic equivalence.
     Literal-boundary classification now covers engine-escaped punctuation and path punctuation,
     with redundant escapes removed by `network_canonicalization`; real regex escapes stay excluded.
+13. **Index-friendly exception union batch** — done. New `exception_type_union` and
+    `exception_domain_union` passes merge per-site `@@` unbreak rules that were previously skipped
+    by the union builder. Positive `$domain=`/`$from=` lists only; negated lists, badfilter targets,
+    and any structurally or differentially unsafe group remain separate. This reduces exception
+    filter objects and token-map entries without weakening any exception.

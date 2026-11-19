@@ -92,7 +92,8 @@ Stage crates are intentionally short:
 - `crates/analyze` — metrics and classification
 - `crates/admit` — golden-rule admission and D11 resource trust checks
 - `crates/dedup` — exact and semantic deduplication with source-priority retention
-- `crates/rewrite` — conservative type/domain/cosmetic union rewrites with reparse and engine checks
+- `crates/rewrite` — conservative type/domain/cosmetic/exception union rewrites with reparse and
+  engine checks
 - `crates/emit` — deterministic `compiler-friendly-v1` output ordering
 - `crates/verify` — differential verification and benchmarks
 - `crates/cli` — the `rustward` binary and staged publishing

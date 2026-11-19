@@ -69,6 +69,11 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(first_list.contains("! Description: Rust-verified rules list for Brave Browser.\n"));
     assert!(first_list.contains("||ads.example^$image,script"));
     assert!(first_list.contains("||tracker.example^$domain=site-a.example|site-b.example"));
+    assert!(
+        first_list
+            .contains("@@||analytics.example/tracker.js$domain=site-a.example|site-b.example")
+    );
+    assert!(first_list.contains("@@||scripts.example/lib.js$image,script"));
     assert!(first_list.contains("example.com,other.example##.ad"));
     assert!(first_list.contains("contains.example##.promo:has-text(Legacy Ad)"));
     assert!(!first_list.contains("contains-regex.example"));
@@ -123,13 +128,15 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     let build: Value =
         serde_json::from_slice(&fs::read(root.join("reports/build.json")).expect("read build"))
             .expect("parse build");
-    assert_eq!(build["metrics"]["rewrites_applied"], 4);
+    assert_eq!(build["metrics"]["rewrites_applied"], 6);
     assert_eq!(build["metrics"]["badfilter_resolved"], 2);
     assert_eq!(build["metrics"]["badfilter_targets_pruned"], 2);
 
     let rewrites = fs::read_to_string(root.join("reports/rewrites.tsv")).expect("read rewrites");
     assert!(rewrites.contains("type_union"));
     assert!(rewrites.contains("domain_union"));
+    assert!(rewrites.contains("exception_domain_union"));
+    assert!(rewrites.contains("exception_type_union"));
     assert!(rewrites.contains("cosmetic_host_union"));
     assert!(rewrites.contains("d6_literal_contains"));
 

@@ -76,6 +76,8 @@ enabled = [
     "network_canonicalization",
     "type_union",
     "domain_union",
+    "exception_type_union",
+    "exception_domain_union",
     "to_domain_union",
     "cosmetic_host_union",
     "mask_subsumption",

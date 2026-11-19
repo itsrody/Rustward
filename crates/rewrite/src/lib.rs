@@ -47,6 +47,24 @@ pub fn rewrite(rules: Vec<Rule>, config: &Config) -> Result<RewriteResult> {
             &mut receipts,
         )?;
     }
+    if config.rewrite_enabled("exception_type_union") {
+        rewrite_network(
+            &mut rules,
+            config,
+            "exception_type_union",
+            &badfilter_targets,
+            &mut receipts,
+        )?;
+    }
+    if config.rewrite_enabled("exception_domain_union") {
+        rewrite_network(
+            &mut rules,
+            config,
+            "exception_domain_union",
+            &badfilter_targets,
+            &mut receipts,
+        )?;
+    }
     if config.rewrite_enabled("to_domain_union") {
         rewrite_network(
             &mut rules,
@@ -201,17 +219,20 @@ fn reparse_matches(original: &NetworkRule, candidate: &str) -> bool {
 struct OptionSplit {
     prefix: String,
     options: Vec<String>,
+    is_exception: bool,
 }
 
 fn split_network_options(text: &str) -> Option<OptionSplit> {
-    let (prefix, options) = text.rsplit_once('$')?;
-    if prefix.contains('$') || options.is_empty() || options.contains('$') || text.starts_with("@@")
-    {
+    let is_exception = text.starts_with("@@");
+    let body = if is_exception { &text[2..] } else { text };
+    let (prefix, options) = body.rsplit_once('$')?;
+    if prefix.contains('$') || options.is_empty() || options.contains('$') {
         return None;
     }
     Some(OptionSplit {
         prefix: prefix.to_string(),
         options: options.split(',').map(str::to_string).collect(),
+        is_exception,
     })
 }
 
@@ -253,39 +274,56 @@ fn rewrite_network(
             continue;
         };
         let accepted = match family {
-            "type_union" => split.options.iter().all(|option| {
-                let key = option.split('=').next().unwrap_or("");
-                TYPE_OPTIONS.contains(&key.to_ascii_lowercase().as_str())
-            }),
-            "domain_union" => split.options.iter().all(|option| {
-                matches!(
-                    option
-                        .split('=')
-                        .next()
-                        .unwrap_or("")
-                        .to_ascii_lowercase()
-                        .as_str(),
-                    "domain" | "from"
-                ) && option.contains('=')
-            }),
-            "to_domain_union" => split.options.iter().all(|option| {
-                option
-                    .split('=')
-                    .next()
-                    .unwrap_or("")
-                    .eq_ignore_ascii_case("to")
-                    && option.contains('=')
-            }),
+            "type_union" | "exception_type_union" => {
+                let is_exception = matches!(family, "exception_type_union");
+                split.is_exception == is_exception
+                    && split.options.iter().all(|option| {
+                        let key = option.split('=').next().unwrap_or("");
+                        TYPE_OPTIONS.contains(&key.to_ascii_lowercase().as_str())
+                    })
+            }
+            "domain_union" | "exception_domain_union" => {
+                let is_exception = matches!(family, "exception_domain_union");
+                split.is_exception == is_exception
+                    && split.options.iter().all(|option| {
+                        matches!(
+                            option
+                                .split('=')
+                                .next()
+                                .unwrap_or("")
+                                .to_ascii_lowercase()
+                                .as_str(),
+                            "domain" | "from"
+                        ) && option.contains('=')
+                            && (!is_exception || !option.contains('~'))
+                    })
+            }
+            "to_domain_union" => {
+                !split.is_exception
+                    && split.options.iter().all(|option| {
+                        option
+                            .split('=')
+                            .next()
+                            .unwrap_or("")
+                            .eq_ignore_ascii_case("to")
+                            && option.contains('=')
+                    })
+            }
             _ => false,
         };
         if !accepted || split.options.is_empty() {
             continue;
         }
 
+        let prefix_key = if split.is_exception {
+            format!("@@{}", split.prefix)
+        } else {
+            split.prefix.clone()
+        };
         let key = match family {
-            "type_union" => format!(
+            "type_union" | "exception_type_union" => format!(
                 "{}|{}|{}|{:?}|{:?}|{:?}|{:?}|{}",
-                split.prefix,
+                prefix_key,
                 network.mask
                     & !adblock::filters::network::NetworkFilterMask::FROM_NETWORK_TYPES.bits(),
                 network.features,
@@ -295,9 +333,9 @@ fn rewrite_network(
                 network.tag,
                 network.source_permissions,
             ),
-            "domain_union" => format!(
+            "domain_union" | "exception_domain_union" => format!(
                 "{}|{}|{}|{:?}|{:?}|{:?}|{:?}|{}",
-                split.prefix,
+                prefix_key,
                 network.mask,
                 network.features,
                 network.not_domain_hashes,
@@ -308,7 +346,7 @@ fn rewrite_network(
             ),
             "to_domain_union" => format!(
                 "{}|{}|{}|{:?}|{:?}|{:?}|{:?}|{}",
-                split.prefix,
+                prefix_key,
                 network.mask,
                 network.features,
                 network.domain_hashes,
@@ -694,7 +732,7 @@ fn build_network_candidate(group: &[NetworkRule], family: &str) -> Option<String
         before.push(split);
     }
     let options = match family {
-        "type_union" => {
+        "type_union" | "exception_type_union" => {
             let mut options: Vec<String> = before
                 .iter()
                 .flat_map(|split| split.options.iter().cloned())
@@ -703,8 +741,8 @@ fn build_network_candidate(group: &[NetworkRule], family: &str) -> Option<String
             options.dedup();
             options
         }
-        "domain_union" | "to_domain_union" => {
-            let key = if family == "domain_union" {
+        "domain_union" | "exception_domain_union" | "to_domain_union" => {
+            let key = if matches!(family, "domain_union" | "exception_domain_union") {
                 "domain"
             } else {
                 "to"
@@ -722,7 +760,8 @@ fn build_network_candidate(group: &[NetworkRule], family: &str) -> Option<String
         }
         _ => return None,
     };
-    Some(format!("{}${}", first.prefix, options.join(",")))
+    let marker = if first.is_exception { "@@" } else { "" };
+    Some(format!("{marker}{}${}", first.prefix, options.join(",")))
 }
 
 fn structural_check_network(group: &[NetworkRule], family: &str, candidate: &str) -> bool {
@@ -733,7 +772,7 @@ fn structural_check_network(group: &[NetworkRule], family: &str, candidate: &str
         return false;
     };
     let first = &group[0];
-    let expected_mask = if family == "type_union" {
+    let expected_mask = if matches!(family, "type_union" | "exception_type_union") {
         group.iter().fold(0u32, |acc, rule| acc | rule.mask)
     } else {
         first.mask
@@ -749,13 +788,13 @@ fn structural_check_network(group: &[NetworkRule], family: &str, candidate: &str
     if after.modifier_option.map(str::to_string) != first.modifier_option {
         return false;
     }
-    if family == "type_union" {
+    if matches!(family, "type_union" | "exception_type_union") {
         return sorted(after.opt_domains.as_deref()) == first.domain_hashes
             && sorted(after.opt_not_domains.as_deref()) == first.not_domain_hashes
             && sorted(after.opt_to_domains.as_deref()) == first.to_domain_hashes
             && sorted(after.opt_not_to_domains.as_deref()) == first.not_to_domain_hashes;
     }
-    if family == "domain_union" {
+    if matches!(family, "domain_union" | "exception_domain_union") {
         let expected: Vec<u64> = group
             .iter()
             .flat_map(|rule| rule.domain_hashes.iter().copied())

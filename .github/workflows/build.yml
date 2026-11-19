@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: rustshield-build
+  group: rustward-build
   cancel-in-progress: false
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
-      RUSTSHIELD_TIMING: "1"
+      RUSTWARD_TIMING: "1"
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -32,13 +32,13 @@ jobs:
       - name: Refresh upstream list pins
         run: cargo run --release --quiet -- update-pins
 
-      - name: Build and verify RustShield.txt
+      - name: Build and verify Rustward.txt
         run: cargo run --release --quiet -- build
 
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
         with:
-          name: RustShield-dist
+          name: Rustward-dist
           path: dist/
           if-no-files-found: error
 

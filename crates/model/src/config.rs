@@ -1,4 +1,4 @@
-//! Configuration schema for RustShield.
+//! Configuration schema for Rustward.
 
 use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
@@ -82,7 +82,7 @@ fn default_emit_order() -> String {
 }
 
 fn default_list_title() -> String {
-    "RustShield".to_string()
+    "Rustward".to_string()
 }
 
 fn default_list_expires() -> String {

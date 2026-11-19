@@ -1,4 +1,4 @@
-//! Core configuration, IR, and utility types for RustShield.
+//! Core configuration, IR, and utility types for Rustward.
 
 pub mod config;
 pub mod model;

@@ -1,4 +1,4 @@
-! Title: RustShield basic test fixture
+! Title: Rustward basic test fixture
 ! Description: Small deterministic list exercising parsing, admission, dedup, and emit.
 !#if env_chromium
 ||ads.example^$script

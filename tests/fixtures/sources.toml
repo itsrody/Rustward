@@ -4,7 +4,7 @@ adblock_version = "=0.13.6"
 permissions = 0
 
 [output]
-path = "RustShield.txt"
+path = "Rustward.txt"
 emit_order = "compiler-friendly-v1"
 inline_audit_comments = false
 last_modified = "Sat, 14 Nov 2026 13:05:16 +0000"

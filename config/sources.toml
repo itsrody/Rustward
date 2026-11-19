@@ -4,13 +4,13 @@ adblock_version = "=0.13.6"
 permissions = 0
 
 [output]
-path = "dist/RustShield.txt"
+path = "dist/Rustward.txt"
 emit_order = "compiler-friendly-v1"
 inline_audit_comments = false
-title = "RustShield"
+title = "Rustward"
 # Omitted: emitted as the UTC build time in RFC 2822 form.
 expires = "2 days"
-description = "Rust-verified rules list for Brave Browser."
+description = "Verified uBO-compatible filter list for adblock-rust engines."
 
 [verify]
 required = true

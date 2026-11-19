@@ -35,12 +35,12 @@ fn copy_fixture_tree(root: &Path) {
 }
 
 fn run_build(root: &Path) -> std::process::Output {
-    Command::new(env!("CARGO_BIN_EXE_rustshield"))
+    Command::new(env!("CARGO_BIN_EXE_rustward"))
         .args(["--root"])
         .arg(root)
         .args(["--config", "config/sources.toml", "build"])
         .output()
-        .expect("run rustshield")
+        .expect("run rustward")
 }
 
 #[test]
@@ -49,10 +49,8 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
         .duration_since(UNIX_EPOCH)
         .expect("clock")
         .as_nanos();
-    let root = std::env::temp_dir().join(format!(
-        "rustshield-fixture-{}-{unique}",
-        std::process::id()
-    ));
+    let root =
+        std::env::temp_dir().join(format!("rustward-fixture-{}-{unique}", std::process::id()));
     fs::create_dir_all(&root).expect("create temp root");
     copy_fixture_tree(&root);
 
@@ -63,9 +61,9 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
         String::from_utf8_lossy(&first.stderr)
     );
 
-    let list_path = root.join("RustShield.txt");
+    let list_path = root.join("Rustward.txt");
     let first_list = fs::read_to_string(&list_path).expect("read list");
-    assert!(first_list.starts_with("! Title: RustShield\n"));
+    assert!(first_list.starts_with("! Title: Rustward\n"));
     assert!(first_list.contains("! Last modified: Sat, 14 Nov 2026 13:05:16 +0000\n"));
     assert!(first_list.contains("! Expires: 2 days\n"));
     assert!(first_list.contains("! Description: Rust-verified rules list for Brave Browser.\n"));
@@ -85,7 +83,7 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(excluded.contains("example.com##.ad:matches-css(display: none)"));
 
     for artifact in [
-        "RustShield.txt.sha256",
+        "Rustward.txt.sha256",
         "lists.lock",
         "reports/manifest.json",
         "reports/build.json",

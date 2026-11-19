@@ -1,7 +1,8 @@
-# RustyShield
+# Rustward
 
-Generator for `RustShield.txt`: a deduplicated, classified, rewritten, and verified unified filter
-list optimized for Brave's [`adblock-rust`](https://github.com/brave/adblock-rust) engine.
+Rustward generates `Rustward.txt`: a deduplicated, classified, rewritten, and verified unified
+filter list for [`adblock-rust`](https://github.com/brave/adblock-rust) engines. Its output stays
+close to uBO syntax, so the same list works well in uBO-compatible clients.
 
 The engine parser is the only semantic oracle. The pinned engine is `adblock = "=0.13.6"`.
 See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full design: dialect-aware rewrites for
@@ -26,8 +27,8 @@ Every HTTP(S) source must have a `sha256` pin. Raw bytes are cached in `cache/bl
 
 A successful build publishes all artifacts under `dist/`:
 
-- `dist/RustShield.txt`
-- `dist/RustShield.txt.sha256`
+- `dist/Rustward.txt`
+- `dist/Rustward.txt.sha256`
 - `dist/lists.lock`
 - `dist/reports/manifest.json`
 - `dist/reports/build.json`
@@ -77,8 +78,8 @@ cargo run -- bench --candidate path/to/list.txt
 cargo run -- resources
 ```
 
-Set `RUSTSHIELD_TIMING=1` to print per-stage timings to stderr. Set
-`RUSTSHIELD_DEBUG_REWRITE=1` to print rewrite candidate diagnostics.
+Set `RUSTWARD_TIMING=1` to print per-stage timings to stderr. Set
+`RUSTWARD_DEBUG_REWRITE=1` to print rewrite candidate diagnostics.
 
 ## Workspace
 
@@ -93,4 +94,4 @@ Stage crates are intentionally short:
 - `crates/rewrite` — conservative type/domain/cosmetic union rewrites with reparse and engine checks
 - `crates/emit` — deterministic `compiler-friendly-v1` output ordering
 - `crates/verify` — differential verification and benchmarks
-- `crates/cli` — the `rustshield` binary and staged publishing
+- `crates/cli` — the `rustward` binary and staged publishing

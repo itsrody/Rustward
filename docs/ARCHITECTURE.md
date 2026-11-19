@@ -1,19 +1,19 @@
-# RustShield — Architecture Design
+# Rustward — Architecture Design
 
 **Status:** implemented; published by GitHub Actions on manual trigger and every 2 days.
 **Target engine:** Brave `adblock-rust` (`adblock` crate), pinned to `=0.13.6`.
-**Primary output:** `dist/RustShield.txt` — one deterministic, deduplicated, semantics-preserving,
+**Primary output:** `dist/Rustward.txt` — one deterministic, deduplicated, semantics-preserving,
 engine-optimized unified filter list, plus auditable sidecar reports.
 
 ---
 
 ## 1. Purpose and scope
 
-RustShield is an offline **list compiler**, not a browser component. It ingests many third-party
+Rustward is an offline **list compiler**, not a browser component. It ingests many third-party
 filter lists (EasyList, EasyPrivacy, hosts lists, regional lists, privacy lists, etc.), parses them
 with the *actual* rust-adblock parser, classifies them by what rust-adblock can and cannot optimize,
 deduplicates, safely rewrites rules that rust-adblock supports but does not optimize, verifies the
-result against the real engine, and emits `dist/RustShield.txt`.
+result against the real engine, and emits `dist/Rustward.txt`.
 
 ### Non-goals
 
@@ -27,11 +27,11 @@ result against the real engine, and emits `dist/RustShield.txt`.
 | Metric | Target |
 | --- | --- |
 | Decision mismatches vs. baseline engine on verification corpus | **0** (hard gate) |
-| Determinism: same inputs + same lockfile ⇒ byte-identical `RustShield.txt` | **required** |
+| Determinism: same inputs + same lockfile ⇒ byte-identical `Rustward.txt` | **required** |
 | Rule-count reduction on typical EasyList+EasyPrivacy union | 30–60% |
 | Engine flatbuffer size reduction with optimizer *disabled* | ≥ 20% |
 | Engine construction time for emitted list | no worse than raw-baseline; target ≥ 10% faster |
-| Rules failing the fast-native/official/engine-trusted gate in `RustShield.txt` | **0** (hard gate) |
+| Rules failing the fast-native/official/engine-trusted gate in `Rustward.txt` | **0** (hard gate) |
 | Ineligible rules that were neither rewritten to eligible nor excluded | **0** (hard gate) |
 | Reproducible provenance for every output rule | **required** |
 
@@ -61,13 +61,13 @@ patterns into one internal `FilterPart::AnyOf`. It never fuses across different 
 modifier payloads.
 
 **Consequence:** the majority of real-world rules — `||host^`, anything with `$domain=`, redirects,
-CSP, removeparam, cosmetic rules — receive *no* engine-side fusion. That is the gap RustShield fills.
+CSP, removeparam, cosmetic rules — receive *no* engine-side fusion. That is the gap Rustward fills.
 
 ### 2.2 Verified semantic equivalences and pitfalls
 
 Probe results (`adblock` 0.13.6), reproduced in the appendix:
 
-| Observation | Implication for RustShield |
+| Observation | Implication for Rustward |
 | --- | --- |
 | `P$script` + `P$image` behaves identically to `P$script,image` (same decisions, smaller flatbuffer) | Safe type-option union rewrite |
 | `P$domain=d1` + `P$domain=d2` ≡ `P$domain=d1\|d2` | Safe domain union rewrite |
@@ -97,7 +97,7 @@ Probe results (`adblock` 0.13.6), reproduced in the appendix:
 
 ### 2.4 Golden rule: fast-native, official, engine-trusted output only
 
-`RustShield.txt` is an **allowlist**, not a denylist. Every emitted rule must satisfy all three
+`Rustward.txt` is an **allowlist**, not a denylist. Every emitted rule must satisfy all three
 properties:
 
 1. **Fast-native.** It parses with rust-adblock's own syntax and does not rely on slow/complex
@@ -164,7 +164,7 @@ arguments only, no `/regex/`, one operator. It can be reduced further by config.
 1. **uBO provenance and grade.** `name` (or an alias) exists in a pinned snapshot of uBlock Origin's
    official scriptlet library (`src/js/resources/scriptlets.js` and its imported modules). The build
    records the upstream commit, file sha256, aliases, dependencies, and parsed grade: `standard` for
-   ordinary built-ins or `trusted` when `requiresTrust: true`. RustShield uses explicit per-source
+   ordinary built-ins or `trusted` when `requiresTrust: true`. Rustward uses explicit per-source
    `trusted = true`; it never guesses trust from a `uBlock filters – …` title.
 2. **adblock-rust trust.** `standard → PermissionMask::default()`; `trusted → TRUST_BITS` granted only
    to configured trusted sources. Admission requires
@@ -195,7 +195,7 @@ Failures are excluded with `SCRIPTLET_NOT_IN_LIBRARY`, `SCRIPTLET_GRADE_MISMATCH
 4. **Determinism everywhere.** `BTreeMap`/`BTreeSet`, sorted vectors, bytewise string ordering,
    LF endings, fixed RNG seed, no wall-clock data in the list body. Build metadata is content-based.
 5. **Auditability.** Every dropped, deduplicated, or rewritten rule has a receipt with source ids,
-   line numbers, and reason. `RustShield.txt` is reproducible *and explainable*.
+   line numbers, and reason. `Rustward.txt` is reproducible *and explainable*.
 6. **Verify before publish.** The candidate engine is compared against a baseline engine on a
    generated + curated request corpus. Publish is atomic and gated on zero mismatches.
 7. **Golden rule on every output rule.** Emit only fast-native, official, engine-trusted rules
@@ -220,14 +220,14 @@ flowchart TD
     F --> G[DEDUP<br/>exact -> semantic -> priority]
     G --> H[REWRITE<br/>rewrite-to-eligible catalog + receipts]
     H --> I[SUBSUMPTION<br/>strict structural removal]
-    I --> J[SORT + EMIT<br/>RustShield.txt + sidecars]
+    I --> J[SORT + EMIT<br/>Rustward.txt + sidecars]
     J --> K[VERIFY on real engines<br/>admitted baseline vs candidate]
     K -->|mismatch| L[quarantine rewrite group, bisect, re-emit]
     K -->|clean| M[ATOMIC PUBLISH]
     K --> N[BENCH<br/>flatbuffer bytes, build ms, QPS]
 ```
 
-Stages are independently runnable CLI subcommands but the default `rustshield build` runs all of
+Stages are independently runnable CLI subcommands but the default `rustward build` runs all of
 them. Stage outputs are cached as content-addressed artifacts so a source that did not change
 does not get re-parsed or re-analyzed.
 
@@ -236,7 +236,7 @@ does not get re-parsed or re-analyzed.
 ## 5. Workspace / crate layout
 
 ```
-RustyShield/
+Rustward/
 ├── Cargo.toml                      # workspace, pinned adblock dependency in [workspace.dependencies]
 ├── config/
 │   ├── sources.toml                # source registry + per-source trust (checked in)
@@ -257,8 +257,8 @@ RustyShield/
 ├── tests/fixtures/                 # golden lists, badfilter traps, hosts, cosmetic edge cases
 ├── docs/ARCHITECTURE.md            # this document
 └── dist/                           # generated output, committed by GitHub Actions
-    ├── RustShield.txt
-    ├── RustShield.txt.sha256
+    ├── Rustward.txt
+    ├── Rustward.txt.sha256
     ├── lists.lock
     └── reports/                    # build.json / build.md / rewrites.tsv / verify.json / bench.json
 ```
@@ -413,7 +413,7 @@ mismatch, all rewrites in the responsible group/family are reverted and the pipe
 
 - `reqwest` (rustls, blocking) with a 30-second per-request timeout and at most one redirect.
 - Every HTTP(S) source must carry a `sha256` pin in `config/sources.toml`. The pin is verified
-  against the raw bytes, so an upstream change fails the build until `rustshield update-pins` is run
+  against the raw bytes, so an upstream change fails the build until `rustward update-pins` is run
   and the config diff is reviewed.
 - Conditional GET using the previous `dist/lists.lock` (`If-None-Match`, `If-Modified-Since`); `304`
   reuses the cached blob.
@@ -604,7 +604,7 @@ guess semantics.
 
 **Network option compatibility** (verified against `adblock-rust` 0.13.6 parse + behavior):
 
-| Option / aliases where used | Origin | rust-adblock 0.13.6 | RustShield action |
+| Option / aliases where used | Origin | rust-adblock 0.13.6 | Rustward action |
 | --- | --- | --- | --- |
 | `domain=`, `from=` | ABP / AG / uBO | Supported; values are hashed **literally** — entity `example.*` and `/regex/` values are not expanded (regex values are dropped, and an all-regex list errors with `NoSupportedDomains`) | Canonicalize alias; flag entity/regex values as semantic gaps, never "expand" them |
 | `to=` | AG / uBO | Positive values work; **negated-only `$to=~` is effectively inert** (no positive destination bucket) | R3 only for positives; reject negative-only forms |
@@ -726,7 +726,7 @@ Notes:
 - **D9 runs before the engine parser; D10 runs after analysis.** Both are recorded in receipts and
   reports so a rule never disappears without an explanation.
 - **Output dialect is never mixed.** Regardless of input dialect, every emitted rule is parsed and
-  verified as rust-adblock syntax; dialect metadata never leaks into `RustShield.txt` except as
+  verified as rust-adblock syntax; dialect metadata never leaks into `Rustward.txt` except as
   attribution comments.
 
 #### 7.6.4 Safety invariant
@@ -754,7 +754,7 @@ and the engine's `TokenSelector` choices. The emitter uses a versioned, benchmar
 **Compiler-friendly canonical order** (bytewise, locale-independent):
 
 1. Minimal generated header comments: build id, source attributions/licenses, counts, and
-   `! Generated by RustShield — do not edit`.
+   `! Generated by Rustward — do not edit`.
 2. `$badfilter` rules and their resolved targets are **not emitted**; both are resolved at build time
    (§7.3.2). `emit` applies a final filter so no badfilter line can leak into the output.
 3. Network rules grouped by the engine's bucket order, mirrored from `NetworkFilterListId`
@@ -781,19 +781,19 @@ or improve. If a future engine version changes token selection materially, `emit
 the order is re-benchmarked rather than silently kept.
 
 Emission rules: UTF-8, LF only, no trailing whitespace, no blank-line padding beyond section
-separators, stable comment prefix (`! RustShield:`). Optional `--inline-audit-comments` adds
+separators, stable comment prefix (`! Rustward:`). Optional `--inline-audit-comments` adds
 one-line provenance comments per rewritten rule for debug builds; off in production to keep parsing
 fast and the list small.
 
 **Atomic publish:** write all artifacts to `out/.staging-<buildid>/`, verify, then rename the list,
-sidecar, lockfile, and reports into `dist/`. The previous list is kept as `dist/RustShield.txt.prev`
+sidecar, lockfile, and reports into `dist/`. The previous list is kept as `dist/Rustward.txt.prev`
 for one build and is ignored by Git.
 
 ### 7.8 Output artifacts
 
 ```
-dist/RustShield.txt                 # the unified list
-dist/RustShield.txt.sha256          # digest of the exact bytes
+dist/Rustward.txt                 # the unified list
+dist/Rustward.txt.sha256          # digest of the exact bytes
 dist/lists.lock                     # pinned source/include metadata used for reproducible builds
 dist/reports/manifest.json          # config hash, lockfile hash, tool + engine versions, profile
 dist/reports/build.json             # all metrics below, machine-readable
@@ -846,7 +846,7 @@ Build engines with the **same feature profile**:
 - **Intent baseline:** admitted lines with only the opt-in D1 bridge applied, one rule at a time,
   and **no** R-family optimization. This is the reference when D1 is enabled; otherwise it equals the
   admitted baseline.
-- **Candidate:** `RustShield.txt`, built in `emit_order = "compiler-friendly-v1"`.
+- **Candidate:** `Rustward.txt`, built in `emit_order = "compiler-friendly-v1"`.
 
 Also build all baselines and the candidate with `new_with_filter_set_no_optimize` to prove the
 *list itself* is optimized and to catch any accidental dependence on engine-side fusion. A source-order
@@ -961,17 +961,17 @@ the build fails loudly.
 ## 9. CLI surface
 
 ```text
-rustshield build   [--offline] [--no-verify]
-rustshield update-pins                      # refresh HTTP(S) source sha256 pins from upstream
-rustshield analyze
-rustshield verify  [--candidate <file>]
-rustshield bench   [--candidate <file>]
-rustshield resources                        # official resource snapshot, grades, trust decisions
+rustward build   [--offline] [--no-verify]
+rustward update-pins                      # refresh HTTP(S) source sha256 pins from upstream
+rustward analyze
+rustward verify  [--candidate <file>]
+rustward bench   [--candidate <file>]
+rustward resources                        # official resource snapshot, grades, trust decisions
 ```
 
 Global options: `--root <dir>` (default `.`) and `--config <file>` (default
-`config/sources.toml`). Set `RUSTSHIELD_TIMING=1` for per-stage timings and
-`RUSTSHIELD_DEBUG_REWRITE=1` for rewrite diagnostics.
+`config/sources.toml`). Set `RUSTWARD_TIMING=1` for per-stage timings and
+`RUSTWARD_DEBUG_REWRITE=1` for rewrite diagnostics.
 
 Exit codes: `0` success, `1` pipeline error, `2` verification mismatch (publish blocked).
 
@@ -987,10 +987,10 @@ profile = "desktop"                 # selects features + ParseOptions.permission
 adblock_version = "=0.13.6"
 
 [output]
-path = "dist/RustShield.txt"          # all published artifacts live under dist/
+path = "dist/Rustward.txt"          # all published artifacts live under dist/
 emit_order = "compiler-friendly-v1"  # benchmarked engine-bucket/token locality order
 inline_audit_comments = false
-title = "RustShield"
+title = "Rustward"
 # Omitted: emitted as the UTC build time in RFC 2822 form.
 expires = "2 days"
 description = "Rust-verified rules list for Brave Browser."
@@ -1121,7 +1121,7 @@ reproducibility anchor.
 
 - **Unit tests per rewriter**, asserting parsed `NetworkFilter` fields before/after (like the probe
   in the appendix) instead of only string equality.
-- **Golden snapshot tests**: fixture lists → expected `RustShield.txt` and expected receipts.
+- **Golden snapshot tests**: fixture lists → expected `Rustward.txt` and expected receipts.
 - **Property tests**: randomly combine modifiers/domains/types and assert reparse equality plus
   differential decisions for every applied rewrite.
 - **Regression fixtures** for known traps: badfilter of one merged rule, `$script$badfilter`,
@@ -1155,7 +1155,7 @@ reproducibility anchor.
 
 1. **M0 — Foundation.** Workspace, config schema with `dialect`/`host_semantics`/`trusted`, fetch +
    cache + lockfile, pinned official resource snapshot, deterministic D9 directive evaluation,
-   engine-backed parse, analysis JSON. No rewrites yet; emit the admitted raw list as `RustShield.txt`.
+   engine-backed parse, analysis JSON. No rewrites yet; emit the admitted raw list as `Rustward.txt`.
 2. **M1 — Determinism + verification.** Golden-rule admission, dedup, classification,
    `compiler-friendly-v1` emit order, admitted-baseline-vs-candidate harness, dialect-gap report,
    corpus generator, benchmark metrics. Zero rewrites, so verification must be clean.

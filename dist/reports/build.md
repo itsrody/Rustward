@@ -1,4 +1,4 @@
-# RustShield build
+# Rustward build
 
 - build id: `7c448f586348275232262345aa2228fd126d82e7ec8b0d8f58b5cdedc75f347d`
 - emitted rules: `661005`

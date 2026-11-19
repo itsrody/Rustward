@@ -113,7 +113,7 @@ impl<'a> Loader<'a> {
                 Client::builder()
                     .redirect(reqwest::redirect::Policy::limited(1))
                     .timeout(Duration::from_secs(30))
-                    .user_agent(concat!("RustShield/", env!("CARGO_PKG_VERSION")))
+                    .user_agent(concat!("Rustward/", env!("CARGO_PKG_VERSION")))
                     .build()
                     .context("failed to build HTTP client")?,
             ),
@@ -351,7 +351,7 @@ pub fn current_sha256(url: &str) -> Result<String> {
     let client = Client::builder()
         .redirect(reqwest::redirect::Policy::limited(1))
         .timeout(Duration::from_secs(30))
-        .user_agent(concat!("RustShield/", env!("CARGO_PKG_VERSION")))
+        .user_agent(concat!("Rustward/", env!("CARGO_PKG_VERSION")))
         .build()
         .context("failed to build HTTP client")?;
     let response = client

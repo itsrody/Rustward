@@ -19,11 +19,7 @@ use model::util::{sha256_hex, write_json, write_text, write_tsv};
 use rewrite::RewriteResult as RewriteResultImpl;
 
 #[derive(Debug, Parser)]
-#[command(
-    name = "rustshield",
-    version,
-    about = "Offline RustShield.txt generator"
-)]
+#[command(name = "rustward", version, about = "Offline Rustward.txt generator")]
 struct Args {
     #[arg(long, default_value = ".")]
     root: PathBuf,
@@ -158,7 +154,7 @@ impl Pipeline {
 }
 
 fn timing(label: &str, elapsed: std::time::Duration) {
-    if std::env::var_os("RUSTSHIELD_TIMING").is_some() {
+    if std::env::var_os("RUSTWARD_TIMING").is_some() {
         eprintln!("{label}: {}ms", elapsed.as_millis());
     }
 }
@@ -225,14 +221,14 @@ fn build(root: &Path, config_path: &Path, no_verify: bool, fetch_mode: FetchMode
         .path
         .file_name()
         .map(|name| name.to_string_lossy().into_owned())
-        .unwrap_or_else(|| "RustShield.txt".to_string());
+        .unwrap_or_else(|| "Rustward.txt".to_string());
 
     let staging = root.join(format!("out/.staging-{}", pipeline.build_id));
     if staging.exists() {
         fs::remove_dir_all(&staging)?;
     }
     fs::create_dir_all(staging.join("reports"))?;
-    let list_path = staging.join("RustShield.txt");
+    let list_path = staging.join("Rustward.txt");
     write_text(&list_path, &pipeline.emit.text)?;
     write_text(
         &staging.join(format!("{output_name}.sha256")),
@@ -313,7 +309,7 @@ fn publish(root: &Path, staging: &Path, output_path: &Path) -> Result<()> {
     let name = output_path
         .file_name()
         .map(|name| name.to_string_lossy().into_owned())
-        .unwrap_or_else(|| "RustShield.txt".to_string());
+        .unwrap_or_else(|| "Rustward.txt".to_string());
     let output = output_root.join(&name);
     if output.exists() {
         let prev = output_root.join(format!("{name}.prev"));
@@ -322,7 +318,7 @@ fn publish(root: &Path, staging: &Path, output_path: &Path) -> Result<()> {
         }
         fs::rename(&output, prev)?;
     }
-    fs::rename(staging.join("RustShield.txt"), output)?;
+    fs::rename(staging.join("Rustward.txt"), output)?;
     fs::rename(
         staging.join(format!("{name}.sha256")),
         output_root.join(format!("{name}.sha256")),
@@ -559,7 +555,7 @@ fn build_markdown(
     bench: &model::BenchReport,
 ) -> String {
     let mut output = String::new();
-    output.push_str("# RustShield build\n\n");
+    output.push_str("# Rustward build\n\n");
     output.push_str(&format!("- build id: `{}`\n", report.build_id));
     output.push_str(&format!(
         "- emitted rules: `{}`\n",

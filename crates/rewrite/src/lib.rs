@@ -294,7 +294,7 @@ fn rewrite_network(
             Some(candidate) => candidate,
             None => continue,
         };
-        let debug = std::env::var_os("RUSTSHIELD_DEBUG_REWRITE").is_some();
+        let debug = std::env::var_os("RUSTWARD_DEBUG_REWRITE").is_some();
         if debug {
             eprintln!(
                 "[{family_name}] candidate={candidate} masks={:?}",

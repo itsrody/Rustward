@@ -7,8 +7,8 @@
   "coverage": {
     "network_rules_total": 675269,
     "network_rules_probed": 243494,
-    "rewrite_receipts_total": 51933,
-    "rewrite_receipts_exercised": 50310,
+    "rewrite_receipts_total": 51932,
+    "rewrite_receipts_exercised": 50309,
     "cosmetic_hosts_total": 74214,
     "cosmetic_hosts_checked": 2048
   }

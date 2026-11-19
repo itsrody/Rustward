@@ -1,8 +1,8 @@
 {
-  "build_id": "f6870778210256cda3d8d3f48ba5faf7dbbc5d50990ff5fec6e0eacef79a3318",
-  "config_hash": "493559c4472e4228a49035d8ef0ad0275f921c62ca48b85eff3452a450c7423e",
+  "build_id": "dc3604d57a35ee4f5d1f7a7372f11727b5aa4164ec9fbfb7d6b70abb54e16e1e",
+  "config_hash": "04bf8f8e16730dad749098577f8da76955e347818baa4726fa10a9234d60eb34",
   "profile_hash": "7523a0d8d369cd3ba756dd22e4c6bbb3e9bcfd0e8c4f97cefee9e7ee3023e475",
-  "lists_lock_hash": "858cc21894a5dfb5d602f0d4e684509972fe0429584c342b82846072c754dfa6",
+  "lists_lock_hash": "6e277ce0f6ba36fabbe144e0a7cbada081e4ede7baead9692dafdf52c347649c",
   "adblock_version": "=0.13.6",
   "engine_profile": "desktop",
   "emit_order": "compiler-friendly-v1",
@@ -24,6 +24,7 @@
     "ubo-badware-min",
     "ubo-privacy-min",
     "ubo-annoyances-min",
-    "ubo-annoyances-cookies"
+    "ubo-annoyances-cookies",
+    "stevenblack-fakenews-gambling"
   ]
 }

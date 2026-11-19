@@ -5,7 +5,7 @@
   "golden_rule_violations": 0,
   "emit_order_violations": 0,
   "coverage": {
-    "network_rules_total": 669578,
+    "network_rules_total": 675463,
     "network_rules_probed": 242872,
     "rewrite_receipts_total": 43888,
     "rewrite_receipts_exercised": 42501,

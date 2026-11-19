@@ -195921,6 +195921,17 @@
     "reason": null
   },
   {
+    "name": "noopframe",
+    "canonical_name": "noop.html",
+    "grade": "standard",
+    "digest": "6b97b9fae0b969e63380966f12d8a8e8a26d33eeee746a55d3525bfcd8cb1e99",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: engine did not realize noop.html"
+  },
+  {
     "name": "nosiif",
     "canonical_name": "prevent-setInterval.js",
     "grade": "standard",

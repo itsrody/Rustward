@@ -10,11 +10,11 @@
     "directives": 101,
     "effective_cosmetic_rules": 93576,
     "effective_network_rules": 684018,
-    "eligible": 751189,
+    "eligible": 757074,
     "empty_lines": 4006,
-    "excluded_by_gate": 28703,
+    "excluded_by_gate": 22818,
     "metadata": 38,
-    "network_rules": 586005,
+    "network_rules": 591884,
     "output_fast_native_css": 48184,
     "output_light_procedural": 127,
     "output_vetted_scriptlet": 21010,
@@ -40,6 +40,6 @@
     "xpath:SEMANTIC_GAP": 29
   },
   "eligibility": {
-    "ELIGIBLE": 751189
+    "ELIGIBLE": 757074
   }
 }

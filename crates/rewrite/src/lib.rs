@@ -29,9 +29,6 @@ pub fn rewrite(rules: Vec<Rule>, config: &Config) -> Result<RewriteResult> {
         })
         .collect();
 
-    if config.rewrite_enabled("network_canonicalization") {
-        canonicalize_network(&mut rules, &badfilter_targets, &mut receipts)?;
-    }
     if config.rewrite_enabled("type_union") {
         rewrite_network(
             &mut rules,
@@ -70,6 +67,11 @@ pub fn rewrite(rules: Vec<Rule>, config: &Config) -> Result<RewriteResult> {
         if config.rewrite_enabled(family) {
             rewrite_subsumption(&mut rules, family, &badfilter_targets, &mut receipts)?;
         }
+    }
+    // Canonicalization runs last: its `Rewritten` state must not hide rules from the grouping and
+    // subsumption passes above.
+    if config.rewrite_enabled("network_canonicalization") {
+        canonicalize_network(&mut rules, &badfilter_targets, &mut receipts)?;
     }
 
     Ok(RewriteResult { rules, receipts })

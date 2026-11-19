@@ -870,6 +870,7 @@ dependencies = [
  "fetch",
  "model",
  "sha2",
+ "verify",
 ]
 
 [[package]]

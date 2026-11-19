@@ -16,6 +16,8 @@ example.com##.ad
 example.com,other.example##.ad
 example.com##div.ad > span:has(a)
 example.com##.promo:has-text(Sponsored)
+contains.example##.promo:contains(Legacy Ad)
+contains-regex.example##.promo:contains(/Legacy/i)
 example.com##.ad:matches-css(display: none)
 example.com##.ad:style(color: red)
 example.com##+js(abort-on-property-read, adblockWasFound)

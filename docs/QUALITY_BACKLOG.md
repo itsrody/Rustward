@@ -17,8 +17,9 @@ not lost.
 6. **Hosts parsing hygiene** — treat all `#` lines in hosts-format sources as comments and classify
    localhost/broadcast entries as expected skips rather than parse errors.
 7. **Config/docs ↔ code alignment** — partially done. D3/D4 network canonicalization is implemented
-   as the `network_canonicalization` rewrite pass. `host_semantics`, `ubo_host_semantics`,
-   `regex_fusion`, D6, and D8 remain open.
+   as the `network_canonicalization` rewrite pass; D6 literal `contains` normalization is implemented
+   as the preparse `d6_literal_contains` pass. `host_semantics`, `ubo_host_semantics`, `regex_fusion`,
+   `:-abp-has` normalization, and D8 remain open.
 8. **Semantic-gap acceptance policy** — done. `admit.accepted_semantic_gaps` accepts `$all` and
    partially dropped method/scheme values; entity-domain, bare-hostname, and match-case gaps are
    excluded as `SEMANTIC_GAP_POLICY`. Reports split accepted, unresolved, and excluded gaps.
@@ -30,3 +31,8 @@ not lost.
     but not excluded by default; VERIFY mirrors the gate.
 11. **Network hygiene batch** — done. D3/D4 canonicalization, explicit semantic-gap acceptance, and
     removal of ineffective entity-domain/bare-hostname/match-case rules. `$all` stays accepted.
+12. **Safe coverage recovery batch** — done. D6 normalizes literal `:contains(...)` /
+    `:-abp-contains(...)` to `:has-text(...)` under `admit.literal_contains_rewrite`, with receipts,
+    an ABP-extended VERIFY baseline, and procedural-action snapshots in cosmetic equivalence.
+    Literal-boundary classification now covers engine-escaped punctuation and path punctuation,
+    with redundant escapes removed by `network_canonicalization`; real regex escapes stay excluded.

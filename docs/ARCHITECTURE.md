@@ -118,14 +118,16 @@ properties:
 | Cosmetic hide / unhide | Single native CSS selector, or one allowlisted lightweight procedural operator | Normalize only if result stays eligible; otherwise exclude |
 | Scriptlet rules | `##+js(...)` from the official library, grade recorded, permission + realization gates pass | D11 admits or excludes; no pass-through |
 | Injected CSS/JS, HTML filters, action operators, complex procedural operators | Never | Exclude; D5/D7/R11 stay removed/disabled |
-| Network patterns flagged `IS_REGEX` only because of `^` separators | Literal apart from the separator token, with no `*`, `/.../`, or hostname wildcard | **Allowed** when `admit.literal_boundary_regex = true`; the engine compiles these to a bounded generated matcher, not a user-authored regex |
+| Network patterns flagged `IS_REGEX` only because of `^` separators | Literal apart from the separator token, with no `*`, `/.../`, or hostname wildcard; redundant punctuation escapes are canonicalized away | **Allowed** when `admit.literal_boundary_regex = true`; the engine compiles these to a bounded generated matcher, not a user-authored regex |
 
-adblock sets `IS_REGEX` whenever a pattern contains `*` or `^`. A pattern whose only special token is
-`^` is still a literal URL matcher: the engine escapes every other character and expands `^` to a
-separator class. These rules are admitted as the `literal-boundary` class; full regexes (`/.../`),
-hostname wildcards (`IS_HOSTNAME_REGEX`), and path wildcards (`*`) remain excluded. The class is
-controlled by `admit.literal_boundary_regex` and is checked by both ADMIT and the golden-rule
-assertion in verification.
+adblock sets `IS_REGEX` whenever a pattern contains `*` or `^`. For non-complete patterns the engine
+escapes punctuation (`+`, `(`, `[`, `.`, …) and expands `^` to a separator class, so the pattern is
+still a literal URL matcher. Backslash escapes of that punctuation are redundant and are removed by
+`network_canonicalization` before emission; real regex escapes (`\d`, `\n`, `\p{...}`, …) keep the
+rule in the excluded `REGEX` family. Full regexes (`/.../`), hostname wildcards
+(`IS_HOSTNAME_REGEX`), and path wildcards (`*`) remain excluded. The class is controlled by
+`admit.literal_boundary_regex` and is checked by both ADMIT and the golden-rule assertion in
+verification.
 
 **Rewrite-or-exclude.** `analyze` labels every rule `ELIGIBLE`,
 `REWRITABLE_TO_ELIGIBLE`, or `INELIGIBLE`. Rules in the second class are handed to the rewriter;
@@ -686,7 +688,7 @@ and intent preservation. All entries still go through the same reparse and diffe
 | D3 | Dialect alias canonicalization *(implemented as `network_canonicalization`)* | `from`→`domain`, `3p`→`third-party`, `1p`→`first-party`, `object-subrequest`→`object`, `css`→`stylesheet`, `frame`→`subdocument`, `xhr`→`xmlhttprequest`, `beacon`→`ping`, `doc`→`document`, `ghide`→`generichide` | Reparsed `engine_id`, `mask`, and `features_mask` must be identical; aliases with silently dropped values are flagged, not "fixed" |
 | D4 | Option/pipe-order canonicalization *(implemented as `network_canonicalization`)* | Sort `$` options and `\|`-delimited domain lists deterministically | Mixed positive/negative domain lists keep their order to preserve last-match-wins; badfilter barriers and modifier payloads are never touched; every change passes reparse + engine differential gates |
 | D5 | *(removed)* AdGuard CSS injection | `example.com#$#.ad { color: red }` → `example.com##.ad:style(color: red)` | **No longer enabled.** `:style(...)` is a DOM-mutating action and fails the golden rule; route these rules to D10 |
-| D6 | Extended-CSS operator normalization | `:-abp-has(...)`→`:has(...)`, `:-abp-contains(...)`/`contains(...)`→`:has-text(...)` | Allowed only when result is native CSS or exactly one allowlisted lightweight operator with a literal argument; otherwise D10, not a "normalized" slow rule |
+| D6 | Extended-CSS operator normalization *(implemented for literal contains)* | `:-abp-contains(...)`/`contains(...)`→`:has-text(...)` | Runs before ADMIT with a `d6_literal_contains` receipt. Only a single literal argument and exactly one allowlisted `has-text` operator qualify; the ABP extended form is retained as the VERIFY baseline and engine differential equality is required. Regex arguments, chained operators, and action operators stay excluded; `:-abp-has(...)` remains open |
 | D7 | *(removed)* `$match-case` upgrade | `/BannerAd.gif$match-case` → escaping + full-regex form with `match-case` | **No longer enabled.** Regex rewriting is slow/complex; plain `$match-case` rules are quarantined via D10 |
 | D8 | Query-prune alias | `$queryprune=utm_source` → `$removeparam=utm_source` | Value must match the engine's `[A-Za-z0-9_-]+` restriction; regex-valued inputs are D10, not guessed |
 | D9 | Pre-parsing directive evaluation | Resolve `!#include`, `!#if`, `!#else`, `!#endif` for the pinned target profile | Runs **before** parse; environment variables and include tree are hashed into the build id; unresolved branches are reported |
@@ -1012,6 +1014,7 @@ include_root = "config/includes"          # content-addressed !#include tree
 # Slow/complex families removed in one batch before per-rule admission.
 exclude_families = ["nested_procedural"]
 literal_boundary_regex = true
+literal_contains_rewrite = true
 # Semantic gap classes that are knowingly accepted; others are excluded.
 accepted_semantic_gaps = ["all", "dropped_method", "dropped_scheme"]
 

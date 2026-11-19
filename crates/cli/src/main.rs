@@ -83,6 +83,10 @@ impl Pipeline {
         let build_id = sha256_hex(build_material.as_bytes());
         let started = Instant::now();
         let records = parse::parse_sources(&sources, &root, &config)?;
+        let preparse_receipts: Vec<_> = records
+            .iter()
+            .flat_map(|record| record.preparse_receipts.iter().cloned())
+            .collect();
         timing("parse", started.elapsed());
         let started = Instant::now();
         let admission = admit::admit(&records, &config, &root)?;
@@ -91,7 +95,12 @@ impl Pipeline {
         let dedup = dedup::dedup(admission.accepted.clone())?;
         timing("dedup", started.elapsed());
         let started = Instant::now();
-        let rewrite = rewrite::rewrite(dedup.rules.clone(), &config)?;
+        let mut rewrite = rewrite::rewrite(dedup.rules.clone(), &config)?;
+        if !preparse_receipts.is_empty() {
+            let mut receipts = preparse_receipts;
+            receipts.extend(std::mem::take(&mut rewrite.receipts));
+            rewrite.receipts = receipts;
+        }
         timing("rewrite", started.elapsed());
         let started = Instant::now();
         let emit = emit::emit(

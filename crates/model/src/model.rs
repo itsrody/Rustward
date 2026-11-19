@@ -455,6 +455,12 @@ pub struct ParsedRecord {
     pub effective_text: Option<String>,
     pub dialect: Dialect,
     pub outcome: ParsedOutcome,
+    /// Rewrites applied before ADMIT, with the original upstream rule text in `before`.
+    #[serde(default)]
+    pub preparse_receipts: Vec<RewriteReceipt>,
+    /// The pre-rewrite rule shape used as the VERIFY baseline when one exists.
+    #[serde(default)]
+    pub baseline_rule: Option<Rule>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

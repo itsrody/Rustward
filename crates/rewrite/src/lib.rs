@@ -8,7 +8,7 @@ use adblock::{
 use anyhow::Result;
 use model::{
     Config, CosmeticPayload, Eligibility, NetworkRule, Origin, RewriteReceipt, Rule, RuleState,
-    util::{canonical_network_text, sha256_hex},
+    util::{canonical_network_text, sha256_hex, unescape_literal_body},
 };
 use std::collections::{BTreeMap, HashSet};
 
@@ -141,6 +141,47 @@ fn canonicalize_network(
     Ok(())
 }
 
+#[derive(Debug, PartialEq, Eq)]
+struct NetworkIdentity {
+    mask: u32,
+    features: u32,
+    hostname: Option<String>,
+    body: String,
+    domains: Vec<u64>,
+    not_domains: Vec<u64>,
+    to_domains: Vec<u64>,
+    not_to_domains: Vec<u64>,
+    modifier: Option<String>,
+}
+
+fn rule_identity(rule: &NetworkRule) -> Option<NetworkIdentity> {
+    Some(NetworkIdentity {
+        mask: rule.mask,
+        features: rule.features,
+        hostname: rule.hostname.clone(),
+        body: unescape_literal_body(&rule.body)?,
+        domains: rule.domain_hashes.clone(),
+        not_domains: rule.not_domain_hashes.clone(),
+        to_domains: rule.to_domain_hashes.clone(),
+        not_to_domains: rule.not_to_domain_hashes.clone(),
+        modifier: rule.modifier_option.clone(),
+    })
+}
+
+fn filter_identity(filter: &adblock::filters::network::NetworkFilter) -> Option<NetworkIdentity> {
+    Some(NetworkIdentity {
+        mask: filter.mask.bits(),
+        features: filter.features_mask.bits(),
+        hostname: filter.hostname.as_deref().map(str::to_string),
+        body: unescape_literal_body(&filter.filter.string_view().unwrap_or_default())?,
+        domains: sorted(filter.opt_domains.as_deref()),
+        not_domains: sorted(filter.opt_not_domains.as_deref()),
+        to_domains: sorted(filter.opt_to_domains.as_deref()),
+        not_to_domains: sorted(filter.opt_not_to_domains.as_deref()),
+        modifier: filter.modifier_option.map(str::to_string),
+    })
+}
+
 fn reparse_matches(original: &NetworkRule, candidate: &str) -> bool {
     let Ok(adblock::lists::ParsedLine::Network(filter)) = parse_filter(
         candidate,
@@ -153,9 +194,7 @@ fn reparse_matches(original: &NetworkRule, candidate: &str) -> bool {
     ) else {
         return false;
     };
-    filter.get_id() == original.engine_id
-        && filter.mask.bits() == original.mask
-        && filter.features_mask.bits() == original.features
+    filter_identity(&filter) == rule_identity(original)
 }
 
 #[derive(Debug, Clone)]

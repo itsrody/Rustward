@@ -12,16 +12,20 @@ use anyhow::{Context, Result};
 use fetch::FetchedSource;
 use model::{
     Config, Dialect, DialectGap, ExclusionReason, FastOperator, GapClass, HideOrUnhide,
-    NetworkRule, Origin, ParsedOutcome, ParsedRecord, SourceFormat,
+    NetworkRule, Origin, ParsedOutcome, ParsedRecord, RewriteReceipt, Rule, RuleState,
+    SourceFormat,
     model::{CosmeticPayload, CosmeticRule},
-    util::{sha256_digest, sorted_unique},
+    util::{has_safe_literal_escapes, sha256_digest, sha256_hex, sorted_unique},
 };
 use std::{collections::HashMap, fs, path::Path};
 
 #[derive(Debug, Clone)]
 pub struct EffectiveLine {
     line_no: usize,
+    /// Text after directive expansion and preparse normalization.
     text: String,
+    /// Original upstream text, retained for provenance and exclusion reports.
+    raw_text: String,
 }
 
 /// Expands `!#if`/`!#else`/`!#endif` and `!#include` for the pinned target profile.
@@ -38,6 +42,7 @@ pub fn evaluate_directives(
             .map(|(index, text)| EffectiveLine {
                 line_no: index + 1,
                 text: text.to_string(),
+                raw_text: text.to_string(),
             })
             .collect());
     }
@@ -129,6 +134,7 @@ fn evaluate_text(
             output.push(EffectiveLine {
                 line_no: index + 1,
                 text: line.to_string(),
+                raw_text: line.to_string(),
             });
         }
     }
@@ -185,15 +191,17 @@ fn parse_line(
     let origin = || Origin {
         source_id: source.config.id.clone(),
         line_no: line.line_no,
-        text: line.text.clone(),
+        text: line.raw_text.clone(),
     };
     let base = |outcome| ParsedRecord {
         source_id: source.config.id.clone(),
         line_no: line.line_no,
-        raw_text: line.text.clone(),
+        raw_text: line.raw_text.clone(),
         effective_text: Some(line.text.clone()),
         dialect: effective_dialect(&source.config),
         outcome,
+        preparse_receipts: Vec::new(),
+        baseline_rule: None,
     };
 
     if trimmed.is_empty() {
@@ -299,6 +307,14 @@ fn parse_line(
             Ok(base(ParsedOutcome::Cosmetic(rule)))
         }
         Err(error) => {
+            if let Some((rule, baseline_rule, receipt)) =
+                normalize_literal_contains(trimmed, source, &line, opts, config)?
+            {
+                let mut record = base(ParsedOutcome::Cosmetic(rule));
+                record.preparse_receipts.push(receipt);
+                record.baseline_rule = Some(baseline_rule);
+                return Ok(record);
+            }
             let reason = classify_parse_error(trimmed, &error.to_string());
             let gap = detect_gap_for_error(trimmed);
             Ok(base(ParsedOutcome::Unsupported { reason, gap }))
@@ -311,11 +327,170 @@ fn parse_line(
 /// special token is `^` compiles to a bounded literal + separator matcher, which is safe to
 /// admit once the complete-regex and hostname-wildcard families have been excluded.
 fn is_literal_boundary_body(body: &str) -> bool {
-    body.contains('^')
-        && !body.contains('*')
-        && !body
-            .chars()
-            .any(|c| matches!(c, '[' | ']' | '(' | ')' | '{' | '}' | '\\' | '+'))
+    // adblock escapes punctuation when compiling a non-complete pattern, so only backslash escapes
+    // that invoke real regex syntax (\d, \n, \p{...}, …) make this family unsafe. Redundant
+    // punctuation escapes are canonicalized away by `network_canonicalization` before emission.
+    body.contains('^') && !body.contains('*') && has_safe_literal_escapes(body)
+}
+
+const CONTAINS_MARKERS: &[&str] = &[":-abp-contains(", ":contains("];
+
+/// Replaces a single literal `:contains(...)` / `:-abp-contains(...)` with `:has-text(...)`.
+/// Regex arguments, nested operators, and multiple procedural markers are left for normal
+/// admission/gap handling instead of being silently rewritten.
+fn replace_literal_contains(selector: &str) -> Option<String> {
+    let mut found = None;
+    for marker in CONTAINS_MARKERS {
+        if let Some(position) = selector.find(marker) {
+            found = Some((position, *marker));
+            break;
+        }
+    }
+    let (position, marker) = found?;
+    let tail = &selector[position + marker.len()..];
+    if CONTAINS_MARKERS
+        .iter()
+        .any(|other| tail.contains(other.trim_end_matches('(')))
+    {
+        return None;
+    }
+    let (argument, close) = parse_paren_argument(tail)?;
+    if !model::util::is_literal_arg(argument.trim()) {
+        return None;
+    }
+    let mut output = String::with_capacity(selector.len() + 6);
+    output.push_str(&selector[..position]);
+    output.push_str(":has-text(");
+    output.push_str(argument);
+    output.push(')');
+    output.push_str(&tail[close + 1..]);
+    Some(output)
+}
+
+fn parse_paren_argument(text: &str) -> Option<(&str, usize)> {
+    let mut depth = 1usize;
+    let mut quote = None;
+    let mut escaped = false;
+    for (index, ch) in text.char_indices() {
+        if escaped {
+            escaped = false;
+            continue;
+        }
+        if ch == '\\' {
+            escaped = true;
+            continue;
+        }
+        if let Some(delimiter) = quote {
+            if ch == delimiter {
+                quote = None;
+            }
+            continue;
+        }
+        match ch {
+            '\'' | '"' => quote = Some(ch),
+            '(' => depth += 1,
+            ')' => {
+                depth -= 1;
+                if depth == 0 {
+                    return Some((&text[..index], index));
+                }
+            }
+            _ => {}
+        }
+    }
+    None
+}
+
+/// D6: prepare a literal `:contains(...)` cosmetic rule for ADMIT. The original is kept as an ABP
+/// extended (`#?#`) baseline rule so VERIFY compares engine behavior, not just the rewritten text.
+fn normalize_literal_contains(
+    text: &str,
+    source: &FetchedSource,
+    line: &EffectiveLine,
+    opts: ParseOptions,
+    config: &Config,
+) -> Result<Option<(CosmeticRule, Rule, RewriteReceipt)>> {
+    if !config.admit.literal_contains_rewrite {
+        return Ok(None);
+    }
+    let Some((host_part, separator, selector)) = split_cosmetic(text) else {
+        return Ok(None);
+    };
+    if separator != "##" || host_part.trim().is_empty() || selector.contains("+js(") {
+        return Ok(None);
+    }
+    let Some(normalized_selector) = replace_literal_contains(selector) else {
+        return Ok(None);
+    };
+    let candidate = format!("{host_part}{separator}{normalized_selector}");
+    let Ok(adblock::lists::ParsedLine::Cosmetic(filter)) = parse_filter(&candidate, true, opts)
+    else {
+        return Ok(None);
+    };
+    let candidate_line = EffectiveLine {
+        line_no: line.line_no,
+        text: candidate.clone(),
+        raw_text: line.raw_text.clone(),
+    };
+    let origin = || Origin {
+        source_id: source.config.id.clone(),
+        line_no: line.line_no,
+        text: line.raw_text.clone(),
+    };
+    let candidate_rule = build_cosmetic_rule(source, &candidate_line, &filter, config, origin());
+    if candidate_rule.script_inject
+        || candidate_rule.action_detail.is_some()
+        || candidate_rule.action != HideOrUnhide::Hide
+        || (candidate_rule.hosts.is_empty() && candidate_rule.entities.is_empty())
+        || candidate_rule.selector_ops != ["css-selector", "has-text"]
+        || candidate_rule
+            .dialect_gaps
+            .iter()
+            .any(|gap| gap.class == GapClass::Unsupported)
+        || !matches!(
+            &candidate_rule.payload,
+            CosmeticPayload::LightProcedural {
+                op: FastOperator::HasText(_),
+                ..
+            }
+        )
+    {
+        return Ok(None);
+    }
+    if !verify::literal_contains_equivalence(text, &candidate, source.config.permissions)? {
+        return Ok(None);
+    }
+
+    let probe = format!("{host_part}#?#{selector}");
+    let Ok(adblock::lists::ParsedLine::Cosmetic(baseline_filter)) =
+        parse_filter(&probe, true, opts)
+    else {
+        return Ok(None);
+    };
+    let baseline_line = EffectiveLine {
+        line_no: line.line_no,
+        text: probe,
+        raw_text: line.raw_text.clone(),
+    };
+    let baseline_rule =
+        build_cosmetic_rule(source, &baseline_line, &baseline_filter, config, origin());
+
+    let id = format!("d6_literal_contains-{}", &sha256_hex(text.as_bytes())[..12]);
+    let mut admitted = candidate_rule;
+    admitted.state = RuleState::Rewritten(id.clone());
+    let receipt = RewriteReceipt {
+        id,
+        family: "d6_literal_contains".to_string(),
+        before: vec![text.to_string()],
+        after: candidate,
+        source_id: source.config.id.clone(),
+        checks: vec![
+            "reparse-equal".to_string(),
+            "engine-differential".to_string(),
+            "golden-rule-postcondition".to_string(),
+        ],
+    };
+    Ok(Some((admitted, Rule::Cosmetic(baseline_rule), receipt)))
 }
 
 fn effective_dialect(source: &model::SourceConfig) -> Dialect {
@@ -807,7 +982,7 @@ mod tests {
     use model::SourceConfig;
     use std::collections::BTreeMap;
 
-    fn classify(text: &str) -> model::NetworkRule {
+    fn parse_record(text: &str) -> ParsedRecord {
         let source = FetchedSource {
             config: SourceConfig {
                 id: "test".to_string(),
@@ -838,11 +1013,16 @@ mod tests {
             EffectiveLine {
                 line_no: 1,
                 text: text.to_string(),
+                raw_text: text.to_string(),
             },
             &config,
         )
         .expect("parse line");
-        match record.outcome {
+        record
+    }
+
+    fn classify(text: &str) -> model::NetworkRule {
+        match parse_record(text).outcome {
             ParsedOutcome::Network(rule) => rule,
             other => panic!("expected network rule, got {:?}", other),
         }
@@ -874,6 +1054,49 @@ mod tests {
         let plain = classify("||ads.example^$script");
         assert!(!plain.is_regex);
         assert!(!plain.is_literal_boundary_regex);
+    }
+
+    #[test]
+    fn literal_boundary_regex_tolerates_escaped_and_punctuation_literals() {
+        let escaped = classify(r"||ads.example/path\.php^$all");
+        assert!(escaped.is_regex);
+        assert!(escaped.is_literal_boundary_regex);
+        assert!(!escaped.is_complete_regex);
+
+        let punctuation = classify("||ads.example/a+b(c)[d]^$all");
+        assert!(punctuation.is_literal_boundary_regex);
+
+        let regex_escape = classify(r"||ads.example/path\d+\.php^$all");
+        assert!(regex_escape.is_regex);
+        assert!(!regex_escape.is_literal_boundary_regex);
+    }
+
+    #[test]
+    fn d6_normalizes_only_literal_contains() {
+        let record = parse_record("contains.example##.promo:contains(Legacy Ad)");
+        let ParsedOutcome::Cosmetic(rule) = &record.outcome else {
+            panic!("expected cosmetic rule, got {:?}", record.outcome);
+        };
+        assert_eq!(rule.text, "contains.example##.promo:has-text(Legacy Ad)");
+        assert!(matches!(
+            &rule.payload,
+            CosmeticPayload::LightProcedural {
+                op: FastOperator::HasText(value),
+                ..
+            } if value == "Legacy Ad"
+        ));
+        assert!(
+            matches!(&rule.state, RuleState::Rewritten(id) if id.starts_with("d6_literal_contains-"))
+        );
+        assert_eq!(record.preparse_receipts.len(), 1);
+        assert_eq!(record.preparse_receipts[0].family, "d6_literal_contains");
+        assert!(record.baseline_rule.is_some());
+
+        let regex = parse_record("regex.example##.promo:contains(/Legacy/i)");
+        assert!(matches!(regex.outcome, ParsedOutcome::Unsupported { .. }));
+
+        let nested = parse_record("nested.example##.promo:contains(Ad):upward(1)");
+        assert!(matches!(nested.outcome, ParsedOutcome::Unsupported { .. }));
     }
 
     #[test]

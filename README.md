@@ -44,8 +44,9 @@ Verification is a hard publish gate: with `verify.required = true`, any mismatch
 `max_mismatches = 0` leaves artifacts in `out/.staging-<build-id>` and exits with status 2.
 `verify.json` also records probe coverage (rules, rewrite receipts, and cosmetic hosts sampled vs.
 total) so a zero-mismatch result is interpretable. Network patterns using `^` as a separator are
-admitted as literal-boundary matchers; full regexes, hostname wildcards, and path wildcards remain
-excluded.
+admitted as literal-boundary matchers, with redundant punctuation escapes canonicalized away; full
+regexes, hostname wildcards, and path wildcards remain excluded. Literal `:contains(...)` selectors
+are normalized to `:has-text(...)` with receipts and an ABP-extended verification baseline.
 
 ## GitHub Actions
 

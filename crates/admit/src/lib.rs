@@ -113,7 +113,14 @@ pub fn admit(records: &[ParsedRecord], config: &Config, root: &Path) -> Result<A
                 &mut resource_decisions,
             ) {
                 Ok(admitted_rule) => {
-                    baseline.push(Rule::Cosmetic(admitted_rule.clone()));
+                    // Preparse rewrites keep their original ABP extended form in the baseline so
+                    // VERIFY compares the engine's behavior before and after the normalization.
+                    baseline.push(
+                        record
+                            .baseline_rule
+                            .clone()
+                            .unwrap_or_else(|| Rule::Cosmetic(admitted_rule.clone())),
+                    );
                     accepted.push(Rule::Cosmetic(admitted_rule));
                 }
                 Err(reason) => excluded.push(ExclusionRecord {

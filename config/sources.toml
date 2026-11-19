@@ -23,8 +23,12 @@ bench_iterations = 3
 
 [admit]
 # `^`-anchored URL patterns are flagged as regex by adblock but compile to bounded literal
-# matchers. Admit them so literal phishing/malware URL coverage is not lost.
+# matchers. Redundant punctuation escapes are canonicalized before emission; real regex escapes
+# (\d, \n, \p{...}, …) stay excluded.
 literal_boundary_regex = true
+# Normalize literal `:contains(...)` / `:-abp-contains(...)` selectors to `:has-text(...)` and keep
+# the ABP extended form as the VERIFY baseline. Regex-valued arguments remain excluded.
+literal_contains_rewrite = true
 # Slow/complex families removed in one batch before per-rule admission. `nested_procedural`
 # catches slow operators adblock folds into a single native CSS selector.
 exclude_families = ["nested_procedural"]

@@ -38,6 +38,47 @@ pub fn normalize_list(bytes: &[u8]) -> Result<String> {
         .join("\n"))
 }
 
+/// Escapes that adblock's non-complete-regex compiler treats as literal punctuation. A backslash
+/// before anything else (`\d`, `\n`, `\p{...}`, …) is real regex syntax and must stay excluded.
+pub const SAFE_LITERAL_ESCAPES: &[char] =
+    &['|', '.', '$', '+', '?', '{', '}', '(', ')', '[', ']', '/'];
+
+/// Returns `false` when `text` contains a backslash escape that would invoke real regex syntax.
+pub fn has_safe_literal_escapes(text: &str) -> bool {
+    let mut chars = text.chars();
+    while let Some(ch) = chars.next() {
+        if ch != '\\' {
+            continue;
+        }
+        match chars.next() {
+            Some(next) if SAFE_LITERAL_ESCAPES.contains(&next) => {}
+            _ => return false,
+        }
+    }
+    true
+}
+
+/// Removes redundant punctuation escapes from a non-complete network pattern. adblock escapes the
+/// same characters when compiling the pattern, so `\.` and `.` are equivalent here; emitting the
+/// unescaped form keeps the literal-boundary family deterministic and fusable.
+pub fn unescape_literal_body(text: &str) -> Option<String> {
+    if !has_safe_literal_escapes(text) {
+        return None;
+    }
+    let mut output = String::with_capacity(text.len());
+    let mut chars = text.chars();
+    while let Some(ch) = chars.next() {
+        if ch == '\\' {
+            if let Some(next) = chars.next() {
+                output.push(next);
+            }
+        } else {
+            output.push(ch);
+        }
+    }
+    Some(output)
+}
+
 /// Canonicalize network option aliases and ordering (D3/D4) without changing engine semantics.
 /// Returns `None` for rules that have no `$` options or carry an opaque modifier payload.
 pub fn canonical_network_text(text: &str) -> Option<String> {
@@ -45,6 +86,7 @@ pub fn canonical_network_text(text: &str) -> Option<String> {
     if prefix.contains('$') || options.is_empty() || options.contains('$') {
         return None;
     }
+    let prefix = unescape_literal_body(prefix)?;
 
     let mut canonical: Vec<String> = options
         .split(',')
@@ -256,7 +298,10 @@ fn civil_from_days(days: i64) -> (i64, i64, i64) {
 
 #[cfg(test)]
 mod tests {
-    use super::{canonical_domain_list, canonical_network_text, format_rfc2822, is_literal_arg};
+    use super::{
+        canonical_domain_list, canonical_network_text, format_rfc2822, is_literal_arg,
+        unescape_literal_body,
+    };
 
     #[test]
     fn formats_known_timestamps() {
@@ -282,6 +327,23 @@ mod tests {
             Some("||ads.example^$domain=site.example,script".into())
         );
         assert_eq!(canonical_network_text("||ads.example^"), None);
+        assert_eq!(
+            canonical_network_text(r"||ads.example/path\.php^$script"),
+            Some("||ads.example/path.php^$script".into())
+        );
+    }
+
+    #[test]
+    fn unescapes_only_literal_punctuation() {
+        assert_eq!(
+            unescape_literal_body(r"||ads.example/path\.php\+a^"),
+            Some("||ads.example/path.php+a^".to_string())
+        );
+        assert_eq!(unescape_literal_body(r"||ads.example/path\d^"), None);
+        assert_eq!(
+            unescape_literal_body("||ads.example^"),
+            Some("||ads.example^".into())
+        );
     }
 
     #[test]

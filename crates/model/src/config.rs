@@ -283,6 +283,9 @@ pub struct AdmitConfig {
     /// These compile to bounded literal matchers rather than user-authored regular expressions.
     #[serde(default = "default_true")]
     pub literal_boundary_regex: bool,
+    /// Normalize literal `:contains(...)` / `:-abp-contains(...)` selectors to `:has-text(...)`.
+    #[serde(default = "default_true")]
+    pub literal_contains_rewrite: bool,
     /// Slow or complex families removed in one batch before per-rule admission.
     #[serde(default = "default_exclude_families")]
     pub exclude_families: Vec<RuleFamily>,
@@ -307,6 +310,7 @@ impl Default for AdmitConfig {
     fn default() -> Self {
         Self {
             literal_boundary_regex: true,
+            literal_contains_rewrite: true,
             exclude_families: default_exclude_families(),
             accepted_semantic_gaps: default_accepted_semantic_gaps(),
         }

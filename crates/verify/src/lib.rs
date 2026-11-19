@@ -112,14 +112,19 @@ pub fn verify(
         }
     }
 
-    let cosmetic_hosts = cosmetic_hosts(admitted_rules);
+    let cosmetic_hosts = cosmetic_hosts(admitted_rules, receipts);
     let cosmetic_hosts_total = cosmetic_hosts.len();
-    let selected_hosts = stride_sample(
-        cosmetic_hosts.into_iter().collect(),
-        config.verify.max_cosmetic_hosts.max(1),
-    );
+    let budget = config.verify.max_cosmetic_hosts.max(1);
+    // Receipt hosts are checked first so a small budget still exercises every preparse rewrite.
+    let receipt_hosts = receipt_cosmetic_hosts(receipts);
+    let mut selected_hosts: Vec<String> = receipt_hosts.iter().take(budget).cloned().collect();
+    let remaining: Vec<String> = cosmetic_hosts.difference(&receipt_hosts).cloned().collect();
+    selected_hosts.extend(stride_sample(
+        remaining,
+        budget.saturating_sub(selected_hosts.len()),
+    ));
     let cosmetic_hosts_checked = selected_hosts.len();
-    for host in selected_hosts {
+    for host in &selected_hosts {
         let url = format!("https://{host}/");
         let before = cosmetic_snapshot(&admitted.url_cosmetic_resources(&url));
         let after = cosmetic_snapshot(&candidate.url_cosmetic_resources(&url));
@@ -138,6 +143,16 @@ pub fn verify(
         .iter()
         .filter(|rule| matches!(rule, Rule::Network(_)))
         .count();
+    let cosmetic_receipts_exercised = receipts
+        .iter()
+        .filter(|receipt| {
+            receipt_cosmetic_hosts(std::slice::from_ref(receipt))
+                .iter()
+                .any(|host| selected_hosts.contains(host))
+        })
+        .count();
+    let rewrite_receipts_exercised =
+        (rewrite_receipts_exercised + cosmetic_receipts_exercised).min(receipts.len());
     let golden_rule_violations = candidate_rules
         .iter()
         .filter(|rule| !passes_golden_rule(rule, config))
@@ -698,7 +713,7 @@ fn generate_receipt_corpus(receipts: &[RewriteReceipt], budget: usize) -> (Vec<C
     (cases, exercised)
 }
 
-fn cosmetic_hosts(rules: &[Rule]) -> BTreeSet<String> {
+fn cosmetic_hosts(rules: &[Rule], receipts: &[RewriteReceipt]) -> BTreeSet<String> {
     let mut hosts = BTreeSet::new();
     for rule in rules {
         if let Rule::Cosmetic(cosmetic) = rule {
@@ -707,19 +722,42 @@ fn cosmetic_hosts(rules: &[Rule]) -> BTreeSet<String> {
             }
         }
     }
+    hosts.extend(receipt_cosmetic_hosts(receipts));
     if hosts.is_empty() {
         hosts.insert("example.com".to_string());
     }
     hosts
 }
 
+fn receipt_cosmetic_hosts(receipts: &[RewriteReceipt]) -> BTreeSet<String> {
+    let mut hosts = BTreeSet::new();
+    for receipt in receipts {
+        for text in receipt.before.iter().chain(std::iter::once(&receipt.after)) {
+            let text = extended_cosmetic_probe(text).unwrap_or_else(|| text.clone());
+            let Some((host_part, _, _)) = split_cosmetic(&text) else {
+                continue;
+            };
+            for host in host_part.split(',') {
+                let host = host.trim().trim_start_matches('~').trim_end_matches(".*");
+                if !host.is_empty() {
+                    hosts.insert(host.to_ascii_lowercase());
+                }
+            }
+        }
+    }
+    hosts
+}
+
 fn cosmetic_snapshot(
     resources: &adblock::cosmetic_filter_cache::UrlSpecificResources,
-) -> (Vec<String>, bool, String) {
+) -> (Vec<String>, Vec<String>, bool, String) {
     let mut selectors: Vec<String> = resources.hide_selectors.iter().cloned().collect();
     selectors.sort();
+    let mut actions: Vec<String> = resources.procedural_actions.iter().cloned().collect();
+    actions.sort();
     (
         selectors,
+        actions,
         resources.generichide,
         normalize_injected_script(&resources.injected_script),
     )
@@ -996,6 +1034,25 @@ fn split_cosmetic(text: &str) -> Option<(&str, &str, &str)> {
         }
     }
     None
+}
+
+/// adblock accepts `:contains(...)` only in ABP extended form. Re-express the original `##` rule
+/// as `#?#` so the differential check compares against the engine's canonical `has-text` result.
+fn extended_cosmetic_probe(text: &str) -> Option<String> {
+    let trimmed = text.trim();
+    let (host, separator, selector) = split_cosmetic(trimmed)?;
+    if separator != "##" {
+        return None;
+    }
+    Some(format!("{host}#?#{selector}"))
+}
+
+/// D6 gate: original `:contains(...)` (ABP extended form) versus normalized `:has-text(...)`.
+pub fn literal_contains_equivalence(before: &str, after: &str, permissions: u8) -> Result<bool> {
+    let Some(probe) = extended_cosmetic_probe(before) else {
+        return Ok(false);
+    };
+    cosmetic_equivalence(&[probe], after, permissions)
 }
 
 #[allow(dead_code)]

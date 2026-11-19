@@ -11,3 +11,4 @@ anyhow.workspace = true
 fetch.workspace = true
 model.workspace = true
 sha2.workspace = true
+verify.workspace = true

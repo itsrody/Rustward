@@ -1,4 +1,4 @@
-use verify::network_equivalence;
+use verify::{literal_contains_equivalence, network_equivalence};
 
 #[test]
 fn type_union_is_engine_equivalent() {
@@ -43,6 +43,27 @@ fn network_alias_and_option_order_are_engine_equivalent() {
     assert!(
         network_equivalence(&before, "@@||ads.example^$generichide,image", 0)
             .expect("equivalence check")
+    );
+}
+
+#[test]
+fn literal_contains_normalization_is_engine_equivalent() {
+    assert!(
+        literal_contains_equivalence(
+            "contains.example##.promo:contains(Legacy Ad)",
+            "contains.example##.promo:has-text(Legacy Ad)",
+            0
+        )
+        .expect("equivalence check")
+    );
+
+    assert!(
+        !literal_contains_equivalence(
+            "contains.example##.promo:contains(Ad One)",
+            "contains.example##.promo:has-text(Ad Two)",
+            0
+        )
+        .expect("equivalence check")
     );
 }
 

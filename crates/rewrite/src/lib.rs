@@ -795,19 +795,23 @@ fn structural_check_network(group: &[NetworkRule], family: &str, candidate: &str
             && sorted(after.opt_not_to_domains.as_deref()) == first.not_to_domain_hashes;
     }
     if matches!(family, "domain_union" | "exception_domain_union") {
-        let expected: Vec<u64> = group
+        let mut expected: Vec<u64> = group
             .iter()
             .flat_map(|rule| rule.domain_hashes.iter().copied())
             .collect();
-        return sorted(after.opt_domains.as_deref()) == sorted(Some(&expected))
+        expected.sort_unstable();
+        expected.dedup();
+        return sorted(after.opt_domains.as_deref()) == expected
             && sorted(after.opt_not_domains.as_deref()) == first.not_domain_hashes;
     }
     if family == "to_domain_union" {
-        let expected: Vec<u64> = group
+        let mut expected: Vec<u64> = group
             .iter()
             .flat_map(|rule| rule.to_domain_hashes.iter().copied())
             .collect();
-        return sorted(after.opt_to_domains.as_deref()) == sorted(Some(&expected))
+        expected.sort_unstable();
+        expected.dedup();
+        return sorted(after.opt_to_domains.as_deref()) == expected
             && sorted(after.opt_not_to_domains.as_deref()) == first.not_to_domain_hashes;
     }
     false

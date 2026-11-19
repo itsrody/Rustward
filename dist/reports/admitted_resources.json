@@ -29777,17 +29777,6 @@
     "reason": null
   },
   {
-    "name": "noeval-if",
-    "canonical_name": "noeval-if.js",
-    "grade": "standard",
-    "digest": "5fac2c768c539babc6f92e6b7df996db7d0d9f7f40f7c5cabba5a6e6b5d99bc7",
-    "permission": 0,
-    "source_id": "ag-base-easylist",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
     "name": "no-window-open-if",
     "canonical_name": "prevent-window-open.js",
     "grade": "standard",

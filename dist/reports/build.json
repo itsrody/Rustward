@@ -1,43 +1,43 @@
 {
-  "build_id": "67d3464aace5e6665dbce44c0e74783316d967e77e1a155a7b63f96e862e4442",
-  "config_hash": "37b399cb61515464f0940f82408065c909525f31a32983965be3406cd862ca71",
+  "build_id": "734452487fdc953e5615c4b2fd9f8a9218cd8f280bdd96b8cdc47d6a67ff36ff",
+  "config_hash": "69da34a187eee485aafe8908c8f3413b68ee05b3a178cb6ace4cac440451318e",
   "profile_hash": "7523a0d8d369cd3ba756dd22e4c6bbb3e9bcfd0e8c4f97cefee9e7ee3023e475",
-  "lists_lock_hash": "b37d2f6601d48077a63f41b3731bd636cce10694615ab3ae916ac964317d26e9",
+  "lists_lock_hash": "99850d5ab878674e82d8c0a03a3a3491b935a29e7fc755f7f83a4a133b2063e4",
   "adblock_version": "=0.13.6",
   "emit_order": "compiler-friendly-v1",
   "metrics": {
     "badfilter_resolved": 129,
     "badfilter_targets_pruned": 30,
     "comments": 58067,
-    "cosmetic_fast_native": 57714,
+    "cosmetic_fast_native": 57717,
     "cosmetic_hosts_checked": 2048,
-    "cosmetic_hosts_total": 74281,
+    "cosmetic_hosts_total": 74215,
     "cosmetic_light_procedural": 129,
-    "cosmetic_rules": 69321,
-    "cosmetic_vetted_scriptlet": 23927,
+    "cosmetic_rules": 69326,
+    "cosmetic_vetted_scriptlet": 23926,
     "decision_mismatches": 0,
     "directives": 101,
-    "duplicates_exact": 47918,
-    "duplicates_semantic": 2919,
-    "effective_cosmetic_rules": 93576,
-    "effective_network_rules": 684018,
-    "eligible": 757074,
+    "duplicates_exact": 47923,
+    "duplicates_semantic": 2916,
+    "effective_cosmetic_rules": 93580,
+    "effective_network_rules": 684016,
+    "eligible": 757075,
     "empty_lines": 4006,
-    "excluded_by_gate": 22818,
+    "excluded_by_gate": 22817,
     "golden_rule_violations": 0,
     "metadata": 38,
-    "network_rules": 591884,
-    "network_rules_probed": 242872,
-    "network_rules_total": 675463,
-    "output_fast_native_css": 48184,
+    "network_rules": 591894,
+    "network_rules_probed": 242833,
+    "network_rules_total": 675462,
+    "output_fast_native_css": 48189,
     "output_light_procedural": 127,
-    "output_lines": 661205,
+    "output_lines": 661220,
     "output_vetted_scriptlet": 21010,
-    "parse_errors": 2298,
+    "parse_errors": 2296,
     "raw_lines": 842104,
-    "receipts_exercised": 42501,
-    "rewrites_applied": 43888,
-    "verify_cases": 420588
+    "receipts_exercised": 42491,
+    "rewrites_applied": 43875,
+    "verify_cases": 420548
   },
   "receipts": [
     {
@@ -2003,21 +2003,6 @@
       ],
       "after": "iauto.lv,jestemzgdanska.pl,kartalodzianina.pl,kartamundurowa.pl,mconvert.net,mobiflip.de,nonkyc.io,pixers.com.tr,visitgdansk.com,vpg.no###cookieConsentModal",
       "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-fff8415288f2",
-      "family": "cosmetic_host_union",
-      "before": [
-        "ac-mejerimaskiner.dk,amazingfoodmadeeasy.com,bradyunited.org,chetak.com,defenderpolska.pl,dks.at,dochas.ie,ecuavisa.com,growbrothers-ev.de,knifecenter.com,langendorf.de,luxorcrystal.com,operationworld.org,rule34.gg,smithdebnamlaw.com,theluxuryhut.com,wsg-fussball.at,zabilo.com###cookieNotice",
-        "abok.ru###cookieNotice"
-      ],
-      "after": "abok.ru,ac-mejerimaskiner.dk,amazingfoodmadeeasy.com,bradyunited.org,chetak.com,defenderpolska.pl,dks.at,dochas.ie,ecuavisa.com,growbrothers-ev.de,knifecenter.com,langendorf.de,luxorcrystal.com,operationworld.org,rule34.gg,smithdebnamlaw.com,theluxuryhut.com,wsg-fussball.at,zabilo.com###cookieNotice",
-      "source_id": "fanboy-annoyances",
       "checks": [
         "selector-equality",
         "reparse-equal",
@@ -6374,6 +6359,21 @@
       ]
     },
     {
+      "id": "cosmetic_host_union-038e473444b0",
+      "family": "cosmetic_host_union",
+      "before": [
+        "kosu.org,suntimes.com,tageblatt.de##.SocialLink",
+        "elpais.com.uy##.SocialLink"
+      ],
+      "after": "elpais.com.uy,kosu.org,suntimes.com,tageblatt.de##.SocialLink",
+      "source_id": "fanboy-annoyances",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
       "id": "cosmetic_host_union-a2b7eee5cc4e",
       "family": "cosmetic_host_union",
       "before": [
@@ -9932,21 +9932,6 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-54e7da124be2",
-      "family": "cosmetic_host_union",
-      "before": [
-        "acast.com,bais.de,birgit-bittermann.de,bkfc.com,boostbike.uk,builds.gg,carobnaknjiga.rs,catcat.com,checkyourmath.com,ciaoflorence.it,codementor.io,configcat.com,culturecalling.com,dateks.lv,discoversouthcarolina.com,franklintech.com,grandepremio.com.br,grips-automation.com,grotekleren-webwinkel.nl,iyengaryoga.it,kasi.money,klartale.no,learn.uof.digital,mbc.net,megfoglak.hu,onzetaal.nl,pinterestacademy.com,properstar.de,scentre.pl,smarttrip.it,speicherguide.de,therisecalifornia.com,uio.no##.consent",
-        "falatron.com##.consent"
-      ],
-      "after": "acast.com,bais.de,birgit-bittermann.de,bkfc.com,boostbike.uk,builds.gg,carobnaknjiga.rs,catcat.com,checkyourmath.com,ciaoflorence.it,codementor.io,configcat.com,culturecalling.com,dateks.lv,discoversouthcarolina.com,falatron.com,franklintech.com,grandepremio.com.br,grips-automation.com,grotekleren-webwinkel.nl,iyengaryoga.it,kasi.money,klartale.no,learn.uof.digital,mbc.net,megfoglak.hu,onzetaal.nl,pinterestacademy.com,properstar.de,scentre.pl,smarttrip.it,speicherguide.de,therisecalifornia.com,uio.no##.consent",
-      "source_id": "fanboy-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
       "id": "cosmetic_host_union-557abaca309b",
       "family": "cosmetic_host_union",
       "before": [
@@ -10273,21 +10258,6 @@
       ],
       "after": "lagenhetsbyte.se,mollo.pl,mosoblgaz.ru##.cookie-modal-wrapper",
       "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-a586ad9b6861",
-      "family": "cosmetic_host_union",
-      "before": [
-        "11teamsports.com,agrar-fachversand.com,akkuline.de,alorelia.de,altabadialat.it,ausserhofer.bz,ballaro.eu,barax.de,bellaffair.de,biere-aus-franken.de,bieronlineshop.ch,bonsai-auer.com,bzheartbeat.it,coding4kids.it,consoles4you.ch,cosmeticexpress.com,doriskaradar.com,e-biker.de,ebike24.com,ecomove.cc,europa-shop-apotheke.de,fleurop.nl,folioverlag.com,global-messer.shop,glutenfrei-bier.com,hanako-koi.de,interaquaristik.de,kdshop.it,koi-company.de,koifuttershop.de,korodrogerie.de,leguano.eu,max-hamster.de,miavitas.com,mountainshop.online,muehldorfer.com,pharmasana.de,pircher24.it,prantner.it,preisteufel.at,rudi-delago.com,schildkroet.de,sportsonline.ch,svsound.de,swords-and-more.com,thermal-grizzly.com,tieroase-lorsch.de,trauttmansdorff.it,tropical-deutschland.de,vinumpetri.com,viologic.com,wbv.de,webshop.asus.com,xn--schildkrt-sport-gtb.com##.cookie-permission-container",
-        "shop-sks.com##.cookie-permission-container"
-      ],
-      "after": "11teamsports.com,agrar-fachversand.com,akkuline.de,alorelia.de,altabadialat.it,ausserhofer.bz,ballaro.eu,barax.de,bellaffair.de,biere-aus-franken.de,bieronlineshop.ch,bonsai-auer.com,bzheartbeat.it,coding4kids.it,consoles4you.ch,cosmeticexpress.com,doriskaradar.com,e-biker.de,ebike24.com,ecomove.cc,europa-shop-apotheke.de,fleurop.nl,folioverlag.com,global-messer.shop,glutenfrei-bier.com,hanako-koi.de,interaquaristik.de,kdshop.it,koi-company.de,koifuttershop.de,korodrogerie.de,leguano.eu,max-hamster.de,miavitas.com,mountainshop.online,muehldorfer.com,pharmasana.de,pircher24.it,prantner.it,preisteufel.at,rudi-delago.com,schildkroet.de,shop-sks.com,sportsonline.ch,svsound.de,swords-and-more.com,thermal-grizzly.com,tieroase-lorsch.de,trauttmansdorff.it,tropical-deutschland.de,vinumpetri.com,viologic.com,wbv.de,webshop.asus.com,xn--schildkrt-sport-gtb.com##.cookie-permission-container",
-      "source_id": "fanboy-annoyances",
       "checks": [
         "selector-equality",
         "reparse-equal",
@@ -11348,14 +11318,13 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-51df96b7de95",
+      "id": "cosmetic_host_union-6f02fd8b4d35",
       "family": "cosmetic_host_union",
       "before": [
         "zwischengas.com##.fixed-bottom",
-        "rocket-boys.co.jp##.fixed-bottom",
-        "atproperties.com,autotrader.com,cofense.com,coingecko.com,disponivel.com,disponivel.net,dogruhaber.com.tr,equisys.com,excellent-hemd.de,farmers.com,fordblueadvantage.com,g2g.com,gateway.one,getmailbird.com,hausgold.de,ilkha.com,innn.it,jsonquerytool.com,lacsc.be,lobaevarms.com,modoko.com.tr,muze.gen.tr,parklot.pl,plantnet.org,remove.bg,sariyersoz.com.tr,shroomers.app,skokka.com,speisebaron.de,susicka.cz,tjsc.jus.br,turkiyekatilimsigorta.com.tr,unscreen.com,wallpaperdirect.com##.fixed-bottom"
+        "rocket-boys.co.jp##.fixed-bottom"
       ],
-      "after": "atproperties.com,autotrader.com,cofense.com,coingecko.com,disponivel.com,disponivel.net,dogruhaber.com.tr,equisys.com,excellent-hemd.de,farmers.com,fordblueadvantage.com,g2g.com,gateway.one,getmailbird.com,hausgold.de,ilkha.com,innn.it,jsonquerytool.com,lacsc.be,lobaevarms.com,modoko.com.tr,muze.gen.tr,parklot.pl,plantnet.org,remove.bg,rocket-boys.co.jp,sariyersoz.com.tr,shroomers.app,skokka.com,speisebaron.de,susicka.cz,tjsc.jus.br,turkiyekatilimsigorta.com.tr,unscreen.com,wallpaperdirect.com,zwischengas.com##.fixed-bottom",
+      "after": "rocket-boys.co.jp,zwischengas.com##.fixed-bottom",
       "source_id": "ag-annoyances",
       "checks": [
         "selector-equality",
@@ -11511,6 +11480,21 @@
         "7datarecovery.com,cloudmounter.net,electronic.us,elmedia-video-player.com,eltima.com,ftp-mac.com,macdroid.app,net-usb.com##.float-message__wrap"
       ],
       "after": "7datarecovery.com,cloudmounter.net,commander-one.com,electronic.us,elmedia-video-player.com,eltima.com,ftp-mac.com,macdroid.app,net-usb.com##.float-message__wrap",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-ff66edc3de8e",
+      "family": "cosmetic_host_union",
+      "before": [
+        "mql5.com,finteza.com,searchengines.guru##.float-vertical-panel",
+        "metatrader5.com,mql5.com##.float-vertical-panel"
+      ],
+      "after": "finteza.com,metatrader5.com,mql5.com,searchengines.guru##.float-vertical-panel",
       "source_id": "ag-annoyances",
       "checks": [
         "selector-equality",
@@ -14047,21 +14031,6 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-72b71622e258",
-      "family": "cosmetic_host_union",
-      "before": [
-        "audacy.com,out.com,comicsands.com##.newsletter-aside",
-        "advocate.com,comicsands.com,out.com,thefulcrum.us##.newsletter-aside"
-      ],
-      "after": "advocate.com,audacy.com,comicsands.com,out.com,thefulcrum.us##.newsletter-aside",
-      "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
       "id": "cosmetic_host_union-dcfe7291e0cb",
       "family": "cosmetic_host_union",
       "before": [
@@ -14107,15 +14076,14 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-60c720fe645b",
+      "id": "cosmetic_host_union-a6de4facd8fe",
       "family": "cosmetic_host_union",
       "before": [
         "sartorbohemia.com,paulandshark.com,drmartens.com,doityourself.com,slate.fr,hs.fi,aktuality.sk,aamulehti.fi,satakunnankansa.fi,penguinrandomhouse.com,parallaximag.gr,exame.com,nabd.com,pastemagazine.com,stiripesurse.ro,lance.com.br,1prospekte.de,wallpaper.com,marksandspencer.com,deingartenbedarf.de,amp.usatoday.com,thebaffler.com,androidpolice.com##.newsletter-container",
         "bobvila.com,futurism.com##.newsletter-container",
-        "advocate.com,avclub.com,cnevpost.com,jezebel.com,life.com,nextplz.fr,out.com,popsci.com,pride.com,qhubomedellin.com,san.com,spendless.com.au,tctmd.com,weeklyrecess.com##.newsletter-container",
         "graeters.com,netshoes.com.br,oficialfarma.com.br,shoestock.com.br##.newsletter-container"
       ],
-      "after": "1prospekte.de,aamulehti.fi,advocate.com,aktuality.sk,amp.usatoday.com,androidpolice.com,avclub.com,bobvila.com,cnevpost.com,deingartenbedarf.de,doityourself.com,drmartens.com,exame.com,futurism.com,graeters.com,hs.fi,jezebel.com,lance.com.br,life.com,marksandspencer.com,nabd.com,netshoes.com.br,nextplz.fr,oficialfarma.com.br,out.com,parallaximag.gr,pastemagazine.com,paulandshark.com,penguinrandomhouse.com,popsci.com,pride.com,qhubomedellin.com,san.com,sartorbohemia.com,satakunnankansa.fi,shoestock.com.br,slate.fr,spendless.com.au,stiripesurse.ro,tctmd.com,thebaffler.com,wallpaper.com,weeklyrecess.com##.newsletter-container",
+      "after": "1prospekte.de,aamulehti.fi,aktuality.sk,amp.usatoday.com,androidpolice.com,bobvila.com,deingartenbedarf.de,doityourself.com,drmartens.com,exame.com,futurism.com,graeters.com,hs.fi,lance.com.br,marksandspencer.com,nabd.com,netshoes.com.br,oficialfarma.com.br,parallaximag.gr,pastemagazine.com,paulandshark.com,penguinrandomhouse.com,sartorbohemia.com,satakunnankansa.fi,shoestock.com.br,slate.fr,stiripesurse.ro,thebaffler.com,wallpaper.com##.newsletter-container",
       "source_id": "ag-annoyances",
       "checks": [
         "selector-equality",
@@ -14214,14 +14182,13 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-2cb1847190db",
+      "id": "cosmetic_host_union-6c2b46d1045c",
       "family": "cosmetic_host_union",
       "before": [
         "metro.co.uk,out.com,billingsmix.com,mooseradio.com,newstalkkgvo.com,missoulacurrent.com,emergencemagazine.org,wyrk.com##.newsletter-overlay",
-        "1025kiss.com,1027kord.com,1037theloon.com,103gbfrocks.com,103kkcn.com,1057crushfm.com,1057thehawk.com,1057thexrocks.com,1061evansville.com,1063cowboycountry.com,1063thebuzz.com,1075zoofm.com,1079ishot.com,929nin.com,929thebull.com,943thepoint.com,943thex.com,963theblaze.com,96xrocks.com,973rivercountry.com,973thedawg.com,975kgkl.com,979kickfm.com,97rockonline.com,983thesnake.com,98country.com,999ktdy.com,999thepoint.com,banana1015.com,bigfrog104.com,blakefm.com,bozemanskissfm.com,catcountry1073.com,classicrock1051.com,club937.com,gator995.com,highway989.com,k945.com,k96fm.com,k99.com,katsfm.com,kbat.com,kctr.com,keanradio.com,keyj.com,keyw.com,kezj.com,kffm.com,kfmx.com,kfox95.com,kicks105.com,kisscasper.com,kisselpaso.com,kissfm969.com,kixs.com,kkcb.com,kkyr.com,klaq.com,klaw.com,klubtejano.com,kmhk.com,knue.com,kqbr.com,kqvt.com,kxkx.com,kygl.com,kyssfm.com,lonestar1023.com,mix108.com,mix925abilene.com,mix931fm.com,mix949.com,my1035.com,mychannel957.com,mycountry955.com,mykisscountry937.com,power1029noco.com,power959.com,q103albany.com,q1077.com,river967.com,rock967online.com,sojo1049.com,us103.com,wbkr.com,wbnq.com,wgna.com,wgrd.com,wkdq.com,wyrk.com,xlcountry.com,y95country.com,z94.com##.newsletter-overlay",
-        "advocate.com,metro.co.uk##.newsletter-overlay"
+        "1025kiss.com,1027kord.com,1037theloon.com,103gbfrocks.com,103kkcn.com,1057crushfm.com,1057thehawk.com,1057thexrocks.com,1061evansville.com,1063cowboycountry.com,1063thebuzz.com,1075zoofm.com,1079ishot.com,929nin.com,929thebull.com,943thepoint.com,943thex.com,963theblaze.com,96xrocks.com,973rivercountry.com,973thedawg.com,975kgkl.com,979kickfm.com,97rockonline.com,983thesnake.com,98country.com,999ktdy.com,999thepoint.com,banana1015.com,bigfrog104.com,blakefm.com,bozemanskissfm.com,catcountry1073.com,classicrock1051.com,club937.com,gator995.com,highway989.com,k945.com,k96fm.com,k99.com,katsfm.com,kbat.com,kctr.com,keanradio.com,keyj.com,keyw.com,kezj.com,kffm.com,kfmx.com,kfox95.com,kicks105.com,kisscasper.com,kisselpaso.com,kissfm969.com,kixs.com,kkcb.com,kkyr.com,klaq.com,klaw.com,klubtejano.com,kmhk.com,knue.com,kqbr.com,kqvt.com,kxkx.com,kygl.com,kyssfm.com,lonestar1023.com,mix108.com,mix925abilene.com,mix931fm.com,mix949.com,my1035.com,mychannel957.com,mycountry955.com,mykisscountry937.com,power1029noco.com,power959.com,q103albany.com,q1077.com,river967.com,rock967online.com,sojo1049.com,us103.com,wbkr.com,wbnq.com,wgna.com,wgrd.com,wkdq.com,wyrk.com,xlcountry.com,y95country.com,z94.com##.newsletter-overlay"
       ],
-      "after": "1025kiss.com,1027kord.com,1037theloon.com,103gbfrocks.com,103kkcn.com,1057crushfm.com,1057thehawk.com,1057thexrocks.com,1061evansville.com,1063cowboycountry.com,1063thebuzz.com,1075zoofm.com,1079ishot.com,929nin.com,929thebull.com,943thepoint.com,943thex.com,963theblaze.com,96xrocks.com,973rivercountry.com,973thedawg.com,975kgkl.com,979kickfm.com,97rockonline.com,983thesnake.com,98country.com,999ktdy.com,999thepoint.com,advocate.com,banana1015.com,bigfrog104.com,billingsmix.com,blakefm.com,bozemanskissfm.com,catcountry1073.com,classicrock1051.com,club937.com,emergencemagazine.org,gator995.com,highway989.com,k945.com,k96fm.com,k99.com,katsfm.com,kbat.com,kctr.com,keanradio.com,keyj.com,keyw.com,kezj.com,kffm.com,kfmx.com,kfox95.com,kicks105.com,kisscasper.com,kisselpaso.com,kissfm969.com,kixs.com,kkcb.com,kkyr.com,klaq.com,klaw.com,klubtejano.com,kmhk.com,knue.com,kqbr.com,kqvt.com,kxkx.com,kygl.com,kyssfm.com,lonestar1023.com,metro.co.uk,missoulacurrent.com,mix108.com,mix925abilene.com,mix931fm.com,mix949.com,mooseradio.com,my1035.com,mychannel957.com,mycountry955.com,mykisscountry937.com,newstalkkgvo.com,out.com,power1029noco.com,power959.com,q103albany.com,q1077.com,river967.com,rock967online.com,sojo1049.com,us103.com,wbkr.com,wbnq.com,wgna.com,wgrd.com,wkdq.com,wyrk.com,xlcountry.com,y95country.com,z94.com##.newsletter-overlay",
+      "after": "1025kiss.com,1027kord.com,1037theloon.com,103gbfrocks.com,103kkcn.com,1057crushfm.com,1057thehawk.com,1057thexrocks.com,1061evansville.com,1063cowboycountry.com,1063thebuzz.com,1075zoofm.com,1079ishot.com,929nin.com,929thebull.com,943thepoint.com,943thex.com,963theblaze.com,96xrocks.com,973rivercountry.com,973thedawg.com,975kgkl.com,979kickfm.com,97rockonline.com,983thesnake.com,98country.com,999ktdy.com,999thepoint.com,banana1015.com,bigfrog104.com,billingsmix.com,blakefm.com,bozemanskissfm.com,catcountry1073.com,classicrock1051.com,club937.com,emergencemagazine.org,gator995.com,highway989.com,k945.com,k96fm.com,k99.com,katsfm.com,kbat.com,kctr.com,keanradio.com,keyj.com,keyw.com,kezj.com,kffm.com,kfmx.com,kfox95.com,kicks105.com,kisscasper.com,kisselpaso.com,kissfm969.com,kixs.com,kkcb.com,kkyr.com,klaq.com,klaw.com,klubtejano.com,kmhk.com,knue.com,kqbr.com,kqvt.com,kxkx.com,kygl.com,kyssfm.com,lonestar1023.com,metro.co.uk,missoulacurrent.com,mix108.com,mix925abilene.com,mix931fm.com,mix949.com,mooseradio.com,my1035.com,mychannel957.com,mycountry955.com,mykisscountry937.com,newstalkkgvo.com,out.com,power1029noco.com,power959.com,q103albany.com,q1077.com,river967.com,rock967online.com,sojo1049.com,us103.com,wbkr.com,wbnq.com,wgna.com,wgrd.com,wkdq.com,wyrk.com,xlcountry.com,y95country.com,z94.com##.newsletter-overlay",
       "source_id": "ag-annoyances",
       "checks": [
         "selector-equality",
@@ -20197,13 +20164,13 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-44961e35f09e",
+      "id": "cosmetic_host_union-a5281016a50f",
       "family": "cosmetic_host_union",
       "before": [
-        "thepostmillennial.com##aside[aria-label=\"Advertisement\"]",
+        "sheepesports.com,thepostmillennial.com##aside[aria-label=\"Advertisement\"]",
         "askai.glarity.app##aside[aria-label=\"Advertisement\"]"
       ],
-      "after": "askai.glarity.app,thepostmillennial.com##aside[aria-label=\"Advertisement\"]",
+      "after": "askai.glarity.app,sheepesports.com,thepostmillennial.com##aside[aria-label=\"Advertisement\"]",
       "source_id": "ag-base-easylist",
       "checks": [
         "selector-equality",
@@ -21316,21 +21283,6 @@
         "context.dev##div[data-testid=\"consent-banner-root\"]"
       ],
       "after": "bazel.build,bunny.net,context.dev##div[data-testid=\"consent-banner-root\"]",
-      "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-15495a217915",
-      "family": "cosmetic_host_union",
-      "before": [
-        "deutsche-sanierungsberatung.de,arcraiders.com##div[data-testid=\"cookie-banner-root\"]",
-        "expo.dev,ssense.com##div[data-testid=\"cookie-banner-root\"]"
-      ],
-      "after": "arcraiders.com,deutsche-sanierungsberatung.de,expo.dev,ssense.com##div[data-testid=\"cookie-banner-root\"]",
       "source_id": "ag-annoyances",
       "checks": [
         "selector-equality",
@@ -61470,36 +61422,6 @@
       ]
     },
     {
-      "id": "hostname_subsumption-dac4645f80eb",
-      "family": "hostname_subsumption",
-      "before": [
-        "||programmaticnexus.com^$all",
-        "||filter-eu.programmaticnexus.com^"
-      ],
-      "after": "||programmaticnexus.com^$all",
-      "source_id": "dandelion-annoyances",
-      "checks": [
-        "structural-subsumption",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "hostname_subsumption-fb3f26c7b8a9",
-      "family": "hostname_subsumption",
-      "before": [
-        "||xmladsystem.com^$all",
-        "||filter-eu.xmladsystem.com^"
-      ],
-      "after": "||xmladsystem.com^$all",
-      "source_id": "dandelion-annoyances",
-      "checks": [
-        "structural-subsumption",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
       "id": "hostname_subsumption-8f9b87158051",
       "family": "hostname_subsumption",
       "before": [
@@ -61507,36 +61429,6 @@
         "||filter.adscholars.com^"
       ],
       "after": "||adscholars.com^$all",
-      "source_id": "dandelion-annoyances",
-      "checks": [
-        "structural-subsumption",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "hostname_subsumption-0b701030cbbd",
-      "family": "hostname_subsumption",
-      "before": [
-        "||programmaticnexus.com^$all",
-        "||filter.programmaticnexus.com^"
-      ],
-      "after": "||programmaticnexus.com^$all",
-      "source_id": "dandelion-annoyances",
-      "checks": [
-        "structural-subsumption",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "hostname_subsumption-5527861e7700",
-      "family": "hostname_subsumption",
-      "before": [
-        "||xmladsystem.com^$all",
-        "||filter.xmladsystem.com^"
-      ],
-      "after": "||xmladsystem.com^$all",
       "source_id": "dandelion-annoyances",
       "checks": [
         "structural-subsumption",
@@ -61613,21 +61505,6 @@
       ],
       "after": "||rtxplatform.com^",
       "source_id": "stevenblack-fakenews-gambling",
-      "checks": [
-        "structural-subsumption",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "hostname_subsumption-47962d3a0f3e",
-      "family": "hostname_subsumption",
-      "before": [
-        "||tropicalsands.club^$all",
-        "||redir.tropicalsands.club^"
-      ],
-      "after": "||tropicalsands.club^$all",
-      "source_id": "dandelion-annoyances",
       "checks": [
         "structural-subsumption",
         "reparse-equal",
@@ -62025,21 +61902,6 @@
       ]
     },
     {
-      "id": "hostname_subsumption-5d00ec6f62c7",
-      "family": "hostname_subsumption",
-      "before": [
-        "||xmladsystem.com^$all",
-        "||xml-eu-v4.xmladsystem.com^"
-      ],
-      "after": "||xmladsystem.com^$all",
-      "source_id": "dandelion-annoyances",
-      "checks": [
-        "structural-subsumption",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
       "id": "hostname_subsumption-f42381eb2ab9",
       "family": "hostname_subsumption",
       "before": [
@@ -62108,36 +61970,6 @@
       ],
       "after": "||insightadz.com^",
       "source_id": "ag-base-easylist",
-      "checks": [
-        "structural-subsumption",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "hostname_subsumption-bb94bb30ab2d",
-      "family": "hostname_subsumption",
-      "before": [
-        "||programmaticnexus.com^$all",
-        "||xml-v4.programmaticnexus.com^"
-      ],
-      "after": "||programmaticnexus.com^$all",
-      "source_id": "dandelion-annoyances",
-      "checks": [
-        "structural-subsumption",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "hostname_subsumption-8a11ddc62b57",
-      "family": "hostname_subsumption",
-      "before": [
-        "||xmladsystem.com^$all",
-        "||xml-v4.xmladsystem.com^"
-      ],
-      "after": "||xmladsystem.com^$all",
-      "source_id": "dandelion-annoyances",
       "checks": [
         "structural-subsumption",
         "reparse-equal",
@@ -62220,21 +62052,6 @@
       ]
     },
     {
-      "id": "hostname_subsumption-7b5e3ef17ff7",
-      "family": "hostname_subsumption",
-      "before": [
-        "||programmaticnexus.com^$all",
-        "||xml.programmaticnexus.com^"
-      ],
-      "after": "||programmaticnexus.com^$all",
-      "source_id": "dandelion-annoyances",
-      "checks": [
-        "structural-subsumption",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
       "id": "hostname_subsumption-46d66f1f1d31",
       "family": "hostname_subsumption",
       "before": [
@@ -62243,21 +62060,6 @@
       ],
       "after": "||rtxplatform.com^",
       "source_id": "stevenblack-fakenews-gambling",
-      "checks": [
-        "structural-subsumption",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "hostname_subsumption-537f5838d1d0",
-      "family": "hostname_subsumption",
-      "before": [
-        "||xmladsystem.com^$all",
-        "||xml.xmladsystem.com^"
-      ],
-      "after": "||xmladsystem.com^$all",
-      "source_id": "dandelion-annoyances",
       "checks": [
         "structural-subsumption",
         "reparse-equal",
@@ -659538,27 +659340,27 @@
   "verification": {
     "required": true,
     "mismatches": [],
-    "cases_checked": 420588,
+    "cases_checked": 420548,
     "golden_rule_violations": 0,
     "emit_order_violations": 0,
     "coverage": {
-      "network_rules_total": 675463,
-      "network_rules_probed": 242872,
-      "rewrite_receipts_total": 43888,
-      "rewrite_receipts_exercised": 42501,
-      "cosmetic_hosts_total": 74281,
+      "network_rules_total": 675462,
+      "network_rules_probed": 242833,
+      "rewrite_receipts_total": 43875,
+      "rewrite_receipts_exercised": 42491,
+      "cosmetic_hosts_total": 74215,
       "cosmetic_hosts_checked": 2048
     }
   },
   "bench": {
-    "admitted_opt_bytes": 42020925,
-    "candidate_opt_bytes": 37919589,
-    "admitted_noopt_bytes": 42021005,
-    "candidate_noopt_bytes": 37919669,
-    "admitted_build_ms": 514,
-    "candidate_build_ms": 443,
-    "admitted_qps": 194944.1325517961,
-    "candidate_qps": 236438.7840032782,
+    "admitted_opt_bytes": 42022013,
+    "candidate_opt_bytes": 37920093,
+    "admitted_noopt_bytes": 42022093,
+    "candidate_noopt_bytes": 37920165,
+    "admitted_build_ms": 634,
+    "candidate_build_ms": 529,
+    "admitted_qps": 185759.23194020402,
+    "candidate_qps": 189662.64034755633,
     "emit_order": "compiler-friendly-v1"
   }
 }

@@ -66,17 +66,6 @@
     "reason": "ENGINE_TRUST: engine did not realize noop.js"
   },
   {
-    "name": "googlesyndication_adsbygoogle.js",
-    "canonical_name": "googlesyndication_adsbygoogle.js",
-    "grade": "standard",
-    "digest": "b7789a92c04d7cdc596b3d7f940bec01a7d8382479aac6f0eebdbcc4d72b7c2e",
-    "permission": 0,
-    "source_id": "ag-base-easylist",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize googlesyndication_adsbygoogle.js"
-  },
-  {
     "name": "set-constant",
     "canonical_name": "set-constant.js",
     "grade": "standard",
@@ -594,17 +583,6 @@
     "reason": null
   },
   {
-    "name": "1x1.gif",
-    "canonical_name": "1x1.gif",
-    "grade": "standard",
-    "digest": "48d71754d62bf1dd1921494ee9576e8a9a8f83cde27d672850435b4dad428302",
-    "permission": 0,
-    "source_id": "ag-base-easylist",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize 1x1.gif"
-  },
-  {
     "name": "abort-current-script",
     "canonical_name": "abort-current-script.js",
     "grade": "standard",
@@ -759,17 +737,6 @@
     "reason": null
   },
   {
-    "name": "googlesyndication_adsbygoogle.js",
-    "canonical_name": "googlesyndication_adsbygoogle.js",
-    "grade": "standard",
-    "digest": "b7789a92c04d7cdc596b3d7f940bec01a7d8382479aac6f0eebdbcc4d72b7c2e",
-    "permission": 0,
-    "source_id": "ag-base-easylist",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize googlesyndication_adsbygoogle.js"
-  },
-  {
     "name": "set-constant",
     "canonical_name": "set-constant.js",
     "grade": "standard",
@@ -812,17 +779,6 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
-  },
-  {
-    "name": "googlesyndication_adsbygoogle.js",
-    "canonical_name": "googlesyndication_adsbygoogle.js",
-    "grade": "standard",
-    "digest": "b7789a92c04d7cdc596b3d7f940bec01a7d8382479aac6f0eebdbcc4d72b7c2e",
-    "permission": 0,
-    "source_id": "ag-base-easylist",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize googlesyndication_adsbygoogle.js"
   },
   {
     "name": "abort-on-property-read",
@@ -4316,17 +4272,6 @@
     "canonical_name": "set-constant.js",
     "grade": "standard",
     "digest": "6483d84d8211ee1b84ab64a8a4d2687270ce789a486ce6efc3ba56a059e10746",
-    "permission": 0,
-    "source_id": "ag-base-easylist",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
-    "name": "prebid-ads.js",
-    "canonical_name": "prebid-ads.js",
-    "grade": "standard",
-    "digest": "a7c56d3fe96e885eacb92630b80f7c743834901ea86d641602010c80a33f08b9",
     "permission": 0,
     "source_id": "ag-base-easylist",
     "source_permissions": 0,
@@ -12461,17 +12406,6 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
-  },
-  {
-    "name": "google-ima.js",
-    "canonical_name": "google-ima.js",
-    "grade": "standard",
-    "digest": "07337c867c40965ee6daedc0ad1adea6aef69a140ba43635124929be2af2fd22",
-    "permission": 0,
-    "source_id": "ag-base-easylist",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize google-ima.js"
   },
   {
     "name": "set-constant",
@@ -43274,17 +43208,6 @@
     "reason": null
   },
   {
-    "name": "google-analytics_analytics.js",
-    "canonical_name": "google-analytics_analytics.js",
-    "grade": "standard",
-    "digest": "45dfe45fff8625f0b8bd0a2422718caec53a4f5a2b49d9f00c2cf79b2c92fc50",
-    "permission": 0,
-    "source_id": "ag-tracking",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize google-analytics_analytics.js"
-  },
-  {
     "name": "google-analytics_ga.js",
     "canonical_name": "google-analytics_ga.js",
     "grade": "standard",
@@ -43294,17 +43217,6 @@
     "source_permissions": 0,
     "decision": "excluded",
     "reason": "ENGINE_TRUST: engine did not realize google-analytics_ga.js"
-  },
-  {
-    "name": "google-analytics_analytics.js",
-    "canonical_name": "google-analytics_analytics.js",
-    "grade": "standard",
-    "digest": "45dfe45fff8625f0b8bd0a2422718caec53a4f5a2b49d9f00c2cf79b2c92fc50",
-    "permission": 0,
-    "source_id": "ag-tracking",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize google-analytics_analytics.js"
   },
   {
     "name": "googletagservices_gpt.js",
@@ -63237,17 +63149,6 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
-  },
-  {
-    "name": "noop.js",
-    "canonical_name": "noop.js",
-    "grade": "standard",
-    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
-    "permission": 0,
-    "source_id": "ag-annoyances",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize noop.js"
   },
   {
     "name": "noop.js",
@@ -162976,17 +162877,6 @@
     "reason": null
   },
   {
-    "name": "noopmp3-0.1s",
-    "canonical_name": "noop-0.1s.mp3",
-    "grade": "standard",
-    "digest": "b2ef580f22c63f3858c1300253c3557f21c9e1d4b39c44ff2e261aa5b5fde539",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
     "name": "set",
     "canonical_name": "set-constant.js",
     "grade": "standard",
@@ -191004,17 +190894,6 @@
     "reason": null
   },
   {
-    "name": "noopjs",
-    "canonical_name": "noop.js",
-    "grade": "standard",
-    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize noop.js"
-  },
-  {
     "name": "no-fetch-if",
     "canonical_name": "prevent-fetch.js",
     "grade": "standard",
@@ -193699,17 +193578,6 @@
     "reason": null
   },
   {
-    "name": "google-ima.js",
-    "canonical_name": "google-ima.js",
-    "grade": "standard",
-    "digest": "07337c867c40965ee6daedc0ad1adea6aef69a140ba43635124929be2af2fd22",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize google-ima.js"
-  },
-  {
     "name": "aeld",
     "canonical_name": "prevent-addEventListener.js",
     "grade": "standard",
@@ -194104,17 +193972,6 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
-  },
-  {
-    "name": "nooptext",
-    "canonical_name": "noop.txt",
-    "grade": "standard",
-    "digest": "029c58a6f8077a578789dda5c5f9c05309def9806c7329850005862fd2db424a",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize noop.txt"
   },
   {
     "name": "json-prune",
@@ -197151,17 +197008,6 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
-  },
-  {
-    "name": "google-analytics_analytics.js",
-    "canonical_name": "google-analytics_analytics.js",
-    "grade": "standard",
-    "digest": "45dfe45fff8625f0b8bd0a2422718caec53a4f5a2b49d9f00c2cf79b2c92fc50",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize google-analytics_analytics.js"
   },
   {
     "name": "aeld",
@@ -200512,17 +200358,6 @@
     "canonical_name": "href-sanitizer.js",
     "grade": "standard",
     "digest": "0869ac45f1be1daea64d49a4858d8b45d2a925bf555494c27ea0c989697bc438",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
-    "name": "1x1.gif",
-    "canonical_name": "1x1.gif",
-    "grade": "standard",
-    "digest": "48d71754d62bf1dd1921494ee9576e8a9a8f83cde27d672850435b4dad428302",
     "permission": 0,
     "source_id": "ubo-filters-min",
     "source_permissions": 0,
@@ -209242,17 +209077,6 @@
     "reason": null
   },
   {
-    "name": "noop.js",
-    "canonical_name": "noop.js",
-    "grade": "standard",
-    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
     "name": "rpnt",
     "canonical_name": "trusted-replace-node-text.js",
     "grade": "trusted",
@@ -209400,17 +209224,6 @@
     "canonical_name": "abort-on-property-read.js",
     "grade": "standard",
     "digest": "74c20c08de7d38f74d5118efda3061a6de62a2741fec42940747960a31d2e273",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
-    "name": "noopjs",
-    "canonical_name": "noop.js",
-    "grade": "standard",
-    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
     "permission": 0,
     "source_id": "ubo-filters-min",
     "source_permissions": 0,
@@ -220539,28 +220352,6 @@
     "reason": null
   },
   {
-    "name": "google-ima.js",
-    "canonical_name": "google-ima.js",
-    "grade": "standard",
-    "digest": "07337c867c40965ee6daedc0ad1adea6aef69a140ba43635124929be2af2fd22",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize google-ima.js"
-  },
-  {
-    "name": "noop.js",
-    "canonical_name": "noop.js",
-    "grade": "standard",
-    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize noop.js"
-  },
-  {
     "name": "no-fetch-if",
     "canonical_name": "prevent-fetch.js",
     "grade": "standard",
@@ -226864,17 +226655,6 @@
     "reason": null
   },
   {
-    "name": "google-ima.js",
-    "canonical_name": "google-ima.js",
-    "grade": "standard",
-    "digest": "07337c867c40965ee6daedc0ad1adea6aef69a140ba43635124929be2af2fd22",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize google-ima.js"
-  },
-  {
     "name": "noeval-if",
     "canonical_name": "noeval-if.js",
     "grade": "standard",
@@ -227187,17 +226967,6 @@
     "canonical_name": "abort-current-script.js",
     "grade": "standard",
     "digest": "eefe5f17802a2b0826c5b40c02dba5b4c156e905e4cce9eecf693f05a9957c5e",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
-    "name": "1x1.gif",
-    "canonical_name": "1x1.gif",
-    "grade": "standard",
-    "digest": "48d71754d62bf1dd1921494ee9576e8a9a8f83cde27d672850435b4dad428302",
     "permission": 0,
     "source_id": "ubo-filters-min",
     "source_permissions": 0,
@@ -234914,17 +234683,6 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
-  },
-  {
-    "name": "google-ima.js",
-    "canonical_name": "google-ima.js",
-    "grade": "standard",
-    "digest": "07337c867c40965ee6daedc0ad1adea6aef69a140ba43635124929be2af2fd22",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize google-ima.js"
   },
   {
     "name": "nowoif",
@@ -242658,17 +242416,6 @@
     "source_permissions": 0,
     "decision": "admitted",
     "reason": null
-  },
-  {
-    "name": "noopjs",
-    "canonical_name": "noop.js",
-    "grade": "standard",
-    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: engine did not realize noop.js"
   },
   {
     "name": "no-xhr-if",

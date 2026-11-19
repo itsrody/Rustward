@@ -11,16 +11,34 @@
     "directives": 101,
     "effective_cosmetic_rules": 93591,
     "effective_network_rules": 684092,
-    "eligible": 757115,
+    "eligible": 756847,
     "empty_lines": 4006,
-    "excluded_by_gate": 22864,
+    "excluded_by_gate": 23132,
     "metadata": 38,
-    "network_rules": 591967,
+    "network_rules": 592995,
     "output_fast_native_css": 48166,
     "output_light_procedural": 115,
     "output_vetted_scriptlet": 21010,
     "parse_errors": 2296,
-    "raw_lines": 842188
+    "raw_lines": 842188,
+    "semantic_gaps_accepted": 70772,
+    "semantic_gaps_accepted_all": 70772,
+    "semantic_gaps_excluded": 517,
+    "semantic_gaps_excluded_entity_domain": 383,
+    "semantic_gaps_excluded_match-case": 96,
+    "semantic_gaps_excluded_matches-css": 6,
+    "semantic_gaps_excluded_matches-path": 16,
+    "semantic_gaps_excluded_ubo_bare_hostname": 1,
+    "semantic_gaps_excluded_upward": 15,
+    "semantic_gaps_unresolved": 1006,
+    "semantic_gaps_unresolved_entity_domain": 403,
+    "semantic_gaps_unresolved_extended-css": 1,
+    "semantic_gaps_unresolved_match-case": 103,
+    "semantic_gaps_unresolved_matches-css": 54,
+    "semantic_gaps_unresolved_matches-path": 89,
+    "semantic_gaps_unresolved_ubo_bare_hostname": 1,
+    "semantic_gaps_unresolved_upward": 326,
+    "semantic_gaps_unresolved_xpath": 29
   },
   "dialects": {
     "hosts": 92056,
@@ -36,11 +54,11 @@
     "matches-css:SEMANTIC_GAP": 54,
     "matches-path:SEMANTIC_GAP": 89,
     "scriptlet:ENGINE_NATIVE": 28199,
-    "ubo_bare_hostname:SEMANTIC_GAP": 412,
+    "ubo_bare_hostname:SEMANTIC_GAP": 1,
     "upward:SEMANTIC_GAP": 326,
     "xpath:SEMANTIC_GAP": 29
   },
   "eligibility": {
-    "ELIGIBLE": 757115
+    "ELIGIBLE": 756847
   }
 }

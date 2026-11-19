@@ -3742,18 +3742,12 @@ ag-base-easylist	12311	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-base-easylist	12315	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-base-easylist	12326	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-base-easylist	12327	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
-ag-base-easylist	12328	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-base-easylist	12330	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-base-easylist	12331	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-base-easylist	12353	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
-ag-base-easylist	12359	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	12374	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-base-easylist	12377	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-base-easylist	12379	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-base-easylist	12382	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
-ag-base-easylist	12398	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	12406	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	12413	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-base-easylist	12421	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12422	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12423	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -4562,7 +4556,6 @@ ag-base-easylist	18774	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 ag-base-easylist	18781	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	18795	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	18821	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18823	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-base-easylist	18829	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	18844	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-base-easylist	18853	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -4571,20 +4564,9 @@ ag-base-easylist	18865	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 ag-base-easylist	18903	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	18906	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	19030	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	19035	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-base-easylist	19208	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-base-easylist	19283	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-base-easylist	19326	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	19491	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	19798	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	19933	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20133	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20135	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20251	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20254	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20259	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20267	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20282	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-base-easylist	20288	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20302	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20303	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -4598,167 +4580,6 @@ ag-base-easylist	20319	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 ag-base-easylist	20320	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20321	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20326	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	20346	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20347	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20352	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20353	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20366	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20373	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20374	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20375	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20376	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20780	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20879	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20880	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20881	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20882	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20883	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20884	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20886	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20887	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20888	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20890	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20891	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20892	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20893	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20894	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20895	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20896	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20897	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20898	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20899	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20901	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20902	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20903	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20905	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20906	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20907	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20908	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20910	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20911	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20912	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20913	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20914	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20915	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20916	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20917	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20918	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20919	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20920	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20921	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20923	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20924	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20925	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20926	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20927	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20928	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20929	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20930	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20931	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20932	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20933	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20934	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20936	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20937	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20938	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20940	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20941	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20942	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20944	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20945	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20947	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	20948	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21052	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21054	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21056	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21057	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21058	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21059	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21060	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21061	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21062	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21063	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21064	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21065	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21066	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21067	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21068	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21069	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21070	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21071	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21072	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21073	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21074	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21075	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21077	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21078	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21079	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21080	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21081	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21082	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21083	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21084	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21085	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21086	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21087	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21088	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21089	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21090	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21091	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21092	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21093	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21094	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21095	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21096	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21097	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21098	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21099	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21100	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21102	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21103	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21104	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21105	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21106	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21107	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21108	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21109	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21110	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21111	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21112	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21113	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21115	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21116	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21117	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21118	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21120	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21121	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21122	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21123	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21124	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21125	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21126	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21128	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21129	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21130	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21131	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21132	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21133	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21134	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21135	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21136	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21137	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21138	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21139	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21140	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21141	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21142	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21143	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21145	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21146	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21147	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21148	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21149	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-base-easylist	21150	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-base-easylist	47355	ubo	xpath	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-tracking	9	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	10	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -4929,8 +4750,6 @@ ag-tracking	178	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	179	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	180	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	186	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-tracking	1171	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	4440	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-tracking	4442	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-tracking	4443	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-tracking	4444	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
@@ -4966,39 +4785,6 @@ ag-tracking	4473	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-tracking	4474	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-tracking	4475	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 ag-tracking	4476	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
-ag-tracking	55406	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	113735	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	113751	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	114150	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	114408	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	115078	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	115138	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	115139	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	116899	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426003	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426081	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426082	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426088	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426090	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426140	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426218	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426225	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426348	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426398	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426415	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426424	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426453	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426464	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426495	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426496	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426504	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426505	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426506	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426507	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426508	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426696	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426697	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	426698	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-tracking	426705	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	426706	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	426707	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
@@ -5219,36 +5005,6 @@ ag-tracking	432825	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualificat
 ag-tracking	432830	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	432831	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	432873	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-tracking	432931	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	432933	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	432934	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	432935	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	432936	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	432937	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	432938	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	432939	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	432954	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	433073	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	433342	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	433393	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	433465	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	433493	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	433497	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	433662	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434113	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434114	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434115	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434116	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434117	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434118	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434119	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434120	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434121	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434122	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434123	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434191	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434192	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	434193	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-tracking	434237	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	434299	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	434303	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -5297,7 +5053,6 @@ ag-tracking	434703	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualificat
 ag-tracking	434704	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	434731	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-tracking	434747	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-tracking	434835	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-tracking	434901	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-tracking	434902	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-tracking	434903	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
@@ -5314,16 +5069,6 @@ ag-tracking	435248	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed lite
 ag-tracking	435366	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-tracking	435386	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	435428	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-tracking	435839	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	435975	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	436019	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	436159	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	436160	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	436406	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	436422	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	436505	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	436535	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-tracking	436695	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-tracking	439491	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	439492	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	439493	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -5357,34 +5102,6 @@ ag-tracking	439546	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualificat
 ag-tracking	439556	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	439557	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	439559	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-annoyances	1117	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1292	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1293	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1295	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1296	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1297	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1298	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1300	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1301	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1302	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1303	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1304	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1305	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1307	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1308	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1309	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1310	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1311	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1312	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1313	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1314	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1315	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1480	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1482	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1483	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1484	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1485	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ag-annoyances	1487	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-annoyances	1569	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	1570	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	1572	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -6710,7 +6427,6 @@ ag-annoyances	9512	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed lite
 ag-annoyances	9723	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-annoyances	9747	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-annoyances	9974	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-annoyances	10655	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ag-annoyances	10698	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	10700	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-annoyances	10701	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
@@ -9114,67 +8830,7 @@ ag-annoyances	31648	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualifica
 ag-annoyances	31684	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-annoyances	31699	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-annoyances	31707	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-easyprivacy	9	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	10	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	11	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	12	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	13	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	16	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	17	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	18	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	20	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	21	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	22	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	23	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	29	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	30	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	31	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	32	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	34	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	35	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	36	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	38	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	39	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	40	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	41	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	42	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1212	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1213	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1214	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1215	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1216	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1217	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1218	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1219	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1220	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1221	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1222	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1223	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1225	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1226	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1228	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1229	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1230	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1232	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1233	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1234	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1235	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1273	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1274	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1275	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1277	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1278	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1279	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1280	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1298	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1299	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1300	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1301	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1325	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1404	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-easyprivacy	1405	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 easyprivacy	6951	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-easyprivacy	9432	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 easyprivacy	11477	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 easyprivacy	11478	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 easyprivacy	11479	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -9209,8 +8865,6 @@ easyprivacy	11523	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualificati
 easyprivacy	11524	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 easyprivacy	11525	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 easyprivacy	11527	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-easyprivacy	37553	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	81	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 fanboy-annoyances	1112	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1113	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1114	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -9278,7 +8932,6 @@ fanboy-annoyances	1199	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 fanboy-annoyances	1200	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1201	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1202	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-fanboy-annoyances	1203	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 fanboy-annoyances	1206	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1209	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1211	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -9382,7 +9035,6 @@ fanboy-annoyances	1486	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 fanboy-annoyances	1487	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1488	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1489	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-fanboy-annoyances	1490	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 fanboy-annoyances	1493	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1496	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1498	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -9419,32 +9071,8 @@ fanboy-annoyances	1537	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 fanboy-annoyances	1538	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1540	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	1541	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-fanboy-annoyances	1542	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	1543	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	1545	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	1546	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	1547	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	1548	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	1549	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	1550	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	1553	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	1554	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	1668	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 fanboy-annoyances	5655	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	5662	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-fanboy-annoyances	6067	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6068	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6070	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6073	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6074	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6076	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6077	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6078	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6079	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6082	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6083	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6084	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-annoyances	6085	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 fanboy-annoyances	8595	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 fanboy-annoyances	9414	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	9415	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -14383,9 +14011,7 @@ fanboy-annoyances	14466	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 quali
 fanboy-annoyances	14467	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	14468	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	15199	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-fanboy-annoyances	15279	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 fanboy-annoyances	15299	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-fanboy-annoyances	15302	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 fanboy-annoyances	16197	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	16199	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	16202	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -14745,17 +14371,6 @@ fanboy-annoyances	17336	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 quali
 fanboy-annoyances	17337	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	17338	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 fanboy-annoyances	17339	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-fanboy-social	9	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-social	10	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-social	12	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-social	13	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-social	14	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-social	15	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-social	16	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-social	17	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-social	20	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-social	21	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-fanboy-social	135	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 web-annoyances-ultralist	41	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 web-annoyances-ultralist	52	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 web-annoyances-ultralist	540	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -14767,11 +14382,6 @@ web-annoyances-ultralist	1635	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11
 web-annoyances-ultralist	1736	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 web-annoyances-ultralist	1785	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 web-annoyances-ultralist	1787	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-warning-removal	40	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-warning-removal	2459	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-warning-removal	2477	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-warning-removal	2526	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-warning-removal	2527	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 malicious-url	9	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 malicious-url	10	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 malicious-url	11	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
@@ -39924,19 +39534,6 @@ dandelion-annoyances	1367	ubo	entity_domain	SEMANTIC_GAP	entity domains are hash
 dandelion-annoyances	1455	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 dandelion-annoyances	1461	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 dandelion-annoyances	1466	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-dandelion-annoyances	1475	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1476	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1477	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1478	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1479	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1481	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1482	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1484	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1485	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1488	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1491	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1498	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-dandelion-annoyances	1499	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 dandelion-annoyances	1537	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 dandelion-annoyances	1538	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 dandelion-annoyances	1539	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -40012,13 +39609,11 @@ dandelion-annoyances	2950	ubo	entity_domain	SEMANTIC_GAP	entity domains are hash
 dandelion-annoyances	3059	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 dandelion-annoyances	3209	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 dandelion-annoyances	3210	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-dandelion-annoyances	3781	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 dandelion-annoyances	3817	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 dandelion-annoyances	3825	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
 dandelion-annoyances	3873	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 dandelion-annoyances	3876	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
 dandelion-annoyances	3887	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-dandelion-annoyances	3889	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 dandelion-annoyances	3894	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 dandelion-annoyances	3895	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 dandelion-annoyances	3896	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -87731,8 +87326,6 @@ ubo-filters-min	8714	ubo	upward	SEMANTIC_GAP	procedural operator requires allowl
 ubo-filters-min	8716	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-filters-min	8727	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ubo-filters-min	8738	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ubo-filters-min	8750	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
-ubo-filters-min	8751	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ubo-filters-min	8753	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-filters-min	8754	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-filters-min	8755	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -87794,7 +87387,6 @@ ubo-filters-min	8850	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualific
 ubo-filters-min	8851	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-filters-min	8852	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-filters-min	8853	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ubo-filters-min	8939	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ubo-filters-min	8940	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ubo-filters-min	8945	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-filters-min	8946	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -90907,7 +90499,6 @@ ubo-filters-min	17200	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualifi
 ubo-filters-min	17201	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-filters-min	17202	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-filters-min	17203	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ubo-filters-min	17205	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ubo-filters-min	17207	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-filters-min	17213	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-filters-min	17215	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -96093,7 +95684,6 @@ ubo-privacy-min	588	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualifica
 ubo-privacy-min	599	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-privacy-min	616	ubo	match-case	SEMANTIC_GAP	match-case forces regex machinery
 ubo-privacy-min	617	ubo	match-case	SEMANTIC_GAP	match-case forces regex machinery
-ubo-privacy-min	652	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ubo-privacy-min	653	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-privacy-min	658	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-privacy-min	660	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -96243,7 +95833,6 @@ ubo-privacy-min	1163	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualific
 ubo-privacy-min	1164	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-privacy-min	1167	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-privacy-min	1187	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ubo-privacy-min	1750	ubo	ubo_bare_hostname	SEMANTIC_GAP	bare hostname intent differs from substring patterns
 ubo-privacy-min	1786	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-privacy-min	1787	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ubo-privacy-min	1788	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification

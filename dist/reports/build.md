@@ -1,10 +1,10 @@
 # RustShield build
 
-- build id: `2e0545159dafeaba419e672262ccfbcafe3cb895394c39ff9705970a93480ae3`
-- emitted rules: `661258`
+- build id: `7c448f586348275232262345aa2228fd126d82e7ec8b0d8f58b5cdedc75f347d`
+- emitted rules: `662286`
 - parse errors: `2296`
-- rewrites: `43875`
+- rewrites: `51933`
 - mismatches: `0`
-- verification cases: `420548` (network rules `242862`/`675537`, receipts `42491`/`43875`, cosmetic hosts `2048`/`74214`)
-- flatbuffer bytes: admitted `42019397`, candidate `37917405`
-- engine build ms: admitted `515`, candidate `447`
+- verification cases: `458948` (network rules `243494`/`675269`, receipts `50310`/`51933`, cosmetic hosts `2048`/`74214`)
+- flatbuffer bytes: admitted `41977797`, candidate `37931845`
+- engine build ms: admitted `443`, candidate `354`

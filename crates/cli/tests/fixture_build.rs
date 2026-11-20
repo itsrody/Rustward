@@ -78,6 +78,9 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(first_list.contains("contains.example##.promo:has-text(Legacy Ad)"));
     assert!(!first_list.contains("contains-regex.example"));
     assert!(first_list.contains("+js(abort-on-property-read, adblockWasFound)"));
+    assert!(first_list.contains("+js(no-setTimeout-if, adblockNotif)"));
+    assert!(first_list.contains("+js(addEventListener-defuser, click, interstitial)"));
+    assert!(!first_list.contains("unknown-scriptlet"));
     assert!(!first_list.contains("matches-css"));
     assert!(!first_list.contains("denyallow"));
     assert!(!first_list.contains("inactive.example"));

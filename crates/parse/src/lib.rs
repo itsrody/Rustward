@@ -708,9 +708,11 @@ fn parse_scriptlet_invocation(payload: &str) -> (String, String) {
         .strip_prefix("+js(")
         .and_then(|value| value.strip_suffix(')'))
         .unwrap_or(payload.trim());
+    // Official scriptlet names are case-sensitive identifiers. Lowercasing them here
+    // silently breaks aliases such as `no-setTimeout-if` and `addEventListener-defuser`.
     match inner.split_once(',') {
-        Some((name, args)) => (name.trim().to_ascii_lowercase(), args.trim().to_string()),
-        None => (inner.trim().to_ascii_lowercase(), String::new()),
+        Some((name, args)) => (name.trim().to_string(), args.trim().to_string()),
+        None => (inner.trim().to_string(), String::new()),
     }
 }
 
@@ -1097,6 +1099,33 @@ mod tests {
 
         let nested = parse_record("nested.example##.promo:contains(Ad):upward(1)");
         assert!(matches!(nested.outcome, ParsedOutcome::Unsupported { .. }));
+    }
+
+    #[test]
+    fn scriptlet_names_preserve_official_case() {
+        let record = parse_record("example.com##+js(no-setTimeout-if, adblockNotif)");
+        let ParsedOutcome::Cosmetic(rule) = &record.outcome else {
+            panic!("expected cosmetic rule, got {:?}", record.outcome);
+        };
+        match &rule.payload {
+            CosmeticPayload::VettedScriptlet { name, args, .. } => {
+                assert_eq!(name, "no-setTimeout-if");
+                assert_eq!(args, "adblockNotif");
+            }
+            other => panic!("expected vetted scriptlet, got {other:?}"),
+        }
+
+        let mixed = parse_record("example.com##+js(addEventListener-defuser, click, interstitial)");
+        let ParsedOutcome::Cosmetic(rule) = &mixed.outcome else {
+            panic!("expected cosmetic rule, got {:?}", mixed.outcome);
+        };
+        match &rule.payload {
+            CosmeticPayload::VettedScriptlet { name, args, .. } => {
+                assert_eq!(name, "addEventListener-defuser");
+                assert_eq!(args, "click, interstitial");
+            }
+            other => panic!("expected vetted scriptlet, got {other:?}"),
+        }
     }
 
     #[test]

@@ -25,6 +25,8 @@ contains-regex.example##.promo:contains(/Legacy/i)
 example.com##.ad:matches-css(display: none)
 example.com##.ad:style(color: red)
 example.com##+js(abort-on-property-read, adblockWasFound)
+example.com##+js(no-setTimeout-if, adblockNotif)
+example.com##+js(addEventListener-defuser, click, interstitial)
 example.com##+js(unknown-scriptlet)
 ||blocked.example^$denyallow=first-party.example
 !#else

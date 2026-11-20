@@ -166,7 +166,10 @@ arguments only, no `/regex/`, one operator. It can be reduced further by config.
 1. **uBO provenance and grade.** `name` (or an alias) exists in a pinned snapshot of uBlock Origin's
    official scriptlet library (`src/js/resources/scriptlets.js` and its imported modules). The build
    records the upstream commit, file sha256, aliases, dependencies, and parsed grade: `standard` for
-   ordinary built-ins or `trusted` when `requiresTrust: true`. Rustward uses explicit per-source
+   ordinary built-ins or `trusted` when `requiresTrust: true`. Scriptlet names are case-sensitive
+   identifiers; the parser preserves the official spelling so aliases such as `no-setTimeout-if`
+   and `addEventListener-defuser` resolve instead of being folded to an unknown lowercase name.
+   Rustward uses explicit per-source
    `trusted = true`; it never guesses trust from a `uBlock filters – …` title.
 2. **adblock-rust trust.** `standard → PermissionMask::default()`; `trusted → TRUST_BITS` granted only
    to configured trusted sources. Admission requires

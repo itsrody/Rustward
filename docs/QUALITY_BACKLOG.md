@@ -12,8 +12,10 @@ not lost.
    value derived from pinned inputs; add a two-build determinism test.
 4. **Audit artifacts** — make `dropped.tsv` list dedup/subsumption removals (it currently duplicates
    `excluded.tsv`) and cap oversized receipt payloads in `build.json`.
-5. **Scriptlet coverage** — explicitly trust official uBO sources where justified and add a pinned
-   official legacy uBO scriptlet snapshot for names still used by current lists.
+5. **Scriptlet coverage** — done. The pinned official uBO snapshot already contains the legacy
+   aliases used by current lists; the blocker was case-folding in `parse_scriptlet_invocation`,
+   which turned case-sensitive names such as `no-setTimeout-if` into unresolvable lowercase forms.
+   Names now preserve their official spelling, with parse, catalog, and fixture regression tests.
 6. **Hosts parsing hygiene** — treat all `#` lines in hosts-format sources as comments and classify
    localhost/broadcast entries as expected skips rather than parse errors.
 7. **Config/docs ↔ code alignment** — partially done. D3/D4 network canonicalization is implemented

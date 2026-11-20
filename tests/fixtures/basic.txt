@@ -36,6 +36,7 @@ example.com##+js(unknown-scriptlet)
 ads.example.net$image
 ads.example.net.au$image
 email.ads.example.net$image
+||neutral.example^$queryprune=utm_source
 !#else
 ||inactive.example^
 !#endif

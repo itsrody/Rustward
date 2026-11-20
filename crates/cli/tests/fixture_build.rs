@@ -90,6 +90,8 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(first_list.contains("ads.example.net$image"));
     assert!(!first_list.contains("ads.example.net.au$image"));
     assert!(!first_list.contains("email.ads.example.net$image"));
+    assert!(first_list.contains("||neutral.example^$removeparam=utm_source"));
+    assert!(!first_list.contains("queryprune"));
     assert!(!first_list.contains("unknown-redirect"));
     assert!(!first_list.contains("unknown-scriptlet"));
     assert!(!first_list.contains("matches-css"));
@@ -168,15 +170,15 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     let build: Value =
         serde_json::from_slice(&fs::read(root.join("reports/build.json")).expect("read build"))
             .expect("parse build");
-    assert_eq!(build["metrics"]["rewrites_applied"], 8);
+    assert_eq!(build["metrics"]["rewrites_applied"], 9);
     assert_eq!(build["metrics"]["badfilter_resolved"], 2);
     assert_eq!(build["metrics"]["badfilter_targets_pruned"], 2);
     assert_eq!(
         build["metrics"]["last_modified"],
         "Sat, 14 Nov 2026 13:05:16 +0000"
     );
-    assert_eq!(build["receipts_total"], 8);
-    assert_eq!(build["receipts"].as_array().expect("receipts").len(), 8);
+    assert_eq!(build["receipts_total"], 9);
+    assert_eq!(build["receipts"].as_array().expect("receipts").len(), 9);
     assert_eq!(build["receipts_truncated"], false);
     assert!(
         !build["receipts_sha256"]
@@ -192,6 +194,8 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(rewrites.contains("exception_type_union"));
     assert!(rewrites.contains("cosmetic_host_union"));
     assert!(rewrites.contains("d6_literal_contains"));
+    assert!(rewrites.contains("d8_queryprune"));
+    assert!(rewrites.contains("||neutral.example^$queryprune=utm_source"));
     assert!(rewrites.contains("pattern_subsumption"));
     assert!(rewrites.contains("ads.example.net.au$image"));
     assert!(rewrites.contains("email.ads.example.net$image"));

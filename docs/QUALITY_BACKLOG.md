@@ -23,9 +23,9 @@ not lost.
    reserved local/broadcast mappings are classified as `Skipped` with `hosts_skips` metrics instead of
    `PARSE_ERROR`. Inline comments on real host mappings still canonicalize to `||host^`.
 7. **Config/docs ↔ code alignment** — partially done. D3/D4 network canonicalization is implemented
-   as the `network_canonicalization` rewrite pass; D6 literal `contains` normalization is implemented
-   as the preparse `d6_literal_contains` pass. `host_semantics`, `ubo_host_semantics`, `regex_fusion`,
-   `:-abp-has` normalization, and D8 remain open.
+   as the `network_canonicalization` rewrite pass; D6 literal `contains` normalization and D8 literal
+   `queryprune` normalization are preparse passes (`d6_literal_contains`, `d8_queryprune`).
+   `host_semantics`, `ubo_host_semantics`, `regex_fusion`, and `:-abp-has` normalization remain open.
 8. **Semantic-gap acceptance policy** — done. `admit.accepted_semantic_gaps` accepts `$all` and
    partially dropped method/scheme values; entity-domain, bare-hostname, and match-case gaps are
    excluded as `SEMANTIC_GAP_POLICY`. Reports split accepted, unresolved, and excluded gaps.

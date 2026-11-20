@@ -287,6 +287,10 @@ pub struct AdmitConfig {
     /// Normalize literal `:contains(...)` / `:-abp-contains(...)` selectors to `:has-text(...)`.
     #[serde(default = "default_true")]
     pub literal_contains_rewrite: bool,
+    /// Normalize the AdGuard `$queryprune=name` alias to engine-native `$removeparam=name`.
+    /// Only literal `[A-Za-z0-9_-]+` values are eligible; regex-valued inputs stay excluded.
+    #[serde(default = "default_true")]
+    pub queryprune_alias: bool,
     /// Slow or complex families removed in one batch before per-rule admission.
     #[serde(default = "default_exclude_families")]
     pub exclude_families: Vec<RuleFamily>,
@@ -312,6 +316,7 @@ impl Default for AdmitConfig {
         Self {
             literal_boundary_regex: true,
             literal_contains_rewrite: true,
+            queryprune_alias: true,
             exclude_families: default_exclude_families(),
             accepted_semantic_gaps: default_accepted_semantic_gaps(),
         }

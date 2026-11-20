@@ -29,6 +29,9 @@ literal_boundary_regex = true
 # Normalize literal `:contains(...)` / `:-abp-contains(...)` selectors to `:has-text(...)` and keep
 # the ABP extended form as the VERIFY baseline. Regex-valued arguments remain excluded.
 literal_contains_rewrite = true
+# Normalize AdGuard's literal `$queryprune=name` alias to `$removeparam=name` before parsing.
+# Regex-valued query parameters remain unsupported and stay excluded.
+queryprune_alias = true
 # Slow/complex families removed in one batch before per-rule admission. `nested_procedural`
 # catches slow operators adblock folds into a single native CSS selector.
 exclude_families = ["nested_procedural"]

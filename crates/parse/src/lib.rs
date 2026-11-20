@@ -3,7 +3,7 @@
 use adblock::{
     filters::{
         cosmetic::{CosmeticFilterAction, CosmeticFilterMask, CosmeticFilterOperator},
-        network::NetworkFilterMaskHelper,
+        network::{NetworkFilter, NetworkFilterMaskHelper},
     },
     lists::{FilterFormat, ParseOptions, ParsedLine, parse_filter},
     resources::PermissionMask,
@@ -246,68 +246,7 @@ fn parse_line(
 
     match parse_filter(trimmed, true, opts) {
         Ok(ParsedLine::Network(filter)) => {
-            let body = filter.filter.string_view().unwrap_or_default();
-            let is_regex = filter.is_regex();
-            let is_literal_boundary_regex = is_regex
-                && !filter.is_complete_regex()
-                && !filter
-                    .mask
-                    .contains(adblock::filters::network::NetworkFilterMask::IS_HOSTNAME_REGEX)
-                && is_literal_boundary_body(&body);
-            let canonical_text = if matches!(format, FilterFormat::Hosts) {
-                hosts_canonical_text(trimmed).unwrap_or_else(|| trimmed.to_string())
-            } else {
-                trimmed.to_string()
-            };
-            let options = parse_network_options(&canonical_text);
-            let (domains, not_domains) =
-                collect_domain_values(options.as_ref(), &["domain", "from"]);
-            let (to_domains, not_to_domains) = collect_domain_values(options.as_ref(), &["to"]);
-            let rule = NetworkRule {
-                engine_id: filter.get_id(),
-                mask: filter.mask.bits(),
-                features: filter.features_mask.bits(),
-                hostname: filter.hostname.as_deref().map(str::to_string),
-                body: filter.filter.string_view().unwrap_or_default(),
-                left_anchor: filter.is_left_anchor(),
-                right_anchor: filter.is_right_anchor(),
-                hostname_anchor: filter.is_hostname_anchor(),
-                is_regex,
-                is_literal_boundary_regex,
-                is_complete_regex: filter.is_complete_regex(),
-                is_hostname_regex: filter
-                    .mask
-                    .contains(adblock::filters::network::NetworkFilterMask::IS_HOSTNAME_REGEX),
-                is_exception: filter.is_exception(),
-                important: filter.is_important(),
-                match_case: filter.match_case(),
-                is_badfilter: filter.is_badfilter(),
-                is_redirect: filter.is_redirect(),
-                is_csp: filter.is_csp(),
-                is_removeparam: filter.is_removeparam(),
-                is_generic_hide: filter.is_generic_hide(),
-                domains,
-                not_domains,
-                to_domains,
-                not_to_domains,
-                domain_hashes: hash_all(&filter.opt_domains),
-                not_domain_hashes: hash_all(&filter.opt_not_domains),
-                to_domain_hashes: hash_all(&filter.opt_to_domains),
-                not_to_domain_hashes: hash_all(&filter.opt_not_to_domains),
-                modifier_option: filter.modifier_option.map(str::to_string),
-                tag: option_value(options.as_ref(), "tag"),
-                text: canonical_text,
-                source_id: source.config.id.clone(),
-                line_no: line.line_no,
-                dialect: effective_dialect(&source.config),
-                source_trusted: source.config.trusted,
-                source_permissions: source.config.permissions,
-                source_priority: source.config.priority,
-                eligibility: model::Eligibility::Eligible,
-                state: model::RuleState::Active,
-                dialect_gaps: detect_network_gaps(trimmed, &source.config),
-                provenance: vec![origin()],
-            };
+            let rule = build_network_rule(source, &line, trimmed, &filter, format, origin());
             Ok(base(ParsedOutcome::Network(rule)))
         }
         Ok(ParsedLine::Cosmetic(filter)) => {
@@ -315,6 +254,13 @@ fn parse_line(
             Ok(base(ParsedOutcome::Cosmetic(rule)))
         }
         Err(error) => {
+            if let Some((rule, receipt)) =
+                normalize_queryprune(trimmed, source, &line, opts, config)?
+            {
+                let mut record = base(ParsedOutcome::Network(rule));
+                record.preparse_receipts.push(receipt);
+                return Ok(record);
+            }
             if let Some((rule, baseline_rule, receipt)) =
                 normalize_literal_contains(trimmed, source, &line, opts, config)?
             {
@@ -339,6 +285,79 @@ fn is_literal_boundary_body(body: &str) -> bool {
     // that invoke real regex syntax (\d, \n, \p{...}, …) make this family unsafe. Redundant
     // punctuation escapes are canonicalized away by `network_canonicalization` before emission.
     body.contains('^') && !body.contains('*') && has_safe_literal_escapes(body)
+}
+
+/// Converts an engine-parsed network filter into the shared IR. Preparse normalizers pass their
+/// candidate text here so downstream filtering and receipts see one canonical representation.
+fn build_network_rule(
+    source: &FetchedSource,
+    line: &EffectiveLine,
+    text: &str,
+    filter: &NetworkFilter<'_>,
+    format: FilterFormat,
+    origin: Origin,
+) -> NetworkRule {
+    let body = filter.filter.string_view().unwrap_or_default();
+    let is_regex = filter.is_regex();
+    let is_literal_boundary_regex = is_regex
+        && !filter.is_complete_regex()
+        && !filter
+            .mask
+            .contains(adblock::filters::network::NetworkFilterMask::IS_HOSTNAME_REGEX)
+        && is_literal_boundary_body(&body);
+    let canonical_text = if matches!(format, FilterFormat::Hosts) {
+        hosts_canonical_text(text).unwrap_or_else(|| text.to_string())
+    } else {
+        text.to_string()
+    };
+    let options = parse_network_options(&canonical_text);
+    let (domains, not_domains) = collect_domain_values(options.as_ref(), &["domain", "from"]);
+    let (to_domains, not_to_domains) = collect_domain_values(options.as_ref(), &["to"]);
+    NetworkRule {
+        engine_id: filter.get_id(),
+        mask: filter.mask.bits(),
+        features: filter.features_mask.bits(),
+        hostname: filter.hostname.as_deref().map(str::to_string),
+        body,
+        left_anchor: filter.is_left_anchor(),
+        right_anchor: filter.is_right_anchor(),
+        hostname_anchor: filter.is_hostname_anchor(),
+        is_regex,
+        is_literal_boundary_regex,
+        is_complete_regex: filter.is_complete_regex(),
+        is_hostname_regex: filter
+            .mask
+            .contains(adblock::filters::network::NetworkFilterMask::IS_HOSTNAME_REGEX),
+        is_exception: filter.is_exception(),
+        important: filter.is_important(),
+        match_case: filter.match_case(),
+        is_badfilter: filter.is_badfilter(),
+        is_redirect: filter.is_redirect(),
+        is_csp: filter.is_csp(),
+        is_removeparam: filter.is_removeparam(),
+        is_generic_hide: filter.is_generic_hide(),
+        domains,
+        not_domains,
+        to_domains,
+        not_to_domains,
+        domain_hashes: hash_all(&filter.opt_domains),
+        not_domain_hashes: hash_all(&filter.opt_not_domains),
+        to_domain_hashes: hash_all(&filter.opt_to_domains),
+        not_to_domain_hashes: hash_all(&filter.opt_not_to_domains),
+        modifier_option: filter.modifier_option.map(str::to_string),
+        tag: option_value(options.as_ref(), "tag"),
+        text: canonical_text,
+        source_id: source.config.id.clone(),
+        line_no: line.line_no,
+        dialect: effective_dialect(&source.config),
+        source_trusted: source.config.trusted,
+        source_permissions: source.config.permissions,
+        source_priority: source.config.priority,
+        eligibility: model::Eligibility::Eligible,
+        state: model::RuleState::Active,
+        dialect_gaps: detect_network_gaps(text, &source.config),
+        provenance: vec![origin],
+    }
 }
 
 const CONTAINS_MARKERS: &[&str] = &[":-abp-contains(", ":contains("];
@@ -407,6 +426,104 @@ fn parse_paren_argument(text: &str) -> Option<(&str, usize)> {
         }
     }
     None
+}
+
+/// D8: normalize AdGuard's `$queryprune=name` alias to the engine-native `$removeparam=name`.
+/// This is an intent bridge, not an equivalence rewrite: the engine rejects the alias outright, so
+/// the original has no engine behavior to compare against. Eligibility is limited to a single
+/// non-negated literal value accepted by the engine's `removeparam` parser.
+fn normalize_queryprune(
+    text: &str,
+    source: &FetchedSource,
+    line: &EffectiveLine,
+    opts: ParseOptions,
+    config: &Config,
+) -> Result<Option<(NetworkRule, RewriteReceipt)>> {
+    if !config.admit.queryprune_alias {
+        return Ok(None);
+    }
+    let Some((prefix, raw_options)) = text.rsplit_once('$') else {
+        return Ok(None);
+    };
+    if prefix.contains('$') || raw_options.is_empty() || raw_options.contains('$') {
+        return Ok(None);
+    }
+    let parts: Vec<&str> = raw_options.split(',').collect();
+    let mut found: Option<(usize, &str)> = None;
+    for (index, part) in parts.iter().enumerate() {
+        let negated = part.starts_with('~');
+        let bare = part.strip_prefix('~').unwrap_or(part);
+        let (name, value) = match bare.split_once('=') {
+            Some(pair) => pair,
+            None => continue,
+        };
+        if name.eq_ignore_ascii_case("removeparam") {
+            return Ok(None);
+        }
+        if name.eq_ignore_ascii_case("queryprune") {
+            if found.is_some() || negated || !is_queryprune_value(value) {
+                return Ok(None);
+            }
+            found = Some((index, value));
+        }
+    }
+    let Some((index, value)) = found else {
+        return Ok(None);
+    };
+    let mut candidate_parts: Vec<String> = parts.iter().map(|part| (*part).to_string()).collect();
+    candidate_parts[index] = format!("removeparam={value}");
+    let candidate = format!("{prefix}${}", candidate_parts.join(","));
+
+    let Ok(adblock::lists::ParsedLine::Network(filter)) = parse_filter(&candidate, true, opts)
+    else {
+        return Ok(None);
+    };
+    let candidate_line = EffectiveLine {
+        line_no: line.line_no,
+        text: candidate.clone(),
+        raw_text: line.raw_text.clone(),
+    };
+    let origin = Origin {
+        source_id: source.config.id.clone(),
+        line_no: line.line_no,
+        text: line.raw_text.clone(),
+    };
+    let format = match source.config.format {
+        SourceFormat::Hosts => FilterFormat::Hosts,
+        SourceFormat::Standard => FilterFormat::Standard,
+    };
+    let mut rule = build_network_rule(source, &candidate_line, &candidate, &filter, format, origin);
+    if !rule.is_removeparam {
+        return Ok(None);
+    }
+    // Keep the source dialect visible in reports even though the emitted text is engine-native.
+    rule.dialect_gaps = detect_network_gaps(text, &source.config);
+    if !verify::network_equivalence(&[candidate.clone()], &candidate, source.config.permissions)? {
+        return Ok(None);
+    }
+
+    let id = format!("d8_queryprune_{}", &sha256_hex(text.as_bytes())[..12]);
+    rule.state = model::RuleState::Rewritten(id.clone());
+    let receipt = RewriteReceipt {
+        id,
+        family: "d8_queryprune".to_string(),
+        before: vec![text.to_string()],
+        after: candidate,
+        source_id: source.config.id.clone(),
+        checks: vec![
+            "queryprune-alias".to_string(),
+            "literal-value".to_string(),
+            "engine-realization".to_string(),
+        ],
+    };
+    Ok(Some((rule, receipt)))
+}
+
+fn is_queryprune_value(value: &str) -> bool {
+    !value.is_empty()
+        && value
+            .bytes()
+            .all(|byte| byte.is_ascii_alphanumeric() || byte == b'_' || byte == b'-')
 }
 
 /// D6: prepare a literal `:contains(...)` cosmetic rule for ADMIT. The original is kept as an ABP
@@ -1157,6 +1274,43 @@ mod tests {
 
         let nested = parse_record("nested.example##.promo:contains(Ad):upward(1)");
         assert!(matches!(nested.outcome, ParsedOutcome::Unsupported { .. }));
+    }
+
+    #[test]
+    fn d8_normalizes_only_literal_queryprune_aliases() {
+        let record = parse_record("||tracker.example^$queryprune=utm_source,script");
+        let ParsedOutcome::Network(rule) = &record.outcome else {
+            panic!("expected network rule, got {:?}", record.outcome);
+        };
+        assert_eq!(
+            rule.text,
+            "||tracker.example^$removeparam=utm_source,script"
+        );
+        assert!(rule.is_removeparam);
+        assert!(
+            matches!(&rule.state, RuleState::Rewritten(id) if id.starts_with("d8_queryprune_"))
+        );
+        assert!(rule.dialect_gaps.iter().any(|gap| gap.kind == "queryprune"));
+        assert_eq!(record.preparse_receipts.len(), 1);
+        assert_eq!(record.preparse_receipts[0].family, "d8_queryprune");
+        assert_eq!(
+            record.preparse_receipts[0].before,
+            vec!["||tracker.example^$queryprune=utm_source,script".to_string()]
+        );
+
+        for unsupported in [
+            "||tracker.example^$queryprune=/utm_.*/",
+            "||tracker.example^$queryprune=~utm_source",
+            "||tracker.example^$queryprune=utm_source|ref",
+        ] {
+            assert!(
+                matches!(
+                    parse_record(unsupported).outcome,
+                    ParsedOutcome::Unsupported { .. }
+                ),
+                "unexpectedly admitted {unsupported}"
+            );
+        }
     }
 
     #[test]

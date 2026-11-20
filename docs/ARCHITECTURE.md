@@ -453,7 +453,7 @@ mismatch, all rewrites in the responsible group/family are reverted and the pipe
   (`denyallow`, `#%#`, `$all`, entity domains, …).
 - **Structured `$` option parsing (Stage 4).** The raw option string is parsed into named
   `(name, value, negated)` entries before gap detection. `$denyallow`, `$all`, `$rewrite`,
-  `$queryprune`, `$match-case`, entity domains (`.*`), dropped `$method=`/`$scheme=` values, and
+  literal `$queryprune` (normalized by D8 before parse), `$match-case`, entity domains (`.*`), dropped `$method=`/`$scheme=` values, and
   uBO bare-hostname intent are reported from parsed fields rather than substring matches. The engine
   remains authoritative for semantics; this parser only exposes option *shape* so a gap cannot be
   missed by a spelling change.
@@ -703,7 +703,7 @@ and intent preservation. All entries still go through the same reparse and diffe
 | D5 | *(removed)* AdGuard CSS injection | `example.com#$#.ad { color: red }` → `example.com##.ad:style(color: red)` | **No longer enabled.** `:style(...)` is a DOM-mutating action and fails the golden rule; route these rules to D10 |
 | D6 | Extended-CSS operator normalization *(implemented for literal contains)* | `:-abp-contains(...)`/`contains(...)`→`:has-text(...)` | Runs before ADMIT with a `d6_literal_contains` receipt. Only a single literal argument and exactly one allowlisted `has-text` operator qualify; the ABP extended form is retained as the VERIFY baseline and engine differential equality is required. Regex arguments, chained operators, and action operators stay excluded; `:-abp-has(...)` remains open |
 | D7 | *(removed)* `$match-case` upgrade | `/BannerAd.gif$match-case` → escaping + full-regex form with `match-case` | **No longer enabled.** Regex rewriting is slow/complex; plain `$match-case` rules are quarantined via D10 |
-| D8 | Query-prune alias | `$queryprune=utm_source` → `$removeparam=utm_source` | Value must match the engine's `[A-Za-z0-9_-]+` restriction; regex-valued inputs are D10, not guessed |
+| D8 | Query-prune alias *(implemented as `d8_queryprune`)* | `$queryprune=utm_source` → `$removeparam=utm_source` | Preparse normalization before ADMIT, gated by `admit.queryprune_alias`; value must match the engine's `[A-Za-z0-9_-]+` restriction; regex, negated, and multi-value inputs remain D10, not guessed |
 | D9 | Pre-parsing directive evaluation | Resolve `!#include`, `!#if`, `!#else`, `!#endif` for the pinned target profile | Runs **before** parse; environment variables and include tree are hashed into the build id; unresolved branches are reported |
 | D10 | Golden-rule exclusion | `denyallow`, `#%#`, `#$#`, `elemhide`, `popup`, `replace`, `cname`, unvetted `+js(...)`, all action operators, `:matches-css*`, `:matches-path`, `:min-text-length`, `:upward`, `:xpath`, chained/regex procedural operators, unresolved redirects, … | If no safe D rewrite yields an eligible form, emit the original line to `reports/excluded.tsv` with source dialect + reason; never pass through or substitute a "close enough" rule without a differential gate |
 | D11 | Official-resource + engine-trust qualification | `##+js(name, args...)` and `$redirect=name` | Resolve name/alias in the pinned official uBO snapshot; record grade and resource digest; require `is_injectable_by(source.permissions)` for resource + dependency closure; require engine realization; otherwise D10 |

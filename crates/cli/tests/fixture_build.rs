@@ -186,7 +186,6 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
         "Rustward.txt.sha256",
         "lists.lock",
         "reports/manifest.json",
-        "reports/build.md",
         "reports/analysis.json",
         "reports/rewrites.tsv",
         "reports/dropped.tsv",

@@ -523,11 +523,12 @@ pub struct ExclusionRecord {
 impl ExclusionRecord {
     pub fn tsv_row(&self) -> String {
         format!(
-            "{}\t{}\t{}\t{}\t{}",
+            "{}\t{}\t{}\t{}\t{}\t{}",
             self.source_id,
             self.line_no,
             self.dialect.as_str(),
             self.reason.code(),
+            self.reason.detail().replace('\t', " ").replace('\n', " "),
             self.text.replace('\t', " ").replace('\n', " ")
         )
     }

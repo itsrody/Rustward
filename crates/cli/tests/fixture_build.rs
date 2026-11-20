@@ -80,6 +80,9 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(first_list.contains("+js(abort-on-property-read, adblockWasFound)"));
     assert!(first_list.contains("+js(no-setTimeout-if, adblockNotif)"));
     assert!(first_list.contains("+js(addEventListener-defuser, click, interstitial)"));
+    assert!(first_list.contains("||redirect-a.example^$script,redirect=noopjs:10"));
+    assert!(first_list.contains("||redirect-b.example^$script,redirect=fuckadblock.js-3.2.0:5"));
+    assert!(!first_list.contains("unknown-redirect"));
     assert!(!first_list.contains("unknown-scriptlet"));
     assert!(!first_list.contains("matches-css"));
     assert!(!first_list.contains("denyallow"));
@@ -90,6 +93,8 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
 
     let excluded = fs::read_to_string(root.join("reports/excluded.tsv")).expect("read excluded");
     assert!(excluded.contains("BATCH_EXCLUDED"));
+    assert!(excluded.contains("redirect resource unknown-redirect"));
+    assert!(excluded.contains("scriptlet unknown-scriptlet"));
     assert!(excluded.contains("example.com##.ad:matches-css(display: none)"));
     assert!(excluded.contains("contains-regex.example##.promo:contains(/Legacy/i)"));
 

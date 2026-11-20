@@ -272,12 +272,12 @@ fn build(root: &Path, config_path: &Path, no_verify: bool, fetch_mode: FetchMode
         .collect();
     write_tsv(
         &staging.join("reports/excluded.tsv"),
-        "source\tline\tdialect\treason\ttext",
+        "source\tline\tdialect\treason\tdetail\ttext",
         exclusion_rows.iter().cloned(),
     )?;
     write_tsv(
         &staging.join("reports/dropped.tsv"),
-        "source\tline\tdialect\treason\ttext",
+        "source\tline\tdialect\treason\tdetail\ttext",
         exclusion_rows.iter().cloned(),
     )?;
     write_tsv(

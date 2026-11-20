@@ -203,7 +203,7 @@ fn admit_network(
     if rule.is_redirect {
         if let Some(modifier) = &rule.modifier_option {
             qualify_resource(
-                modifier,
+                redirect_resource_name(modifier),
                 rule,
                 config,
                 catalog,
@@ -373,9 +373,14 @@ fn qualify_resource<R: ResourceRule>(
     decisions: &mut Vec<ResourceDecision>,
     scriptlet: bool,
 ) -> std::result::Result<(), ExclusionReason> {
+    let resource_label = if scriptlet {
+        "scriptlet"
+    } else {
+        "redirect resource"
+    };
     let Some(resources) = &config.resources else {
         return Err(ExclusionReason::UnknownResource(format!(
-            "{requested_name}: no resource snapshot configured"
+            "{resource_label} {requested_name}: no resource snapshot configured"
         )));
     };
     let ubo = &resources.ubo;
@@ -383,9 +388,9 @@ fn qualify_resource<R: ResourceRule>(
         rule.resource_rule_fields();
     let effective_permissions = source_permissions & config.engine.permissions;
 
-    let resource = catalog
-        .find(requested_name)
-        .ok_or_else(|| ExclusionReason::UnknownResource(requested_name.to_string()))?;
+    let resource = catalog.find(requested_name).ok_or_else(|| {
+        ExclusionReason::UnknownResource(format!("{resource_label} {requested_name}"))
+    })?;
     let canonical_name = resource.name.clone();
     let mut decision = ResourceDecision {
         name: requested_name.to_string(),
@@ -406,21 +411,23 @@ fn qualify_resource<R: ResourceRule>(
         };
         if !grade_ok {
             return Err(ExclusionReason::Trust(format!(
-                "{} grade {} is not allowed for source {}",
-                canonical_name,
+                "{resource_label} {canonical_name} grade {} is not allowed for source {source_id}",
                 resource.grade.as_str(),
-                source_id
             )));
         }
         let closure = catalog
             .dependency_closure(&canonical_name)
-            .map_err(|error| ExclusionReason::UnknownResource(error.to_string()))?;
+            .map_err(|error| {
+                ExclusionReason::UnknownResource(format!(
+                    "{resource_label} {canonical_name}: {error}"
+                ))
+            })?;
         let source_mask = PermissionMask::from_bits(effective_permissions);
         for item in &closure {
             let permission = PermissionMask::from_bits(item.permission);
             if !permission.is_injectable_by(source_mask) {
                 return Err(ExclusionReason::Trust(format!(
-                    "{} requires permission {:?} but source grants {:?}",
+                    "{resource_label} {} requires permission {:?} but source grants {:?}",
                     item.name, item.permission, source_mask
                 )));
             }
@@ -433,7 +440,7 @@ fn qualify_resource<R: ResourceRule>(
             };
             if !kind_ok {
                 return Err(ExclusionReason::Trust(format!(
-                    "{} cannot be used for {}",
+                    "{resource_label} {} cannot be used for {}",
                     item.name,
                     if scriptlet {
                         "script injection"
@@ -451,7 +458,7 @@ fn qualify_resource<R: ResourceRule>(
             };
             if !realized {
                 return Err(ExclusionReason::Trust(format!(
-                    "engine did not realize {canonical_name}"
+                    "engine did not realize {resource_label} {canonical_name}"
                 )));
             }
         }
@@ -550,6 +557,19 @@ fn realize_redirect(rule: &NetworkRule, permissions: u8, resources: &[Resource])
     false
 }
 
+/// adblock encodes the redirect "apply after N requests" option as a trailing `:N`
+/// in `modifier_option` (e.g. `noopjs:10`). The engine parses this suffix as an `i32`.
+/// Official resource names may themselves contain colons (`abp-resource:blank-js`),
+/// so only a trailing colon followed by an integer is treated as an option suffix.
+fn redirect_resource_name(modifier: &str) -> &str {
+    if let Some((stem, priority)) = modifier.rsplit_once(':') {
+        if !stem.is_empty() && priority.parse::<i32>().is_ok() {
+            return stem;
+        }
+    }
+    modifier
+}
+
 fn rule_options(text: &str) -> Vec<String> {
     let Some((_, options)) = text.rsplit_once('$') else {
         return Vec::new();
@@ -572,6 +592,7 @@ fn clean_probe_host(value: &str) -> String {
         .split('/')
         .next()
         .unwrap_or(host)
+        .trim_end_matches('^')
         .trim_end_matches('.');
     if host.is_empty() {
         "ads.example".to_string()
@@ -634,4 +655,35 @@ fn redirect_methods(options: &[String]) -> Vec<String> {
     methods.sort();
     methods.dedup();
     methods
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{clean_probe_host, redirect_resource_name};
+
+    #[test]
+    fn redirect_suffix_is_stripped_without_touching_colon_names() {
+        assert_eq!(redirect_resource_name("noopjs:10"), "noopjs");
+        assert_eq!(
+            redirect_resource_name("fuckadblock.js-3.2.0:5"),
+            "fuckadblock.js-3.2.0"
+        );
+        assert_eq!(redirect_resource_name("noop-1s.mp4:10"), "noop-1s.mp4");
+        assert_eq!(
+            redirect_resource_name("abp-resource:blank-js"),
+            "abp-resource:blank-js"
+        );
+        assert_eq!(redirect_resource_name("gemius"), "gemius");
+        assert_eq!(redirect_resource_name("noopjs:"), "noopjs:");
+    }
+
+    #[test]
+    fn probe_hosts_strip_redirect_boundary_markers() {
+        assert_eq!(clean_probe_host("||redirect.example^"), "redirect.example");
+        assert_eq!(
+            clean_probe_host("||redirect.example^/script.js"),
+            "redirect.example"
+        );
+        assert_eq!(clean_probe_host("||ads.example."), "ads.example");
+    }
 }

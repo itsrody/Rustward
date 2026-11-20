@@ -43,3 +43,9 @@ not lost.
     by the union builder. Positive `$domain=`/`$from=` lists only; negated lists, badfilter targets,
     and any structurally or differentially unsafe group remain separate. This reduces exception
     filter objects and token-map entries without weakening any exception.
+14. **Resource coverage closure** — done. Redirect priorities such as `noopjs:10` are stripped before
+    catalog lookup, matching adblock-rust's own `:N` parsing. Host-only realization probes now strip
+    trailing `^`, and `excluded.tsv` records a detail column that distinguishes scriptlets from
+    redirect resources. Audited plain missing names against the pinned uBO commit: `gemius`,
+    `metrika-yandex-tag`, `metrika-yandex-watch`, and `ati-smarttag` are not in the official assets,
+    and `none` is uBO's special "no redirect" keyword; all remain intentional exclusions.

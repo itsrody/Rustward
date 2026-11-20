@@ -36,6 +36,22 @@ fn case_sensitive_legacy_aliases_resolve() {
 }
 
 #[test]
+fn redirect_aliases_resolve_after_suffix_stripping() {
+    let catalog = fixture_catalog();
+    for (name, canonical) in [
+        ("noopjs", "noop.js"),
+        ("fuckadblock.js-3.2.0", "nofab.js"),
+        ("noop-1s.mp4", "noop-1s.mp4"),
+    ] {
+        let found = catalog
+            .find(name)
+            .unwrap_or_else(|| panic!("redirect alias {name} missing from official snapshot"));
+        assert_eq!(found.name, canonical);
+    }
+    assert!(catalog.find("noopjs:10").is_none());
+}
+
+#[test]
 fn folded_names_do_not_resolve() {
     let catalog = fixture_catalog();
     for folded in [

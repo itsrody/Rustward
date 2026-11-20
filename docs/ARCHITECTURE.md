@@ -180,9 +180,12 @@ arguments only, no `/regex/`, one operator. It can be reduced further by config.
    of independent `try { ... } catch` blocks, not their concatenation order, because compiler-friendly
    re-emission intentionally changes rule order.
 
-Failures are excluded with `SCRIPTLET_NOT_IN_LIBRARY`, `SCRIPTLET_GRADE_MISMATCH`,
-`SCRIPTLET_TRUST_FAILED`, or `SCRIPTLET_NOT_REALIZED`. The same official+trust gate applies to
-`$redirect` resources; an unresolved redirect resource is excluded rather than emitted.
+Failures are excluded with `UNKNOWN_RESOURCE` (name not in the pinned snapshot or unresolved
+dependency), `ENGINE_TRUST` (grade, permission, kind, or realization failure), or the ordinary parse
+and policy codes. Details are written to the `detail` column of `reports/excluded.tsv` and identify
+whether the resource was a `scriptlet` or a `redirect resource`. The same official+trust gate applies
+to `$redirect` resources, with a trailing `:N` redirect priority stripped before catalog lookup. A
+resource that is absent from the pinned official uBO assets remains excluded rather than emitted.
 
 ---
 
@@ -810,7 +813,7 @@ dist/reports/build.json             # all metrics below, machine-readable
 dist/reports/build.md               # human summary
 dist/reports/analysis.json          # classification, eligibility, optimizability histogram
 dist/reports/rewrites.tsv           # rewrite receipts (before, after, reason, checks, R/D family)
-dist/reports/excluded.tsv           # ineligible rules, failed rewrites, duplicates, subsumed rules
+dist/reports/excluded.tsv           # reason + detail for ineligible rules, failed rewrites, duplicates, subsumed rules
 dist/reports/admitted_resources.json # official resource digests, grades, permissions, trust decisions
 dist/reports/dialect_gaps.tsv       # dialect-specific unsupported/semantic gaps with source dialect
 dist/reports/verify.json            # per-corpus mismatch details / zero mismatches

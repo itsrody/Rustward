@@ -1,8 +1,8 @@
 {
-  "build_id": "b7a6dc7226cd60812cb967c616e0d670bcfd940139fb256342f96e006f8ee83c",
-  "config_hash": "d4431eb6c853046d6bc23a0dd246e9d7026f5533bae887461385b560191a53f2",
+  "build_id": "25745330ba795bf7ff338c2bfaa3f4f7d2c62c0d002e14d4f29545f57ab5dfb9",
+  "config_hash": "59b66a84ba74e07da7aaa671892c1bf406880ecd7f76f6cef3d2272cd64dd526",
   "profile_hash": "7523a0d8d369cd3ba756dd22e4c6bbb3e9bcfd0e8c4f97cefee9e7ee3023e475",
-  "lists_lock_hash": "5124bf36287218f4f5dbef8cb3ac924e147566c7f733d1a93a9089613d1c1902",
+  "lists_lock_hash": "11f3f0517b5a24ecc30840bb1a759c2958eae397a3f26e06c107057191c65f77",
   "adblock_version": "=0.13.6",
   "engine_profile": "desktop",
   "emit_order": "compiler-friendly-v1",

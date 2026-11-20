@@ -98,9 +98,9 @@
     },
     "fanboy-social": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/123_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/7d90f9c9dcb3ae219c25accabe58966d638087c09cc1cf94be6b2d2b55144836",
-      "sha256": "7d90f9c9dcb3ae219c25accabe58966d638087c09cc1cf94be6b2d2b55144836",
-      "bytes": 158186,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/c74faa78c9e50b07f2730413183f9b853815e94f0c0e082e6f42ade063f193b6",
+      "sha256": "c74faa78c9e50b07f2730413183f9b853815e94f0c0e082e6f42ade063f193b6",
+      "bytes": 158193,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -109,8 +109,8 @@
       "trusted": false,
       "permissions": 0,
       "license": "Fanboy's Social Blocking; see upstream ! Title/! Description metadata",
-      "etag": "\"8bdac350b8baa137600ae94de4face6a\"",
-      "last_modified": "Fri, 20 Nov 2026 04:49:33 GMT"
+      "etag": "\"a66bff9c5642678cf3cac62bb0b50452\"",
+      "last_modified": "Fri, 20 Nov 2026 05:49:58 GMT"
     },
     "malicious-url": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/208_optimized.txt",
@@ -269,8 +269,8 @@
     },
     "warning-removal": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/207_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/a5f5a5ecd796246da7ece5bd87f59f1cf666447d36b0db4e1a543958990cfda9",
-      "sha256": "a5f5a5ecd796246da7ece5bd87f59f1cf666447d36b0db4e1a543958990cfda9",
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/746e9a0ebc2b75de8d72983614cef5286a08d7f5ba81c41437ce22d0cc1e8c9e",
+      "sha256": "746e9a0ebc2b75de8d72983614cef5286a08d7f5ba81c41437ce22d0cc1e8c9e",
       "bytes": 74132,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
@@ -280,8 +280,8 @@
       "trusted": false,
       "permissions": 0,
       "license": "Adblock Warning Removal; see upstream ! Title/! Description metadata",
-      "etag": "\"68cc07df4df23db6bfdaf4e57dfde9b1\"",
-      "last_modified": "Fri, 20 Nov 2026 04:49:34 GMT"
+      "etag": "\"485f18f40fbf63e9e3172e07d7968180\"",
+      "last_modified": "Fri, 20 Nov 2026 05:49:59 GMT"
     },
     "web-annoyances-ultralist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/201_optimized.txt",

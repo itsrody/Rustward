@@ -163,7 +163,7 @@ license = "Fanboy's Annoyances; see upstream ! Title/! Description metadata"
 [[source]]
 id = "fanboy-social"
 url = "https://filters.adtidy.org/extension/ublock/filters/123_optimized.txt"
-sha256 = "7d90f9c9dcb3ae219c25accabe58966d638087c09cc1cf94be6b2d2b55144836"
+sha256 = "c74faa78c9e50b07f2730413183f9b853815e94f0c0e082e6f42ade063f193b6"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -191,7 +191,7 @@ license = "Web Annoyances Ultralist; see upstream ! Title/! Description metadata
 [[source]]
 id = "warning-removal"
 url = "https://filters.adtidy.org/extension/ublock/filters/207_optimized.txt"
-sha256 = "a5f5a5ecd796246da7ece5bd87f59f1cf666447d36b0db4e1a543958990cfda9"
+sha256 = "746e9a0ebc2b75de8d72983614cef5286a08d7f5ba81c41437ce22d0cc1e8c9e"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"

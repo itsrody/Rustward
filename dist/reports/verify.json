@@ -5,11 +5,11 @@
   "golden_rule_violations": 0,
   "emit_order_violations": 0,
   "coverage": {
-    "network_rules_total": 675958,
+    "network_rules_total": 675956,
     "network_rules_probed": 242962,
-    "rewrite_receipts_total": 53028,
-    "rewrite_receipts_exercised": 51775,
-    "cosmetic_hosts_total": 75852,
-    "cosmetic_hosts_checked": 62904
+    "rewrite_receipts_total": 53026,
+    "rewrite_receipts_exercised": 51773,
+    "cosmetic_hosts_total": 75850,
+    "cosmetic_hosts_checked": 62908
   }
 }

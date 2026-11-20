@@ -58,6 +58,7 @@ enabled = [
     "exception_domain_union",
     "to_domain_union",
     "cosmetic_host_union",
+    "pattern_subsumption",
 ]
 ubo_host_semantics = false
 regex_fusion = false

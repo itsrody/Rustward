@@ -57,3 +57,8 @@ not lost.
     exact-path, `^`-boundary, and `*` wildcard patterns instead of the fixed `/rs-probe.js` path.
     Complex regex bodies keep the generic fallback, and the engine still decides whether a probe
     produces a redirect, so no trust or verification gate is relaxed.
+16. **Conservative R9 pattern subsumption** — done. `pattern_subsumption` removes a redundant plain
+    substring rule only when it is hostname-free, unanchored, non-regex, at least four characters,
+    and identical in every parsed field except the body. The shorter body must be a prefix ending at
+    a URL separator (`.`, `-`, `_`, `/`, `?`, `&`, `=`, `#`, `:`, `;`, `+`, `%`, or `@`), and every
+    removal still passes the engine differential gate.

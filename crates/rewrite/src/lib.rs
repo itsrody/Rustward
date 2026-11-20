@@ -81,6 +81,7 @@ pub fn rewrite(rules: Vec<Rule>, config: &Config) -> Result<RewriteResult> {
         "mask_subsumption",
         "domain_subsumption",
         "hostname_subsumption",
+        "pattern_subsumption",
     ] {
         if config.rewrite_enabled(family) {
             rewrite_subsumption(&mut rules, family, &badfilter_targets, &mut receipts)?;
@@ -461,6 +462,7 @@ fn rewrite_subsumption(
             "mask_subsumption" => mask_subsumption_key(network),
             "domain_subsumption" => domain_subsumption_key(network),
             "hostname_subsumption" => hostname_subsumption_key(network),
+            "pattern_subsumption" => pattern_subsumption_key(network),
             _ => continue,
         };
         groups.entry(key).or_default().push(index);
@@ -528,6 +530,31 @@ fn rewrite_subsumption(
                         .find(|&subsumer| subsumer != index)
                     {
                         removals.insert(index, subsumer);
+                    }
+                }
+            }
+            "pattern_subsumption" => {
+                let mut candidates: Vec<(String, usize)> = indices
+                    .iter()
+                    .copied()
+                    .filter(|&index| is_plain_substring_rule(network_at(rules, index)))
+                    .map(|index| (network_at(rules, index).body.clone(), index))
+                    .collect();
+                candidates.sort_by(|left, right| left.0.cmp(&right.0).then(left.1.cmp(&right.1)));
+                for position in 0..candidates.len() {
+                    let (broad_body, broad_index) = &candidates[position];
+                    let mut descendant = position + 1;
+                    while descendant < candidates.len()
+                        && candidates[descendant].0.starts_with(broad_body)
+                    {
+                        let (narrow_body, narrow_index) = &candidates[descendant];
+                        if plain_body_subsumes(broad_body, narrow_body) {
+                            let chosen = removals.entry(*narrow_index).or_insert(*broad_index);
+                            if network_at(rules, *chosen).body.len() < broad_body.len() {
+                                *chosen = *broad_index;
+                            }
+                        }
+                        descendant += 1;
                     }
                 }
             }
@@ -691,6 +718,82 @@ fn hostname_subsumption_key(rule: &NetworkRule) -> String {
         &rule.tag,
         &rule.source_permissions,
     ])
+}
+
+/// R9: group plain substring rules by every field except the body. Hostname, anchors, regex
+/// flags, special modifiers, and badfilter/exception state must all match exactly.
+fn pattern_subsumption_key(rule: &NetworkRule) -> String {
+    subsumption_key(&[
+        &rule.mask,
+        &rule.features,
+        &rule.hostname,
+        &rule.left_anchor,
+        &rule.right_anchor,
+        &rule.hostname_anchor,
+        &rule.is_regex,
+        &rule.is_literal_boundary_regex,
+        &rule.is_complete_regex,
+        &rule.is_hostname_regex,
+        &rule.is_exception,
+        &rule.important,
+        &rule.match_case,
+        &rule.is_badfilter,
+        &rule.is_redirect,
+        &rule.is_csp,
+        &rule.is_removeparam,
+        &rule.is_generic_hide,
+        &rule.domains,
+        &rule.not_domains,
+        &rule.to_domains,
+        &rule.not_to_domains,
+        &rule.domain_hashes,
+        &rule.not_domain_hashes,
+        &rule.to_domain_hashes,
+        &rule.not_to_domain_hashes,
+        &rule.modifier_option,
+        &rule.tag,
+        &rule.source_permissions,
+    ])
+}
+
+fn is_plain_substring_rule(rule: &NetworkRule) -> bool {
+    rule.body.len() >= 4
+        && rule.hostname.is_none()
+        && !rule.left_anchor
+        && !rule.right_anchor
+        && !rule.hostname_anchor
+        && !rule.is_regex
+        && !rule.is_literal_boundary_regex
+        && !rule.is_complete_regex
+        && !rule.is_hostname_regex
+        && !rule.is_exception
+        && !rule.important
+        && !rule.match_case
+        && !rule.is_badfilter
+        && !rule.is_redirect
+        && !rule.is_csp
+        && !rule.is_removeparam
+        && !rule.is_generic_hide
+        && !rule.body.chars().any(|c| matches!(c, '*' | '^' | '|'))
+}
+
+const SUBSUMPTION_SEPARATORS: &str = ".-_/?&=#:;+%@";
+
+fn plain_body_subsumes(broad: &str, narrow: &str) -> bool {
+    if broad == narrow
+        || broad.len() < 4
+        || !narrow.starts_with(broad)
+        || narrow.len() == broad.len()
+    {
+        return false;
+    }
+    if broad.ends_with(|c: char| SUBSUMPTION_SEPARATORS.contains(c)) {
+        return true;
+    }
+    narrow[broad.len()..]
+        .chars()
+        .next()
+        .is_some_and(|c| SUBSUMPTION_SEPARATORS.contains(c))
 }
 
 const SUBSUMABLE_MASK: u32 = Mask::FROM_NETWORK_TYPES.bits()
@@ -1007,4 +1110,21 @@ fn merge_origins(existing: &[Origin], additional: &[Origin]) -> Vec<Origin> {
         }
     }
     origins
+}
+
+#[cfg(test)]
+mod tests {
+    use super::plain_body_subsumes;
+
+    #[test]
+    fn plain_body_subsumption_requires_a_separator_boundary() {
+        assert!(plain_body_subsumes("ads.example", "ads.example.au"));
+        assert!(plain_body_subsumes("ads.", "ads.example"));
+        assert!(plain_body_subsumes("ads-banner", "ads-banner/script"));
+
+        assert!(!plain_body_subsumes("ads", "adsense"));
+        assert!(!plain_body_subsumes("ad", "ads.example"));
+        assert!(!plain_body_subsumes("ads.example", "ads.example"));
+        assert!(!plain_body_subsumes("ads.example", "other.example"));
+    }
 }

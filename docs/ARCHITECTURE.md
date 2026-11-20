@@ -690,7 +690,7 @@ and intent preservation. All entries still go through the same reparse and diffe
 | R6 | Cosmetic host union | `d1##.ad` + `d2##.ad` → `d1,d2##.ad` | Selector must be allowlisted (native CSS or one lightweight procedural op); action must be `Hide`/`Unhide`; no permission payload; no `##@#`/generichide interaction; entities handled separately or skipped |
 | R7 | Subsumption — hostname | `||sub.example.com^` dropped when `||example.com^` exists | Identical mask/features/domains/modifier payload; label-boundary suffix check; neither pinned nor badfilter-targeted; no exception in between |
 | R8 | Subsumption — mask | `||x^$script` dropped when `||x^` exists | Pattern/domains/modifier identical; broader mask is a strict superset; no important/exception asymmetry |
-| R9 | Subsumption — pattern | plain `ads` makes plain `ads-banner` redundant | Both plain, unanchored identically, no regex, no `^`/`\|` boundary semantics violated; verified by corpus |
+| R9 | Subsumption — pattern *(implemented as `pattern_subsumption`)* | plain `ads.example` makes plain `ads.example.au` redundant | Hostname-free, unanchored, non-regex bodies of at least 4 characters; identical mask/features/domains/modifier fields; separator-safe prefix only; every removal passes engine differential verification |
 | R10 | Subsumption — domain | `P$domain=d1\|d2` dropped when `P` exists with otherwise identical fields | No exceptions between; pinned rules excluded |
 | R11 | Regex fusion *(experimental, off by default)* | many `||hostN^` → one full regex `/^https?:\/\/(?:h1\|h2\|...)(?:[\/^:?#]\|$)/` | Only with `full-regex-handling`; requires benchmark win and full differential gate; disabled by default because regex matching is usually slower |
 | R12 | Cosmetic generic promotion | host-specific plain-CSS hide with *all* known hosts → generic `##.ad` | Only when host set covers configured corpus domains; off by default |
@@ -1083,6 +1083,7 @@ enabled = [
   "exception_domain_union",
   "to_domain_union",
   "cosmetic_host_union",
+  "pattern_subsumption",
 ]
 ubo_host_semantics = false
 regex_fusion = false

@@ -83,6 +83,7 @@ enabled = [
     "mask_subsumption",
     "domain_subsumption",
     "hostname_subsumption",
+    "pattern_subsumption",
 ]
 ubo_host_semantics = false
 regex_fusion = false

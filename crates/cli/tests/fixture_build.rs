@@ -87,6 +87,8 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
             "||redirect-path.example/pagead/js/adsbygoogle.js^$script,redirect=noopjs:10"
         )
     );
+    assert!(first_list.contains("ads.example.net$image"));
+    assert!(!first_list.contains("ads.example.net.au$image"));
     assert!(!first_list.contains("unknown-redirect"));
     assert!(!first_list.contains("unknown-scriptlet"));
     assert!(!first_list.contains("matches-css"));
@@ -165,15 +167,15 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     let build: Value =
         serde_json::from_slice(&fs::read(root.join("reports/build.json")).expect("read build"))
             .expect("parse build");
-    assert_eq!(build["metrics"]["rewrites_applied"], 6);
+    assert_eq!(build["metrics"]["rewrites_applied"], 7);
     assert_eq!(build["metrics"]["badfilter_resolved"], 2);
     assert_eq!(build["metrics"]["badfilter_targets_pruned"], 2);
     assert_eq!(
         build["metrics"]["last_modified"],
         "Sat, 14 Nov 2026 13:05:16 +0000"
     );
-    assert_eq!(build["receipts_total"], 6);
-    assert_eq!(build["receipts"].as_array().expect("receipts").len(), 6);
+    assert_eq!(build["receipts_total"], 7);
+    assert_eq!(build["receipts"].as_array().expect("receipts").len(), 7);
     assert_eq!(build["receipts_truncated"], false);
     assert!(
         !build["receipts_sha256"]
@@ -189,6 +191,7 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(rewrites.contains("exception_type_union"));
     assert!(rewrites.contains("cosmetic_host_union"));
     assert!(rewrites.contains("d6_literal_contains"));
+    assert!(rewrites.contains("pattern_subsumption"));
 
     // Benchmark timings and QPS are intentionally excluded; every deterministic artifact must be
     // byte-identical across two builds from the same pinned inputs.

@@ -541,6 +541,9 @@ fn rewrite_subsumption(
                     .map(|index| (network_at(rules, index).body.clone(), index))
                     .collect();
                 candidates.sort_by(|left, right| left.0.cmp(&right.0).then(left.1.cmp(&right.1)));
+
+                // Prefix direction: a shorter body ending at a separator matches every rule that
+                // starts with it.
                 for position in 0..candidates.len() {
                     let (broad_body, broad_index) = &candidates[position];
                     let mut descendant = position + 1;
@@ -548,11 +551,45 @@ fn rewrite_subsumption(
                         && candidates[descendant].0.starts_with(broad_body)
                     {
                         let (narrow_body, narrow_index) = &candidates[descendant];
-                        if plain_body_subsumes(broad_body, narrow_body) {
-                            let chosen = removals.entry(*narrow_index).or_insert(*broad_index);
-                            if network_at(rules, *chosen).body.len() < broad_body.len() {
-                                *chosen = *broad_index;
-                            }
+                        if plain_body_subsumes_prefix(broad_body, narrow_body) {
+                            record_pattern_removal(
+                                &mut removals,
+                                rules,
+                                *narrow_index,
+                                *broad_index,
+                            );
+                        }
+                        descendant += 1;
+                    }
+                }
+
+                // Suffix direction: sort reversed bodies so descendants are contiguous, then apply
+                // the mirrored separator check. This catches cases such as `example.com` making
+                // `email.example.com` redundant without admitting label-prefix overblocking.
+                let mut reversed: Vec<(String, usize)> = candidates
+                    .iter()
+                    .enumerate()
+                    .map(|(candidate_index, (body, _))| {
+                        (body.chars().rev().collect::<String>(), candidate_index)
+                    })
+                    .collect();
+                reversed.sort_by(|left, right| left.0.cmp(&right.0).then(left.1.cmp(&right.1)));
+                for position in 0..reversed.len() {
+                    let (broad_reversed, broad_candidate_index) = &reversed[position];
+                    let (broad_body, broad_index) = &candidates[*broad_candidate_index];
+                    let mut descendant = position + 1;
+                    while descendant < reversed.len()
+                        && reversed[descendant].0.starts_with(broad_reversed)
+                    {
+                        let (_, narrow_candidate_index) = &reversed[descendant];
+                        let (narrow_body, narrow_index) = &candidates[*narrow_candidate_index];
+                        if plain_body_subsumes_suffix(broad_body, narrow_body) {
+                            record_pattern_removal(
+                                &mut removals,
+                                rules,
+                                *narrow_index,
+                                *broad_index,
+                            );
                         }
                         descendant += 1;
                     }
@@ -779,7 +816,20 @@ fn is_plain_substring_rule(rule: &NetworkRule) -> bool {
 
 const SUBSUMPTION_SEPARATORS: &str = ".-_/?&=#:;+%@";
 
-fn plain_body_subsumes(broad: &str, narrow: &str) -> bool {
+fn record_pattern_removal(
+    removals: &mut BTreeMap<usize, usize>,
+    rules: &[Rule],
+    narrow_index: usize,
+    broad_index: usize,
+) {
+    let chosen = removals.entry(narrow_index).or_insert(broad_index);
+    if network_at(rules, *chosen).body.len() > network_at(rules, broad_index).body.len() {
+        *chosen = broad_index;
+    }
+}
+
+/// Prefix direction: `broad` must be a token-safe leading substring of `narrow`.
+fn plain_body_subsumes_prefix(broad: &str, narrow: &str) -> bool {
     if broad == narrow
         || broad.len() < 4
         || !narrow.starts_with(broad)
@@ -793,6 +843,23 @@ fn plain_body_subsumes(broad: &str, narrow: &str) -> bool {
     narrow[broad.len()..]
         .chars()
         .next()
+        .is_some_and(|c| SUBSUMPTION_SEPARATORS.contains(c))
+}
+
+/// Suffix direction: `broad` must be a token-safe trailing substring of `narrow`. A leading
+/// separator in `broad` is itself a token boundary, so `".example.com"` safely subsumes
+/// `"://www.example.com"` even though the character before the match is not a separator.
+fn plain_body_subsumes_suffix(broad: &str, narrow: &str) -> bool {
+    if broad == narrow || broad.len() < 4 || !narrow.ends_with(broad) || narrow.len() == broad.len()
+    {
+        return false;
+    }
+    if broad.starts_with(|c: char| SUBSUMPTION_SEPARATORS.contains(c)) {
+        return true;
+    }
+    narrow[..narrow.len() - broad.len()]
+        .chars()
+        .next_back()
         .is_some_and(|c| SUBSUMPTION_SEPARATORS.contains(c))
 }
 
@@ -1114,17 +1181,41 @@ fn merge_origins(existing: &[Origin], additional: &[Origin]) -> Vec<Origin> {
 
 #[cfg(test)]
 mod tests {
-    use super::plain_body_subsumes;
+    use super::{plain_body_subsumes_prefix, plain_body_subsumes_suffix};
 
     #[test]
-    fn plain_body_subsumption_requires_a_separator_boundary() {
-        assert!(plain_body_subsumes("ads.example", "ads.example.au"));
-        assert!(plain_body_subsumes("ads.", "ads.example"));
-        assert!(plain_body_subsumes("ads-banner", "ads-banner/script"));
+    fn plain_body_prefix_subsumption_requires_a_separator_boundary() {
+        assert!(plain_body_subsumes_prefix("ads.example", "ads.example.au"));
+        assert!(plain_body_subsumes_prefix("ads.", "ads.example"));
+        assert!(plain_body_subsumes_prefix(
+            "ads-banner",
+            "ads-banner/script"
+        ));
 
-        assert!(!plain_body_subsumes("ads", "adsense"));
-        assert!(!plain_body_subsumes("ad", "ads.example"));
-        assert!(!plain_body_subsumes("ads.example", "ads.example"));
-        assert!(!plain_body_subsumes("ads.example", "other.example"));
+        assert!(!plain_body_subsumes_prefix("ads", "adsense"));
+        assert!(!plain_body_subsumes_prefix("ad", "ads.example"));
+        assert!(!plain_body_subsumes_prefix("ads.example", "ads.example"));
+        assert!(!plain_body_subsumes_prefix("ads.example", "other.example"));
+    }
+
+    #[test]
+    fn plain_body_suffix_subsumption_requires_a_separator_boundary() {
+        assert!(plain_body_subsumes_suffix(
+            "ads.example",
+            "email.ads.example"
+        ));
+        assert!(plain_body_subsumes_suffix(
+            ".wattpad.com/et?",
+            "://www.wattpad.com/et?"
+        ));
+        assert!(plain_body_subsumes_suffix("ads-", "banner-tracker-ads-"));
+
+        assert!(!plain_body_subsumes_suffix("ads", "adsense"));
+        assert!(!plain_body_subsumes_suffix(
+            "ads.example",
+            "otherads.example"
+        ));
+        assert!(!plain_body_subsumes_suffix("ads.example", "ads.example"));
+        assert!(!plain_body_subsumes_suffix("ads.example", "ads.example.au"));
     }
 }

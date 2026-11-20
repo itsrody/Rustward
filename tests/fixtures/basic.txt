@@ -35,6 +35,7 @@ example.com##+js(unknown-scriptlet)
 ||redirect-path.example/pagead/js/adsbygoogle.js^$script,redirect=noopjs:10
 ads.example.net$image
 ads.example.net.au$image
+email.ads.example.net$image
 !#else
 ||inactive.example^
 !#endif

@@ -690,7 +690,7 @@ and intent preservation. All entries still go through the same reparse and diffe
 | R6 | Cosmetic host union | `d1##.ad` + `d2##.ad` → `d1,d2##.ad` | Selector must be allowlisted (native CSS or one lightweight procedural op); action must be `Hide`/`Unhide`; no permission payload; no `##@#`/generichide interaction; entities handled separately or skipped |
 | R7 | Subsumption — hostname | `||sub.example.com^` dropped when `||example.com^` exists | Identical mask/features/domains/modifier payload; label-boundary suffix check; neither pinned nor badfilter-targeted; no exception in between |
 | R8 | Subsumption — mask | `||x^$script` dropped when `||x^` exists | Pattern/domains/modifier identical; broader mask is a strict superset; no important/exception asymmetry |
-| R9 | Subsumption — pattern *(implemented as `pattern_subsumption`)* | plain `ads.example` makes plain `ads.example.au` redundant | Hostname-free, unanchored, non-regex bodies of at least 4 characters; identical mask/features/domains/modifier fields; separator-safe prefix only; every removal passes engine differential verification |
+| R9 | Subsumption — pattern *(implemented as `pattern_subsumption`)* | plain `ads.example` makes `ads.example.au` redundant; plain `example.com` makes `email.example.com` redundant | Hostname-free, unanchored, non-regex bodies of at least 4 characters; identical mask/features/domains/modifier fields; separator-safe prefix **or suffix**; every removal passes engine differential verification |
 | R10 | Subsumption — domain | `P$domain=d1\|d2` dropped when `P` exists with otherwise identical fields | No exceptions between; pinned rules excluded |
 | R11 | Regex fusion *(experimental, off by default)* | many `||hostN^` → one full regex `/^https?:\/\/(?:h1\|h2\|...)(?:[\/^:?#]\|$)/` | Only with `full-regex-handling`; requires benchmark win and full differential gate; disabled by default because regex matching is usually slower |
 | R12 | Cosmetic generic promotion | host-specific plain-CSS hide with *all* known hosts → generic `##.ad` | Only when host set covers configured corpus domains; off by default |
@@ -716,12 +716,15 @@ Notes:
   collapsing thousands of single-domain `@@` rules into a few shared filter objects reduces the
   exception index without changing matching behavior.
 - **R7–R10 are high-risk.** They are gated by strict structural predicates *and* differential
-  verification, and each removal is logged with the subsuming rule id. R7/R8/R10 are implemented and
-  enabled as `hostname_subsumption`, `mask_subsumption`, and `domain_subsumption` respectively. They
-  group rules by a deterministic key of every field that must be identical (excluding only the one
-  dimension being widened), require the broader sibling to be a strict superset, and gate every
-  removal on `verify::network_equivalence`. Grouping keys use debug formatting rather than serde tuples
-  so all network-rule fields can participate without a tuple-size limit.
+  verification, and each removal is logged with the subsuming rule id. R7/R8/R9/R10 are implemented
+  and enabled as `hostname_subsumption`, `mask_subsumption`, `pattern_subsumption`, and
+  `domain_subsumption` respectively. They group rules by a deterministic key of every field that must
+  be identical (excluding only the one dimension being widened), require the broader sibling to be a
+  strict superset, and gate every removal on `verify::network_equivalence`. `pattern_subsumption`
+  checks both separator-safe prefixes and suffixes; suffix matches require either a leading separator
+  in the broader body or a separator immediately before it in the narrower body. Grouping keys use
+  debug formatting rather than serde tuples so all network-rule fields can participate without a
+  tuple-size limit.
 - **Stage 7 (hostname-wildcard admission) was evaluated and admits zero rules.** A `||*.example.com^`
   hostname-regex rule matches *subdomains only*, while its fast-anchored counterpart `||example.com^`
   also matches the apex domain; the differential gate therefore rejects every such rewrite. Because

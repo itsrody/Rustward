@@ -59,6 +59,7 @@ not lost.
     produces a redirect, so no trust or verification gate is relaxed.
 16. **Conservative R9 pattern subsumption** — done. `pattern_subsumption` removes a redundant plain
     substring rule only when it is hostname-free, unanchored, non-regex, at least four characters,
-    and identical in every parsed field except the body. The shorter body must be a prefix ending at
-    a URL separator (`.`, `-`, `_`, `/`, `?`, `&`, `=`, `#`, `:`, `;`, `+`, `%`, or `@`), and every
-    removal still passes the engine differential gate.
+    and identical in every parsed field except the body. The shorter body may be either a prefix
+    ending at a URL separator or a suffix beginning at one; suffix matches also accept a separator
+    immediately before the match. The separator set is `.`, `-`, `_`, `/`, `?`, `&`, `=`, `#`, `:`,
+    `;`, `+`, `%`, and `@`. Every removal still passes the engine differential gate.

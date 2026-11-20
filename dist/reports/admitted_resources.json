@@ -41888,17 +41888,6 @@
     "reason": null
   },
   {
-    "name": "addEventListener-defuser",
-    "canonical_name": "prevent-addEventListener.js",
-    "grade": "standard",
-    "digest": "2f407e598df497e3d513ce23b4b5d76e523879708ae0accae5ea56c1d638292e",
-    "permission": 0,
-    "source_id": "ag-base-easylist",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
     "name": "remove-attr",
     "canonical_name": "remove-attr.js",
     "grade": "standard",

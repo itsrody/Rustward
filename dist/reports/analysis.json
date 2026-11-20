@@ -6,21 +6,21 @@
     "comments": 57885,
     "cosmetic_fast_native": 57709,
     "cosmetic_light_procedural": 352,
-    "cosmetic_rules": 70958,
-    "cosmetic_vetted_scriptlet": 25365,
+    "cosmetic_rules": 70960,
+    "cosmetic_vetted_scriptlet": 25367,
     "directives": 101,
-    "effective_cosmetic_rules": 93705,
+    "effective_cosmetic_rules": 93707,
     "effective_network_rules": 683935,
-    "eligible": 759201,
+    "eligible": 759203,
     "empty_lines": 4003,
     "excluded_by_gate": 20500,
     "metadata": 38,
     "network_rules": 590838,
     "output_fast_native_css": 48183,
     "output_light_procedural": 328,
-    "output_vetted_scriptlet": 22447,
+    "output_vetted_scriptlet": 22449,
     "parse_errors": 2061,
-    "raw_lines": 841728,
+    "raw_lines": 841730,
     "semantic_gaps_accepted": 70621,
     "semantic_gaps_accepted_all": 70621,
     "semantic_gaps_excluded": 516,
@@ -42,7 +42,7 @@
   },
   "dialects": {
     "hosts": 92056,
-    "ubo": 749672
+    "ubo": 749674
   },
   "gaps": {
     "all:SEMANTIC_GAP": 70621,
@@ -53,12 +53,12 @@
     "match-case:SEMANTIC_GAP": 103,
     "matches-css:SEMANTIC_GAP": 54,
     "matches-path:SEMANTIC_GAP": 89,
-    "scriptlet:ENGINE_NATIVE": 28085,
+    "scriptlet:ENGINE_NATIVE": 28087,
     "ubo_bare_hostname:SEMANTIC_GAP": 1,
     "upward:SEMANTIC_GAP": 326,
     "xpath:SEMANTIC_GAP": 29
   },
   "eligibility": {
-    "ELIGIBLE": 759201
+    "ELIGIBLE": 759203
   }
 }

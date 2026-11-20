@@ -54571,6 +54571,28 @@
     "reason": null
   },
   {
+    "name": "prevent-fetch",
+    "canonical_name": "prevent-fetch.js",
+    "grade": "standard",
+    "digest": "8ac54657a5f0b0defea92d7ecc1b667bbb98436b996406703cdabfe101aadeb9",
+    "permission": 0,
+    "source_id": "ag-tracking",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "no-setTimeout-if",
+    "canonical_name": "prevent-setTimeout.js",
+    "grade": "standard",
+    "digest": "7b017d98bb75373ad85231b4bcdc71703cf3a6ba8cb3cbf10509c5f88f8b4050",
+    "permission": 0,
+    "source_id": "ag-tracking",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "noop.js",
     "canonical_name": "noop.js",
     "grade": "standard",

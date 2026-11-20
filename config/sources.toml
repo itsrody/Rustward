@@ -107,7 +107,7 @@ license = "AdGuard Base filter + EasyList; see upstream ! Title/! Description me
 [[source]]
 id = "ag-tracking"
 url = "https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt"
-sha256 = "d95be69b8d4434c552267e0cde8d0094c7435cc35b714bd24336d364232def4f"
+sha256 = "bbd62e2c9fd04e8b4a6c1c37e72e60ead5a781b3cdbdc1e0fde858935689439d"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"

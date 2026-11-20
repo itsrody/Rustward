@@ -1,12 +1,12 @@
 {
-  "build_id": "8d7f8f07b291c137a66899aa86298f3ab05b4a1f28afc35bddbde01078e4fa6f",
-  "config_hash": "a4c7a44343c762902e39a68fceb7d5b514a4c4459463ef6520dbbf47fe3b6c48",
+  "build_id": "a71f68356c8ce618718da07fc1176817170cc75befd36e31eed5eb9faabfe947",
+  "config_hash": "6342c6372a378e18bb3ee4f9de4cf4b6a73aa441c1b0157f55e87255af859b0e",
   "profile_hash": "7523a0d8d369cd3ba756dd22e4c6bbb3e9bcfd0e8c4f97cefee9e7ee3023e475",
-  "lists_lock_hash": "11f3f0517b5a24ecc30840bb1a759c2958eae397a3f26e06c107057191c65f77",
+  "lists_lock_hash": "647691faef95f6befa7b0cfb302f316d86e8b34d78a928142722cd83fdcb77ba",
   "adblock_version": "=0.13.6",
   "engine_profile": "desktop",
   "emit_order": "compiler-friendly-v1",
-  "last_modified": "Fri, 20 Nov 2026 05:50:10 +0000",
+  "last_modified": "Fri, 20 Nov 2026 06:56:14 +0000",
   "sources": [
     "ag-base-easylist",
     "ag-tracking",

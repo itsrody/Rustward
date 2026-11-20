@@ -97,7 +97,7 @@ regex_fusion = false
 [[source]]
 id = "ag-base-easylist"
 url = "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt"
-sha256 = "1e0be62542dc2b27a56a298c7c88a31a937c1ab609c00abd8f0cdf3fd8908ec6"
+sha256 = "82992b7b467b9a842bd6b3b05619e4bc72584f25f06def497e570a33b76b315a"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -125,7 +125,7 @@ license = "AdGuard Tracking Protection; see upstream ! Title/! Description metad
 [[source]]
 id = "ag-annoyances"
 url = "https://filters.adtidy.org/extension/ublock/filters/14_optimized.txt"
-sha256 = "f7b49cbc020abf047dceb9cac01bc288ad7eef88e7348044cb79f012785c821b"
+sha256 = "7bdb19efc1ad47c4f948261144a93f407a010a8ce15351f4db51e55840bd2543"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"

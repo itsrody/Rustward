@@ -41888,6 +41888,17 @@
     "reason": null
   },
   {
+    "name": "addEventListener-defuser",
+    "canonical_name": "prevent-addEventListener.js",
+    "grade": "standard",
+    "digest": "2f407e598df497e3d513ce23b4b5d76e523879708ae0accae5ea56c1d638292e",
+    "permission": 0,
+    "source_id": "ag-base-easylist",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "remove-attr",
     "canonical_name": "remove-attr.js",
     "grade": "standard",
@@ -87575,6 +87586,17 @@
     "canonical_name": "remove-attr.js",
     "grade": "standard",
     "digest": "ae285f084ec6df53708f53501c1f149f25f22418e1a0122b2f25fbf44990f40d",
+    "permission": 0,
+    "source_id": "ag-annoyances",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "set-cookie",
+    "canonical_name": "set-cookie.js",
+    "grade": "standard",
+    "digest": "0602ce7b452819993f479893a98ef42b1aecd2f72c73107a0b3a8717c59adf76",
     "permission": 0,
     "source_id": "ag-annoyances",
     "source_permissions": 0,

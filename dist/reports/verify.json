@@ -1,15 +1,15 @@
 {
   "required": true,
   "mismatches": [],
-  "cases_checked": 471340,
+  "cases_checked": 471344,
   "golden_rule_violations": 0,
   "emit_order_violations": 0,
   "coverage": {
-    "network_rules_total": 675956,
-    "network_rules_probed": 242962,
-    "rewrite_receipts_total": 54486,
-    "rewrite_receipts_exercised": 53233,
-    "cosmetic_hosts_total": 75850,
-    "cosmetic_hosts_checked": 62908
+    "network_rules_total": 675987,
+    "network_rules_probed": 242950,
+    "rewrite_receipts_total": 54487,
+    "rewrite_receipts_exercised": 53234,
+    "cosmetic_hosts_total": 75853,
+    "cosmetic_hosts_checked": 62911
   }
 }

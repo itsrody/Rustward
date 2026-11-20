@@ -1,3 +1,7 @@
 # local hosts fixture
-0.0.0.0 hostsads.example
+#@ >>> section header
+########################################
+0.0.0.0 hostsads.example # inline annotation
 127.0.0.1 localhost
+255.255.255.255 broadcasthost
+::1 ip6-loopback

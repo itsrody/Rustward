@@ -102,6 +102,9 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(excluded.contains("scriptlet unknown-scriptlet"));
     assert!(excluded.contains("example.com##.ad:matches-css(display: none)"));
     assert!(excluded.contains("contains-regex.example##.promo:contains(/Legacy/i)"));
+    assert!(!excluded.contains("127.0.0.1 localhost"));
+    assert!(!excluded.contains("255.255.255.255 broadcasthost"));
+    assert!(!excluded.contains("::1 ip6-loopback"));
 
     let dropped = fs::read_to_string(root.join("reports/dropped.tsv")).expect("read dropped");
     assert!(dropped.contains("DUPLICATE_EXACT"));
@@ -115,6 +118,14 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     )
     .expect("parse manifest");
     assert_eq!(manifest["last_modified"], "Sat, 14 Nov 2026 13:05:16 +0000");
+
+    let analysis: Value = serde_json::from_slice(
+        &fs::read(root.join("reports/analysis.json")).expect("read analysis"),
+    )
+    .expect("parse analysis");
+    assert_eq!(analysis["metrics"]["parse_errors"], 2);
+    assert!(analysis["metrics"]["hosts_skips"].as_u64().unwrap_or(0) >= 3);
+    assert!(analysis["metrics"]["comments"].as_u64().unwrap_or(0) >= 3);
 
     for artifact in [
         "Rustward.txt.sha256",

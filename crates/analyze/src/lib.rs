@@ -98,6 +98,10 @@ pub fn analyze(
             ParsedOutcome::Metadata => bump(&mut metrics, "metadata"),
             ParsedOutcome::Directive => bump(&mut metrics, "directives"),
             ParsedOutcome::Empty => bump(&mut metrics, "empty_lines"),
+            ParsedOutcome::Skipped { reason } => {
+                bump(&mut metrics, "hosts_skips");
+                bump(&mut metrics, &format!("hosts_skips_{reason}"));
+            }
             ParsedOutcome::Unsupported { .. } => bump(&mut metrics, "parse_errors"),
         }
     }

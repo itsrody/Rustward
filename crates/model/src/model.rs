@@ -478,6 +478,10 @@ pub enum ParsedOutcome {
     Metadata,
     Directive,
     Empty,
+    /// Expected hosts-file entries that are deliberately not converted to rules.
+    Skipped {
+        reason: String,
+    },
     Unsupported {
         reason: ExclusionReason,
         gap: Option<DialectGap>,

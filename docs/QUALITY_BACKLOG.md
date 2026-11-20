@@ -19,8 +19,9 @@ not lost.
    aliases used by current lists; the blocker was case-folding in `parse_scriptlet_invocation`,
    which turned case-sensitive names such as `no-setTimeout-if` into unresolvable lowercase forms.
    Names now preserve their official spelling, with parse, catalog, and fixture regression tests.
-6. **Hosts parsing hygiene** — treat all `#` lines in hosts-format sources as comments and classify
-   localhost/broadcast entries as expected skips rather than parse errors.
+6. **Hosts parsing hygiene** — done. Every `#` line in a hosts-format source is now a comment, and
+   reserved local/broadcast mappings are classified as `Skipped` with `hosts_skips` metrics instead of
+   `PARSE_ERROR`. Inline comments on real host mappings still canonicalize to `||host^`.
 7. **Config/docs ↔ code alignment** — partially done. D3/D4 network canonicalization is implemented
    as the `network_canonicalization` rewrite pass; D6 literal `contains` normalization is implemented
    as the preparse `d6_literal_contains` pass. `host_semantics`, `ubo_host_semantics`, `regex_fusion`,

@@ -700,6 +700,14 @@ fn build_markdown(
             .map(serialize_value)
             .unwrap_or_default()
     ));
+    output.push_str(&format!(
+        "- hosts skips: `{}`\n",
+        analysis
+            .metrics
+            .get("hosts_skips")
+            .map(serialize_value)
+            .unwrap_or_default()
+    ));
     output.push_str(&format!("- rewrites: `{}`\n", report.receipts_total));
     output.push_str(&format!(
         "- mismatches: `{}`\n",

@@ -210,9 +210,10 @@ fn parse_line(
     if trimmed.starts_with("!#") {
         return Ok(base(ParsedOutcome::Directive));
     }
+    let is_hosts = source.config.format == SourceFormat::Hosts;
     if trimmed.starts_with('!')
         || trimmed.starts_with("[Adblock")
-        || (trimmed.starts_with('#') && trimmed[1..].starts_with(char::is_whitespace))
+        || (trimmed.starts_with('#') && (is_hosts || trimmed[1..].starts_with(char::is_whitespace)))
     {
         let outcome = if trimmed.starts_with("! Title:")
             || trimmed.starts_with("! Description:")
@@ -224,6 +225,13 @@ fn parse_line(
             ParsedOutcome::Comment
         };
         return Ok(base(outcome));
+    }
+    if is_hosts {
+        if let Some(reason) = hosts_skip_reason(trimmed) {
+            return Ok(base(ParsedOutcome::Skipped {
+                reason: reason.to_string(),
+            }));
+        }
     }
 
     let format = match source.config.format {
@@ -510,6 +518,43 @@ fn hosts_canonical_text(text: &str) -> Option<String> {
         return None;
     }
     Some(format!("||{host}^"))
+}
+
+/// Reserved hosts-file mappings are expected skips, not parse errors. Only a bare address plus a
+/// well-known local/broadcast hostname qualifies; real advertising hosts still go through the
+/// engine and normal admission.
+fn hosts_skip_reason(text: &str) -> Option<&'static str> {
+    let without_comment = text.split('#').next().unwrap_or(text).trim();
+    let mut parts = without_comment.split_whitespace();
+    let _address = parts.next()?;
+    let host = parts.next()?;
+    if parts.next().is_some() {
+        return None;
+    }
+    let host = host.trim_end_matches('.').to_ascii_lowercase();
+    const LOCAL: &[&str] = &[
+        "localhost",
+        "localhost.localdomain",
+        "localhost6",
+        "local",
+        "ip6-localhost",
+        "ip6-loopback",
+    ];
+    const BROADCAST: &[&str] = &[
+        "broadcasthost",
+        "ip6-localnet",
+        "ip6-mcastprefix",
+        "ip6-allnodes",
+        "ip6-allrouters",
+        "ip6-allhosts",
+    ];
+    if LOCAL.contains(&host.as_str()) {
+        Some("localhost")
+    } else if BROADCAST.contains(&host.as_str()) {
+        Some("broadcast")
+    } else {
+        None
+    }
 }
 
 fn hash_all(values: &Option<Vec<u64>>) -> Vec<u64> {
@@ -985,7 +1030,7 @@ mod tests {
     use model::SourceConfig;
     use std::collections::BTreeMap;
 
-    fn parse_record(text: &str) -> ParsedRecord {
+    fn parse_record_with_format(text: &str, format: SourceFormat) -> ParsedRecord {
         let source = FetchedSource {
             config: SourceConfig {
                 id: "test".to_string(),
@@ -993,8 +1038,12 @@ mod tests {
                 path: None,
                 sha256: None,
                 include_sha256: BTreeMap::new(),
-                dialect: Dialect::Ubo,
-                format: SourceFormat::Standard,
+                dialect: if format == SourceFormat::Hosts {
+                    Dialect::Hosts
+                } else {
+                    Dialect::Ubo
+                },
+                format,
                 host_semantics: None,
                 priority: 50,
                 enabled: true,
@@ -1012,7 +1061,7 @@ mod tests {
             .join("../..")
             .join("tests/fixtures/sources.toml");
         let config = Config::load(&config_path).expect("load fixture config");
-        let record = parse_line(
+        parse_line(
             &source,
             EffectiveLine {
                 line_no: 1,
@@ -1021,8 +1070,15 @@ mod tests {
             },
             &config,
         )
-        .expect("parse line");
-        record
+        .expect("parse line")
+    }
+
+    fn parse_record(text: &str) -> ParsedRecord {
+        parse_record_with_format(text, SourceFormat::Standard)
+    }
+
+    fn parse_hosts_record(text: &str) -> ParsedRecord {
+        parse_record_with_format(text, SourceFormat::Hosts)
     }
 
     fn classify(text: &str) -> model::NetworkRule {
@@ -1138,5 +1194,35 @@ mod tests {
         assert!(!super::is_bare_hostname(".go?pid=1"));
         assert!(!super::is_bare_hostname("localhost"));
         assert!(!super::is_bare_hostname("ads.example.com/path"));
+    }
+
+    #[test]
+    fn hosts_comments_and_reserved_entries_are_not_rules() {
+        for comment in ["#[section]", "##### banner", "#@ >>> upstream note"] {
+            assert!(matches!(
+                parse_hosts_record(comment).outcome,
+                ParsedOutcome::Comment
+            ));
+        }
+        for (line, reason) in [
+            ("127.0.0.1 localhost", "localhost"),
+            ("::1 ip6-loopback", "localhost"),
+            ("255.255.255.255 broadcasthost", "broadcast"),
+            ("ff02::1 ip6-allnodes", "broadcast"),
+        ] {
+            assert!(matches!(
+                parse_hosts_record(line).outcome,
+                ParsedOutcome::Skipped { reason: actual } if actual == reason
+            ));
+        }
+    }
+
+    #[test]
+    fn hosts_real_mappings_keep_inline_comment_canonicalization() {
+        let record = parse_hosts_record("0.0.0.0 ads.example # inline annotation");
+        let ParsedOutcome::Network(rule) = &record.outcome else {
+            panic!("expected network rule, got {:?}", record.outcome);
+        };
+        assert_eq!(rule.text, "||ads.example^");
     }
 }

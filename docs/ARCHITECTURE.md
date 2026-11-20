@@ -76,7 +76,7 @@ Probe results (`adblock` 0.13.6), reproduced in the appendix:
 | `P$script$badfilter` produces a *different mask* from `P$script`; correct syntax is `P$script,badfilter` | Rewrites must re-parse generated text and compare parsed fields, not trust string construction |
 | Merging rules breaks a `$badfilter` that targets only one of them | `$badfilter` is a hard barrier: pinned, and its targets excluded from rewrites |
 | `||host^` without explicit type gets `FROM_ALL_TYPES` (implicit document matching) | Rewrites must compare parsed `NetworkFilterMask` exactly, never textual modifiers alone |
-| Hosts format is parsed to a `||hostname^` equivalent; `localhost` is ignored | Canonicalize hosts lists early, then run normal dedup |
+| Hosts format is parsed to a `||hostname^` equivalent; all `#` lines are comments and reserved local/broadcast mappings are expected skips, not parse errors | Canonicalize hosts lists early, then run normal dedup; track skips in `hosts_skips` |
 | Cosmetic builder dedups selectors per hostname, but host unions still reduce source parse work | Cosmetic host merging is a size win, not a big memory win |
 | `Engine::get_debug_info().flatbuffer_size` (needs `debug-info` feature) exposes real engine memory | Use it as the primary optimization metric, not source-line count alone |
 
@@ -474,7 +474,7 @@ mismatch, all rewrites in the responsible group/family are reverted and the pipe
 Per source and globally, produce:
 
 - Counts: raw lines, effective lines, directives, comments, metadata, network, cosmetic, parse
-  errors by reason, and **dialect** (`abp` / `adguard` / `ubo` / `hosts` / `auto`).
+  errors by reason, expected hosts skips, and **dialect** (`abp` / `adguard` / `ubo` / `hosts` / `auto`).
 - Rule-shape histogram: exceptions, important, badfilter, tagged, `$domain`, `$to`, `$~domain`,
   `$redirect`, `$csp`, `$removeparam`, `$generichide`, regex/full-regex, hostname-anchored,
   generic cosmetic, procedural cosmetic, scriptlets, plus dialect-specific syntax.
@@ -835,7 +835,7 @@ dist/reports/bench.json             # build time, flatbuffer bytes, serialized b
 Key metrics in `build.json`:
 
 ```
-raw_lines, effective_lines, network_rules, cosmetic_rules, parse_errors,
+raw_lines, effective_lines, network_rules, cosmetic_rules, parse_errors, hosts_skips,
 cosmetic_fast_native, cosmetic_light_procedural, cosmetic_vetted_scriptlet,
 cosmetic_blocked_slow, eligible, rewritable_to_eligible, ineligible_by_reason,
 excluded_by_gate, excluded_rewrite_failures, rules_by_dialect,

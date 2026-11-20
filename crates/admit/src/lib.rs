@@ -141,7 +141,8 @@ pub fn admit(records: &[ParsedRecord], config: &Config, root: &Path) -> Result<A
             ParsedOutcome::Empty
             | ParsedOutcome::Comment
             | ParsedOutcome::Metadata
-            | ParsedOutcome::Directive => {}
+            | ParsedOutcome::Directive
+            | ParsedOutcome::Skipped { .. } => {}
         }
     }
 

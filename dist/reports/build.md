@@ -1,10 +1,10 @@
 # Rustward build
 
-- build id: `c0381ef9ccb4a49d4b94a495ef2687040b3d9fc56dd972220f785904c7ca109b`
-- emitted rules: `661798`
+- build id: `b7a6dc7226cd60812cb967c616e0d670bcfd940139fb256342f96e006f8ee83c`
+- emitted rules: `661821`
 - parse errors: `2061`
 - rewrites: `53028`
 - mismatches: `0`
-- verification cases: `465500` (network rules `243084`/`675934`, receipts `51771`/`53028`, cosmetic hosts `62806`/`75913`)
-- flatbuffer bytes: admitted `42298669`, candidate `38072661`
-- engine build ms: admitted `640`, candidate `555`
+- verification cases: `465500` (network rules `242962`/`675958`, receipts `51775`/`53028`, cosmetic hosts `62904`/`75852`)
+- flatbuffer bytes: admitted `42298037`, candidate `38072853`
+- engine build ms: admitted `566`, candidate `557`

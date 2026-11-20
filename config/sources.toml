@@ -93,7 +93,7 @@ regex_fusion = false
 [[source]]
 id = "ag-base-easylist"
 url = "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt"
-sha256 = "1ae16d5ccfb282f9593d1baebc8dacdbd29926e20a27d2a1de5f5e051419ebb3"
+sha256 = "1e0be62542dc2b27a56a298c7c88a31a937c1ab609c00abd8f0cdf3fd8908ec6"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -107,7 +107,7 @@ license = "AdGuard Base filter + EasyList; see upstream ! Title/! Description me
 [[source]]
 id = "ag-tracking"
 url = "https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt"
-sha256 = "bbd62e2c9fd04e8b4a6c1c37e72e60ead5a781b3cdbdc1e0fde858935689439d"
+sha256 = "02934745c23b18ff2495178fd9b0b90549e8a66e1d1c25c65ca666d46a658867"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -121,7 +121,7 @@ license = "AdGuard Tracking Protection; see upstream ! Title/! Description metad
 [[source]]
 id = "ag-annoyances"
 url = "https://filters.adtidy.org/extension/ublock/filters/14_optimized.txt"
-sha256 = "1c12fe9cd8d6de578990762d90b493626009ed5a1c12d28a584adc146d636b28"
+sha256 = "f7b49cbc020abf047dceb9cac01bc288ad7eef88e7348044cb79f012785c821b"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -135,7 +135,7 @@ license = "AdGuard Annoyances; see upstream ! Title/! Description metadata"
 [[source]]
 id = "easyprivacy"
 url = "https://filters.adtidy.org/extension/ublock/filters/118_optimized.txt"
-sha256 = "87d2d7ad930973b760c0508de50186d64aeae8edd1e0f15202a8c127913203bb"
+sha256 = "029454a2e85346476b473d4df8a317f4525c015aeeaddfdb17ab632d06c834a7"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -149,7 +149,7 @@ license = "EasyPrivacy; see upstream ! Title/! Description metadata"
 [[source]]
 id = "fanboy-annoyances"
 url = "https://filters.adtidy.org/extension/ublock/filters/122_optimized.txt"
-sha256 = "721c2b420e695c961ffbc5772f9df51b4d8e80c7a033a20edf90e5cacefc6d84"
+sha256 = "0a6673a58271375d8d41c5ce9530f57196985cfa3b974673598b18bd66aff041"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -177,7 +177,7 @@ license = "Fanboy's Social Blocking; see upstream ! Title/! Description metadata
 [[source]]
 id = "web-annoyances-ultralist"
 url = "https://filters.adtidy.org/extension/ublock/filters/201_optimized.txt"
-sha256 = "ff70b4ab203e74e230316c9635b70e5b11d87606eb7988f937806ae0da2f2664"
+sha256 = "18ec39af31fc4553be1e084fc59c7f4a500d6810e4c3263ca8bd7725073e5eb8"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"
@@ -219,7 +219,7 @@ license = "Online Malicious URL Blocklist; see upstream ! Title/! Description me
 [[source]]
 id = "dandelion-annoyances"
 url = "https://filters.adtidy.org/extension/ublock/filters/250_optimized.txt"
-sha256 = "329165d2476dffa7b72ca8a87d59ef800567f0d653ef2815d4ab23104ff415e2"
+sha256 = "912b9bbcd2b9fea9d40a3e4161d1e14eafc87ce041977b744b40125ba2747395"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"

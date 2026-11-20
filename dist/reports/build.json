@@ -1,8 +1,8 @@
 {
-  "build_id": "c0381ef9ccb4a49d4b94a495ef2687040b3d9fc56dd972220f785904c7ca109b",
-  "config_hash": "da890d98e6a652ebc14370d41e67b5b29f561a4318b82b9a862fd22c11e40ecd",
+  "build_id": "b7a6dc7226cd60812cb967c616e0d670bcfd940139fb256342f96e006f8ee83c",
+  "config_hash": "d4431eb6c853046d6bc23a0dd246e9d7026f5533bae887461385b560191a53f2",
   "profile_hash": "7523a0d8d369cd3ba756dd22e4c6bbb3e9bcfd0e8c4f97cefee9e7ee3023e475",
-  "lists_lock_hash": "86931953939dcb2371209d27c57a7892004c54f9bab848b61e8156215250c002",
+  "lists_lock_hash": "5124bf36287218f4f5dbef8cb3ac924e147566c7f733d1a93a9089613d1c1902",
   "adblock_version": "=0.13.6",
   "emit_order": "compiler-friendly-v1",
   "metrics": {
@@ -10,46 +10,46 @@
     "badfilter_targets_pruned": 30,
     "batch_excluded_nested_procedural": 439,
     "comments": 57885,
-    "cosmetic_fast_native": 57709,
-    "cosmetic_hosts_checked": 62806,
-    "cosmetic_hosts_total": 75913,
-    "cosmetic_light_procedural": 352,
-    "cosmetic_rules": 70960,
+    "cosmetic_fast_native": 57708,
+    "cosmetic_hosts_checked": 62904,
+    "cosmetic_hosts_total": 75852,
+    "cosmetic_light_procedural": 353,
+    "cosmetic_rules": 70963,
     "cosmetic_vetted_scriptlet": 25367,
     "decision_mismatches": 0,
     "directives": 101,
-    "duplicates_exact": 47951,
+    "duplicates_exact": 47953,
     "duplicates_semantic": 2911,
-    "effective_cosmetic_rules": 93707,
-    "effective_network_rules": 683935,
-    "eligible": 759203,
+    "effective_cosmetic_rules": 93701,
+    "effective_network_rules": 683957,
+    "eligible": 759227,
     "empty_lines": 4003,
-    "excluded_by_gate": 20500,
+    "excluded_by_gate": 20492,
     "golden_rule_violations": 0,
-    "last_modified": "Fri, 20 Nov 2026 04:49:46 +0000",
+    "last_modified": "Fri, 20 Nov 2026 05:50:10 +0000",
     "metadata": 38,
-    "network_rules": 590838,
-    "network_rules_probed": 243084,
-    "network_rules_total": 675934,
-    "output_fast_native_css": 48183,
-    "output_light_procedural": 328,
-    "output_lines": 661798,
+    "network_rules": 590858,
+    "network_rules_probed": 242962,
+    "network_rules_total": 675958,
+    "output_fast_native_css": 48185,
+    "output_light_procedural": 329,
+    "output_lines": 661821,
     "output_vetted_scriptlet": 22449,
     "parse_errors": 2061,
-    "raw_lines": 841730,
-    "receipts_exercised": 51771,
+    "raw_lines": 841746,
+    "receipts_exercised": 51775,
     "rewrites_applied": 53028,
-    "semantic_gaps_accepted": 70621,
-    "semantic_gaps_accepted_all": 70621,
-    "semantic_gaps_excluded": 516,
-    "semantic_gaps_excluded_entity_domain": 382,
+    "semantic_gaps_accepted": 70620,
+    "semantic_gaps_accepted_all": 70620,
+    "semantic_gaps_excluded": 515,
+    "semantic_gaps_excluded_entity_domain": 381,
     "semantic_gaps_excluded_match-case": 96,
     "semantic_gaps_excluded_matches-css": 6,
     "semantic_gaps_excluded_matches-path": 16,
     "semantic_gaps_excluded_ubo_bare_hostname": 1,
     "semantic_gaps_excluded_upward": 15,
-    "semantic_gaps_unresolved": 1005,
-    "semantic_gaps_unresolved_entity_domain": 402,
+    "semantic_gaps_unresolved": 1004,
+    "semantic_gaps_unresolved_entity_domain": 401,
     "semantic_gaps_unresolved_extended-css": 1,
     "semantic_gaps_unresolved_match-case": 103,
     "semantic_gaps_unresolved_matches-css": 54,
@@ -103,12 +103,12 @@
       ]
     },
     {
-      "id": "d6_literal_contains-a0c0da55a20b",
+      "id": "d6_literal_contains-d53b6ad37978",
       "family": "d6_literal_contains",
       "before": [
-        "ign.com##.box-wrapper:contains(Stay up to date)"
+        "health.harvard.edu##.bg-gray-200:contains(Sign Up)"
       ],
-      "after": "ign.com##.box-wrapper:has-text(Stay up to date)",
+      "after": "health.harvard.edu##.bg-gray-200:has-text(Sign Up)",
       "source_id": "fanboy-annoyances",
       "checks": [
         "reparse-equal",
@@ -117,12 +117,12 @@
       ]
     },
     {
-      "id": "d6_literal_contains-a1fe9e8ccce7",
+      "id": "d6_literal_contains-9ff187973dc5",
       "family": "d6_literal_contains",
       "before": [
-        "theintercept.com##[data-ga-track-action]:contains(Join The Conversation)"
+        "theguardian.com##.dcr-4gwv1z > ul:contains(Get our)"
       ],
-      "after": "theintercept.com##[data-ga-track-action]:has-text(Join The Conversation)",
+      "after": "theguardian.com##.dcr-4gwv1z > ul:has-text(Get our)",
       "source_id": "fanboy-social",
       "checks": [
         "reparse-equal",
@@ -131,32 +131,13 @@
       ]
     },
     {
-      "id": "domain_union-c96ad1dfa209",
+      "id": "domain_union-bf02f9831c1b",
       "family": "domain_union",
       "before": [
-        "||taboola.com^$domain=sport5.co.il",
-        "||taboola.com^$domain=1fichier.com|espn.com|gamespot.com|popsci.com",
-        "||taboola.com^$domain=wgrz.com",
-        "||taboola.com^$domain=livemint.com",
-        "||taboola.com^$domain=independent.co.uk|outlook.live.com"
+        "||smart-bdash.com^$domain=iface.com|type.jp",
+        "||smart-bdash.com^$domain=type.jp|hokkaido-np.co.jp"
       ],
-      "after": "||taboola.com^$domain=1fichier.com|espn.com|gamespot.com|independent.co.uk|livemint.com|outlook.live.com|popsci.com|sport5.co.il|wgrz.com",
-      "source_id": "ag-base-easylist",
-      "checks": [
-        "structural-equality",
-        "reparse-equal",
-        "engine-differential",
-        "golden-rule-postcondition"
-      ]
-    },
-    {
-      "id": "exception_domain_union-1ad7cdc6c276",
-      "family": "exception_domain_union",
-      "before": [
-        "@@||cdn.privacy-mgmt.com/unified/$domain=motorsport.com",
-        "@@||cdn.privacy-mgmt.com/unified/$domain=bbc.com"
-      ],
-      "after": "@@||cdn.privacy-mgmt.com/unified/$domain=bbc.com|motorsport.com",
+      "after": "||smart-bdash.com^$domain=hokkaido-np.co.jp|iface.com|type.jp",
       "source_id": "ag-annoyances",
       "checks": [
         "structural-equality",
@@ -166,15 +147,45 @@
       ]
     },
     {
-      "id": "exception_domain_union-eff600e1400c",
+      "id": "exception_domain_union-245410458e8b",
       "family": "exception_domain_union",
       "before": [
-        "@@||feliz.data.tm-awx.com/smile-web-v2/rootEvent$domain=examinerlive.co.uk",
-        "@@||feliz.data.tm-awx.com/smile-web-v2/rootEvent$domain=themirror.com",
-        "@@||feliz.data.tm-awx.com/smile-web-v2/rootEvent$domain=liverpoolecho.co.uk|mirror.co.uk|birminghammail.co.uk|dailystar.co.uk|manchestereveningnews.co.uk",
-        "@@||feliz.data.tm-awx.com/smile-web-v2/rootEvent$domain=mirror.co.uk"
+        "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=einfachkochen.de",
+        "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=businessinsider.de",
+        "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=supla.fi",
+        "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=haus.de",
+        "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=aamulehti.fi",
+        "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=formel1.de",
+        "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=nextpit.com",
+        "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=discover.hubpages.com",
+        "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=investors.com",
+        "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=colerainenow.co.uk|ballymenanow.co.uk|lurgannow.co.uk|nationalworld.com|3addedminutes.com|anguscountyworld.co.uk|antrimguardian.co.uk|ballycastlechronicle.co.uk|ballymenaguardian.co.uk|ballymoneychronicle.co.uk|banburyguardian.co.uk|bedfordtoday.co.uk|biggleswadetoday.co.uk|birminghamworld.uk|blackpoolgazette.co.uk|bristolworld.com|bucksherald.co.uk|burnleyexpress.net|buxtonadvertiser.co.uk|carlowlive.ie|chad.co.uk|clarelive.ie|colerainechronicle.co.uk|corklive.ie|daventryexpress.co.uk|derbyshiretimes.co.uk|derbyworld.co.uk|derryjournal.com|derrynow.com|dewsburyreporter.co.uk|doncasterfreepress.co.uk|donegallive.ie|dundalkdemocrat.ie|edinburghnews.scotsman.com|eirebheo.ie|exetertoday.co.uk|expressandstar.com|falkirkherald.co.uk|farminglife.com|fifetoday.co.uk|glasgowworld.com|halifaxcourier.co.uk|harboroughmail.co.uk|harrogateadvertiser.co.uk|hartlepoolmail.co.uk|hemeltoday.co.uk|hucknalldispatch.co.uk|inishlive.ie|ireland-live.ie|kildarenow.com|kilkennypeople.ie|lancasterguardian.co.uk|leightonbuzzardonline.co.uk|leinsterexpress.ie|leinsterleader.ie|leitrimobserver.ie|lep.co.uk|letterkennylive.ie|limerickleader.ie|lincolnshireworld.com|liverpoo"
       ],
-      "after": "@@||feliz.data.tm-awx.com/smile-web-v2/rootEvent$domain=birminghammail.co.uk|dailystar.co.uk|examinerlive.co.uk|liverpoolecho.co.uk|manchestereveningnews.co.uk|mirror.co.uk|themirror.com",
+      "after": "@@||cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js$domain=3addedminutes.com|aamulehti.fi|anguscountyworld.co.uk|antrimguardian.co.uk|ballycastlechronicle.co.uk|ballymenaguardian.co.uk|ballymenanow.co.uk|ballymoneychronicle.co.uk|banburyguardian.co.uk|bedfordtoday.co.uk|biggleswadetoday.co.uk|birminghamworld.uk|blackpoolgazette.co.uk|bristolworld.com|bucksherald.co.uk|burnleyexpress.net|businessinsider.de|buxtonadvertiser.co.uk|carlowlive.ie|chad.co.uk|clarelive.ie|colerainechronicle.co.uk|colerainenow.co.uk|corklive.ie|daventryexpress.co.uk|derbyshiretimes.co.uk|derbyworld.co.uk|derryjournal.com|derrynow.com|dewsburyreporter.co.uk|discover.hubpages.com|doncasterfreepress.co.uk|donegallive.ie|dundalkdemocrat.ie|edinburghnews.scotsman.com|einfachkochen.de|eirebheo.ie|elle.de|exetertoday.co.uk|expressandstar.com|falkirkherald.co.uk|farminglife.com|fifetoday.co.uk|formel1.de|freundin.de|gamesradar.com|glasgowworld.com|halifaxcourier.co.uk|harboroughmail.co.uk|harrogateadvertiser.co.uk|hartlepoolmail.co.uk|haus.de|hemeltoday.co.uk|hucknalldispatch.co.uk|inishlive.ie|instyle.de|investors.com|ireland-live.ie|kildarenow.com|kilkennypeople.ie|lancasterguardian.co.uk|leightonbuzzardonline.co.uk|leinsterexpress.ie|leinsterleader.ie|leitrimobserver.ie|lep.co.uk|letterkennylive.ie|limerickleader.ie|lincolnshireworld.com|liverpoolworld.uk|londonworld.com|longfordleader.ie|lurgannow.co.uk|lutontoday.co.uk|manchesterworld.uk|maxisciences.com|mayonews.ie|meltontimes.co.uk|miltonkeynes.co.uk|nationalworld.com|nenaghlive.ie|newcastleworld.com|newrydemocrat.com|newryreporter.com|news.sky.com|newsletter.co.uk|nextpit.com|northamptonchron.co.uk|northantstelegraph.co.uk|northdevongazette.co.uk|northernconstitution.co.uk|northernirelandworld.com|northumberlandgazette.co.uk|nottinghamworld.com|offalyexpress.ie|osuskinner.com|outlooknews.co.uk|owlcation.com|pcgames.de|peterboroughtoday.co.uk|portsmouth.co.uk|punchestownlive.ie|reelrundown.com|rotherhamadvertiser.co.uk|scotsman.com|seriousaboutrl.com|shieldsgazette.com|sh",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "structural-equality",
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ],
+      "before_truncated": {
+        "bytes": 4056,
+        "sha256": "ca50fd8212fb90db910408bedd1afa2b73c02191a5242fe713e14436463d7746"
+      },
+      "after_truncated": {
+        "bytes": 2547,
+        "sha256": "36944e74a39ec6d46ccae90230abfca6b5f6037883c6989a33c2b8ee945d6dab"
+      }
+    },
+    {
+      "id": "exception_domain_union-5528d3ccdbad",
+      "family": "exception_domain_union",
+      "before": [
+        "@@||feliz-web.data.tm-awx.com^$domain=cheshire-live.co.uk",
+        "@@||feliz-web.data.tm-awx.com^$domain=football.london"
+      ],
+      "after": "@@||feliz-web.data.tm-awx.com^$domain=cheshire-live.co.uk|football.london",
       "source_id": "ag-tracking",
       "checks": [
         "structural-equality",
@@ -184,16 +195,14 @@
       ]
     },
     {
-      "id": "exception_domain_union-7cb0360e0a97",
+      "id": "exception_domain_union-13aef9e8bfd6",
       "family": "exception_domain_union",
       "before": [
-        "@@||omtrdc.net^$domain=bradsdeals.com|coupons.com|dealigg.com|dealnews.com|goodsearch.com|groupon.com|hotukdeals.com|moneysavingexpert.com|offers.com|retailmenot.com|slickdeals.net",
-        "@@||omtrdc.net^$domain=geico.com",
-        "@@||omtrdc.net^$domain=pcworld.com",
-        "@@||omtrdc.net^$domain=nydailynews.com",
-        "@@||omtrdc.net^$domain=abbyy.ru"
+        "@@||oasjs.kataweb.it/adsetup.real.js$domain=video.deejay.it",
+        "@@||oasjs.kataweb.it/adsetup.real.js$domain=video.capital.it",
+        "@@||oasjs.kataweb.it/adsetup.real.js$domain=video.repubblica.it"
       ],
-      "after": "@@||omtrdc.net^$domain=abbyy.ru|bradsdeals.com|coupons.com|dealigg.com|dealnews.com|geico.com|goodsearch.com|groupon.com|hotukdeals.com|moneysavingexpert.com|nydailynews.com|offers.com|pcworld.com|retailmenot.com|slickdeals.net",
+      "after": "@@||oasjs.kataweb.it/adsetup.real.js$domain=video.capital.it|video.deejay.it|video.repubblica.it",
       "source_id": "ag-base-easylist",
       "checks": [
         "structural-equality",
@@ -203,14 +212,13 @@
       ]
     },
     {
-      "id": "exception_domain_union-e43f39d87398",
+      "id": "exception_domain_union-40d539490074",
       "family": "exception_domain_union",
       "before": [
-        "@@||stats.g.doubleclick.net/dc.js$domain=dubizzle.com",
-        "@@||stats.g.doubleclick.net/dc.js$domain=softkey.ru|softkey.ua",
-        "@@||stats.g.doubleclick.net/dc.js$domain=lifehack.org|tripinsurance.ru|vimeo.com|universarium.org"
+        "@@||static.vocstatic.com/voonto2/latest/voonto.js$domain=diariosur.es",
+        "@@||static.vocstatic.com/voonto2/latest/voonto.js$domain=abc.es"
       ],
-      "after": "@@||stats.g.doubleclick.net/dc.js$domain=dubizzle.com|lifehack.org|softkey.ru|softkey.ua|tripinsurance.ru|universarium.org|vimeo.com",
+      "after": "@@||static.vocstatic.com/voonto2/latest/voonto.js$domain=abc.es|diariosur.es",
       "source_id": "ag-tracking",
       "checks": [
         "structural-equality",
@@ -220,13 +228,13 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-ddedcf1a8625",
+      "id": "cosmetic_host_union-ed2470633a76",
       "family": "cosmetic_host_union",
       "before": [
-        "pornoeggs.com,pornflip.com,peekvids.com###ag-cookiebar",
-        "playvids.com###ag-cookiebar"
+        "electrek.co,9to5google.com###after_disclaimer_placement",
+        "9to5google.com,9to5mac.com,dronedj.com,electrek.co###after_disclaimer_placement"
       ],
-      "after": "peekvids.com,playvids.com,pornflip.com,pornoeggs.com###ag-cookiebar",
+      "after": "9to5google.com,9to5mac.com,dronedj.com,electrek.co###after_disclaimer_placement",
       "source_id": "ag-annoyances",
       "checks": [
         "selector-equality",
@@ -266,93 +274,13 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-a325a65666a3",
+      "id": "cosmetic_host_union-8ade3686f155",
       "family": "cosmetic_host_union",
       "before": [
-        "idnes.cz###main > table",
-        "lidovky.cz###main > table"
+        "maturetubehere.com###lotal",
+        "freeporn8.com###lotal"
       ],
-      "after": "idnes.cz,lidovky.cz###main > table",
-      "source_id": "ubo-filters-min",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-0b06eb4ff331",
-      "family": "cosmetic_host_union",
-      "before": [
-        "iko.com,krisp.ai,in-n-out.com,lollty.pro,root-s.co.jp,hiro-clinic.or.jp,dmxq.fun,yanmaga.jp,delandis.co.kr,anti-malware.ru,rgmechanics.com,boxerdergisi.com.tr,85.114.138.56,enzahome.com.tr,isralove.org,liniakino.com###popup",
-        "jornaldocomercio.com###popup",
-        "heidibemvindaacasabrasil.blogspot.com###popup",
-        "mamahawa.com###popup",
-        "aman-dn.blogspot.com###popup",
-        "linkstoreanimezone.blogspot.com,workanimezone.blogspot.com###popup"
-      ],
-      "after": "85.114.138.56,aman-dn.blogspot.com,anti-malware.ru,boxerdergisi.com.tr,delandis.co.kr,dmxq.fun,enzahome.com.tr,heidibemvindaacasabrasil.blogspot.com,hiro-clinic.or.jp,iko.com,in-n-out.com,isralove.org,jornaldocomercio.com,krisp.ai,liniakino.com,linkstoreanimezone.blogspot.com,lollty.pro,mamahawa.com,rgmechanics.com,root-s.co.jp,workanimezone.blogspot.com,yanmaga.jp###popup",
-      "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-f6e9d75da815",
-      "family": "cosmetic_host_union",
-      "before": [
-        "vk.com###system_msg",
-        "vk.com,vk.ru###system_msg"
-      ],
-      "after": "vk.com,vk.ru###system_msg",
-      "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-f9726b850fc7",
-      "family": "cosmetic_host_union",
-      "before": [
-        "hd-easyporn.com,pornblade.com,pornfelix.com###wrapper_content > aside[id]",
-        "pornohans.com###wrapper_content > aside[id]"
-      ],
-      "after": "hd-easyporn.com,pornblade.com,pornfelix.com,pornohans.com###wrapper_content > aside[id]",
-      "source_id": "ubo-filters-min",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-b85f099cecb0",
-      "family": "cosmetic_host_union",
-      "before": [
-        "worldsextrip.com##.add",
-        "maritime-executive.com,freeroms.com,watcher.guru,thehindubusinessline.com,news18.com##.add",
-        "online-image-editor.com,thehindu.com,watcher.guru##.add"
-      ],
-      "after": "freeroms.com,maritime-executive.com,news18.com,online-image-editor.com,thehindu.com,thehindubusinessline.com,watcher.guru,worldsextrip.com##.add",
-      "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-f10ac150ef9a",
-      "family": "cosmetic_host_union",
-      "before": [
-        "wcoflix.tv,wcostream.tv,wcostream.net,wco.tv,wcoanimesub.tv,wcoforever.net,wcoanimedub.tv##.anti-ad",
-        "wcoforever.net##.anti-ad"
-      ],
-      "after": "wco.tv,wcoanimedub.tv,wcoanimesub.tv,wcoflix.tv,wcoforever.net,wcostream.net,wcostream.tv##.anti-ad",
+      "after": "freeporn8.com,maturetubehere.com###lotal",
       "source_id": "ag-base-easylist",
       "checks": [
         "selector-equality",
@@ -361,14 +289,13 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-9cb3f224f171",
+      "id": "cosmetic_host_union-c28be48a60c7",
       "family": "cosmetic_host_union",
       "before": [
-        "femdomtb.com##.bannerImage",
-        "imgtorrnt.in##.bannerImage",
-        "pornfd.com##.bannerImage"
+        "javher.com###popunderLink",
+        "javtrailers.com###popunderLink"
       ],
-      "after": "femdomtb.com,imgtorrnt.in,pornfd.com##.bannerImage",
+      "after": "javher.com,javtrailers.com###popunderLink",
       "source_id": "ubo-filters-min",
       "checks": [
         "selector-equality",
@@ -377,29 +304,13 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-4ae17ba90546",
+      "id": "cosmetic_host_union-e6e764987470",
       "family": "cosmetic_host_union",
       "before": [
-        "freeporn8.com,amateur8.com,sortporn.com,bigtitslust.com##.calibro",
-        "amateur8.com,bigtitslust.com,freeporn8.com,lesbian8.com,sortporn.com##.calibro"
+        "store.softline.ru###stripe_permission_use_cookie",
+        "softline.ru###stripe_permission_use_cookie"
       ],
-      "after": "amateur8.com,bigtitslust.com,freeporn8.com,lesbian8.com,sortporn.com##.calibro",
-      "source_id": "ag-base-easylist",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-a787c72043ac",
-      "family": "cosmetic_host_union",
-      "before": [
-        "maariv.co.il,regnum.ru##.cookies-notice-container",
-        "maariv.co.il##.cookies-notice-container",
-        "regnum.ru##.cookies-notice-container"
-      ],
-      "after": "maariv.co.il,regnum.ru##.cookies-notice-container",
+      "after": "softline.ru,store.softline.ru###stripe_permission_use_cookie",
       "source_id": "ag-annoyances",
       "checks": [
         "selector-equality",
@@ -408,109 +319,14 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-d68235449a97",
+      "id": "cosmetic_host_union-7e74f0f19464",
       "family": "cosmetic_host_union",
       "before": [
-        "verywellhealth.com,marthastewart.com##.fb_lightbox-overlay",
-        "chowhound.com##.fb_lightbox-overlay"
+        "ufacw.com###wpsafe-generate, #wpsafe-link:others()",
+        "tutorialsaya.com,indobo.com###wpsafe-generate, #wpsafe-link:others()",
+        "informaxonline.com###wpsafe-generate, #wpsafe-link:others()"
       ],
-      "after": "chowhound.com,marthastewart.com,verywellhealth.com##.fb_lightbox-overlay",
-      "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-8ae15e17ec4c",
-      "family": "cosmetic_host_union",
-      "before": [
-        "hobokengirl.com##.g-single",
-        "domainnamewire.com,douglasnow.com,goodthingsguy.com##.g-single"
-      ],
-      "after": "domainnamewire.com,douglasnow.com,goodthingsguy.com,hobokengirl.com##.g-single",
-      "source_id": "ag-base-easylist",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-9d140dbaa17e",
-      "family": "cosmetic_host_union",
-      "before": [
-        "homeoftravel.de,fitgirl-repacks.site,blackedjav.com##.jetpack-subscribe-modal",
-        "fitgirl-repacks.site,ianbetteridge.com,vvng.com##.jetpack-subscribe-modal"
-      ],
-      "after": "blackedjav.com,fitgirl-repacks.site,homeoftravel.de,ianbetteridge.com,vvng.com##.jetpack-subscribe-modal",
-      "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-f6a367a0c118",
-      "family": "cosmetic_host_union",
-      "before": [
-        "wenthere8this.com,zmescience.com,enhancedpotential.com.au,belarus24.by,levittownnow.com,grammarcheck.me,thegazette.com,osxdaily.com,lrt.lt,pornhub.com,thelocal.ch,itsfoss.com,makeuseof.com,fosspost.org,sergeiyurev.com##.ml-subscribe-form",
-        "aeplay.org,bitnewsbot.com,dailynewshungary.com,designersbrasileiros.com.br,fosspost.org,justrunlah.com,lrt.lt,michaelwest.com.au,nanowerk.com,osxdaily.com,roadiscalling.com,serversfor.dev,techpolicy.press,upinthesky.nl##.ml-subscribe-form"
-      ],
-      "after": "aeplay.org,belarus24.by,bitnewsbot.com,dailynewshungary.com,designersbrasileiros.com.br,enhancedpotential.com.au,fosspost.org,grammarcheck.me,itsfoss.com,justrunlah.com,levittownnow.com,lrt.lt,makeuseof.com,michaelwest.com.au,nanowerk.com,osxdaily.com,pornhub.com,roadiscalling.com,sergeiyurev.com,serversfor.dev,techpolicy.press,thegazette.com,thelocal.ch,upinthesky.nl,wenthere8this.com,zmescience.com##.ml-subscribe-form",
-      "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-39b0f54ecb3e",
-      "family": "cosmetic_host_union",
-      "before": [
-        "xenforo.info,cmteampk.com,macuser.de,head-fi.org,realitycheats.com,hobby-machinist.com,safezone.cc##.notices--bottom_fixer",
-        "fitnessbilim.com##.notices--bottom_fixer"
-      ],
-      "after": "cmteampk.com,fitnessbilim.com,head-fi.org,hobby-machinist.com,macuser.de,realitycheats.com,safezone.cc,xenforo.info##.notices--bottom_fixer",
-      "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-bd12ff00e4b7",
-      "family": "cosmetic_host_union",
-      "before": [
-        "rollo.uno,godriveplayer.com,embedplayer1.xyz,brbeast.com,jeniusplay.com##.pppx",
-        "asyaanimeleri.pw##.pppx",
-        "godriveplayer.com##.pppx",
-        "blsplayer.com,brbeast.com,flyplayer.xyz,javplayers.com##.pppx"
-      ],
-      "after": "asyaanimeleri.pw,blsplayer.com,brbeast.com,embedplayer1.xyz,flyplayer.xyz,godriveplayer.com,javplayers.com,jeniusplay.com,rollo.uno##.pppx",
-      "source_id": "ag-base-easylist",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-f4f5e94691ba",
-      "family": "cosmetic_host_union",
-      "before": [
-        "blackporn.tube,xmilf.com##.right",
-        "redporno.cz##.right",
-        "pornhits.com##.right",
-        "sextu.com##.right",
-        "manysex.com,manysex.tube##.right",
-        "xjav.tube##.right"
-      ],
-      "after": "blackporn.tube,manysex.com,manysex.tube,pornhits.com,redporno.cz,sextu.com,xjav.tube,xmilf.com##.right",
+      "after": "indobo.com,informaxonline.com,tutorialsaya.com,ufacw.com###wpsafe-generate, #wpsafe-link:others()",
       "source_id": "ubo-filters-min",
       "checks": [
         "selector-equality",
@@ -519,13 +335,194 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-aea3f140412c",
+      "id": "cosmetic_host_union-466fd108594e",
       "family": "cosmetic_host_union",
       "before": [
-        "clickhelp.com,downloadsource.net,firstthings.com,milanofinanza.it,mothership.sg,overclock3d.net,techtimes.com##.socials",
-        "50statesoflie.media,addictivetips.com,ambito.com,anews.com.tr,antenneac.de,antenneduesseldorf.de,antennemuenster.de,antenneniederrhein.de,antenneunna.de,archivebate.com,az.nl,bazar.it,bildderfrau.de,brocabrac.fr,candidat.news,carscoops.com,cracked.com,dacast.com,donna-magazin.de,ecodibergamo.it,einbecker-morgenpost.de,fastweb.it,forward.com,hellwegradio.de,hirtv.hu,hot.co.uk,hot.com,hpdetijd.nl,instant-gaming.com,intellinews.com,ipwatchdog.com,iranpress.com,isrotel.com,jagranjosh.com,kyivpost.com,laprovinciadicomo.it,laprovinciaunicatv.it,letterboxd.com,liferadio.at,lippewelle.de,mechanisatiemarkt.nl,mob.org,news894.de,newsbit.nl,ots.at,ouest-france.fr,pleno.news,polskikompas.com,primagames.com,prinspetfoods.nl,radio901.de,radioberg.de,radiobochum.de,radiobonn.de,radioduisburg.de,radioemscherlippe.de,radioenneperuhr.de,radioerft.de,radioessen.de,radioeuskirchen.de,radiohagen.de,radioherne.de,radiokiepenkerl.de,radiokoeln.de,radiokw.de,radioleverkusen.de,radiolina.it,radiomk.de,radiomuelheim.de,radioneandertal.de,radiooberhausen.de,radiorsg.de,radiorst.de,radiorur.de,radiosauerland.de,radiosiegen.de,radiovest.de,radiowmw.de,radiowuppertal.de,recyclingproductnews.com,rt.com,salon.com,scamadviser.com,screenweek.it,secoloditalia.it,sportwebsicilia.it,thejc.com,thetruthaboutcars.com,truthgate.us,tuttotech.net,u24.gov.ua,webcafe.bg,welleniederrhein.de,wng.org##.socials"
+        "globalpublishers.co.tz##.adcontainer",
+        "3dzip.org##.adcontainer",
+        "boobsforfun.com##.adcontainer"
       ],
-      "after": "50statesoflie.media,addictivetips.com,ambito.com,anews.com.tr,antenneac.de,antenneduesseldorf.de,antennemuenster.de,antenneniederrhein.de,antenneunna.de,archivebate.com,az.nl,bazar.it,bildderfrau.de,brocabrac.fr,candidat.news,carscoops.com,clickhelp.com,cracked.com,dacast.com,donna-magazin.de,downloadsource.net,ecodibergamo.it,einbecker-morgenpost.de,fastweb.it,firstthings.com,forward.com,hellwegradio.de,hirtv.hu,hot.co.uk,hot.com,hpdetijd.nl,instant-gaming.com,intellinews.com,ipwatchdog.com,iranpress.com,isrotel.com,jagranjosh.com,kyivpost.com,laprovinciadicomo.it,laprovinciaunicatv.it,letterboxd.com,liferadio.at,lippewelle.de,mechanisatiemarkt.nl,milanofinanza.it,mob.org,mothership.sg,news894.de,newsbit.nl,ots.at,ouest-france.fr,overclock3d.net,pleno.news,polskikompas.com,primagames.com,prinspetfoods.nl,radio901.de,radioberg.de,radiobochum.de,radiobonn.de,radioduisburg.de,radioemscherlippe.de,radioenneperuhr.de,radioerft.de,radioessen.de,radioeuskirchen.de,radiohagen.de,radioherne.de,radiokiepenkerl.de,radiokoeln.de,radiokw.de,radioleverkusen.de,radiolina.it,radiomk.de,radiomuelheim.de,radioneandertal.de,radiooberhausen.de,radiorsg.de,radiorst.de,radiorur.de,radiosauerland.de,radiosiegen.de,radiovest.de,radiowmw.de,radiowuppertal.de,recyclingproductnews.com,rt.com,salon.com,scamadviser.com,screenweek.it,secoloditalia.it,sportwebsicilia.it,techtimes.com,thejc.com,thetruthaboutcars.com,truthgate.us,tuttotech.net,u24.gov.ua,webcafe.bg,welleniederrhein.de,wng.org##.socials",
+      "after": "3dzip.org,boobsforfun.com,globalpublishers.co.tz##.adcontainer",
+      "source_id": "dandelion-annoyances",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-e85b323682b0",
+      "family": "cosmetic_host_union",
+      "before": [
+        "fanyi.baidu.com##.ant-tooltip",
+        "coinlive.com##.ant-tooltip"
+      ],
+      "after": "coinlive.com,fanyi.baidu.com##.ant-tooltip",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-d14bb4744d9b",
+      "family": "cosmetic_host_union",
+      "before": [
+        "thebell.co.kr##.bannerBox",
+        "antena3.ro##.bannerBox"
+      ],
+      "after": "antena3.ro,thebell.co.kr##.bannerBox",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-b24725e31a51",
+      "family": "cosmetic_host_union",
+      "before": [
+        "managingmadrid.com##.c-toaster",
+        "arrowheadpride.com,badlefthook.com,barcablaugranes.com,bavarianfootballworks.com,bleedinggreennation.com,bloggingtheboys.com,bloodyelbow.com,brightsideofthesun.com,cagesideseats.com,celticsblog.com,eater.com,goldenstateofmind.com,libertyballers.com,managingmadrid.com,mmafighting.com,mmamania.com,polygon.com,silverscreenandroll.com,sounderatheart.com##.c-toaster"
+      ],
+      "after": "arrowheadpride.com,badlefthook.com,barcablaugranes.com,bavarianfootballworks.com,bleedinggreennation.com,bloggingtheboys.com,bloodyelbow.com,brightsideofthesun.com,cagesideseats.com,celticsblog.com,eater.com,goldenstateofmind.com,libertyballers.com,managingmadrid.com,mmafighting.com,mmamania.com,polygon.com,silverscreenandroll.com,sounderatheart.com##.c-toaster",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-a7435c6dee24",
+      "family": "cosmetic_host_union",
+      "before": [
+        "pyeoptics.com,motorsportsuniverse.com,fitatu.com,rosneft-azs.ru,caosplanejado.com,servermon.ru,neuca.pl,aptekarski.com,swiatzdrowia.pl,komandacard.ru,mitele.es,mrfdev.com##.cookies-consent",
+        "actie.degoedezaak.org,ashush-projects.co.il,campax.org,controller.com,fitatu.com,hamat-group.co.il,hamat.co.il,mashumashu.co.il,medor.co.il,mrfdev.com,ofek-mitam.com,pandoor.co.il,pelephone.co.il,pyeoptics.com,tuki-esim.co.il,vgardenfoods.com,voicemod.net##.cookies-consent"
+      ],
+      "after": "actie.degoedezaak.org,aptekarski.com,ashush-projects.co.il,campax.org,caosplanejado.com,controller.com,fitatu.com,hamat-group.co.il,hamat.co.il,komandacard.ru,mashumashu.co.il,medor.co.il,mitele.es,motorsportsuniverse.com,mrfdev.com,neuca.pl,ofek-mitam.com,pandoor.co.il,pelephone.co.il,pyeoptics.com,rosneft-azs.ru,servermon.ru,swiatzdrowia.pl,tuki-esim.co.il,vgardenfoods.com,voicemod.net##.cookies-consent",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-18ac51870df4",
+      "family": "cosmetic_host_union",
+      "before": [
+        "grizly.cz##.fancybox-container",
+        "flo.com.tr##.fancybox-container"
+      ],
+      "after": "flo.com.tr,grizly.cz##.fancybox-container",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-9875792ab73e",
+      "family": "cosmetic_host_union",
+      "before": [
+        "onlyporn.tube##.ft",
+        "pornhits.com##.ft"
+      ],
+      "after": "onlyporn.tube,pornhits.com##.ft",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-19d99e857e43",
+      "family": "cosmetic_host_union",
+      "before": [
+        "anonyviet.com##.jeg_ad",
+        "nairametrics.com##.jeg_ad"
+      ],
+      "after": "anonyviet.com,nairametrics.com##.jeg_ad",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-eeff7dda9f78",
+      "family": "cosmetic_host_union",
+      "before": [
+        "lesbian8.com,sortporn.com,bigtitslust.com##.mitaru",
+        "bigtitslust.com,freeporn8.com,lesbian8.com,sortporn.com##.mitaru"
+      ],
+      "after": "bigtitslust.com,freeporn8.com,lesbian8.com,sortporn.com##.mitaru",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-f4ed1fa2c68b",
+      "family": "cosmetic_host_union",
+      "before": [
+        "forum.finanzaonline.com,diendan.tiengnga.net,openssource.info,forum.gamer.com.tr##.notices",
+        "osxinfo.net##.notices"
+      ],
+      "after": "diendan.tiengnga.net,forum.finanzaonline.com,forum.gamer.com.tr,openssource.info,osxinfo.net##.notices",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-ca2ff69c76db",
+      "family": "cosmetic_host_union",
+      "before": [
+        "logrocket.com##.post-popup",
+        "kolesa.ru##.post-popup"
+      ],
+      "after": "kolesa.ru,logrocket.com##.post-popup",
+      "source_id": "ag-annoyances",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-e6bb44602d12",
+      "family": "cosmetic_host_union",
+      "before": [
+        "nj.com##.revenue-display",
+        "al.com,cleveland.com,lehighvalleylive.com,masslive.com,mlive.com,newyorkupstate.com,oregonlive.com,pennlive.com,silive.com,syracuse.com##.revenue-display"
+      ],
+      "after": "al.com,cleveland.com,lehighvalleylive.com,masslive.com,mlive.com,newyorkupstate.com,nj.com,oregonlive.com,pennlive.com,silive.com,syracuse.com##.revenue-display",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-93e951edaa95",
+      "family": "cosmetic_host_union",
+      "before": [
+        "ciudad.com.ar,eltrecetv.com.ar,lithub.com,tn.com.ar##.social_links",
+        "hdblog.it,hdmotori.it##.social_links"
+      ],
+      "after": "ciudad.com.ar,eltrecetv.com.ar,hdblog.it,hdmotori.it,lithub.com,tn.com.ar##.social_links",
       "source_id": "fanboy-annoyances",
       "checks": [
         "selector-equality",
@@ -534,13 +531,32 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-2134e2e68f65",
+      "id": "cosmetic_host_union-500660a12dbf",
       "family": "cosmetic_host_union",
       "before": [
-        "nisanyansozluk.com##.toast",
-        "aoxx69.net##.toast"
+        "gazettetimes.com,missoulian.com,kenoshanews.com,cumberlink.com,trib.com,dailyprogress.com,stltoday.com,journalstar.com##.tnt-ads-container",
+        "beatricedailysun.com##.tnt-ads-container",
+        "qctimes.com,wcfcourier.com##.tnt-ads-container",
+        "helenair.com##.tnt-ads-container",
+        "siouxcityjournal.com##.tnt-ads-container",
+        "stltoday.com##.tnt-ads-container"
       ],
-      "after": "aoxx69.net,nisanyansozluk.com##.toast",
+      "after": "beatricedailysun.com,cumberlink.com,dailyprogress.com,gazettetimes.com,helenair.com,journalstar.com,kenoshanews.com,missoulian.com,qctimes.com,siouxcityjournal.com,stltoday.com,trib.com,wcfcourier.com##.tnt-ads-container",
+      "source_id": "ag-base-easylist",
+      "checks": [
+        "selector-equality",
+        "reparse-equal",
+        "engine-differential"
+      ]
+    },
+    {
+      "id": "cosmetic_host_union-e9a3dace7434",
+      "family": "cosmetic_host_union",
+      "before": [
+        "polygon.com,androidpolice.com,babygaga.com,backyardboss.net,carbuzz.com,cbr.com,collider.com,dualshockers.com,footballfancast.com,footballleagueworld.co.uk,gamerant.com,givemesport.com,hardcoregamer.com,hotcars.com,howtogeek.com,makeuseof.com,moms.com,movieweb.com,pocket-lint.com,pocketnow.com,screenrant.com,simpleflying.com,thegamer.com,therichest.com,thesportster.com,thethings.com,thetravel.com,topspeed.com,xda-developers.com##.w-google-addus-btn",
+        "military.com,polygon.com##.w-google-addus-btn"
+      ],
+      "after": "androidpolice.com,babygaga.com,backyardboss.net,carbuzz.com,cbr.com,collider.com,dualshockers.com,footballfancast.com,footballleagueworld.co.uk,gamerant.com,givemesport.com,hardcoregamer.com,hotcars.com,howtogeek.com,makeuseof.com,military.com,moms.com,movieweb.com,pocket-lint.com,pocketnow.com,polygon.com,screenrant.com,simpleflying.com,thegamer.com,therichest.com,thesportster.com,thethings.com,thetravel.com,topspeed.com,xda-developers.com##.w-google-addus-btn",
       "source_id": "ag-annoyances",
       "checks": [
         "selector-equality",
@@ -549,28 +565,13 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-6f04bf31bdb4",
+      "id": "cosmetic_host_union-9e6c06f92f60",
       "family": "cosmetic_host_union",
       "before": [
-        "thetravel.com##.w-google-addus-btn--article-header-variants",
-        "androidpolice.com,babygaga.com,backyardboss.net,carbuzz.com,cbr.com,collider.com,dualshockers.com,footballfancast.com,footballleagueworld.co.uk,gamerant.com,givemesport.com,hardcoregamer.com,hotcars.com,howtogeek.com,makeuseof.com,moms.com,movieweb.com,pocket-lint.com,pocketnow.com,screenrant.com,simpleflying.com,thegamer.com,therichest.com,thesportster.com,thethings.com,thetravel.com,topspeed.com,xda-developers.com##.w-google-addus-btn--article-header-variants"
+        "pastpapers.papacambridge.com##[id^=\"aswift\"]",
+        "onle.co##[id^=\"aswift\"]"
       ],
-      "after": "androidpolice.com,babygaga.com,backyardboss.net,carbuzz.com,cbr.com,collider.com,dualshockers.com,footballfancast.com,footballleagueworld.co.uk,gamerant.com,givemesport.com,hardcoregamer.com,hotcars.com,howtogeek.com,makeuseof.com,moms.com,movieweb.com,pocket-lint.com,pocketnow.com,screenrant.com,simpleflying.com,thegamer.com,therichest.com,thesportster.com,thethings.com,thetravel.com,topspeed.com,xda-developers.com##.w-google-addus-btn--article-header-variants",
-      "source_id": "ag-annoyances",
-      "checks": [
-        "selector-equality",
-        "reparse-equal",
-        "engine-differential"
-      ]
-    },
-    {
-      "id": "cosmetic_host_union-69a8c91e9e86",
-      "family": "cosmetic_host_union",
-      "before": [
-        "siteunblocked.info##[id^=\"cookieConsent\"]",
-        "torrentdownloads.dirproxy.com##[id^=\"cookieConsent\"]"
-      ],
-      "after": "siteunblocked.info,torrentdownloads.dirproxy.com##[id^=\"cookieConsent\"]",
+      "after": "onle.co,pastpapers.papacambridge.com##[id^=\"aswift\"]",
       "source_id": "ubo-filters-min",
       "checks": [
         "selector-equality",
@@ -579,13 +580,13 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-d31e41028876",
+      "id": "cosmetic_host_union-9609f2827c0c",
       "family": "cosmetic_host_union",
       "before": [
-        "getintopcm.com##body > div[class=\"\"]",
-        "howtocivil.com##body > div[class=\"\"]"
+        "getintopcm.com##body > .adblock_title",
+        "howtocivil.com##body > .adblock_title"
       ],
-      "after": "getintopcm.com,howtocivil.com##body > div[class=\"\"]",
+      "after": "getintopcm.com,howtocivil.com##body > .adblock_title",
       "source_id": "ubo-filters-min",
       "checks": [
         "selector-equality",
@@ -594,14 +595,14 @@
       ]
     },
     {
-      "id": "cosmetic_host_union-d06ebb6226ad",
+      "id": "cosmetic_host_union-01874bbd7bd5",
       "family": "cosmetic_host_union",
       "before": [
-        "bangbros.com##div[data-cy=\"catfish\"]",
-        "babes.com##div[data-cy=\"catfish\"]",
-        "hentaipros.com,hentaiprosnetwork.com,letsdoeit.com,brazzers.com##div[data-cy=\"catfish\"]"
+        "eikaiwa.dmm.com##div[data-banner]",
+        "cancan.ro##div[data-banner]",
+        "pornwhite.com,sleazyneasy.com,fetishshrine.com,wankoz.com##div[data-banner]"
       ],
-      "after": "babes.com,bangbros.com,brazzers.com,hentaipros.com,hentaiprosnetwork.com,letsdoeit.com##div[data-cy=\"catfish\"]",
+      "after": "cancan.ro,eikaiwa.dmm.com,fetishshrine.com,pornwhite.com,sleazyneasy.com,wankoz.com##div[data-banner]",
       "source_id": "ag-annoyances",
       "checks": [
         "selector-equality",
@@ -13906,12 +13907,12 @@
       ]
     },
     {
-      "id": "network_canonicalization-ba50953924cb",
+      "id": "network_canonicalization-6609f9edce6a",
       "family": "network_canonicalization",
       "before": [
-        "||ip2location.com^$3p"
+        "||iplogger.org^$3p,domain=~iplogger.com"
       ],
-      "after": "||ip2location.com^$third-party",
+      "after": "||iplogger.org^$domain=~iplogger.com,third-party",
       "source_id": "easyprivacy",
       "checks": [
         "reparse-equal",
@@ -13920,12 +13921,12 @@
       ]
     },
     {
-      "id": "network_canonicalization-ce9c7ba8ba7f",
+      "id": "network_canonicalization-b801200e344a",
       "family": "network_canonicalization",
       "before": [
-        "||opstag.com^$3p"
+        "||optimove.net^$3p"
       ],
-      "after": "||opstag.com^$third-party",
+      "after": "||optimove.net^$third-party",
       "source_id": "easyprivacy",
       "checks": [
         "reparse-equal",
@@ -13934,12 +13935,12 @@
       ]
     },
     {
-      "id": "network_canonicalization-790e4d78099a",
+      "id": "network_canonicalization-e1e20d10d398",
       "family": "network_canonicalization",
       "before": [
-        "||roeyecdn.com^$3p"
+        "||rtbiq.com^$3p"
       ],
-      "after": "||roeyecdn.com^$third-party",
+      "after": "||rtbiq.com^$third-party",
       "source_id": "easyprivacy",
       "checks": [
         "reparse-equal",
@@ -13948,12 +13949,12 @@
       ]
     },
     {
-      "id": "network_canonicalization-e728e54a4be1",
+      "id": "network_canonicalization-44166755496a",
       "family": "network_canonicalization",
       "before": [
-        "||topstat.cn^$3p"
+        "||trackonomics.net^$3p"
       ],
-      "after": "||topstat.cn^$third-party",
+      "after": "||trackonomics.net^$third-party",
       "source_id": "easyprivacy",
       "checks": [
         "reparse-equal",
@@ -13962,12 +13963,12 @@
       ]
     },
     {
-      "id": "network_canonicalization-c7f97d76c010",
+      "id": "network_canonicalization-d7938c02e201",
       "family": "network_canonicalization",
       "before": [
-        "||aimtell.com^$3p"
+        "||cdn-sitegainer.com^$3p"
       ],
-      "after": "||aimtell.com^$third-party",
+      "after": "||cdn-sitegainer.com^$third-party",
       "source_id": "easyprivacy",
       "checks": [
         "reparse-equal",
@@ -13976,12 +13977,12 @@
       ]
     },
     {
-      "id": "network_canonicalization-a8e44ecb7594",
+      "id": "network_canonicalization-48a3488d5ba6",
       "family": "network_canonicalization",
       "before": [
-        "||gtags.net^$3p"
+        "||he2d.com^$3p"
       ],
-      "after": "||gtags.net^$third-party",
+      "after": "||he2d.com^$third-party",
       "source_id": "easyprivacy",
       "checks": [
         "reparse-equal",
@@ -13990,12 +13991,12 @@
       ]
     },
     {
-      "id": "network_canonicalization-63f5d0557c8d",
+      "id": "network_canonicalization-3a911cbfab07",
       "family": "network_canonicalization",
       "before": [
-        "||tenping.kr^$3p"
+        "||top.lv^$3p"
       ],
-      "after": "||tenping.kr^$third-party",
+      "after": "||top.lv^$third-party",
       "source_id": "easyprivacy",
       "checks": [
         "reparse-equal",
@@ -14937,7 +14938,7 @@
     }
   ],
   "receipts_total": 53028,
-  "receipts_sha256": "661d40e696a0030616c4930a10abcf0fad61e4fb7fba4d89009800898ff817b5",
+  "receipts_sha256": "5c89087479dd538a32a528f8af5f5d7a072c5518c77f2126e41432e6f195554a",
   "receipts_truncated": true,
   "verification": {
     "required": true,
@@ -14946,23 +14947,23 @@
     "golden_rule_violations": 0,
     "emit_order_violations": 0,
     "coverage": {
-      "network_rules_total": 675934,
-      "network_rules_probed": 243084,
+      "network_rules_total": 675958,
+      "network_rules_probed": 242962,
       "rewrite_receipts_total": 53028,
-      "rewrite_receipts_exercised": 51771,
-      "cosmetic_hosts_total": 75913,
-      "cosmetic_hosts_checked": 62806
+      "rewrite_receipts_exercised": 51775,
+      "cosmetic_hosts_total": 75852,
+      "cosmetic_hosts_checked": 62904
     }
   },
   "bench": {
-    "admitted_opt_bytes": 42298669,
-    "candidate_opt_bytes": 38072661,
-    "admitted_noopt_bytes": 42298749,
-    "candidate_noopt_bytes": 38072733,
-    "admitted_build_ms": 640,
-    "candidate_build_ms": 555,
-    "admitted_qps": 173127.99155950348,
-    "candidate_qps": 186161.06298932026,
+    "admitted_opt_bytes": 42298037,
+    "candidate_opt_bytes": 38072853,
+    "admitted_noopt_bytes": 42298109,
+    "candidate_noopt_bytes": 38072933,
+    "admitted_build_ms": 566,
+    "candidate_build_ms": 557,
+    "admitted_qps": 184244.32882763975,
+    "candidate_qps": 194149.12291206472,
     "emit_order": "compiler-friendly-v1"
   }
 }

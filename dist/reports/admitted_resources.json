@@ -96998,17 +96998,6 @@
     "reason": null
   },
   {
-    "name": "noop.js",
-    "canonical_name": "noop.js",
-    "grade": "standard",
-    "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
-    "permission": 0,
-    "source_id": "easyprivacy",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
     "name": "set-local-storage-item",
     "canonical_name": "set-local-storage-item.js",
     "grade": "standard",

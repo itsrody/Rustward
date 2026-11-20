@@ -22,22 +22,22 @@
     "duplicates_semantic": 2908,
     "effective_cosmetic_rules": 93705,
     "effective_network_rules": 683935,
-    "eligible": 758425,
+    "eligible": 758433,
     "empty_lines": 4003,
-    "excluded_by_gate": 21276,
+    "excluded_by_gate": 21268,
     "golden_rule_violations": 0,
     "metadata": 38,
-    "network_rules": 590077,
+    "network_rules": 590085,
     "network_rules_probed": 242410,
-    "network_rules_total": 675158,
+    "network_rules_total": 675166,
     "output_fast_native_css": 48183,
     "output_light_procedural": 328,
-    "output_lines": 661035,
+    "output_lines": 661043,
     "output_vetted_scriptlet": 22447,
     "parse_errors": 2061,
     "raw_lines": 841728,
-    "receipts_exercised": 51037,
-    "rewrites_applied": 52293,
+    "receipts_exercised": 51045,
+    "rewrites_applied": 52301,
     "semantic_gaps_accepted": 70621,
     "semantic_gaps_accepted_all": 70621,
     "semantic_gaps_excluded": 516,
@@ -56,7 +56,7 @@
     "semantic_gaps_unresolved_ubo_bare_hostname": 1,
     "semantic_gaps_unresolved_upward": 326,
     "semantic_gaps_unresolved_xpath": 29,
-    "verify_cases": 459928
+    "verify_cases": 459960
   },
   "receipts": [
     {
@@ -761935,6 +761935,62 @@
       ]
     },
     {
+      "id": "network_canonicalization-843d275f32d6",
+      "family": "network_canonicalization",
+      "before": [
+        "||amillionads.com^$media,redirect=noop-1s.mp4:10,from=open.spotify.com"
+      ],
+      "after": "||amillionads.com^$domain=open.spotify.com,media,redirect=noop-1s.mp4:10",
+      "source_id": "ubo-filters-min",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "network_canonicalization-f2acdbbff6e5",
+      "family": "network_canonicalization",
+      "before": [
+        "||2mdn.net^$media,redirect=noop-1s.mp4:10,domain=open.spotify.com"
+      ],
+      "after": "||2mdn.net^$domain=open.spotify.com,media,redirect=noop-1s.mp4:10",
+      "source_id": "ubo-filters-min",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "network_canonicalization-589c136be7fe",
+      "family": "network_canonicalization",
+      "before": [
+        "||adxcel.com^$media,redirect=noop-1s.mp4:10,domain=open.spotify.com"
+      ],
+      "after": "||adxcel.com^$domain=open.spotify.com,media,redirect=noop-1s.mp4:10",
+      "source_id": "ubo-filters-min",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "network_canonicalization-5f0e78767f68",
+      "family": "network_canonicalization",
+      "before": [
+        "||adstudio-assets.scdn.co^$media,redirect=noop-1s.mp4:10,domain=open.spotify.com"
+      ],
+      "after": "||adstudio-assets.scdn.co^$domain=open.spotify.com,media,redirect=noop-1s.mp4:10",
+      "source_id": "ubo-filters-min",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
       "id": "network_canonicalization-5d9d7f03f89f",
       "family": "network_canonicalization",
       "before": [
@@ -765833,6 +765889,62 @@
         "@@||ntv.io/serve/load.js$script,domain=titantv.com"
       ],
       "after": "@@||ntv.io/serve/load.js$domain=titantv.com,script",
+      "source_id": "ubo-filters-min",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "network_canonicalization-002faa8b2732",
+      "family": "network_canonicalization",
+      "before": [
+        "||adclixx.net^$script,3p,redirect=nobab2.js:10"
+      ],
+      "after": "||adclixx.net^$redirect=nobab2.js:10,script,third-party",
+      "source_id": "ubo-filters-min",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "network_canonicalization-0e521c04264f",
+      "family": "network_canonicalization",
+      "before": [
+        "||adnetasia.com^$script,3p,redirect=nobab2.js:10"
+      ],
+      "after": "||adnetasia.com^$redirect=nobab2.js:10,script,third-party",
+      "source_id": "ubo-filters-min",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "network_canonicalization-6b992c81aa81",
+      "family": "network_canonicalization",
+      "before": [
+        "||adtrackers.net^$script,3p,redirect=nobab2.js:10"
+      ],
+      "after": "||adtrackers.net^$redirect=nobab2.js:10,script,third-party",
+      "source_id": "ubo-filters-min",
+      "checks": [
+        "reparse-equal",
+        "engine-differential",
+        "golden-rule-postcondition"
+      ]
+    },
+    {
+      "id": "network_canonicalization-43b2768919f4",
+      "family": "network_canonicalization",
+      "before": [
+        "||bannertrack.net^$script,3p,redirect=nobab2.js:10"
+      ],
+      "after": "||bannertrack.net^$redirect=nobab2.js:10,script,third-party",
       "source_id": "ubo-filters-min",
       "checks": [
         "reparse-equal",
@@ -778962,27 +779074,27 @@
   "verification": {
     "required": true,
     "mismatches": [],
-    "cases_checked": 459928,
+    "cases_checked": 459960,
     "golden_rule_violations": 0,
     "emit_order_violations": 0,
     "coverage": {
-      "network_rules_total": 675158,
+      "network_rules_total": 675166,
       "network_rules_probed": 242410,
-      "rewrite_receipts_total": 52293,
-      "rewrite_receipts_exercised": 51037,
+      "rewrite_receipts_total": 52301,
+      "rewrite_receipts_exercised": 51045,
       "cosmetic_hosts_total": 75913,
       "cosmetic_hosts_checked": 62806
     }
   },
   "bench": {
-    "admitted_opt_bytes": 42133677,
-    "candidate_opt_bytes": 37911061,
-    "admitted_noopt_bytes": 42133757,
-    "candidate_noopt_bytes": 37911133,
-    "admitted_build_ms": 500,
-    "candidate_build_ms": 438,
-    "admitted_qps": 277716.07790532295,
-    "candidate_qps": 284414.18265406,
+    "admitted_opt_bytes": 42134789,
+    "candidate_opt_bytes": 37912173,
+    "admitted_noopt_bytes": 42134869,
+    "candidate_noopt_bytes": 37912245,
+    "admitted_build_ms": 631,
+    "candidate_build_ms": 576,
+    "admitted_qps": 176834.73997934067,
+    "candidate_qps": 184395.66178591052,
     "emit_order": "compiler-friendly-v1"
   }
 }

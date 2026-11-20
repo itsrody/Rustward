@@ -7,7 +7,6 @@ permissions = 0
 path = "Rustward.txt"
 emit_order = "compiler-friendly-v1"
 inline_audit_comments = false
-last_modified = "Sat, 14 Nov 2026 13:05:16 +0000"
 
 [verify]
 required = true
@@ -75,6 +74,7 @@ enabled = true
 trusted = false
 permissions = 0
 license = "test fixture"
+last_modified = "Sat, 14 Nov 2026 13:05:16 +0000"
 
 [[source]]
 id = "local-hosts"

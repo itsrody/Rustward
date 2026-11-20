@@ -8,10 +8,13 @@ not lost.
    REGEX exclusions fell from 55,994 to 7,834 and the output grew by ~48k rules.
 2. **Verification coverage + coverage reporting** — done. 420,588 cases (up from 5,000), per-receipt
    probes, strided cosmetic hosts, and coverage fields in `verify.json` / `build.md`.
-3. **Byte-deterministic output metadata** — replace the wall-clock `! Last modified` header with a
-   value derived from pinned inputs; add a two-build determinism test.
-4. **Audit artifacts** — make `dropped.tsv` list dedup/subsumption removals (it currently duplicates
-   `excluded.tsv`) and cap oversized receipt payloads in `build.json`.
+3. **Byte-deterministic output metadata** — done. The `! Last modified` header is derived from the
+   newest parseable pinned `last_modified` value in `lists.lock` (Unix epoch when absent), recorded
+   in `manifest.json` / `build.json`, and covered by a two-build byte-determinism test.
+4. **Audit artifacts** — done. `dropped.tsv` now reports the losing rule for every exact/semantic
+   dedup with the kept origin in `detail`, while `excluded.tsv` remains policy failures only.
+   `build.json` caps receipt count and payload size but records the full count, canonical digest, and
+   per-field truncation metadata; complete receipts remain in `rewrites.tsv`.
 5. **Scriptlet coverage** — done. The pinned official uBO snapshot already contains the legacy
    aliases used by current lists; the blocker was case-folding in `parse_scriptlet_invocation`,
    which turned case-sensitive names such as `no-setTimeout-if` into unresolvable lowercase forms.

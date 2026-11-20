@@ -103,6 +103,19 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(excluded.contains("example.com##.ad:matches-css(display: none)"));
     assert!(excluded.contains("contains-regex.example##.promo:contains(/Legacy/i)"));
 
+    let dropped = fs::read_to_string(root.join("reports/dropped.tsv")).expect("read dropped");
+    assert!(dropped.contains("DUPLICATE_EXACT"));
+    assert!(dropped.contains("kept local-basic:4"));
+    assert!(dropped.contains("||ads.example^$script"));
+    assert!(!dropped.contains("BATCH_EXCLUDED"));
+    assert_ne!(dropped, excluded);
+
+    let manifest: Value = serde_json::from_slice(
+        &fs::read(root.join("reports/manifest.json")).expect("read manifest"),
+    )
+    .expect("parse manifest");
+    assert_eq!(manifest["last_modified"], "Sat, 14 Nov 2026 13:05:16 +0000");
+
     for artifact in [
         "Rustward.txt.sha256",
         "lists.lock",
@@ -144,6 +157,19 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert_eq!(build["metrics"]["rewrites_applied"], 6);
     assert_eq!(build["metrics"]["badfilter_resolved"], 2);
     assert_eq!(build["metrics"]["badfilter_targets_pruned"], 2);
+    assert_eq!(
+        build["metrics"]["last_modified"],
+        "Sat, 14 Nov 2026 13:05:16 +0000"
+    );
+    assert_eq!(build["receipts_total"], 6);
+    assert_eq!(build["receipts"].as_array().expect("receipts").len(), 6);
+    assert_eq!(build["receipts_truncated"], false);
+    assert!(
+        !build["receipts_sha256"]
+            .as_str()
+            .expect("digest")
+            .is_empty()
+    );
 
     let rewrites = fs::read_to_string(root.join("reports/rewrites.tsv")).expect("read rewrites");
     assert!(rewrites.contains("type_union"));
@@ -152,6 +178,31 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(rewrites.contains("exception_type_union"));
     assert!(rewrites.contains("cosmetic_host_union"));
     assert!(rewrites.contains("d6_literal_contains"));
+
+    // Benchmark timings and QPS are intentionally excluded; every deterministic artifact must be
+    // byte-identical across two builds from the same pinned inputs.
+    let deterministic_artifacts = [
+        "Rustward.txt",
+        "Rustward.txt.sha256",
+        "lists.lock",
+        "reports/manifest.json",
+        "reports/build.md",
+        "reports/analysis.json",
+        "reports/rewrites.tsv",
+        "reports/dropped.tsv",
+        "reports/excluded.tsv",
+        "reports/dialect_gaps.tsv",
+        "reports/verify.json",
+    ];
+    let first_bytes: Vec<(&str, Vec<u8>)> = deterministic_artifacts
+        .iter()
+        .map(|artifact| {
+            (
+                *artifact,
+                fs::read(root.join(artifact)).expect("read artifact"),
+            )
+        })
+        .collect();
 
     let second = run_build(&root);
     assert!(
@@ -164,6 +215,32 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
         first_list,
         "build is not deterministic"
     );
+    for (artifact, expected) in &first_bytes {
+        assert_eq!(
+            &fs::read(root.join(artifact)).expect("read rebuilt artifact"),
+            expected,
+            "artifact {artifact} is not deterministic"
+        );
+    }
+
+    let second_build: Value = serde_json::from_slice(
+        &fs::read(root.join("reports/build.json")).expect("read rebuilt build report"),
+    )
+    .expect("parse rebuilt build report");
+    for key in [
+        "build_id",
+        "config_hash",
+        "profile_hash",
+        "lists_lock_hash",
+        "metrics",
+        "receipts",
+        "receipts_total",
+        "receipts_sha256",
+        "receipts_truncated",
+        "verification",
+    ] {
+        assert_eq!(second_build[key], build[key], "build field {key} changed");
+    }
 
     fs::remove_dir_all(&root).ok();
 }

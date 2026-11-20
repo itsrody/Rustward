@@ -803,6 +803,12 @@ separators, stable comment prefix (`! Rustward:`). Optional `--inline-audit-comm
 one-line provenance comments per rewritten rule for debug builds; off in production to keep parsing
 fast and the list small.
 
+The `! Last modified` header is never wall-clock-derived in the CLI. When `output.last_modified`
+is omitted, the newest parseable UTC `last_modified` value in `lists.lock` wins; with no pinned date
+the header is the Unix epoch. The chosen value is copied into `manifest.json` and `build.json`, and a
+two-build fixture test compares every deterministic artifact byte-for-byte (benchmark timings and
+QPS are deliberately excluded).
+
 **Atomic publish:** write all artifacts to `out/.staging-<buildid>/`, verify, then rename the list,
 sidecar, lockfile, and reports into `dist/`. The previous list is kept as `dist/Rustward.txt.prev`
 for one build and is ignored by Git.
@@ -814,11 +820,12 @@ dist/Rustward.txt                 # the unified list
 dist/Rustward.txt.sha256          # digest of the exact bytes
 dist/lists.lock                     # pinned source/include metadata used for reproducible builds
 dist/reports/manifest.json          # config hash, lockfile hash, tool + engine versions, profile
-dist/reports/build.json             # all metrics below, machine-readable
+dist/reports/build.json             # metrics below plus capped receipts and full-receipt digest
 dist/reports/build.md               # human summary
 dist/reports/analysis.json          # classification, eligibility, optimizability histogram
-dist/reports/rewrites.tsv           # rewrite receipts (before, after, reason, checks, R/D family)
-dist/reports/excluded.tsv           # reason + detail for ineligible rules, failed rewrites, duplicates, subsumed rules
+dist/reports/rewrites.tsv           # complete rewrite receipts (before, after, checks, family)
+dist/reports/excluded.tsv           # reason + detail for ineligible rules and failed rewrites
+dist/reports/dropped.tsv            # exact/semantic dedup losers with the kept origin in detail
 dist/reports/admitted_resources.json # official resource digests, grades, permissions, trust decisions
 dist/reports/dialect_gaps.tsv       # dialect-specific unsupported/semantic gaps with source dialect
 dist/reports/verify.json            # per-corpus mismatch details / zero mismatches
@@ -837,7 +844,8 @@ directive_includes_expanded,
 dialect_gaps_by_kind, dialect_gaps_engine_native, dialect_gaps_semantic,
 duplicates_exact, duplicates_semantic, badfilter_resolved, badfilter_targets_pruned,
 engine_fusable, supported_not_optimized_retained, rewrites_applied, rewrites_by_family,
-rules_removed_by_subsumption, output_lines, emit_order,
+receipts_total, receipts_sha256, receipts_truncated,
+rules_removed_by_subsumption, output_lines, emit_order, last_modified,
 flatbuffer_bytes_baseline_opt, flatbuffer_bytes_candidate_opt,
 flatbuffer_bytes_baseline_noopt, flatbuffer_bytes_candidate_noopt,
 engine_build_ms_baseline, engine_build_ms_candidate,

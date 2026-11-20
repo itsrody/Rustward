@@ -338,6 +338,13 @@ impl Rule {
         }
     }
 
+    pub fn dialect(&self) -> Dialect {
+        match self {
+            Self::Network(rule) => rule.dialect,
+            Self::Cosmetic(rule) => rule.dialect,
+        }
+    }
+
     pub fn eligibility(&self) -> &Eligibility {
         match self {
             Self::Network(rule) => &rule.eligibility,
@@ -534,6 +541,31 @@ impl ExclusionRecord {
     }
 }
 
+/// A rule removed by deterministic deduplication, not by admission policy.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct DroppedRecord {
+    pub source_id: String,
+    pub line_no: usize,
+    pub dialect: Dialect,
+    pub reason: String,
+    pub detail: String,
+    pub text: String,
+}
+
+impl DroppedRecord {
+    pub fn tsv_row(&self) -> String {
+        format!(
+            "{}\t{}\t{}\t{}\t{}\t{}",
+            self.source_id,
+            self.line_no,
+            self.dialect.as_str(),
+            self.reason.replace('\t', " ").replace('\n', " "),
+            self.detail.replace('\t', " ").replace('\n', " "),
+            self.text.replace('\t', " ").replace('\n', " ")
+        )
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ResourceDecision {
     pub name: String,
@@ -568,6 +600,29 @@ impl RewriteReceipt {
             self.after.replace('\t', " ")
         )
     }
+}
+
+/// Metadata for a capped field in a machine-readable receipt.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PayloadTruncation {
+    pub bytes: usize,
+    pub sha256: String,
+}
+
+/// A rewrite receipt with oversized payloads capped for `build.json`. The full receipt remains in
+/// `rewrites.tsv`; truncation metadata records the original byte length and digest.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ReportReceipt {
+    pub id: String,
+    pub family: String,
+    pub before: Vec<String>,
+    pub after: String,
+    pub source_id: String,
+    pub checks: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub before_truncated: Option<PayloadTruncation>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub after_truncated: Option<PayloadTruncation>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -648,7 +703,14 @@ pub struct BuildReport {
     pub adblock_version: String,
     pub emit_order: String,
     pub metrics: BTreeMap<String, Value>,
-    pub receipts: Vec<RewriteReceipt>,
+    /// Deterministically sampled and payload-capped receipts for machine-readable reporting.
+    pub receipts: Vec<ReportReceipt>,
+    /// Number of receipts before sampling; the full set remains in `rewrites.tsv`.
+    pub receipts_total: usize,
+    /// SHA-256 of the canonical JSON for the full, uncapped receipt set.
+    pub receipts_sha256: String,
+    /// True when receipts were sampled or any receipt payload was capped.
+    pub receipts_truncated: bool,
     pub verification: VerifyReport,
     pub bench: BenchReport,
 }
@@ -670,6 +732,9 @@ impl BuildReport {
             emit_order: config.output.emit_order.clone(),
             metrics: BTreeMap::new(),
             receipts: Vec::new(),
+            receipts_total: 0,
+            receipts_sha256: String::new(),
+            receipts_truncated: false,
             verification: VerifyReport::default(),
             bench: BenchReport::default(),
         }

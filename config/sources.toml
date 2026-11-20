@@ -8,7 +8,7 @@ path = "dist/Rustward.txt"
 emit_order = "compiler-friendly-v1"
 inline_audit_comments = false
 title = "Rustward"
-# Omitted: emitted as the UTC build time in RFC 2822 form.
+# Omitted: derived from the newest parseable pinned `last_modified` value in lists.lock.
 expires = "2 days"
 description = "Verified uBO-compatible filter list for adblock-rust engines."
 

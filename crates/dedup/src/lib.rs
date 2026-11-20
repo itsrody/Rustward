@@ -1,7 +1,7 @@
 //! Exact and semantic deduplication with source-priority resolution.
 
 use anyhow::Result;
-use model::{Origin, Rule, util::semantic_key};
+use model::{DroppedRecord, Origin, Rule, util::semantic_key};
 use std::collections::{BTreeMap, HashSet};
 
 #[derive(Debug, Clone)]
@@ -9,6 +9,8 @@ pub struct DedupResult {
     pub rules: Vec<Rule>,
     pub duplicate_exact: usize,
     pub duplicate_semantic: usize,
+    /// The losing rule for every exact or semantic duplicate, in deterministic order.
+    pub dropped: Vec<DroppedRecord>,
 }
 
 pub fn dedup(rules: Vec<Rule>) -> Result<DedupResult> {
@@ -16,6 +18,7 @@ pub fn dedup(rules: Vec<Rule>) -> Result<DedupResult> {
     let mut by_semantic: BTreeMap<String, Rule> = BTreeMap::new();
     let mut duplicate_exact = 0usize;
     let mut duplicate_semantic = 0usize;
+    let mut dropped = Vec::new();
 
     for rule in rules {
         if rule.is_badfilter() {
@@ -34,10 +37,12 @@ pub fn dedup(rules: Vec<Rule>) -> Result<DedupResult> {
         if let Some(existing) = by_exact.get_mut(&exact_key) {
             duplicate_exact += 1;
             if preferred(existing, &rule) {
+                record_dropped(&mut dropped, existing, "DUPLICATE_EXACT", &rule);
                 let mut chosen = rule;
                 chosen = merge_into(chosen, existing);
                 *existing = chosen;
             } else {
+                record_dropped(&mut dropped, &rule, "DUPLICATE_EXACT", existing);
                 merge_provenance(existing, &rule);
             }
             continue;
@@ -51,10 +56,12 @@ pub fn dedup(rules: Vec<Rule>) -> Result<DedupResult> {
             duplicate_semantic += 1;
             let replacement = preferred(existing, &rule);
             if replacement {
+                record_dropped(&mut dropped, existing, "DUPLICATE_SEMANTIC", &rule);
                 let mut chosen = rule;
                 chosen = merge_into(chosen, existing);
                 *existing = chosen;
             } else {
+                record_dropped(&mut dropped, &rule, "DUPLICATE_SEMANTIC", existing);
                 merge_provenance(existing, &rule);
             }
             continue;
@@ -69,11 +76,30 @@ pub fn dedup(rules: Vec<Rule>) -> Result<DedupResult> {
             .then(a.line_no().cmp(&b.line_no()))
             .then(a.text().cmp(b.text()))
     });
+    dropped.sort_by(|a, b| {
+        a.source_id
+            .cmp(&b.source_id)
+            .then(a.line_no.cmp(&b.line_no))
+            .then(a.reason.cmp(&b.reason))
+            .then(a.text.cmp(&b.text))
+    });
     Ok(DedupResult {
         rules: output,
         duplicate_exact,
         duplicate_semantic,
+        dropped,
     })
+}
+
+fn record_dropped(dropped: &mut Vec<DroppedRecord>, loser: &Rule, reason: &str, winner: &Rule) {
+    dropped.push(DroppedRecord {
+        source_id: loser.source_id().to_string(),
+        line_no: loser.line_no(),
+        dialect: loser.dialect(),
+        reason: reason.to_string(),
+        detail: format!("kept {}:{}", winner.source_id(), winner.line_no()),
+        text: loser.text().to_string(),
+    });
 }
 
 fn rank(rule: &Rule) -> (i32, usize, &str, usize) {

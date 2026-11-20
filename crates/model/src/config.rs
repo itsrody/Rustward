@@ -68,7 +68,8 @@ pub struct OutputConfig {
     pub inline_audit_comments: bool,
     #[serde(default = "default_list_title")]
     pub title: String,
-    /// Fixed value for reproducible fixtures. When omitted, emission uses the UTC build time.
+    /// Explicit override for fixtures. When omitted, the CLI derives the header from the pinned
+    /// `last_modified` values in `lists.lock`, falling back to the Unix epoch if none are present.
     #[serde(default)]
     pub last_modified: Option<String>,
     #[serde(default = "default_list_expires")]
@@ -345,6 +346,10 @@ pub struct SourceConfig {
     pub permissions: u8,
     #[serde(default)]
     pub license: String,
+    /// Optional pinned metadata date for local sources. Remote sources normally use the HTTP
+    /// `Last-Modified` header, which is also recorded in `lists.lock`.
+    #[serde(default)]
+    pub last_modified: Option<String>,
 }
 
 fn default_priority() -> i32 {

@@ -1,7 +1,7 @@
 //! Deterministic, compiler-friendly list emission.
 
 use anyhow::Result;
-use model::{Config, CosmeticPayload, NetworkRule, Rule, RuleState, util::build_timestamp};
+use model::{Config, CosmeticPayload, NetworkRule, Rule, RuleState};
 use std::collections::{BTreeMap, BTreeSet};
 
 #[derive(Debug, Clone)]
@@ -16,6 +16,7 @@ pub fn emit(
     config: &Config,
     build_id: &str,
     badfilter_targets: &BTreeSet<u64>,
+    last_modified: &str,
 ) -> Result<EmitResult> {
     let mut selected: Vec<Rule> = rules
         .iter()
@@ -52,11 +53,6 @@ pub fn emit(
 
     let mut output = String::new();
     output.push_str(&format!("! Title: {}\n", config.output.title));
-    let last_modified = config
-        .output
-        .last_modified
-        .clone()
-        .unwrap_or_else(build_timestamp);
     output.push_str(&format!("! Last modified: {last_modified}\n"));
     output.push_str(&format!("! Expires: {}\n", config.output.expires));
     output.push_str(&format!("! Description: {}\n", config.output.description));

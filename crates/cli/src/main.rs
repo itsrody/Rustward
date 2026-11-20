@@ -2,7 +2,7 @@ use anyhow::Result;
 use clap::{Parser, Subcommand};
 use model::{
     AdmissionResult as AdmissionResultImpl, AnalysisReport as AnalysisReportImpl, BuildReport,
-    Config,
+    Config, PayloadTruncation, ReportReceipt,
 };
 use serde::Serialize;
 use std::{
@@ -17,6 +17,11 @@ use emit::EmitResult as EmitResultImpl;
 use fetch::{FetchMode, FetchedSource, ListsLock};
 use model::util::{sha256_hex, write_json, write_text, write_tsv};
 use rewrite::RewriteResult as RewriteResultImpl;
+
+/// Bounds for the machine-readable receipt payload in `build.json`. Full receipts remain available
+/// in `rewrites.tsv`, and `receipts_sha256` covers the complete uncapped set.
+const MAX_REPORT_RECEIPTS: usize = 1000;
+const MAX_RECEIPT_FIELD_BYTES: usize = 2048;
 
 #[derive(Debug, Parser)]
 #[command(name = "rustward", version, about = "Offline Rustward.txt generator")]
@@ -58,6 +63,7 @@ struct Pipeline {
     config_hash: String,
     profile_hash: String,
     build_id: String,
+    last_modified: String,
     records: Vec<model::ParsedRecord>,
     admission: AdmissionResultImpl,
     dedup: DedupResultImpl,
@@ -81,6 +87,11 @@ impl Pipeline {
             config.engine.adblock_version, config.output.emit_order
         );
         let build_id = sha256_hex(build_material.as_bytes());
+        let last_modified = config
+            .output
+            .last_modified
+            .clone()
+            .unwrap_or_else(|| fetch::pinned_last_modified(&lock));
         let started = Instant::now();
         let records = parse::parse_sources(&sources, &root, &config)?;
         let preparse_receipts: Vec<_> = records
@@ -108,6 +119,7 @@ impl Pipeline {
             &config,
             &build_id,
             &admission.badfilter_targets,
+            &last_modified,
         )?;
         timing("emit", started.elapsed());
         let started = Instant::now();
@@ -121,6 +133,7 @@ impl Pipeline {
             config_hash,
             profile_hash,
             build_id,
+            last_modified,
             records,
             admission,
             dedup,
@@ -223,7 +236,7 @@ fn build(root: &Path, config_path: &Path, no_verify: bool, fetch_mode: FetchMode
     let bench = pipeline.bench(&pipeline.emit.text);
     timing("bench", started.elapsed());
     let analysis = pipeline.analysis()?;
-    let report = build_report(&pipeline, &analysis, &verification, &bench);
+    let report = build_report(&pipeline, &analysis, &verification, &bench)?;
     let output_name = pipeline
         .config
         .output
@@ -275,10 +288,16 @@ fn build(root: &Path, config_path: &Path, no_verify: bool, fetch_mode: FetchMode
         "source\tline\tdialect\treason\tdetail\ttext",
         exclusion_rows.iter().cloned(),
     )?;
+    let dropped_rows: Vec<String> = pipeline
+        .dedup
+        .dropped
+        .iter()
+        .map(|row| row.tsv_row())
+        .collect();
     write_tsv(
         &staging.join("reports/dropped.tsv"),
         "source\tline\tdialect\treason\tdetail\ttext",
-        exclusion_rows.iter().cloned(),
+        dropped_rows.iter().cloned(),
     )?;
     write_tsv(
         &staging.join("reports/dialect_gaps.tsv"),
@@ -460,6 +479,7 @@ struct Manifest {
     adblock_version: String,
     engine_profile: String,
     emit_order: String,
+    last_modified: String,
     sources: Vec<String>,
 }
 
@@ -472,6 +492,7 @@ fn manifest(pipeline: &Pipeline) -> Manifest {
         adblock_version: pipeline.config.engine.adblock_version.clone(),
         engine_profile: pipeline.config.engine.profile.clone(),
         emit_order: pipeline.config.output.emit_order.clone(),
+        last_modified: pipeline.last_modified.clone(),
         sources: pipeline
             .sources
             .iter()
@@ -480,12 +501,104 @@ fn manifest(pipeline: &Pipeline) -> Manifest {
     }
 }
 
+#[derive(Debug)]
+struct CappedReceipts {
+    records: Vec<ReportReceipt>,
+    total: usize,
+    truncated: bool,
+}
+
+fn truncate_utf8(value: &str, max_bytes: usize) -> String {
+    if value.len() <= max_bytes {
+        return value.to_string();
+    }
+    let mut end = max_bytes;
+    while !value.is_char_boundary(end) {
+        end -= 1;
+    }
+    value[..end].to_string()
+}
+
+fn cap_before(values: &[String]) -> (Vec<String>, Option<PayloadTruncation>) {
+    let bytes: usize =
+        values.iter().map(|value| value.len()).sum::<usize>() + values.len().saturating_sub(1);
+    let digest = sha256_hex(values.join("\n").as_bytes());
+    if bytes <= MAX_RECEIPT_FIELD_BYTES {
+        return (values.to_vec(), None);
+    }
+    let mut capped = Vec::new();
+    let mut used = 0usize;
+    for value in values {
+        let remaining = MAX_RECEIPT_FIELD_BYTES.saturating_sub(used);
+        if remaining == 0 {
+            break;
+        }
+        let piece = truncate_utf8(value, remaining);
+        used += piece.len() + 1;
+        capped.push(piece);
+    }
+    (
+        capped,
+        Some(PayloadTruncation {
+            bytes,
+            sha256: digest,
+        }),
+    )
+}
+
+fn cap_after(value: &str) -> (String, Option<PayloadTruncation>) {
+    if value.len() <= MAX_RECEIPT_FIELD_BYTES {
+        return (value.to_string(), None);
+    }
+    (
+        truncate_utf8(value, MAX_RECEIPT_FIELD_BYTES),
+        Some(PayloadTruncation {
+            bytes: value.len(),
+            sha256: sha256_hex(value.as_bytes()),
+        }),
+    )
+}
+
+fn capped_receipts(receipts: &[model::RewriteReceipt]) -> Result<CappedReceipts> {
+    let total = receipts.len();
+    let indices: Vec<usize> = if total <= MAX_REPORT_RECEIPTS {
+        (0..total).collect()
+    } else {
+        (0..MAX_REPORT_RECEIPTS)
+            .map(|index| index * (total - 1) / (MAX_REPORT_RECEIPTS - 1))
+            .collect()
+    };
+    let mut truncated = total > MAX_REPORT_RECEIPTS;
+    let mut records = Vec::with_capacity(indices.len());
+    for index in indices {
+        let receipt = &receipts[index];
+        let (before, before_truncated) = cap_before(&receipt.before);
+        let (after, after_truncated) = cap_after(&receipt.after);
+        truncated |= before_truncated.is_some() || after_truncated.is_some();
+        records.push(ReportReceipt {
+            id: receipt.id.clone(),
+            family: receipt.family.clone(),
+            before,
+            after,
+            source_id: receipt.source_id.clone(),
+            checks: receipt.checks.clone(),
+            before_truncated,
+            after_truncated,
+        });
+    }
+    Ok(CappedReceipts {
+        records,
+        total,
+        truncated,
+    })
+}
+
 fn build_report(
     pipeline: &Pipeline,
     analysis: &AnalysisReportImpl,
     verification: &model::VerifyReport,
     bench: &model::BenchReport,
-) -> BuildReport {
+) -> Result<BuildReport> {
     let mut report = BuildReport::new(
         pipeline.build_id.clone(),
         pipeline.config_hash.clone(),
@@ -493,7 +606,9 @@ fn build_report(
         pipeline.lock_hash.clone(),
         &pipeline.config,
     );
+    let capped = capped_receipts(&pipeline.rewrite.receipts)?;
     report.metrics.extend(analysis.metrics.clone());
+    report.metric("last_modified", pipeline.last_modified.clone());
     report.metric("duplicates_exact", pipeline.dedup.duplicate_exact);
     report.metric("duplicates_semantic", pipeline.dedup.duplicate_semantic);
     report.metric("rewrites_applied", pipeline.rewrite.receipts.len());
@@ -525,10 +640,13 @@ fn build_report(
         "cosmetic_hosts_total",
         verification.coverage.cosmetic_hosts_total,
     );
-    report.receipts = pipeline.rewrite.receipts.clone();
+    report.receipts = capped.records;
+    report.receipts_total = capped.total;
+    report.receipts_sha256 = sha256_hex(&serde_json::to_vec(&pipeline.rewrite.receipts)?);
+    report.receipts_truncated = capped.truncated;
     report.verification = verification.clone();
     report.bench = bench.clone();
-    report
+    Ok(report)
 }
 
 fn gap_rows(pipeline: &Pipeline) -> Vec<String> {
@@ -582,7 +700,7 @@ fn build_markdown(
             .map(serialize_value)
             .unwrap_or_default()
     ));
-    output.push_str(&format!("- rewrites: `{}`\n", report.receipts.len()));
+    output.push_str(&format!("- rewrites: `{}`\n", report.receipts_total));
     output.push_str(&format!(
         "- mismatches: `{}`\n",
         verification.mismatches.len()
@@ -612,5 +730,48 @@ fn serialize_value(value: &serde_json::Value) -> String {
     match value {
         serde_json::Value::Number(number) => number.to_string(),
         other => other.to_string(),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn receipt(id: &str, after: &str) -> model::RewriteReceipt {
+        model::RewriteReceipt {
+            id: id.to_string(),
+            family: "test".to_string(),
+            before: vec!["before".to_string()],
+            after: after.to_string(),
+            source_id: "test-source".to_string(),
+            checks: vec!["structural".to_string()],
+        }
+    }
+
+    #[test]
+    fn cap_after_records_original_length_and_digest() {
+        let long = "€".repeat(MAX_RECEIPT_FIELD_BYTES);
+        let (capped, metadata) = cap_after(&long);
+        let metadata = metadata.expect("long payload is capped");
+        assert_eq!(capped.len() % 3, 0, "UTF-8 boundary preserved");
+        assert!(capped.len() <= MAX_RECEIPT_FIELD_BYTES);
+        assert_eq!(metadata.bytes, long.len());
+        assert_eq!(metadata.sha256, sha256_hex(long.as_bytes()));
+    }
+
+    #[test]
+    fn capped_receipts_sample_evenly_and_report_total() {
+        let receipts: Vec<_> = (0..MAX_REPORT_RECEIPTS + 1)
+            .map(|index| receipt(&format!("r{index}"), "short"))
+            .collect();
+        let capped = capped_receipts(&receipts).expect("cap receipts");
+        assert_eq!(capped.total, receipts.len());
+        assert_eq!(capped.records.len(), MAX_REPORT_RECEIPTS);
+        assert_eq!(capped.records[0].id, "r0");
+        assert_eq!(
+            capped.records[MAX_REPORT_RECEIPTS - 1].id,
+            format!("r{MAX_REPORT_RECEIPTS}")
+        );
+        assert!(capped.truncated);
     }
 }

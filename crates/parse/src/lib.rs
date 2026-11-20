@@ -933,6 +933,7 @@ fn detect_gap_for_error(text: &str) -> Option<DialectGap> {
             trusted: false,
             permissions: 0,
             license: String::new(),
+            last_modified: None,
         },
     )
     .into_iter()
@@ -1000,6 +1001,7 @@ mod tests {
                 trusted: false,
                 permissions: 0,
                 license: String::new(),
+                last_modified: None,
             },
             text: String::new(),
             sha256: String::new(),

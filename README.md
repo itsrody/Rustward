@@ -35,7 +35,7 @@ A successful build publishes all artifacts under `dist/`:
 - `dist/reports/build.md`
 - `dist/reports/analysis.json`
 - `dist/reports/rewrites.tsv`
-- `dist/reports/dropped.tsv` and `dist/reports/excluded.tsv`
+- `dist/reports/dropped.tsv` (dedup losers) and `dist/reports/excluded.tsv` (policy failures)
 - `dist/reports/dialect_gaps.tsv`
 - `dist/reports/verify.json`
 - `dist/reports/bench.json`

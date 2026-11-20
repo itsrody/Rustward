@@ -15,9 +15,81 @@ use std::{
     time::Duration,
 };
 
-use model::util::{normalize_list, sha256_hex};
+use model::util::{format_rfc2822, normalize_list, sha256_hex};
 
 const FETCHED_AT: &str = "1970-01-01T00:00:00Z";
+
+/// Derives the aggregate `! Last modified` header from pinned source/include metadata. Only
+/// parseable UTC dates contribute; the newest one wins so the list reflects its freshest input.
+/// A lockfile with no parseable dates falls back to the Unix epoch rather than wall-clock time.
+pub fn pinned_last_modified(lock: &ListsLock) -> String {
+    let mut latest: Option<i64> = None;
+    let entries = lock
+        .sources
+        .values()
+        .chain(lock.includes.values().flat_map(|entries| entries.values()));
+    for entry in entries {
+        let Some(value) = &entry.last_modified else {
+            continue;
+        };
+        if let Some(seconds) = parse_http_date(value) {
+            latest = Some(latest.map_or(seconds, |current| current.max(seconds)));
+        }
+    }
+    latest
+        .map(format_rfc2822)
+        .unwrap_or_else(|| format_rfc2822(0))
+}
+
+fn parse_http_date(value: &str) -> Option<i64> {
+    let tokens: Vec<&str> = value.trim().split_whitespace().collect();
+    if tokens.len() < 6 || !matches!(tokens[5], "GMT" | "UTC" | "+0000" | "-0000") {
+        return None;
+    }
+    let day: i64 = tokens[1].parse().ok()?;
+    if !(1..=31).contains(&day) {
+        return None;
+    }
+    let month = match tokens[2] {
+        "Jan" => 1,
+        "Feb" => 2,
+        "Mar" => 3,
+        "Apr" => 4,
+        "May" => 5,
+        "Jun" => 6,
+        "Jul" => 7,
+        "Aug" => 8,
+        "Sep" => 9,
+        "Oct" => 10,
+        "Nov" => 11,
+        "Dec" => 12,
+        _ => return None,
+    };
+    let year: i64 = tokens[3].parse().ok()?;
+    let mut clock = tokens[4].split(':');
+    let hour: i64 = clock.next()?.parse().ok()?;
+    let minute: i64 = clock.next()?.parse().ok()?;
+    let second: i64 = clock.next()?.parse().ok()?;
+    if clock.next().is_some()
+        || !(0..=23).contains(&hour)
+        || !(0..=59).contains(&minute)
+        || !(0..=59).contains(&second)
+    {
+        return None;
+    }
+    Some(days_from_civil(year, month, day) * 86_400 + hour * 3_600 + minute * 60 + second)
+}
+
+/// Howard Hinnant's civil-to-days algorithm, valid for the Unix epoch and beyond.
+fn days_from_civil(year: i64, month: i64, day: i64) -> i64 {
+    let year = year - i64::from(month <= 2);
+    let era = if year >= 0 { year } else { year - 399 } / 400;
+    let year_of_era = year - era * 400;
+    let month_prime = month + if month > 2 { -3 } else { 9 };
+    let day_of_year = (153 * month_prime + 2) / 5 + day - 1;
+    let day_of_era = year_of_era * 365 + year_of_era / 4 - year_of_era / 100 + day_of_year;
+    era * 146_097 + day_of_era - 719_468
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum FetchMode {
@@ -135,7 +207,7 @@ impl<'a> Loader<'a> {
         previous: Option<&LockEntry>,
     ) -> Result<Loaded> {
         if url.starts_with("http://") || url.starts_with("https://") {
-            self.load_remote(url, expected, previous)
+            self.load_remote(source, url, expected, previous)
         } else {
             self.load_local(source, url, expected)
         }
@@ -167,12 +239,13 @@ impl<'a> Loader<'a> {
             final_url: url.to_string(),
             path: path.to_string_lossy().to_string(),
             etag: None,
-            last_modified: None,
+            last_modified: source.last_modified.clone(),
         })
     }
 
     fn load_remote(
         &self,
+        source: &SourceConfig,
         url: &str,
         expected: Option<&str>,
         previous: Option<&LockEntry>,
@@ -191,7 +264,10 @@ impl<'a> Loader<'a> {
                 final_url: url.to_string(),
                 path: cache_path.to_string_lossy().to_string(),
                 etag: previous.and_then(|entry| entry.etag.clone()),
-                last_modified: previous.and_then(|entry| entry.last_modified.clone()),
+                last_modified: source
+                    .last_modified
+                    .clone()
+                    .or_else(|| previous.and_then(|entry| entry.last_modified.clone())),
             });
         }
         if self.mode == FetchMode::Offline {
@@ -230,7 +306,10 @@ impl<'a> Loader<'a> {
                         final_url: entry.url.clone(),
                         path: cached.to_string_lossy().to_string(),
                         etag: entry.etag.clone(),
-                        last_modified: entry.last_modified.clone(),
+                        last_modified: source
+                            .last_modified
+                            .clone()
+                            .or_else(|| entry.last_modified.clone()),
                     });
                 }
             }
@@ -244,7 +323,10 @@ impl<'a> Loader<'a> {
         }
         let final_url = response.url().to_string();
         let etag = header_string(response.headers(), reqwest::header::ETAG);
-        let last_modified = header_string(response.headers(), reqwest::header::LAST_MODIFIED);
+        let last_modified = source
+            .last_modified
+            .clone()
+            .or_else(|| header_string(response.headers(), reqwest::header::LAST_MODIFIED));
         let bytes = response
             .bytes()
             .with_context(|| format!("failed to read {url}"))?
@@ -452,6 +534,7 @@ fn load_includes(
             trusted: source.trusted,
             permissions: source.permissions,
             license: source.license.clone(),
+            last_modified: source.last_modified.clone(),
         };
         let previous = loader
             .previous
@@ -478,4 +561,67 @@ fn load_includes(
     }
 
     Ok((includes, locks))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn entry(last_modified: Option<&str>) -> LockEntry {
+        LockEntry {
+            url: "https://example.test/list.txt".to_string(),
+            path: "cache/blobs/sha256/example".to_string(),
+            sha256: "example".to_string(),
+            bytes: 1,
+            fetched_at: FETCHED_AT.to_string(),
+            dialect: Dialect::Ubo,
+            format: SourceFormat::Standard,
+            priority: 50,
+            enabled: true,
+            trusted: false,
+            permissions: 0,
+            license: "test".to_string(),
+            etag: None,
+            last_modified: last_modified.map(str::to_string),
+        }
+    }
+
+    #[test]
+    fn parses_http_dates_in_utc_only() {
+        assert_eq!(parse_http_date("Thu, 01 Jan 1970 00:00:00 GMT"), Some(0));
+        assert_eq!(
+            parse_http_date("Sat, 14 Nov 2026 13:05:16 +0000"),
+            Some(1_794_661_516)
+        );
+        assert_eq!(parse_http_date("Sat, 14 Nov 2026 13:05:16 EST"), None);
+        assert_eq!(parse_http_date("not a date"), None);
+    }
+
+    #[test]
+    fn pinned_last_modified_uses_newest_parseable_pinned_date() {
+        let mut lock = ListsLock::default();
+        lock.sources.insert(
+            "old".to_string(),
+            entry(Some("Fri, 20 Nov 2026 03:49:29 GMT")),
+        );
+        lock.sources.insert(
+            "new".to_string(),
+            entry(Some("Sat, 21 Nov 2026 03:49:29 GMT")),
+        );
+        lock.sources
+            .insert("bad".to_string(), entry(Some("not a date")));
+        assert_eq!(
+            pinned_last_modified(&lock),
+            "Sat, 21 Nov 2026 03:49:29 +0000"
+        );
+    }
+
+    #[test]
+    fn pinned_last_modified_falls_back_to_epoch() {
+        let lock = ListsLock::default();
+        assert_eq!(
+            pinned_last_modified(&lock),
+            "Thu, 01 Jan 1970 00:00:00 +0000"
+        );
+    }
 }

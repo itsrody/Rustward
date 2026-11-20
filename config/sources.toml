@@ -94,7 +94,7 @@ regex_fusion = false
 [[source]]
 id = "ag-base-easylist"
 url = "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt"
-sha256 = "1e0be62542dc2b27a56a298c7c88a31a937c1ab609c00abd8f0cdf3fd8908ec6"
+sha256 = "4116d6d436bc188d0fb9e63372646b3be2f194e73809c23f4d00fac0793699da"
 dialect = "ubo"
 format = "standard"
 host_semantics = "ubo"

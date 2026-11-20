@@ -3804,316 +3804,315 @@ ag-base-easylist	12447	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
 ag-base-easylist	12449	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
 ag-base-easylist	12450	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
 ag-base-easylist	12451	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
-ag-base-easylist	12454	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12455	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12501	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12502	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12535	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12595	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12609	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12614	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
-ag-base-easylist	12615	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12616	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12621	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12622	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12625	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12641	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12642	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12646	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12670	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12676	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12700	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12701	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12704	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12713	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12726	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12738	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12745	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12453	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12456	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12457	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12503	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12504	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12537	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12597	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12611	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12616	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
+ag-base-easylist	12617	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12618	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12623	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12624	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12627	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12643	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12644	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12648	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12672	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12678	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12702	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12703	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12706	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12715	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12728	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12740	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12747	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12752	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12753	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12758	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12759	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12763	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12764	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12749	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12754	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12755	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12760	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12761	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12765	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12766	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12767	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12768	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12772	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12787	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12788	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12770	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12774	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12789	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12808	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12790	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12791	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12810	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12817	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12818	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12812	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12819	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12820	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12825	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12826	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12834	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12822	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12827	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12828	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12836	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12837	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12838	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12839	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12843	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12847	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12848	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12852	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12853	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12841	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12845	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12849	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12850	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12854	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12855	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12885	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12889	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12856	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12857	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12887	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12891	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12892	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12893	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12894	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12895	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12898	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12904	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12908	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12915	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12918	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12919	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12925	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12928	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12935	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12939	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12940	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12896	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12897	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12900	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12906	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12910	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12917	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12920	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12921	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12927	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12930	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12937	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12941	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12942	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12943	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12949	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12944	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12945	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12951	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12953	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
-ag-base-easylist	12957	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12967	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12953	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12955	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
+ag-base-easylist	12959	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12969	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12971	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12974	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12979	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12986	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12993	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	12994	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12973	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12976	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12981	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12988	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12995	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	12996	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13000	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13003	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	12998	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13002	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13005	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13010	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13017	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13007	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13012	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13019	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13020	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13021	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13022	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13023	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
-ag-base-easylist	13028	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13029	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13035	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13040	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13043	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13050	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13061	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13070	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13071	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13089	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13100	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13104	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13108	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	13109	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13110	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13023	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13024	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13025	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
+ag-base-easylist	13030	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13031	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13037	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13042	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13045	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13052	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13063	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13072	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13073	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13091	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13102	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13106	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13110	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-base-easylist	13111	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13114	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13123	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	13142	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13151	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13156	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13157	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13164	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13165	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13112	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13113	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13116	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13125	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	13144	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13153	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13158	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13159	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13166	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13167	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13171	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13172	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13169	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13173	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13174	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13177	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13185	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13186	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13175	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13176	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13179	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13187	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13188	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13202	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13212	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13215	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13216	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13190	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13204	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13214	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13217	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13218	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13221	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13222	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13219	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13220	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13223	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13224	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13225	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13226	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13232	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13233	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13239	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13227	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13228	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13234	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13235	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13241	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13242	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13243	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13252	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13255	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13259	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13262	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13263	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13244	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13245	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13254	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13257	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13261	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13264	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13265	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13269	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13267	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13271	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13277	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13278	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13273	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13279	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13280	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13281	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13284	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13285	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13291	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13307	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13308	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13316	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13317	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13320	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13325	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13326	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13332	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13343	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13354	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13355	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13361	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13377	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13378	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13283	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13286	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13287	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13293	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13309	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13310	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13318	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13319	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13322	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13327	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13328	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13334	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13345	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13356	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13357	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13363	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13379	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13380	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13381	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13386	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13387	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13391	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13383	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13388	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13389	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13393	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13400	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13401	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13395	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13402	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13403	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13408	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13411	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13412	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13404	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13405	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13410	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13413	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13416	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13420	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13423	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13430	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13431	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13434	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13435	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13414	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13415	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13418	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13422	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13425	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13432	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13433	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13436	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13437	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13441	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13444	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13445	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13438	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13439	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13443	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13446	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13447	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13448	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13449	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13453	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13457	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13458	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13463	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13464	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13450	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13451	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13455	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13459	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13460	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13465	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13466	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13467	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13468	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13469	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13472	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13475	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13470	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13471	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13474	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13477	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13478	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13479	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13483	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13484	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13480	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13481	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13485	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13486	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13487	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13488	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13492	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13493	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13489	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13490	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13494	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13495	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13496	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13497	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13498	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13499	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13500	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13501	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13502	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13505	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13504	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13507	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13511	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13512	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13518	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13519	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13509	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13513	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13514	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13520	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13521	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13522	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13523	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13524	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13525	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13526	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13529	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13530	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13535	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13538	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13541	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13527	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13528	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13531	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13532	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13537	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13540	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13543	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13545	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13548	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13547	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13550	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13553	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13554	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13552	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13555	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13556	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13557	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13559	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13560	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13561	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
-ag-base-easylist	13563	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13564	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13561	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13562	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13563	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
 ag-base-easylist	13565	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13566	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13567	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13568	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13570	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13571	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13572	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13573	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13574	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13575	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13578	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13582	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13590	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13591	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13576	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13577	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13580	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13584	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13592	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13595	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13596	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13593	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13594	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13597	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13603	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13607	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13608	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13598	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13599	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13605	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13609	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13614	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13615	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13610	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13611	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13616	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13617	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13618	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
+ag-base-easylist	13618	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13619	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13620	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
 ag-base-easylist	13621	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13622	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
 ag-base-easylist	13623	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13628	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13629	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13632	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13633	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13624	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
+ag-base-easylist	13625	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13630	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13631	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13634	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13635	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13638	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13636	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13637	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13640	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13645	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13654	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13658	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13642	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13647	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13656	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13660	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13661	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13662	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13663	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13664	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -4121,42 +4120,42 @@ ag-base-easylist	13665	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 ag-base-easylist	13666	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13667	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13668	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13673	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13676	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13677	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13669	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13670	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13675	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13678	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13679	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13680	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13681	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13682	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13683	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13684	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13685	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13686	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13687	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13688	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13692	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13695	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13696	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13690	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13694	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13697	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13698	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13699	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13700	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13701	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13702	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13705	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13706	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13703	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13704	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13707	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13710	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13711	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13716	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13732	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13708	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13709	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13712	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13713	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13718	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13734	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13735	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13736	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13737	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13738	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13739	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13740	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13742	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13743	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13744	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13745	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13746	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -4164,322 +4163,322 @@ ag-base-easylist	13747	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 ag-base-easylist	13748	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13749	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13750	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13753	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13751	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13752	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13755	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13756	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13757	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13762	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13765	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13779	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13780	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13758	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13759	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13764	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13767	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13781	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13782	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13783	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13784	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13787	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13788	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13785	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13786	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13789	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13790	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13792	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13793	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13794	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13795	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13796	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13797	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13798	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13799	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13800	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13801	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13802	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13803	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13804	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13805	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13806	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13807	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13808	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13809	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13812	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13810	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13811	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13814	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13817	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13826	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	13828	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13843	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13844	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13849	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13850	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13854	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13859	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13860	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13869	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13816	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13819	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13828	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	13830	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13845	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13846	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13851	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13852	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13856	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13861	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13862	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13871	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13873	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13874	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13875	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13876	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13878	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13879	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13880	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13886	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13894	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13881	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13882	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13888	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13896	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13904	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13907	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13898	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13906	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13909	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13911	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13913	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13914	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13915	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13916	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13917	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13918	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13925	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13919	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13920	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13927	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13930	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13929	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13932	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13933	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13934	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13935	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13936	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13937	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13938	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13940	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13941	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13944	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13942	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13943	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13946	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13947	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13948	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13951	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13952	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13949	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13950	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13953	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13960	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13954	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13955	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13962	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13971	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13976	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13979	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13980	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13986	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13989	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13990	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13994	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	13995	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13964	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13973	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13978	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13981	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13982	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13988	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13991	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13992	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13996	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	13997	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	13998	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14001	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14024	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14025	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14030	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14033	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14038	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14051	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14052	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14058	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14059	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14066	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	14084	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14115	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	14116	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14117	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14000	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14003	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14026	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14027	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14032	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14035	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14040	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14053	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14054	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14060	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14061	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14068	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	14086	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14117	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-base-easylist	14118	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14119	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14134	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14137	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14143	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14159	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14162	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14165	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14169	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14174	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14179	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14217	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14227	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14228	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14248	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14120	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14121	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14136	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14139	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14145	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14161	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14164	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14167	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14171	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14176	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14181	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14219	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14229	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14230	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14250	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14251	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14255	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14258	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14259	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14252	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14253	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14257	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14260	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14261	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14267	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14268	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14271	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14275	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14285	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14288	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14299	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14312	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
-ag-base-easylist	14325	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14336	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14347	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14350	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14363	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14368	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14369	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14375	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14381	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14402	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14409	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14414	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14417	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14263	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14269	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14270	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14273	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14277	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14287	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14290	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14301	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14314	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
+ag-base-easylist	14327	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14338	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14349	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14352	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14365	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14370	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14371	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14377	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14383	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14404	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14411	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14416	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14419	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14420	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14421	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14422	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14423	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14424	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14425	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14429	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14445	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14454	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14461	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14472	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14475	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14426	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14427	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14431	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14447	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14456	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14463	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14474	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14477	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14485	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14486	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14491	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14492	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14479	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14487	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14488	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14493	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14494	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14495	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14505	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14517	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14518	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14497	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14507	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14519	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14525	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14526	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14542	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14543	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14549	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14520	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14521	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14527	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14528	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14544	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14545	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14551	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14552	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14556	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14559	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14573	ubo	matches-css	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	14579	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14553	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14554	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14558	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14561	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14575	ubo	matches-css	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	14581	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14594	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
-ag-base-easylist	14614	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14615	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14636	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14648	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14655	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14661	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14664	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14583	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14596	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
+ag-base-easylist	14616	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14617	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14638	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14650	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14657	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14663	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14666	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14667	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14668	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14671	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14672	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14686	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14690	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14693	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14696	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14700	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14734	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14737	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14770	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
-ag-base-easylist	14775	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14784	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14785	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14793	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14795	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	14799	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	14804	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	14805	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	14852	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	14861	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14872	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14873	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14669	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14670	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14673	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14674	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14688	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14692	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14695	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14698	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14702	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14736	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14739	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14772	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
+ag-base-easylist	14777	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14786	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14787	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14795	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14797	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	14801	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	14806	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	14807	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	14854	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	14863	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14874	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14875	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14877	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14888	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14896	ubo	matches-css	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	14909	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14910	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14879	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14890	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14898	ubo	matches-css	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	14911	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14912	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14913	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	14914	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14935	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	14945	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	14992	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	15008	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	15050	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	15062	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	15111	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	15118	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	15142	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	15173	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	15215	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
-ag-base-easylist	15234	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	15235	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	15289	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	15298	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	15450	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
-ag-base-easylist	15455	ubo	match-case	SEMANTIC_GAP	match-case forces regex machinery
-ag-base-easylist	15556	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
-ag-base-easylist	15720	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	15866	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	15876	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	16225	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	16321	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	16482	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	16896	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	16934	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	16978	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	16979	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	14915	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14916	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14937	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	14947	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	14994	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	15010	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	15052	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	15064	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	15113	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	15120	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	15144	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	15175	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	15217	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
+ag-base-easylist	15236	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	15237	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	15291	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	15300	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	15452	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
+ag-base-easylist	15457	ubo	match-case	SEMANTIC_GAP	match-case forces regex machinery
+ag-base-easylist	15558	ubo	denyallow	UNSUPPORTED	engine rejects $denyallow
+ag-base-easylist	15722	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	15868	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	15878	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	16227	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	16323	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	16484	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	16898	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	16936	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-base-easylist	16980	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	16981	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	16982	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	16986	ubo	matches-css	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	16994	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	16999	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17003	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17004	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17007	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17008	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	16983	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	16984	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	16988	ubo	matches-css	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	16996	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17001	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17005	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17006	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17009	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17010	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17011	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17012	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17013	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17017	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17014	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17015	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17019	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17020	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17021	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17022	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17023	ubo	matches-css	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17023	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17024	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17025	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17028	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17029	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17037	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17043	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17044	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17025	ubo	matches-css	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17026	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17027	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17030	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17031	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17039	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17045	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17046	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17047	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17048	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17049	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	17050	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17081	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17105	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17113	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17117	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17122	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17123	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17148	ubo	matches-css	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17177	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17185	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17186	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17051	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17052	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17083	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17107	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17115	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17119	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17124	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17125	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17150	ubo	matches-css	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17179	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17187	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17188	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17190	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17193	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17192	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17195	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17196	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17197	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17232	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17247	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17248	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17198	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17199	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17234	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17249	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17250	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17251	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17261	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17265	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17266	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17269	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17270	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17252	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17253	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17263	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17267	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17268	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17271	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17272	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17273	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -4488,36 +4487,36 @@ ag-base-easylist	17275	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 ag-base-easylist	17276	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17277	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17278	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17282	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17283	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17279	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17280	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17284	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17285	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17286	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17304	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	17305	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	17306	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17359	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17360	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17374	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17375	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17381	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17428	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	17438	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17482	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	17287	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17288	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17306	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	17307	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	17308	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17361	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17362	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17376	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17377	ubo	matches-path	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17383	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17430	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17440	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17484	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	17492	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17493	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17511	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	17512	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	17517	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17518	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17486	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	17494	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17495	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17513	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	17514	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-base-easylist	17519	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17520	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17521	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17532	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17542	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	17546	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17547	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17522	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17523	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17534	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17544	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
 ag-base-easylist	17548	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17549	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17550	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -4527,17 +4526,17 @@ ag-base-easylist	17553	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 ag-base-easylist	17554	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17555	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	17556	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	17973	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	18141	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	17557	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17558	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	17975	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	18143	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	18145	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	18147	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	18149	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
-ag-base-easylist	18453	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18454	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18151	ubo	upward	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-base-easylist	18455	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18459	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18460	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18456	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18457	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	18461	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	18462	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	18463	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
@@ -4546,42 +4545,44 @@ ag-base-easylist	18465	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualif
 ag-base-easylist	18466	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	18467	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	18468	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18642	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
-ag-base-easylist	18656	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18664	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18667	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18671	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18672	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18675	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18692	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18699	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18712	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18738	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18746	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18761	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	18770	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18781	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18782	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18820	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18823	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	18946	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	19125	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	19200	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	19243	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
-ag-base-easylist	20208	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	20222	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	20223	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18469	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18470	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18644	ubo	all	SEMANTIC_GAP	$all is expanded to engine type bits
+ag-base-easylist	18658	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18666	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18669	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18673	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18674	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18677	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18694	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18701	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18714	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18740	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18748	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18763	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	18772	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18783	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18784	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18822	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18825	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	18948	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	19127	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	19202	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	19245	ubo	entity_domain	SEMANTIC_GAP	entity domains are hashed literally
+ag-base-easylist	20210	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20224	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	20228	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	20231	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	20225	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	20226	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	20230	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20233	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	20234	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	20237	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	20235	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	20236	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20239	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	20240	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-base-easylist	20241	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	20246	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
-ag-base-easylist	47366	ubo	xpath	SEMANTIC_GAP	procedural operator requires allowlist review
+ag-base-easylist	20242	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	20243	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	20248	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
+ag-base-easylist	47379	ubo	xpath	SEMANTIC_GAP	procedural operator requires allowlist review
 ag-tracking	9	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	10	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification
 ag-tracking	11	ubo	scriptlet	ENGINE_NATIVE	scriptlet requires D11 qualification

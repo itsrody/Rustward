@@ -82,6 +82,11 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(first_list.contains("+js(addEventListener-defuser, click, interstitial)"));
     assert!(first_list.contains("||redirect-a.example^$script,redirect=noopjs:10"));
     assert!(first_list.contains("||redirect-b.example^$script,redirect=fuckadblock.js-3.2.0:5"));
+    assert!(
+        first_list.contains(
+            "||redirect-path.example/pagead/js/adsbygoogle.js^$script,redirect=noopjs:10"
+        )
+    );
     assert!(!first_list.contains("unknown-redirect"));
     assert!(!first_list.contains("unknown-scriptlet"));
     assert!(!first_list.contains("matches-css"));

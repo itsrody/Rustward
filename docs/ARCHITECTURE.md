@@ -187,6 +187,11 @@ whether the resource was a `scriptlet` or a `redirect resource`. The same offici
 to `$redirect` resources, with a trailing `:N` redirect priority stripped before catalog lookup. A
 resource that is absent from the pinned official uBO assets remains excluded rather than emitted.
 
+Redirect realization builds concrete probe URLs from the parsed literal `body` (including `^`
+separator and `*` wildcard spellings) instead of always probing `/rs-probe.js`. Complex regex bodies
+fall back to the generic probe; the engine still decides whether the candidate URL actually yields a
+redirect, so this does not substitute an approximation for engine verification.
+
 ---
 
 ## 3. Design principles

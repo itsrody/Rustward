@@ -49,3 +49,7 @@ not lost.
     redirect resources. Audited plain missing names against the pinned uBO commit: `gemius`,
     `metrika-yandex-tag`, `metrika-yandex-watch`, and `ati-smarttag` are not in the official assets,
     and `none` is uBO's special "no redirect" keyword; all remain intentional exclusions.
+15. **Path-aware redirect realization** — done. Redirect probes now use the parsed literal body for
+    exact-path, `^`-boundary, and `*` wildcard patterns instead of the fixed `/rs-probe.js` path.
+    Complex regex bodies keep the generic fallback, and the engine still decides whether a probe
+    produces a redirect, so no trust or verification gate is relaxed.

@@ -529,6 +529,10 @@ fn realize_redirect(rule: &NetworkRule, permissions: u8, resources: &[Resource])
         .collect();
     if let Some(host) = &rule.hostname {
         target_hosts.push(clean_probe_host(host));
+    } else {
+        // Patterns such as `*/fuckadblock-` have no hostname; let the source host
+        // act as the request host in addition to the generic fallback below.
+        target_hosts.extend(source_hosts.iter().cloned());
     }
     target_hosts.push("ads.example".to_string());
     target_hosts.sort();
@@ -536,25 +540,84 @@ fn realize_redirect(rule: &NetworkRule, permissions: u8, resources: &[Resource])
 
     let request_types = redirect_request_types(&options);
     let methods = redirect_methods(&options);
+    let paths = redirect_probe_paths(rule);
 
     for source in &source_hosts {
         let source_url = format!("https://{source}/");
         for target in &target_hosts {
-            let url = format!("https://{target}/rs-probe.js");
-            for request_type in &request_types {
-                for method in &methods {
-                    let request = match Request::new(&url, &source_url, request_type, method) {
-                        Ok(request) => request,
-                        Err(_) => continue,
-                    };
-                    if engine.check_network_request(&request).redirect.is_some() {
-                        return true;
+            for path in &paths {
+                let url = format!("https://{target}{path}");
+                for request_type in &request_types {
+                    for method in &methods {
+                        let request = match Request::new(&url, &source_url, request_type, method) {
+                            Ok(request) => request,
+                            Err(_) => continue,
+                        };
+                        if engine.check_network_request(&request).redirect.is_some() {
+                            return true;
+                        }
                     }
                 }
             }
         }
     }
     false
+}
+
+/// Builds concrete URL paths that a literal redirect filter can match. The engine remains the
+/// oracle: these are only probe candidates, and admission still requires the engine to return a
+/// redirect. Complex regex bodies fall back to the generic probe rather than being approximated.
+fn redirect_probe_paths(rule: &NetworkRule) -> Vec<String> {
+    literal_probe_paths(
+        Some(rule.body.as_str()),
+        !rule.is_complete_regex && !rule.is_hostname_regex,
+    )
+}
+
+fn literal_probe_paths(body: Option<&str>, simple: bool) -> Vec<String> {
+    const FALLBACK: &str = "/rs-probe.js";
+    if !simple {
+        return vec![FALLBACK.to_string()];
+    }
+    let Some(body) = body.filter(|body| !body.is_empty()) else {
+        return vec![FALLBACK.to_string()];
+    };
+    if body.starts_with('^')
+        || body.starts_with("/^")
+        || body
+            .chars()
+            .any(|ch| matches!(ch, '[' | ']' | '(' | ')' | '{' | '}' | '|' | '\\'))
+    {
+        return vec![FALLBACK.to_string()];
+    }
+
+    let mut exact = String::new();
+    let mut separated = String::new();
+    for ch in body.chars() {
+        match ch {
+            '^' => separated.push_str("/probe"),
+            '*' => {
+                exact.push_str("probe");
+                separated.push_str("probe");
+            }
+            other => {
+                exact.push(other);
+                separated.push(other);
+            }
+        }
+    }
+    if !exact.starts_with('/') {
+        exact.insert(0, '/');
+    }
+    if !separated.starts_with('/') {
+        separated.insert(0, '/');
+    }
+
+    let mut paths = vec![exact];
+    if separated != paths[0] {
+        paths.push(separated);
+    }
+    paths
 }
 
 /// adblock encodes the redirect "apply after N requests" option as a trailing `:N`
@@ -659,7 +722,7 @@ fn redirect_methods(options: &[String]) -> Vec<String> {
 
 #[cfg(test)]
 mod tests {
-    use super::{clean_probe_host, redirect_resource_name};
+    use super::{clean_probe_host, literal_probe_paths, redirect_resource_name};
 
     #[test]
     fn redirect_suffix_is_stripped_without_touching_colon_names() {
@@ -675,6 +738,34 @@ mod tests {
         );
         assert_eq!(redirect_resource_name("gemius"), "gemius");
         assert_eq!(redirect_resource_name("noopjs:"), "noopjs:");
+    }
+
+    #[test]
+    fn redirect_probe_paths_cover_literal_and_boundary_bodies() {
+        assert_eq!(
+            literal_probe_paths(Some("/pagead/js/adsbygoogle.js^"), true),
+            vec![
+                "/pagead/js/adsbygoogle.js",
+                "/pagead/js/adsbygoogle.js/probe"
+            ]
+        );
+        assert_eq!(
+            literal_probe_paths(Some("/path/*/banner.js^"), true),
+            vec!["/path/probe/banner.js", "/path/probe/banner.js/probe"]
+        );
+        assert_eq!(
+            literal_probe_paths(Some("/fuckadblock-"), true),
+            vec!["/fuckadblock-"]
+        );
+        assert_eq!(literal_probe_paths(None, true), vec!["/rs-probe.js"]);
+        assert_eq!(
+            literal_probe_paths(Some("/^https:\\/\\/ads.example/.*/"), false),
+            vec!["/rs-probe.js"]
+        );
+        assert_eq!(
+            literal_probe_paths(Some("/[a-z]+/ad.js"), true),
+            vec!["/rs-probe.js"]
+        );
     }
 
     #[test]

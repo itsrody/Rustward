@@ -13387,6 +13387,17 @@
     "reason": null
   },
   {
+    "name": "googlesyndication_adsbygoogle.js",
+    "canonical_name": "googlesyndication_adsbygoogle.js",
+    "grade": "standard",
+    "digest": "b7789a92c04d7cdc596b3d7f940bec01a7d8382479aac6f0eebdbcc4d72b7c2e",
+    "permission": 0,
+    "source_id": "ag-base-easylist",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "abort-current-script",
     "canonical_name": "abort-current-script.js",
     "grade": "standard",
@@ -20684,6 +20695,17 @@
     "canonical_name": "set-constant.js",
     "grade": "standard",
     "digest": "6483d84d8211ee1b84ab64a8a4d2687270ce789a486ce6efc3ba56a059e10746",
+    "permission": 0,
+    "source_id": "ag-base-easylist",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "set-cookie",
+    "canonical_name": "set-cookie.js",
+    "grade": "standard",
+    "digest": "0602ce7b452819993f479893a98ef42b1aecd2f72c73107a0b3a8717c59adf76",
     "permission": 0,
     "source_id": "ag-base-easylist",
     "source_permissions": 0,
@@ -40898,6 +40920,17 @@
     "reason": null
   },
   {
+    "name": "json-prune",
+    "canonical_name": "json-prune.js",
+    "grade": "standard",
+    "digest": "c9d9c11bf1386ae20cfc6f630bc8cf883718a479363110e5abf28b7e6f9b84f8",
+    "permission": 0,
+    "source_id": "ag-base-easylist",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "set-constant",
     "canonical_name": "set-constant.js",
     "grade": "standard",
@@ -57200,6 +57233,17 @@
     "reason": null
   },
   {
+    "name": "set-local-storage-item",
+    "canonical_name": "set-local-storage-item.js",
+    "grade": "standard",
+    "digest": "918076ed32c91ef1bf99e664ded5a937b10e3aa9923af728fa163b41070b7c69",
+    "permission": 0,
+    "source_id": "ag-annoyances",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "set-cookie",
     "canonical_name": "set-cookie.js",
     "grade": "standard",
@@ -66517,17 +66561,6 @@
     "reason": null
   },
   {
-    "name": "set-cookie",
-    "canonical_name": "set-cookie.js",
-    "grade": "standard",
-    "digest": "0602ce7b452819993f479893a98ef42b1aecd2f72c73107a0b3a8717c59adf76",
-    "permission": 0,
-    "source_id": "ag-annoyances",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
     "name": "set-cookie-reload",
     "canonical_name": "set-cookie-reload.js",
     "grade": "standard",
@@ -72153,6 +72186,17 @@
     "canonical_name": "set-cookie.js",
     "grade": "standard",
     "digest": "0602ce7b452819993f479893a98ef42b1aecd2f72c73107a0b3a8717c59adf76",
+    "permission": 0,
+    "source_id": "ag-annoyances",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "no-setTimeout-if",
+    "canonical_name": "prevent-setTimeout.js",
+    "grade": "standard",
+    "digest": "7b017d98bb75373ad85231b4bcdc71703cf3a6ba8cb3cbf10509c5f88f8b4050",
     "permission": 0,
     "source_id": "ag-annoyances",
     "source_permissions": 0,
@@ -75691,6 +75735,17 @@
     "reason": null
   },
   {
+    "name": "1x1.gif",
+    "canonical_name": "1x1.gif",
+    "grade": "standard",
+    "digest": "48d71754d62bf1dd1921494ee9576e8a9a8f83cde27d672850435b4dad428302",
+    "permission": 0,
+    "source_id": "ag-annoyances",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "noop.js",
     "canonical_name": "noop.js",
     "grade": "standard",
@@ -75728,6 +75783,17 @@
     "canonical_name": "noop.js",
     "grade": "standard",
     "digest": "929e84bf81a4405a37972eed1b48c1b17d0daf791edc404b7d73f4aed0d128f2",
+    "permission": 0,
+    "source_id": "ag-annoyances",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "googlesyndication_adsbygoogle.js",
+    "canonical_name": "googlesyndication_adsbygoogle.js",
+    "grade": "standard",
+    "digest": "b7789a92c04d7cdc596b3d7f940bec01a7d8382479aac6f0eebdbcc4d72b7c2e",
     "permission": 0,
     "source_id": "ag-annoyances",
     "source_permissions": 0,
@@ -194579,17 +194645,6 @@
     "reason": null
   },
   {
-    "name": "rmnt",
-    "canonical_name": "remove-node-text.js",
-    "grade": "standard",
-    "digest": "0d37ecc290c6b82cd54146f8f17bf9349cab907a67f4c69946b98b2f013a276d",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
     "name": "trusted-replace-outbound-text",
     "canonical_name": "trusted-replace-outbound-text.js",
     "grade": "trusted",
@@ -194676,17 +194731,6 @@
     "source_permissions": 0,
     "decision": "excluded",
     "reason": "ENGINE_TRUST: scriptlet trusted-replace-outbound-text.js grade trusted is not allowed for source ubo-filters-min"
-  },
-  {
-    "name": "trusted-create-html",
-    "canonical_name": "trusted-create-html.js",
-    "grade": "trusted",
-    "digest": "7dc6caba4b41bce487d829efd11761d985bab875b1044a338ae4ed20437d3839",
-    "permission": 1,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: scriptlet trusted-create-html.js grade trusted is not allowed for source ubo-filters-min"
   },
   {
     "name": "aopw",
@@ -195595,28 +195639,6 @@
     "canonical_name": "abort-on-property-read.js",
     "grade": "standard",
     "digest": "74c20c08de7d38f74d5118efda3061a6de62a2741fec42940747960a31d2e273",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
-    "name": "nostif",
-    "canonical_name": "prevent-setTimeout.js",
-    "grade": "standard",
-    "digest": "7b017d98bb75373ad85231b4bcdc71703cf3a6ba8cb3cbf10509c5f88f8b4050",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
-    "name": "set",
-    "canonical_name": "set-constant.js",
-    "grade": "standard",
-    "digest": "6483d84d8211ee1b84ab64a8a4d2687270ce789a486ce6efc3ba56a059e10746",
     "permission": 0,
     "source_id": "ubo-filters-min",
     "source_permissions": 0,
@@ -221221,21 +221243,10 @@
     "reason": null
   },
   {
-    "name": "json-prune",
-    "canonical_name": "json-prune.js",
+    "name": "json-edit",
+    "canonical_name": "json-edit.js",
     "grade": "standard",
-    "digest": "c9d9c11bf1386ae20cfc6f630bc8cf883718a479363110e5abf28b7e6f9b84f8",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
-    "name": "json-prune",
-    "canonical_name": "json-prune.js",
-    "grade": "standard",
-    "digest": "c9d9c11bf1386ae20cfc6f630bc8cf883718a479363110e5abf28b7e6f9b84f8",
+    "digest": "c926890d61089a4b7e8cc54ff02e3ff19b474631ea5f53218578393991dc4f79",
     "permission": 0,
     "source_id": "ubo-filters-min",
     "source_permissions": 0,
@@ -268888,17 +268899,6 @@
     "canonical_name": "json-edit-xhr-response.js",
     "grade": "standard",
     "digest": "270cda87881ad1573116563e438f16a2cbdd97d99d443978b53b9d407c77f4b0",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
-    "name": "set-local-storage-item",
-    "canonical_name": "set-local-storage-item.js",
-    "grade": "standard",
-    "digest": "918076ed32c91ef1bf99e664ded5a937b10e3aa9923af728fa163b41070b7c69",
     "permission": 0,
     "source_id": "ubo-filters-min",
     "source_permissions": 0,

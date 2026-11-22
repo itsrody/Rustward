@@ -29,6 +29,7 @@ example.com##+js(no-setTimeout-if, adblockNotif)
 example.com##+js(addEventListener-defuser, click, interstitial)
 example.com##+js(unknown-scriptlet)
 ||blocked.example^$denyallow=first-party.example
+||cname-tracker.example^$cname
 ||redirect-a.example^$script,redirect=noopjs:10
 ||redirect-b.example^$script,redirect=fuckadblock.js-3.2.0:5
 ||redirect-c.example^$script,redirect=unknown-redirect

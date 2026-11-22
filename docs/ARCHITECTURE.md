@@ -625,6 +625,7 @@ guess semantics.
 | `all` | AG / uBO | Accepted, maps to `FROM_ALL_TYPES` | Keep, but report that uBO's `$all` additionally covers popup / document / inline-script / inline-font |
 | `third-party`, `3p`, `first-party`, `1p` | all | Supported, aliases recognized | D3 canonicalization |
 | `rewrite=abp-resource:*` | ABP | **Natively aliased** to `redirect` in the engine (including `abp-resource:` tokens) | D2 spelling normalization only; no semantic change needed |
+| `cname` | uBO | `UnrecognisedOption` — the engine rejects the alias outright | Report as an `Unsupported` dialect gap (kind `cname`); rules are excluded, never passed through |
 | `redirect=`, `redirect-rule=` | uBO / AG | Supported | D11 applies the same official-resource + engine-trust gate as scriptlets; unresolved resources are excluded |
 | `csp=` | all | Supported, document/subdocument only | Dedup only; never merge payloads |
 | `removeparam=` | uBO / AG | Supported only for `[A-Za-z0-9_-]+` names; regex values rejected | Flag regex-valued rules unsupported; D8 for the `queryprune` alias |
@@ -632,7 +633,7 @@ guess semantics.
 | `generichide`, `ghide` | all | Supported **only on exceptions** (`GenericHideWithoutException` otherwise) | Keep as-is |
 | `method=get\|head\|post` | AG / uBO | Only these three methods are recognized; other methods are silently filtered | Flag rules whose methods were dropped |
 | `object-subrequest` | legacy ABP/AG | Aliased to `object` by the engine | D3 canonicalization, with a "legacy alias" note |
-| `elemhide`/`ehide`, `specifichide`/`shide`, `popup`, `popunder`, `genericblock`, `urlblock`, `jsinject`, `content`, `stealth`, `extension`, `strict1p`, `strict3p`, `top`, `ipaddress`, `header`, `cname`, `permissions`, `inline-script`, `inline-font`, `replace`, `removeheader`, `jsonprune`, `hls`, `urltransform`/`uritransform`, `urlskip`, `webrtc` | dialect-specific | Unrecognized / removed | D10: report and drop or quarantine; never substitute a "close enough" rule without a differential gate |
+| `elemhide`/`ehide`, `specifichide`/`shide`, `popup`, `popunder`, `genericblock`, `urlblock`, `jsinject`, `content`, `stealth`, `extension`, `strict1p`, `strict3p`, `top`, `ipaddress`, `header`, `permissions`, `inline-script`, `inline-font`, `replace`, `removeheader`, `jsonprune`, `hls`, `urltransform`/`uritransform`, `urlskip`, `webrtc` | dialect-specific | Unrecognized / removed | D10: report and drop or quarantine; never substitute a "close enough" rule without a differential gate |
 
 **Cosmetic separator compatibility:**
 

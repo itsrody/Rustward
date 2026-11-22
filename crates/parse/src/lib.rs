@@ -969,6 +969,11 @@ fn detect_network_gaps(text: &str, source: &model::SourceConfig) -> Vec<DialectG
                     GapClass::Canonicalized,
                     "queryprune maps to removeparam",
                 )),
+                "cname" => gaps.push(DialectGap::new(
+                    "cname",
+                    GapClass::Unsupported,
+                    "$cname is not engine-native",
+                )),
                 "match-case" => gaps.push(DialectGap::new(
                     "match-case",
                     GapClass::SemanticGap,
@@ -1311,6 +1316,51 @@ mod tests {
                 "unexpectedly admitted {unsupported}"
             );
         }
+    }
+
+    #[test]
+    fn cname_option_is_recorded_as_unsupported_gap() {
+        let source = model::SourceConfig {
+            id: "test".to_string(),
+            url: "https://example.test/list.txt".to_string(),
+            path: None,
+            sha256: None,
+            include_sha256: Default::default(),
+            dialect: Dialect::Ubo,
+            format: SourceFormat::Standard,
+            host_semantics: None,
+            priority: 50,
+            enabled: true,
+            trusted: false,
+            permissions: 0,
+            license: String::new(),
+            last_modified: None,
+        };
+
+        // Direct gap detection for a valueless $cname option.
+        let gaps = super::detect_network_gaps("||tracker.example^$cname", &source);
+        assert!(
+            gaps.iter()
+                .any(|gap| gap.kind == "cname" && gap.class == GapClass::Unsupported),
+            "expected cname gap, got {gaps:?}"
+        );
+
+        // End-to-end: the engine rejects $cname, so the rule is unsupported with a cname gap.
+        let record = parse_record("||cname-tracker.example^$cname");
+        let ParsedOutcome::Unsupported { reason: _, gap } = &record.outcome else {
+            panic!("expected unsupported outcome, got {:?}", record.outcome);
+        };
+        assert!(
+            gap.as_ref().is_some_and(|g| g.kind == "cname"),
+            "expected cname gap, got {gap:?}"
+        );
+
+        // $cname combined with a valid option is still rejected, not silently dropped.
+        let combined = parse_record("||tracker.example^$cname,script");
+        assert!(
+            matches!(combined.outcome, ParsedOutcome::Unsupported { .. }),
+            "unexpectedly admitted $cname combined rule"
+        );
     }
 
     #[test]

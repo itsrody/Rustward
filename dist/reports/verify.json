@@ -5,8 +5,8 @@
   "golden_rule_violations": 0,
   "emit_order_violations": 0,
   "coverage": {
-    "network_rules_total": 675870,
-    "network_rules_probed": 242650,
+    "network_rules_total": 675857,
+    "network_rules_probed": 242714,
     "rewrite_receipts_total": 54468,
     "rewrite_receipts_exercised": 53219,
     "cosmetic_hosts_total": 75519,

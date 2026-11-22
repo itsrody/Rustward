@@ -10,20 +10,20 @@
     "cosmetic_vetted_scriptlet": 25364,
     "directives": 101,
     "effective_cosmetic_rules": 93631,
-    "effective_network_rules": 683861,
-    "eligible": 759089,
+    "effective_network_rules": 683848,
+    "eligible": 759076,
     "empty_lines": 4003,
     "excluded_by_gate": 20096,
     "hosts_skips": 13,
     "hosts_skips_broadcast": 6,
     "hosts_skips_localhost": 7,
     "metadata": 38,
-    "network_rules": 589336,
+    "network_rules": 589323,
     "output_fast_native_css": 48139,
     "output_light_procedural": 327,
     "output_vetted_scriptlet": 22446,
     "parse_errors": 1693,
-    "raw_lines": 840998,
+    "raw_lines": 840985,
     "semantic_gaps_accepted": 70035,
     "semantic_gaps_accepted_all": 70035,
     "semantic_gaps_excluded": 513,
@@ -45,7 +45,7 @@
   },
   "dialects": {
     "hosts": 92056,
-    "ubo": 748942
+    "ubo": 748929
   },
   "gaps": {
     "all:SEMANTIC_GAP": 70035,
@@ -63,6 +63,6 @@
     "xpath:SEMANTIC_GAP": 29
   },
   "eligibility": {
-    "ELIGIBLE": 759089
+    "ELIGIBLE": 759076
   }
 }

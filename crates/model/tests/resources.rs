@@ -1,4 +1,4 @@
-use model::resources::ResourceCatalog;
+use model::resources::{ResourceCatalog, ResourceSnapshot};
 use std::path::Path;
 
 fn fixture_catalog() -> ResourceCatalog {
@@ -62,4 +62,60 @@ fn folded_names_do_not_resolve() {
     ] {
         assert!(catalog.find(folded).is_none(), "unexpected alias {folded}");
     }
+}
+
+#[test]
+fn brave_snapshot_merges_into_official_catalog() {
+    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+    let ubo = ResourceSnapshot::load_verified(
+        &root.join("config/resources/ubo-official.json"),
+        "ddc13cecf2441456e0c707a484fb7e76a4d82d1ad13b09e8075ee1ab2e4cd038",
+    )
+    .expect("load uBO snapshot");
+    let brave = ResourceSnapshot::load_verified(
+        &root.join("config/resources/brave-official.json"),
+        "31d6bdd604b45e155d1093064a082b8f93ca63650be4bbb3e338a7a60d485053",
+    )
+    .expect("load Brave snapshot");
+    let merged = ubo.merge(brave).into_catalog().expect("merge snapshots");
+
+    assert_eq!(merged.resources.len(), 225);
+    assert!(merged.source.contains("Brave"));
+    assert!(merged.commit.contains("b84ad0fd"));
+
+    for name in [
+        "brave-fix.js",
+        "brave-fix",
+        "de-amp.js",
+        "optimizely.js",
+        "sourcepoint-reject.js",
+        "ketch-reject-unblock.js",
+    ] {
+        let found = merged
+            .find(name)
+            .unwrap_or_else(|| panic!("Brave scriptlet {name} missing after merge"));
+        assert_eq!(found.permission, 0);
+        assert!(merged.dependency_closure(name).is_ok());
+    }
+
+    // uBO aliases must remain resolvable after the merge.
+    assert_eq!(
+        merged
+            .find("no-setTimeout-if")
+            .expect("uBO alias after merge")
+            .name,
+        "prevent-setTimeout.js"
+    );
+}
+
+#[test]
+fn duplicate_resource_names_across_snapshots_are_rejected() {
+    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+    let ubo = ResourceSnapshot::load_verified(
+        &root.join("config/resources/ubo-official.json"),
+        "ddc13cecf2441456e0c707a484fb7e76a4d82d1ad13b09e8075ee1ab2e4cd038",
+    )
+    .expect("load uBO snapshot");
+    let duplicate = ubo.clone();
+    assert!(ubo.merge(duplicate).into_catalog().is_err());
 }

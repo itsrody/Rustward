@@ -163,8 +163,22 @@ fn load_catalog(config: &Config, root: &Path) -> Result<ResourceCatalog> {
     let Some(path) = ubo.snapshot_path.as_ref() else {
         return Ok(ResourceCatalog::empty());
     };
-    ResourceCatalog::load_verified(&root.join(path), &ubo.snapshot_sha256)
-        .with_context(|| "failed to load official resource snapshot")
+    let mut snapshot =
+        model::ResourceSnapshot::load_verified(&root.join(path), &ubo.snapshot_sha256)
+            .with_context(|| "failed to load uBO official resource snapshot")?;
+    if let Some(brave) = resources.brave.as_ref() {
+        if let Some(brave_path) = brave.snapshot_path.as_ref() {
+            let brave_snapshot = model::ResourceSnapshot::load_verified(
+                &root.join(brave_path),
+                &brave.snapshot_sha256,
+            )
+            .with_context(|| "failed to load Brave official resource snapshot")?;
+            snapshot = snapshot.merge(brave_snapshot);
+        }
+    }
+    snapshot
+        .into_catalog()
+        .with_context(|| "failed to build official resource catalog")
 }
 
 fn admit_network(

@@ -116,6 +116,25 @@ impl ResourceSnapshot {
     pub fn into_catalog(self) -> Result<ResourceCatalog> {
         ResourceCatalog::new(self)
     }
+
+    /// Combines two verified official snapshots into one catalog source. The resource lists must
+    /// be disjoint; `ResourceCatalog::new` rejects duplicate names or aliases across origins.
+    pub fn merge(mut self, other: Self) -> Self {
+        self.source = match (self.source.is_empty(), other.source.is_empty()) {
+            (false, false) => format!("{} + {}", self.source, other.source),
+            (false, true) => self.source,
+            (true, false) => other.source,
+            (true, true) => String::new(),
+        };
+        self.commit = match (self.commit.is_empty(), other.commit.is_empty()) {
+            (false, false) => format!("{} + {}", self.commit, other.commit),
+            (false, true) => self.commit,
+            (true, false) => other.commit,
+            (true, true) => String::new(),
+        };
+        self.resources.extend(other.resources);
+        self
+    }
 }
 
 impl OfficialResource {

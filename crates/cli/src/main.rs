@@ -465,7 +465,23 @@ fn engine_resources(config: &Config, root: &Path) -> Vec<adblock::resources::Res
     let Some(path) = ubo.snapshot_path.as_ref() else {
         return Vec::new();
     };
-    model::ResourceCatalog::load_verified(&root.join(path), &ubo.snapshot_sha256)
+    let Ok(mut snapshot) =
+        model::ResourceSnapshot::load_verified(&root.join(path), &ubo.snapshot_sha256)
+    else {
+        return Vec::new();
+    };
+    if let Some(brave) = resources.brave.as_ref() {
+        if let Some(brave_path) = brave.snapshot_path.as_ref() {
+            if let Ok(brave_snapshot) = model::ResourceSnapshot::load_verified(
+                &root.join(brave_path),
+                &brave.snapshot_sha256,
+            ) {
+                snapshot = snapshot.merge(brave_snapshot);
+            }
+        }
+    }
+    snapshot
+        .into_catalog()
         .map(|catalog| catalog.engine_resources())
         .unwrap_or_default()
 }

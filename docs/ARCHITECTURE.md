@@ -105,8 +105,10 @@ properties:
    procedural allowlist, chained procedural operators, DOM action operators, or unsupported dialect
    syntax.
 2. **Official.** Any referenced executable content — scriptlet or redirect resource — comes from a
-   pinned, content-addressed snapshot of uBlock Origin's official library. No hand-written or
-   third-party JS is emitted.
+   pinned, content-addressed snapshot of uBlock Origin's official library or Brave's official
+   `adblock-resources` bundle for its adblock-rust engine. Both snapshots are verified against
+   configured SHA-256 digests and merged into one catalog; no hand-written or third-party JS is
+   emitted.
 3. **Engine-trusted.** The generated `Resource` permission bits are satisfied by the source's
    `PermissionMask`, including the full dependency closure, and the engine actually realizes the
    injection/redirect. Trust is never inferred from a scriptlet name.
@@ -163,13 +165,15 @@ arguments only, no `/regex/`, one operator. It can be reduced further by config.
 
 **Vetted scriptlet dual gate (D11).** A `##+js(name, args...)` rule is admitted only if:
 
-1. **uBO provenance and grade.** `name` (or an alias) exists in a pinned snapshot of uBlock Origin's
-   official scriptlet library (`src/js/resources/scriptlets.js` and its imported modules). The build
-   records the upstream commit, file sha256, aliases, dependencies, and parsed grade: `standard` for
-   ordinary built-ins or `trusted` when `requiresTrust: true`. Scriptlet names are case-sensitive
-   identifiers; the parser preserves the official spelling so aliases such as `no-setTimeout-if`
-   and `addEventListener-defuser` resolve instead of being folded to an unknown lowercase name.
-   Rustward uses explicit per-source
+1. **Official provenance and grade.** `name` (or an alias) exists in a verified snapshot from an
+   official publisher: uBlock Origin's scriptlet library (`src/js/resources/scriptlets.js` and its
+   imported modules) or Brave's `adblock-resources` bundle for the pinned adblock-rust engine. The
+   build records each upstream commit, snapshot sha256, aliases, dependencies, and grade: `standard`
+   for ordinary built-ins or `trusted` when `requiresTrust: true` (Brave's custom resources are all
+   `standard`, permission 0). uBO and Brave snapshots are merged into one catalog with duplicate
+   names/aliases rejected. Scriptlet names are case-sensitive identifiers; the parser preserves the
+   official spelling so aliases such as `no-setTimeout-if` and `addEventListener-defuser` resolve
+   instead of being folded to an unknown lowercase name. Rustward uses explicit per-source
    `trusted = true`; it never guesses trust from a `uBlock filters – …` title.
 2. **adblock-rust trust.** `standard → PermissionMask::default()`; `trusted → TRUST_BITS` granted only
    to configured trusted sources. Admission requires
@@ -185,7 +189,7 @@ dependency), `ENGINE_TRUST` (grade, permission, kind, or realization failure), o
 and policy codes. Details are written to the `detail` column of `reports/excluded.tsv` and identify
 whether the resource was a `scriptlet` or a `redirect resource`. The same official+trust gate applies
 to `$redirect` resources, with a trailing `:N` redirect priority stripped before catalog lookup. A
-resource that is absent from the pinned official uBO assets remains excluded rather than emitted.
+resource that is absent from the pinned official uBO or Brave assets remains excluded rather than emitted.
 
 Redirect realization builds concrete probe URLs from the parsed literal `body` (including `^`
 separator and `*` wildcard spellings) instead of always probing `/rs-probe.js`. Complex regex bodies
@@ -254,7 +258,7 @@ Rustward/
 ├── config/
 │   ├── sources.toml                # source registry + per-source trust (checked in)
 │   ├── profiles.toml               # engine feature profiles (desktop / mobile / wasm)
-│   └── resources/                  # pinned official uBO snapshot + generated Resource JSON
+│   └── resources/                  # pinned official uBO + Brave snapshots + generated Resource JSON
 ├── crates/
 │   ├── model/            # IR types, SemanticKey, config schema, errors, traits
 │   ├── fetch/           # HTTP, conditional GET, cache, lockfile, redirect handling
@@ -707,7 +711,7 @@ and intent preservation. All entries still go through the same reparse and diffe
 | D8 | Query-prune alias *(implemented as `d8_queryprune`)* | `$queryprune=utm_source` → `$removeparam=utm_source` | Preparse normalization before ADMIT, gated by `admit.queryprune_alias`; value must match the engine's `[A-Za-z0-9_-]+` restriction; regex, negated, and multi-value inputs remain D10, not guessed |
 | D9 | Pre-parsing directive evaluation | Resolve `!#include`, `!#if`, `!#else`, `!#endif` for the pinned target profile | Runs **before** parse; environment variables and include tree are hashed into the build id; unresolved branches are reported |
 | D10 | Golden-rule exclusion | `denyallow`, `#%#`, `#$#`, `elemhide`, `popup`, `replace`, `cname`, unvetted `+js(...)`, all action operators, `:matches-css*`, `:matches-path`, `:min-text-length`, `:upward`, `:xpath`, chained/regex procedural operators, unresolved redirects, … | If no safe D rewrite yields an eligible form, emit the original line to `reports/excluded.tsv` with source dialect + reason; never pass through or substitute a "close enough" rule without a differential gate |
-| D11 | Official-resource + engine-trust qualification | `##+js(name, args...)` and `$redirect=name` | Resolve name/alias in the pinned official uBO snapshot; record grade and resource digest; require `is_injectable_by(source.permissions)` for resource + dependency closure; require engine realization; otherwise D10 |
+| D11 | Official-resource + engine-trust qualification | `##+js(name, args...)` and `$redirect=name` | Resolve name/alias in the verified official uBO + Brave snapshots; record grade and resource digest; require `is_injectable_by(source.permissions)` for resource + dependency closure; require engine realization; otherwise D10 |
 
 Notes:
 
@@ -1066,8 +1070,16 @@ allow_standard = true
 allow_trusted = true
 require_realization = true
 
+# Brave's official resources for the pinned adblock-rust engine, merged into the same catalog.
+# The same grade/permission/dependency/realization gates apply; no trust bits are changed.
+[resources.brave]
+repo = "https://github.com/brave/adblock-resources"
+commit = "b84ad0fd6663a88c1402bc06a4abd5ab8be8fb3c"
+snapshot_path = "config/resources/brave-official.json"
+snapshot_sha256 = "31d6bdd604b45e155d1093064a082b8f93ca63650be4bbb3e338a7a60d485053"
+
 [cosmetic]
-# Fast path first; scriptlets only through [golden_rule] + [resources.ubo].
+# Fast path first; scriptlets only through [golden_rule] + [resources.ubo]/[resources.brave].
 allow_native_css = true
 light_procedural_allowlist = ["has-text", "matches-attr"]  # literal args only
 allow_regex_procedural_args = false
@@ -1146,7 +1158,7 @@ reproducibility anchor.
 | `!#if` / `!#include` drift across machines | Pin environment and include tree in config; hash both into build id; cache key includes directive hash |
 | Regex rules are expensive and hard to reason about | D7 removed; R11 stays disabled; regex input rules are rewrite-to-eligible candidates and are excluded when no native equivalent exists |
 | Slow/complex cosmetic operators leak into output | §2.4 allowlist enforced at parse, admit, rewrite, and emit; zero-blocked-operator assertion in verification |
-| Unofficial or under-trusted scriptlet/resource is emitted | D11 requires official snapshot membership, grade-specific `PermissionMask`, dependency closure, and engine realization; trust is explicit per source |
+| Unofficial or under-trusted scriptlet/resource is emitted | D11 requires membership in a verified uBO or Brave official snapshot, grade-specific `PermissionMask`, dependency closure, and engine realization; trust is explicit per source |
 | Cosmetic exceptions / generichide / scriptlet permissions | Action operators are excluded; `##@#` exceptions are barriers and never merged with hidings; vetted scriptlets carry digest + permission in the dedup key |
 | Canonical emit order changes engine performance | `compiler-friendly-v1` is snapshot-tested, benchmarked against a seeded shuffle, and bumped when the engine's token selection changes |
 | Non-UTF8 or malformed upstream lists | Warn, normalize with replacement ratio threshold, fall back to last known good blob |
@@ -1301,6 +1313,7 @@ Consequences already encoded in the design:
 - uBO syntax quirks: <https://github.com/gorhill/uBlock/wiki/Syntax-quirks>
 - uBO scriptlet library: <https://github.com/gorhill/uBlock/wiki/Resources-Library>
 - uBO official scriptlet source: <https://github.com/gorhill/uBlock/blob/master/src/js/resources/scriptlets.js>
+- Brave official resources: <https://github.com/brave/adblock-resources>
 - Engine source of truth: `brave/adblock-rust` 0.13.6 (`abstract_network.rs`, `network.rs`,
   `cosmetic.rs`, `lists.rs`, `optimizer.rs`)
 
@@ -1347,6 +1360,6 @@ trusted filter + missing resource      injected=""
 
 `ResourceStorage::get_scriptlet_resources` silently drops invocations that fail the permission or
 dependency checks, so `url_cosmetic_resources(host).injected_script` is part of the D11 gate.
-Official-library membership and grade come from the pinned uBO snapshot; adblock-rust supplies only
-the permission enforcement. That is the concrete basis for the §2.4 golden rule and the zero-violation
+Official-library membership and grade come from the verified uBO and Brave official snapshots;
+adblock-rust supplies only the permission enforcement. That is the concrete basis for the §2.4 golden rule and the zero-violation
 publish gate.

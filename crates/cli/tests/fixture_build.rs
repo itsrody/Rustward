@@ -20,6 +20,7 @@ fn copy_fixture_tree(root: &Path) {
         "tests/fixtures/sources.toml",
         "config/profiles.toml",
         "config/resources/ubo-official.json",
+        "config/resources/brave-official.json",
         "tests/fixtures/basic.txt",
         "tests/fixtures/hosts.txt",
     ] {
@@ -80,6 +81,7 @@ fn fixture_build_is_verified_deterministic_and_golden_rule_clean() {
     assert!(first_list.contains("+js(abort-on-property-read, adblockWasFound)"));
     assert!(first_list.contains("+js(no-setTimeout-if, adblockNotif)"));
     assert!(first_list.contains("+js(addEventListener-defuser, click, interstitial)"));
+    assert!(first_list.contains("+js(brave-fix)"));
     assert!(first_list.contains("||redirect-a.example^$script,redirect=noopjs:10"));
     assert!(first_list.contains("||redirect-b.example^$script,redirect=fuckadblock.js-3.2.0:5"));
     assert!(

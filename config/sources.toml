@@ -64,6 +64,14 @@ allow_standard = true
 allow_trusted = true
 require_realization = true
 
+# Brave's own official resources for its adblock-rust engine. These join the uBO snapshot in
+# the same verified catalog; grade/permission/dependency/realization gates are unchanged.
+[resources.brave]
+repo = "https://github.com/brave/adblock-resources"
+commit = "b84ad0fd6663a88c1402bc06a4abd5ab8be8fb3c"
+snapshot_path = "config/resources/brave-official.json"
+snapshot_sha256 = "31d6bdd604b45e155d1093064a082b8f93ca63650be4bbb3e338a7a60d485053"
+
 [cosmetic]
 allow_native_css = true
 light_procedural_allowlist = ["has-text", "matches-attr"]

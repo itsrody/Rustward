@@ -63,3 +63,10 @@ not lost.
     ending at a URL separator or a suffix beginning at one; suffix matches also accept a separator
     immediately before the match. The separator set is `.`, `-`, `_`, `/`, `?`, `&`, `=`, `#`, `:`,
     `;`, `+`, `%`, and `@`. Every removal still passes the engine differential gate.
+ 17. **Brave official scriptlet catalog** — done. A second SHA-pinned snapshot from Brave's
+     `adblock-resources` bundle (25 custom scriptlets, all standard grade/permission 0) joins the
+     uBO snapshot in one verified catalog, so `##+js(name, …)` rules referencing Brave scriptlets
+     such as `brave-fix`, `de-amp`, or `sourcepoint-reject` resolve through D11 instead of failing
+     as `UNKNOWN_RESOURCE`. Duplicate names/aliases across snapshots are rejected; grade,
+     permission, dependency, and engine-realization gates are unchanged. No production rule
+     currently invokes a Brave-only scriptlet, so output is unaffected.

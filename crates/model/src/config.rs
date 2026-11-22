@@ -191,6 +191,23 @@ impl Default for GoldenRuleConfig {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ResourcesConfig {
     pub ubo: UboResourcesConfig,
+    /// Additional official snapshot published by Brave for its adblock-rust engine. Resources
+    /// from this snapshot join the same catalog as uBO's official assets and pass the same
+    /// grade, permission, dependency, and engine-realization gates.
+    #[serde(default)]
+    pub brave: Option<BraveResourcesConfig>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BraveResourcesConfig {
+    #[serde(default)]
+    pub repo: String,
+    #[serde(default)]
+    pub commit: String,
+    #[serde(default)]
+    pub snapshot_path: Option<PathBuf>,
+    #[serde(default)]
+    pub snapshot_sha256: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

@@ -198044,17 +198044,6 @@
     "reason": null
   },
   {
-    "name": "trusted-suppress-native-method",
-    "canonical_name": "trusted-suppress-native-method.js",
-    "grade": "trusted",
-    "digest": "b44ee3e0ffb2d4f7a50cb1fe81c788d15adcd142af00642ac111b5a79919eec0",
-    "permission": 1,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "excluded",
-    "reason": "ENGINE_TRUST: scriptlet trusted-suppress-native-method.js grade trusted is not allowed for source ubo-filters-min"
-  },
-  {
     "name": "rmnt",
     "canonical_name": "remove-node-text.js",
     "grade": "standard",

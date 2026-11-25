@@ -2,9 +2,9 @@
   "sources": {
     "ag-annoyances": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/14_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/bd29bea451a156cb2c107283f94276604ba081823a0dd741fec9e6f88f5b5223",
-      "sha256": "bd29bea451a156cb2c107283f94276604ba081823a0dd741fec9e6f88f5b5223",
-      "bytes": 2041090,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/ed2472451f824949f409c51c1265eaadf0745d26d068d0e041d071d24caccbba",
+      "sha256": "ed2472451f824949f409c51c1265eaadf0745d26d068d0e041d071d24caccbba",
+      "bytes": 2044669,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -13,14 +13,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "AdGuard Annoyances; see upstream ! Title/! Description metadata",
-      "etag": "\"348c67352031c4806c104a87e3a96b21\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:18 GMT"
+      "etag": "\"88ab37ce047a2030b4f6601f2be5968e\"",
+      "last_modified": "Wed, 25 Nov 2026 07:49:52 GMT"
     },
     "ag-base-easylist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/47e3414f01a20b13de1f9dce65afb8a53cf4d51096f7a7571d42ca81572f2662",
-      "sha256": "47e3414f01a20b13de1f9dce65afb8a53cf4d51096f7a7571d42ca81572f2662",
-      "bytes": 2394780,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/90cffdc6aa40337cecbde35fee3a8a0b248f6fe4efb0f6af23f47dbe9ce9971f",
+      "sha256": "90cffdc6aa40337cecbde35fee3a8a0b248f6fe4efb0f6af23f47dbe9ce9971f",
+      "bytes": 2445585,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -29,14 +29,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "AdGuard Base filter + EasyList; see upstream ! Title/! Description metadata",
-      "etag": "\"6879ca16cc8f17237a0c1af596aa116d\"",
-      "last_modified": "Mon, 23 Nov 2026 05:49:43 GMT"
+      "etag": "\"bb5f05b2fda6995bdd93e0fbadf59948\"",
+      "last_modified": "Wed, 25 Nov 2026 06:55:32 GMT"
     },
     "ag-tracking": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/81684df8ee9cd312a540b277e83b3c2f798d6e6dc004a814bcbbeba2a04fc093",
-      "sha256": "81684df8ee9cd312a540b277e83b3c2f798d6e6dc004a814bcbbeba2a04fc093",
-      "bytes": 14947714,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/9cc08723368ab99298a9215bbc21a82c733eda680637240bdda37c251c8575d4",
+      "sha256": "9cc08723368ab99298a9215bbc21a82c733eda680637240bdda37c251c8575d4",
+      "bytes": 15916417,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -45,14 +45,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "AdGuard Tracking Protection; see upstream ! Title/! Description metadata",
-      "etag": "\"125e5e09efc6a2cdd8432acbd6f80e35\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:29 GMT"
+      "etag": "\"cfd753b0dc139dd8d282013277bb0926\"",
+      "last_modified": "Wed, 25 Nov 2026 07:50:01 GMT"
     },
     "dandelion-annoyances": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/250_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/16bc6847274e3322e37b5796d594333710a3550b35688fdbb7fafdd60dc7f00d",
-      "sha256": "16bc6847274e3322e37b5796d594333710a3550b35688fdbb7fafdd60dc7f00d",
-      "bytes": 176708,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/6c7d40641293b591e8f44a24a457f9a189ef6f1a781e046cd73382e320f6fc36",
+      "sha256": "6c7d40641293b591e8f44a24a457f9a189ef6f1a781e046cd73382e320f6fc36",
+      "bytes": 176524,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -61,14 +61,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "Dandelion Sprout's Annoyances; see upstream ! Title/! Description metadata",
-      "etag": "\"bccf6076180aa68d05c53b3e6a96f3a1\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:17 GMT"
+      "etag": "\"50659f70a241ce61ae8c4c3fb5498ad1\"",
+      "last_modified": "Wed, 25 Nov 2026 07:49:52 GMT"
     },
     "easyprivacy": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/118_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/05183bae657a42e1e8490d9b495b4e6623bc6cbfca3ae639fc4e062348af1984",
-      "sha256": "05183bae657a42e1e8490d9b495b4e6623bc6cbfca3ae639fc4e062348af1984",
-      "bytes": 994426,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/eb2b1b9d5049ed7034859d8f36e51ac5e1c199630153a0d1d236493312e9f878",
+      "sha256": "eb2b1b9d5049ed7034859d8f36e51ac5e1c199630153a0d1d236493312e9f878",
+      "bytes": 994261,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -77,14 +77,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "EasyPrivacy; see upstream ! Title/! Description metadata",
-      "etag": "\"ba08253844135476dca4ef678bb57921\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:17 GMT"
+      "etag": "\"bbbd0177dd424dff7cadc6fda636980d\"",
+      "last_modified": "Wed, 25 Nov 2026 07:49:52 GMT"
     },
     "fanboy-annoyances": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/122_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/1f9631d8a61ed0b7a2e161c9acd8ddce8989e7ed39d1836bdd74e8e056ac394d",
-      "sha256": "1f9631d8a61ed0b7a2e161c9acd8ddce8989e7ed39d1836bdd74e8e056ac394d",
-      "bytes": 1070831,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/b32123e8a440bec355405ab018117344a2806e2c9fbec1115cd16450ef9a833f",
+      "sha256": "b32123e8a440bec355405ab018117344a2806e2c9fbec1115cd16450ef9a833f",
+      "bytes": 1067792,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -93,14 +93,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "Fanboy's Annoyances; see upstream ! Title/! Description metadata",
-      "etag": "\"b9cac22b019bd621ad1aeb1686367703\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:17 GMT"
+      "etag": "\"008ca53463ae1009e107c46cdede5759\"",
+      "last_modified": "Wed, 25 Nov 2026 07:49:52 GMT"
     },
     "fanboy-social": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/123_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/ef1427ec06857b6f5ae4adacfb2e62d4b7d387ded672c3f6e4e2a9b773cca3bf",
-      "sha256": "ef1427ec06857b6f5ae4adacfb2e62d4b7d387ded672c3f6e4e2a9b773cca3bf",
-      "bytes": 158421,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/c1821faa51e7b76531951721643bb2e8c3e69c40bc92ea2890deb517242ce31c",
+      "sha256": "c1821faa51e7b76531951721643bb2e8c3e69c40bc92ea2890deb517242ce31c",
+      "bytes": 158250,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -109,8 +109,8 @@
       "trusted": false,
       "permissions": 0,
       "license": "Fanboy's Social Blocking; see upstream ! Title/! Description metadata",
-      "etag": "\"8079aa7619122dc5d4cf8d028b6a78d0\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:16 GMT"
+      "etag": "\"d0111388dd1e700d34b56f5e80832c3b\"",
+      "last_modified": "Wed, 25 Nov 2026 07:49:51 GMT"
     },
     "malicious-url": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/208_optimized.txt",
@@ -126,13 +126,13 @@
       "permissions": 0,
       "license": "Online Malicious URL Blocklist; see upstream ! Title/! Description metadata",
       "etag": "\"ce63eeae588f1869a6ddaf9264deeda3\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:18 GMT"
+      "last_modified": "Wed, 25 Nov 2026 07:49:53 GMT"
     },
     "phishing-url": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/255_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/cf8aebb6ce01a4a2c72ac222d0c5682b89eb826090181708a77baf19d652f21a",
-      "sha256": "cf8aebb6ce01a4a2c72ac222d0c5682b89eb826090181708a77baf19d652f21a",
-      "bytes": 2773271,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/a02991b1f4c60c01db6818840bce044a3aff633c7e79f610a88e6e0e3d1572fd",
+      "sha256": "a02991b1f4c60c01db6818840bce044a3aff633c7e79f610a88e6e0e3d1572fd",
+      "bytes": 2778693,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -141,14 +141,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "Phishing URL Blocklist; see upstream ! Title/! Description metadata",
-      "etag": "\"b7b19d5b2d6c7a22e219e13f11683bd5\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:18 GMT"
+      "etag": "\"f924983628ab9117451eff919a8331d5\"",
+      "last_modified": "Wed, 25 Nov 2026 07:49:54 GMT"
     },
     "scam-blocklist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/256_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/3fca0c4a33c45ff2c82f4810e4d25d832861c24d390d7bf26ef3c013a188ba09",
-      "sha256": "3fca0c4a33c45ff2c82f4810e4d25d832861c24d390d7bf26ef3c013a188ba09",
-      "bytes": 39316,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/2a88c422c5c81d512b2e3f8224b767a8ed6254e943836554cb1d617ecfc8fa88",
+      "sha256": "2a88c422c5c81d512b2e3f8224b767a8ed6254e943836554cb1d617ecfc8fa88",
+      "bytes": 39459,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -157,14 +157,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "Scam Blocklist by DurableNapkin; see upstream ! Title/! Description metadata",
-      "etag": "\"8587f85705f7c256b3cdc4172d3e3e12\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:17 GMT"
+      "etag": "\"2fcf0c27efc2667756a91a724df5ecca\"",
+      "last_modified": "Wed, 25 Nov 2026 07:49:52 GMT"
     },
     "stevenblack-fakenews-gambling": {
       "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/7c1ee9df5719f5d4f8e37eda0caea3e8ad495dd299cbac7aae0175dfd51b2a80",
-      "sha256": "7c1ee9df5719f5d4f8e37eda0caea3e8ad495dd299cbac7aae0175dfd51b2a80",
-      "bytes": 2543131,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/673331b1d3b82f5b14ce045603c767f257a6252090022df5067cb26adaa7780e",
+      "sha256": "673331b1d3b82f5b14ce045603c767f257a6252090022df5067cb26adaa7780e",
+      "bytes": 2719954,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "hosts",
       "format": "hosts",
@@ -173,7 +173,7 @@
       "trusted": false,
       "permissions": 0,
       "license": "StevenBlack/hosts (fakenews + gambling extensions); MIT (license.txt)",
-      "etag": "\"c684a24ad77294533feb78fe7d9bc9e167245710520daa334228992a508bf189\""
+      "etag": "\"7e81b894ba47f6870dcd68d42d24e28c2fdc9f0e9f3719f398dba470c520e9a8\""
     },
     "ubo-annoyances-cookies": {
       "url": "https://ublockorigin.pages.dev/filters/annoyances-cookies.txt",
@@ -192,9 +192,9 @@
     },
     "ubo-annoyances-min": {
       "url": "https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/2f2e585a744998ba8599c9b7aaa31949bf45d10b698f4dbcbcbfe9d38dee9dc7",
-      "sha256": "2f2e585a744998ba8599c9b7aaa31949bf45d10b698f4dbcbcbfe9d38dee9dc7",
-      "bytes": 293980,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/983d010e50c4391d43cc11e9ab6064c4162ffe205af6cc94d618d7779de1bd39",
+      "sha256": "983d010e50c4391d43cc11e9ab6064c4162ffe205af6cc94d618d7779de1bd39",
+      "bytes": 293979,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -203,14 +203,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "uBlock filters - Annoyances; GPL-3.0-or-later (uBlock Origin uAssets)",
-      "etag": "\"6b0384fd-47c5c\"",
-      "last_modified": "Mon, 23 Nov 2026 00:12:45 GMT"
+      "etag": "\"6b0645e5-47c5b\"",
+      "last_modified": "Wed, 25 Nov 2026 02:20:21 GMT"
     },
     "ubo-badware": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/257_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/4ec3a5881fc8629492504c62c1aee653b970bd00e758eb57b270458c9842250b",
-      "sha256": "4ec3a5881fc8629492504c62c1aee653b970bd00e758eb57b270458c9842250b",
-      "bytes": 254257,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/cc20783041a96a0e756a56e2841af1424feac3306e68aa99ec66450f20239fd0",
+      "sha256": "cc20783041a96a0e756a56e2841af1424feac3306e68aa99ec66450f20239fd0",
+      "bytes": 254302,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -219,14 +219,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "uBlock Origin Badware Risks; see upstream ! Title/! Description metadata",
-      "etag": "\"7671eabd112af58ed6007fe06cd261dd\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:15 GMT"
+      "etag": "\"feda94de407a8a961b2c4d07a079efbd\"",
+      "last_modified": "Wed, 25 Nov 2026 07:49:51 GMT"
     },
     "ubo-badware-min": {
       "url": "https://ublockorigin.pages.dev/filters/badware.min.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/8580421201768f65e4cb1ac536b14981f79d7336d07e2774499bfda89b9a0553",
-      "sha256": "8580421201768f65e4cb1ac536b14981f79d7336d07e2774499bfda89b9a0553",
-      "bytes": 164340,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/2451a6011e9156e33e9df8fd0ff8dc7b75071827579cf79f527b48d7ce0b1cd1",
+      "sha256": "2451a6011e9156e33e9df8fd0ff8dc7b75071827579cf79f527b48d7ce0b1cd1",
+      "bytes": 164362,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -235,13 +235,13 @@
       "trusted": false,
       "permissions": 0,
       "license": "uBlock filters - Badware risks; GPL-3.0-or-later (uBlock Origin uAssets)",
-      "etag": "\"6b47ab11ff3020da8062b8f6d5a70dbe\""
+      "etag": "\"174d4c9b2d2970d27ade72484267b2a1\""
     },
     "ubo-filters-min": {
       "url": "https://ublockorigin.pages.dev/filters/filters.min.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/30900043fad4ccb37299a7ca24a5e2ddb23e5dd82a1ac39e9d1c0eb7fa74385f",
-      "sha256": "30900043fad4ccb37299a7ca24a5e2ddb23e5dd82a1ac39e9d1c0eb7fa74385f",
-      "bytes": 1947996,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/8ecc59cd81975f1e9829e9d4f5eabae369d0a97698a0f32287536f4431da1646",
+      "sha256": "8ecc59cd81975f1e9829e9d4f5eabae369d0a97698a0f32287536f4431da1646",
+      "bytes": 1944738,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -250,13 +250,13 @@
       "trusted": false,
       "permissions": 0,
       "license": "uBlock filters; GPL-3.0-or-later (uBlock Origin uAssets)",
-      "etag": "\"50f98842d6aeddcba0c9b33c1d651c78\""
+      "etag": "\"edd466d5f62aa5e45bbcf1812899c690\""
     },
     "ubo-privacy-min": {
       "url": "https://ublockorigin.pages.dev/filters/privacy.min.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/0817c6aea16f0555d28ef982f532cbf5d1b490b1a16bc0d9ddb58015db9fc29d",
-      "sha256": "0817c6aea16f0555d28ef982f532cbf5d1b490b1a16bc0d9ddb58015db9fc29d",
-      "bytes": 140837,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/a9ccb2efba1821bd8ba353b7df6a97e5e48ec7f541d528f8caab1173b712c26e",
+      "sha256": "a9ccb2efba1821bd8ba353b7df6a97e5e48ec7f541d528f8caab1173b712c26e",
+      "bytes": 140838,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -265,12 +265,12 @@
       "trusted": false,
       "permissions": 0,
       "license": "uBlock filters - Privacy; GPL-3.0-or-later (uBlock Origin uAssets)",
-      "etag": "\"840c86b96e23813d0266dd89e00eafd5\""
+      "etag": "\"f1840cd9c310b33b0ee23235019324fc\""
     },
     "warning-removal": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/207_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/abc3e3de4bf330a045371392da9eca86c3e9da0e0d9b2d8d272f8bf65bc5d1e2",
-      "sha256": "abc3e3de4bf330a045371392da9eca86c3e9da0e0d9b2d8d272f8bf65bc5d1e2",
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/17ce69ecb91de0384bfadad5c3865c2dcd11127ac5e353e8b10b56613112c0c6",
+      "sha256": "17ce69ecb91de0384bfadad5c3865c2dcd11127ac5e353e8b10b56613112c0c6",
       "bytes": 74132,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
@@ -280,14 +280,14 @@
       "trusted": false,
       "permissions": 0,
       "license": "Adblock Warning Removal; see upstream ! Title/! Description metadata",
-      "etag": "\"c9184dfb77342aebde1005d6ab7050d2\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:17 GMT"
+      "etag": "\"b7404f108d229ec66dac55e3cf051cda\"",
+      "last_modified": "Wed, 25 Nov 2026 07:49:52 GMT"
     },
     "web-annoyances-ultralist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/201_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/e5742c751f7a69a1fbf3d0e111e9f433a409f9b46f856e5270af53a6cb2943c3",
-      "sha256": "e5742c751f7a69a1fbf3d0e111e9f433a409f9b46f856e5270af53a6cb2943c3",
-      "bytes": 308517,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/63b1784900f912c8c31bf561735c678e2939ea192405d9cb0908acd0f524724b",
+      "sha256": "63b1784900f912c8c31bf561735c678e2939ea192405d9cb0908acd0f524724b",
+      "bytes": 307703,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -296,8 +296,8 @@
       "trusted": false,
       "permissions": 0,
       "license": "Web Annoyances Ultralist; see upstream ! Title/! Description metadata",
-      "etag": "\"87d2f90d63826d09a79fd4e90d95d569\"",
-      "last_modified": "Mon, 23 Nov 2026 07:04:15 GMT"
+      "etag": "\"0d40a0efc11d442efa4313fd217ce55c\"",
+      "last_modified": "Wed, 25 Nov 2026 07:49:51 GMT"
     }
   },
   "includes": {

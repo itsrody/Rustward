@@ -41976,6 +41976,28 @@
     "reason": null
   },
   {
+    "name": "addEventListener-defuser",
+    "canonical_name": "prevent-addEventListener.js",
+    "grade": "standard",
+    "digest": "2f407e598df497e3d513ce23b4b5d76e523879708ae0accae5ea56c1d638292e",
+    "permission": 0,
+    "source_id": "ag-base-easylist",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "addEventListener-defuser",
+    "canonical_name": "prevent-addEventListener.js",
+    "grade": "standard",
+    "digest": "2f407e598df497e3d513ce23b4b5d76e523879708ae0accae5ea56c1d638292e",
+    "permission": 0,
+    "source_id": "ag-base-easylist",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "remove-node-text",
     "canonical_name": "remove-node-text.js",
     "grade": "standard",
@@ -42607,6 +42629,17 @@
     "canonical_name": "abort-on-stack-trace.js",
     "grade": "standard",
     "digest": "8b2d0e385aabfe8be341630be0c0e48ae09b9442474460fcf65c14a4b3c6d9a7",
+    "permission": 0,
+    "source_id": "ag-base-easylist",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "json-prune",
+    "canonical_name": "json-prune.js",
+    "grade": "standard",
+    "digest": "c9d9c11bf1386ae20cfc6f630bc8cf883718a479363110e5abf28b7e6f9b84f8",
     "permission": 0,
     "source_id": "ag-base-easylist",
     "source_permissions": 0,
@@ -60229,17 +60262,6 @@
     "canonical_name": "set-local-storage-item.js",
     "grade": "standard",
     "digest": "918076ed32c91ef1bf99e664ded5a937b10e3aa9923af728fa163b41070b7c69",
-    "permission": 0,
-    "source_id": "ag-annoyances",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
-    "name": "set-cookie",
-    "canonical_name": "set-cookie.js",
-    "grade": "standard",
-    "digest": "0602ce7b452819993f479893a98ef42b1aecd2f72c73107a0b3a8717c59adf76",
     "permission": 0,
     "source_id": "ag-annoyances",
     "source_permissions": 0,
@@ -195855,17 +195877,6 @@
     "reason": null
   },
   {
-    "name": "aeld",
-    "canonical_name": "prevent-addEventListener.js",
-    "grade": "standard",
-    "digest": "2f407e598df497e3d513ce23b4b5d76e523879708ae0accae5ea56c1d638292e",
-    "permission": 0,
-    "source_id": "ubo-filters-min",
-    "source_permissions": 0,
-    "decision": "admitted",
-    "reason": null
-  },
-  {
     "name": "aopw",
     "canonical_name": "abort-on-property-write.js",
     "grade": "standard",
@@ -241318,6 +241329,28 @@
     "reason": null
   },
   {
+    "name": "json-prune-fetch-response",
+    "canonical_name": "json-prune-fetch-response.js",
+    "grade": "standard",
+    "digest": "c3cb7d6383a96d38d970ed9613c9c3c49ab02def364818750399659d0fda9406",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "json-prune-fetch-response",
+    "canonical_name": "json-prune-fetch-response.js",
+    "grade": "standard",
+    "digest": "c3cb7d6383a96d38d970ed9613c9c3c49ab02def364818750399659d0fda9406",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "rmnt",
     "canonical_name": "remove-node-text.js",
     "grade": "standard",
@@ -269927,6 +269960,28 @@
     "source_permissions": 0,
     "decision": "excluded",
     "reason": "ENGINE_TRUST: scriptlet trusted-replace-argument.js grade trusted is not allowed for source ubo-filters-min"
+  },
+  {
+    "name": "trusted-set-local-storage-item",
+    "canonical_name": "trusted-set-local-storage-item.js",
+    "grade": "trusted",
+    "digest": "ca7e8a60709810aeaf5b3ced8536d2037103eac4905c8b3d673fe8ea291dc40a",
+    "permission": 1,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "excluded",
+    "reason": "ENGINE_TRUST: scriptlet trusted-set-local-storage-item.js grade trusted is not allowed for source ubo-filters-min"
+  },
+  {
+    "name": "nowoif",
+    "canonical_name": "prevent-window-open.js",
+    "grade": "standard",
+    "digest": "d2b05007a2ce02a5f81d0fe07e60cb5e19b87269135d2a5d7fc4d06b01679acc",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
   },
   {
     "name": "aeld",

@@ -196,6 +196,21 @@ separator and `*` wildcard spellings) instead of always probing `/rs-probe.js`. 
 fall back to the generic probe; the engine still decides whether the candidate URL actually yields a
 redirect, so this does not substitute an approximation for engine verification.
 
+**Shim terminology and coverage.** adblock-rust has no `shim` registry or shim-specific filter
+class. The informal term covers the placeholder/API-stub files that uBO publishes in
+`src/web_accessible_resources` and the compatibility scriptlets that call themselves shims. All of
+them reach the engine as `Resource` values: `Template`, a MIME-backed redirect payload, or the
+`fn/javascript` dependency type. Rustward can represent every engine `ResourceType`/`MimeType`
+variant, but representation is not admission: a redirect still needs permission 0 and engine
+realization, and a scriptlet still needs an injectable kind plus realization. At the pinned uBO
+commit, `assemble_web_accessible_resources` reads 48 entries from `redirect-resources.js` and skips
+`click2load.html` because it declares `params`; the other 47 redirect resources and all 40 of their
+aliases are present in the verified uBO snapshot. The pinned Brave bundle contributes 25 custom
+scriptlets and no redirect resources; all 25 are present in the merged catalog. These exact names,
+aliases, and type mappings are locked by `crates/model/tests/resource_shim_coverage.rs`. Names such
+as `gemius`, `metrika-yandex-tag`, and `ati-smarttag` are absent from both official snapshots and
+stay excluded; `none` is uBO's "no redirect" keyword, not a resource.
+
 ---
 
 ## 3. Design principles

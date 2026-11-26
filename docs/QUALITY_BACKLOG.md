@@ -70,3 +70,10 @@ not lost.
      as `UNKNOWN_RESOURCE`. Duplicate names/aliases across snapshots are rejected; grade,
      permission, dependency, and engine-realization gates are unchanged. No production rule
      currently invokes a Brave-only scriptlet, so output is unaffected.
+18. **Engine shim/resource coverage verification** — done. adblock-rust has no separate shim class;
+    its `Resource` type covers template, MIME-backed redirect, and `fn/javascript` dependency
+    payloads. New tests prove every `ResourceType`/`MimeType` variant is representable and that the
+    verified snapshots contain all 47 uBO assembler-supported redirect resources, all 40 pinned
+    uBO redirect aliases, and all 25 Brave scriptlets. `click2load.html` is intentionally absent
+    because the engine skips mapping entries with `params`. No trust, permission, dependency,
+    realization, or admission gate changed; output is unaffected.

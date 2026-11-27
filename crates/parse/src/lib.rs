@@ -250,6 +250,17 @@ fn parse_line(
             Ok(base(ParsedOutcome::Network(rule)))
         }
         Ok(ParsedLine::Cosmetic(filter)) => {
+            if let Some(reason) = ubo_cosmetic_syntax_reason(trimmed) {
+                let gap = DialectGap::new(
+                    "ubo_cosmetic_syntax",
+                    GapClass::Unsupported,
+                    reason.detail(),
+                );
+                return Ok(base(ParsedOutcome::Unsupported {
+                    reason,
+                    gap: Some(gap),
+                }));
+            }
             let rule = build_cosmetic_rule(source, &line, &filter, config, origin());
             Ok(base(ParsedOutcome::Cosmetic(rule)))
         }
@@ -1078,6 +1089,93 @@ fn detect_cosmetic_gaps(text: &str) -> Vec<DialectGap> {
     gaps
 }
 
+/// uBO rejects a cosmetic host list containing an empty token (`example.com,,other.com`). The
+/// engine silently ignores the empty token, so relying on it would emit a rule uBO discards.
+fn has_empty_cosmetic_host(text: &str) -> bool {
+    let Some((host_part, _, _)) = split_cosmetic(text) else {
+        return false;
+    };
+    !host_part.trim().is_empty() && host_part.split(',').any(|token| token.trim().is_empty())
+}
+
+/// Procedural operators that uBO cannot serialize when nested in native `:is()`/`:where()`.
+/// A bare native `:has()` is deliberately absent: it is valid CSS in that position.
+const NESTED_PROCEDURAL_MARKERS: &[&str] = &[
+    ":contains(",
+    ":has-text(",
+    ":-abp-",
+    ":matches-attr(",
+    ":matches-css",
+    ":matches-path(",
+    ":matches-prop(",
+    ":min-text-length(",
+    ":others(",
+    ":shadow(",
+    ":upward(",
+    ":watch-attr(",
+    ":xpath(",
+    ":if(",
+    ":if-not(",
+];
+
+fn matching_paren(text: &str, after_open: usize) -> Option<usize> {
+    let mut depth = 1usize;
+    for (offset, ch) in text[after_open..].char_indices() {
+        match ch {
+            '(' => depth += 1,
+            ')' => {
+                depth -= 1;
+                if depth == 0 {
+                    return Some(after_open + offset);
+                }
+            }
+            _ => {}
+        }
+    }
+    None
+}
+
+/// uBO's selector compiler refuses procedural operators nested inside `:is()`/`:where()`; the
+/// pinned engine folds several of those selectors into a plain `CssSelector`, so detect them
+/// from the source text rather than from the parsed operator list.
+fn has_procedural_inside_is_where(selector: &str) -> bool {
+    for marker in [":is(", ":where("] {
+        let mut cursor = 0usize;
+        while let Some(offset) = selector[cursor..].find(marker) {
+            let start = cursor + offset + marker.len();
+            let Some(close) = matching_paren(selector, start) else {
+                break;
+            };
+            let argument = &selector[start..close];
+            if NESTED_PROCEDURAL_MARKERS
+                .iter()
+                .any(|token| argument.contains(token))
+            {
+                return true;
+            }
+            cursor = close + 1;
+        }
+    }
+    false
+}
+
+fn ubo_cosmetic_syntax_reason(text: &str) -> Option<ExclusionReason> {
+    if has_empty_cosmetic_host(text) {
+        return Some(ExclusionReason::UnsupportedSyntax(
+            "empty hostname token in cosmetic host list is rejected by uBO".to_string(),
+        ));
+    }
+    let Some((_, _, selector)) = split_cosmetic(text) else {
+        return None;
+    };
+    if has_procedural_inside_is_where(selector) {
+        return Some(ExclusionReason::UnsupportedSyntax(
+            "procedural operator nested inside :is()/:where() is rejected by uBO".to_string(),
+        ));
+    }
+    None
+}
+
 fn sorted_unique_gaps(gaps: &mut Vec<DialectGap>) {
     gaps.sort_by(|a, b| a.kind.cmp(&b.kind));
     gaps.dedup();
@@ -1279,6 +1377,40 @@ mod tests {
 
         let nested = parse_record("nested.example##.promo:contains(Ad):upward(1)");
         assert!(matches!(nested.outcome, ParsedOutcome::Unsupported { .. }));
+    }
+
+    #[test]
+    fn ubo_rejects_empty_hostname_token_in_cosmetic_host_list() {
+        let record = parse_record(
+            "2-spyware.com,novirus.uk,faravirus.ro,uirusu.jp,virusi.hr,wubingdu.cn,avirus.hu,odstranitvirus.cz,,utanvirus.se,virukset.fi,losvirus.es,virusler.info.tr,semvirus.pt,lesvirus.fr,senzavirus.it,dieviren.de,viruset.no,usunwirusa.pl,zondervirus.nl,bedynet.ru,virusai.lt,virusi.bg,udenvirus.dk##.attention-button-wrap:has-text(Reimage)",
+        );
+        let ParsedOutcome::Unsupported { reason, gap } = &record.outcome else {
+            panic!("expected unsupported rule, got {:?}", record.outcome);
+        };
+        assert_eq!(reason.code(), "UNSUPPORTED_SYNTAX");
+        assert!(reason.detail().contains("empty hostname token"));
+        let gap = gap.as_ref().expect("dialect gap");
+        assert_eq!(gap.kind, "ubo_cosmetic_syntax");
+        assert_eq!(gap.class, GapClass::Unsupported);
+    }
+
+    #[test]
+    fn ubo_rejects_procedural_operator_nested_inside_is() {
+        let record = parse_record(
+            r#"lemon8-app.com##:is(aside, footer) > div[class$="-reflow"]:is(:has(> p:contains(Open)), :has(> .qrcode > img[alt="Scan to get the app"]))"#,
+        );
+        let ParsedOutcome::Unsupported { reason, gap } = &record.outcome else {
+            panic!("expected unsupported rule, got {:?}", record.outcome);
+        };
+        assert_eq!(reason.code(), "UNSUPPORTED_SYNTAX");
+        assert!(reason.detail().contains("procedural operator nested"));
+        let gap = gap.as_ref().expect("dialect gap");
+        assert_eq!(gap.kind, "ubo_cosmetic_syntax");
+        assert_eq!(gap.class, GapClass::Unsupported);
+
+        // Native :has() remains valid in that position and must not be caught by the guard.
+        let native_has = parse_record(r"example.com##:is(aside, footer) > div:has(> p)");
+        assert!(matches!(native_has.outcome, ParsedOutcome::Cosmetic(_)));
     }
 
     #[test]

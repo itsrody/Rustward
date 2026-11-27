@@ -18,7 +18,7 @@ use std::{
 };
 
 const UBO_COMMIT: &str = "3cca944b4a4c5f3473d6cb7153e6fb99b5f7d1db";
-const UBO_SHA256: &str = "ddc13cecf2441456e0c707a484fb7e76a4d82d1ad13b09e8075ee1ab2e4cd038";
+const UBO_SHA256: &str = "b5c816d61ec4201175899d17637c785d81e3de530fee949c1bf780b4ffd9df5b";
 const BRAVE_COMMIT: &str = "b84ad0fd6663a88c1402bc06a4abd5ab8be8fb3c";
 const BRAVE_SHA256: &str = "31d6bdd604b45e155d1093064a082b8f93ca63650be4bbb3e338a7a60d485053";
 
@@ -305,7 +305,14 @@ fn pinned_ubo_redirect_resources_are_all_present() {
             panic!("uBO redirect resource {name} missing from official snapshot")
         });
         assert_eq!(resource.name, *name);
-        assert_eq!(resource.permission, 0, "{name} is not redirectable");
+        // uBO marks google-ima-dai.js `requiresTrust: true`, so its redirect token is
+        // rejected from untrusted lists. The snapshot records that as the engine trust
+        // bit; every other pinned redirect resource stays permission 0.
+        let expected_permission = if *name == "google-ima-dai.js" { 1 } else { 0 };
+        assert_eq!(
+            resource.permission, expected_permission,
+            "{name} permission"
+        );
         assert!(
             resource.engine_resource().kind.supports_redirect(),
             "{name} maps to a non-redirectable engine kind"
@@ -330,6 +337,14 @@ fn pinned_ubo_redirect_aliases_resolve_to_canonical_names() {
             .unwrap_or_else(|| panic!("uBO redirect alias {alias} missing from official snapshot"));
         assert_eq!(resource.name, *canonical, "alias {alias}");
     }
+
+    // uBO rejects `redirect=google-ima3-dai` from an untrusted list; the alias must
+    // inherit the canonical resource's trust requirement rather than appearing usable.
+    let dai = catalog
+        .find("google-ima3-dai")
+        .expect("google-ima3-dai alias");
+    assert_eq!(dai.name, "google-ima-dai.js");
+    assert_eq!(dai.permission, 1);
 }
 
 #[test]

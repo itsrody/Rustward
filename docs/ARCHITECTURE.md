@@ -163,6 +163,11 @@ Allowed native CSS is any selector parsing to a single `CssSelector` with no act
 lightweight procedural allowlist is `:has-text(literal)` and `:matches-attr(literal-name)`; literal
 arguments only, no `/regex/`, one operator. It can be reduced further by config.
 
+Before admission, Rustward also drops two cosmetic forms that adblock-rust parses but uBO's own
+parser rejects: host lists containing an empty token, and procedural operators nested inside
+`:is()`/`:where()`. They are recorded as `UNSUPPORTED_SYNTAX` with kind `ubo_cosmetic_syntax`;
+no rewrite is attempted for either form.
+
 **Vetted scriptlet dual gate (D11).** A `##+js(name, args...)` rule is admitted only if:
 
 1. **Official provenance and grade.** `name` (or an alias) exists in a verified snapshot from an
@@ -202,10 +207,12 @@ class. The informal term covers the placeholder/API-stub files that uBO publishe
 them reach the engine as `Resource` values: `Template`, a MIME-backed redirect payload, or the
 `fn/javascript` dependency type. Rustward can represent every engine `ResourceType`/`MimeType`
 variant, but representation is not admission: a redirect still needs permission 0 and engine
-realization, and a scriptlet still needs an injectable kind plus realization. At the pinned uBO
-commit, `assemble_web_accessible_resources` reads 48 entries from `redirect-resources.js` and skips
-`click2load.html` because it declares `params`; the other 47 redirect resources and all 40 of their
-aliases are present in the verified uBO snapshot. The pinned Brave bundle contributes 25 custom
+realization, and a scriptlet still needs an injectable kind plus realization. The one pinned redirect
+exception is `google-ima-dai.js`, which uBO marks `requiresTrust: true`; its snapshot permission bit
+is therefore 1, so D11 excludes `redirect=google-ima3-dai` instead of emitting a token uBO rejects
+from untrusted lists. At the pinned uBO commit, `assemble_web_accessible_resources` reads 48 entries
+from `redirect-resources.js` and skips `click2load.html` because it declares `params`; the other 47
+redirect resources and all 40 of their aliases are present in the verified uBO snapshot. The pinned Brave bundle contributes 25 custom
 scriptlets and no redirect resources; all 25 are present in the merged catalog. These exact names,
 aliases, and type mappings are locked by `crates/model/tests/resource_shim_coverage.rs`. Names such
 as `gemius`, `metrika-yandex-tag`, and `ati-smarttag` are absent from both official snapshots and
@@ -1079,7 +1086,7 @@ zero_violations = true
 repo = "https://github.com/gorhill/uBlock"
 commit = "local-fixture"
 scriptlets_path = "src/js/resources/scriptlets.js"
-snapshot_sha256 = "ddc13cecf2441456e0c707a484fb7e76a4d82d1ad13b09e8075ee1ab2e4cd038"
+snapshot_sha256 = "b5c816d61ec4201175899d17637c785d81e3de530fee949c1bf780b4ffd9df5b"
 trust_bit = 0b00000001               # TRUST_BITS for requiresTrust resources
 allow_standard = true
 allow_trusted = true

@@ -737,7 +737,12 @@ fn redirect_methods(options: &[String]) -> Vec<String> {
 
 #[cfg(test)]
 mod tests {
-    use super::{clean_probe_host, literal_probe_paths, redirect_resource_name};
+    use super::{
+        clean_probe_host, literal_probe_paths, load_catalog, qualify_resource,
+        redirect_resource_name,
+    };
+    use model::{Config, Dialect, Eligibility, NetworkRule, RuleState};
+    use std::path::Path;
 
     #[test]
     fn redirect_suffix_is_stripped_without_touching_colon_names() {
@@ -791,5 +796,104 @@ mod tests {
             "redirect.example"
         );
         assert_eq!(clean_probe_host("||ads.example."), "ads.example");
+    }
+
+    fn google_ima_redirect_rule(source_permissions: u8) -> NetworkRule {
+        NetworkRule {
+            engine_id: 0,
+            mask: 0,
+            features: 0,
+            hostname: Some("imasdk.googleapis.com".to_string()),
+            body: "/js/sdkloader/ima3_dai.js".to_string(),
+            left_anchor: true,
+            right_anchor: false,
+            hostname_anchor: true,
+            is_regex: false,
+            is_literal_boundary_regex: false,
+            is_complete_regex: false,
+            is_hostname_regex: false,
+            is_exception: false,
+            important: false,
+            match_case: false,
+            is_badfilter: false,
+            is_redirect: true,
+            is_csp: false,
+            is_removeparam: false,
+            is_generic_hide: false,
+            domains: vec!["go.lnk.lt".to_string()],
+            not_domains: Vec::new(),
+            to_domains: Vec::new(),
+            not_to_domains: Vec::new(),
+            domain_hashes: Vec::new(),
+            not_domain_hashes: Vec::new(),
+            to_domain_hashes: Vec::new(),
+            not_to_domain_hashes: Vec::new(),
+            modifier_option: Some("google-ima3-dai".to_string()),
+            tag: None,
+            text: "||imasdk.googleapis.com/js/sdkloader/ima3_dai.js$domain=go.lnk.lt,redirect=google-ima3-dai,script".to_string(),
+            source_id: "test".to_string(),
+            line_no: 1,
+            dialect: Dialect::Ubo,
+            source_trusted: false,
+            source_permissions,
+            source_priority: 50,
+            eligibility: Eligibility::Eligible,
+            state: RuleState::Active,
+            dialect_gaps: Vec::new(),
+            provenance: Vec::new(),
+        }
+    }
+
+    #[test]
+    fn requires_trust_redirect_resource_is_not_admitted() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+        let config =
+            Config::load(&root.join("tests/fixtures/sources.toml")).expect("load fixture config");
+        let catalog = load_catalog(&config, &root).expect("load official resource catalog");
+        let engine_resources = catalog.engine_resources();
+        let rule = google_ima_redirect_rule(0);
+        let mut decisions = Vec::new();
+
+        let error = qualify_resource(
+            "google-ima3-dai",
+            &rule,
+            &config,
+            &catalog,
+            &engine_resources,
+            &mut decisions,
+            false,
+        )
+        .expect_err("untrusted redirect token must be excluded");
+
+        assert_eq!(error.code(), "ENGINE_TRUST");
+        assert!(error.detail().contains("requires permission"));
+        assert_eq!(decisions.len(), 1);
+        assert_eq!(decisions[0].name, "google-ima3-dai");
+        assert_eq!(decisions[0].canonical_name, "google-ima-dai.js");
+        assert_eq!(decisions[0].permission, 1);
+        assert_eq!(decisions[0].decision, "excluded");
+
+        // A configured trust bit does not silently turn a redirect token into a scriptlet resource;
+        // redirects still require permission 0, so the conservative exclusion is unchanged.
+        let mut trusted_config = config.clone();
+        trusted_config.engine.permissions = 1;
+        let trusted = google_ima_redirect_rule(1);
+        let mut trusted_decisions = Vec::new();
+        let trusted_error = qualify_resource(
+            "google-ima3-dai",
+            &trusted,
+            &trusted_config,
+            &catalog,
+            &engine_resources,
+            &mut trusted_decisions,
+            false,
+        )
+        .expect_err("redirect kind gate must remain permission 0");
+        assert_eq!(trusted_error.code(), "ENGINE_TRUST");
+        assert!(
+            trusted_error
+                .detail()
+                .contains("cannot be used for redirect")
+        );
     }
 }

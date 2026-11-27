@@ -5,7 +5,7 @@ fn fixture_catalog() -> ResourceCatalog {
     let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
     ResourceCatalog::load_verified(
         &root.join("config/resources/ubo-official.json"),
-        "ddc13cecf2441456e0c707a484fb7e76a4d82d1ad13b09e8075ee1ab2e4cd038",
+        "b5c816d61ec4201175899d17637c785d81e3de530fee949c1bf780b4ffd9df5b",
     )
     .expect("load pinned official resource snapshot")
 }
@@ -69,7 +69,7 @@ fn brave_snapshot_merges_into_official_catalog() {
     let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
     let ubo = ResourceSnapshot::load_verified(
         &root.join("config/resources/ubo-official.json"),
-        "ddc13cecf2441456e0c707a484fb7e76a4d82d1ad13b09e8075ee1ab2e4cd038",
+        "b5c816d61ec4201175899d17637c785d81e3de530fee949c1bf780b4ffd9df5b",
     )
     .expect("load uBO snapshot");
     let brave = ResourceSnapshot::load_verified(
@@ -113,7 +113,7 @@ fn duplicate_resource_names_across_snapshots_are_rejected() {
     let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
     let ubo = ResourceSnapshot::load_verified(
         &root.join("config/resources/ubo-official.json"),
-        "ddc13cecf2441456e0c707a484fb7e76a4d82d1ad13b09e8075ee1ab2e4cd038",
+        "b5c816d61ec4201175899d17637c785d81e3de530fee949c1bf780b4ffd9df5b",
     )
     .expect("load uBO snapshot");
     let duplicate = ubo.clone();

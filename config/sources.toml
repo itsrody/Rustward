@@ -310,7 +310,7 @@ license = "uBlock filters - Privacy; GPL-3.0-or-later (uBlock Origin uAssets)"
 
 [[source]]
 id = "ubo-annoyances-min"
-url = "https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt"
+url = "https://ublockorigin.pages.dev/filters/annoyances.min.txt"
 sha256 = "8d6aab24d552631ed96c3646669860fad284f87b8cfd4c9f1af935fdd8409586"
 dialect = "ubo"
 format = "standard"
@@ -335,6 +335,19 @@ permissions = 0
 license = "uBlock filters - Cookie Notices; GPL-3.0-or-later (uBlock Origin uAssets)"
 
 [[source]]
+id = "ubo-privacy-removeparam"
+url = "https://ublockorigin.github.io/uAssetsCDN/filters/privacy-removeparam.txt"
+sha256 = "02f98af853e7a79012a2e481f810f4d8a4ab976f57175942ab7764e6a0dfc2c1"
+dialect = "ubo"
+format = "standard"
+host_semantics = "ubo"
+priority = 69
+enabled = true
+trusted = false
+permissions = 0
+license = "AdGuard/uBO - URL Tracking Protection; GPL-3.0-or-later (uBlock Origin uAssets)"
+
+[[source]]
 id = "stevenblack-fakenews-gambling"
 url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts"
 sha256 = "673331b1d3b82f5b14ce045603c767f257a6252090022df5067cb26adaa7780e"
@@ -345,4 +358,28 @@ enabled = true
 trusted = false
 permissions = 0
 license = "StevenBlack/hosts (fakenews + gambling extensions); MIT (license.txt)"
+
+[[source]]
+id = "peter-lowe-hosts"
+url = "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext"
+sha256 = "d14feaff08619ea6c06bba1001dc28b0297a3494c7588e543a6f29424fb91611"
+dialect = "hosts"
+format = "hosts"
+priority = 66
+enabled = true
+trusted = false
+permissions = 0
+license = "Peter Lowe's Ad and tracking server list; see https://pgl.yoyo.org/adservers/policy.php"
+
+[[source]]
+id = "dan-pollock-hosts"
+url = "https://someonewhocares.org/hosts/hosts"
+sha256 = "c95ce70f6cdb5375d0d466aa322c3c72f8c4713f6fea0dd17b135ac28a266574"
+dialect = "hosts"
+format = "hosts"
+priority = 65
+enabled = true
+trusted = false
+permissions = 0
+license = "Dan Pollock's hosts file; non-commercial redistribution with attribution (see upstream header)"
 

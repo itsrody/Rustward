@@ -9812,6 +9812,17 @@
     "reason": null
   },
   {
+    "name": "prevent-fetch",
+    "canonical_name": "prevent-fetch.js",
+    "grade": "standard",
+    "digest": "8ac54657a5f0b0defea92d7ecc1b667bbb98436b996406703cdabfe101aadeb9",
+    "permission": 0,
+    "source_id": "ag-base-easylist",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "addEventListener-defuser",
     "canonical_name": "prevent-addEventListener.js",
     "grade": "standard",
@@ -49328,6 +49339,17 @@
     "canonical_name": "noop.txt",
     "grade": "standard",
     "digest": "029c58a6f8077a578789dda5c5f9c05309def9806c7329850005862fd2db424a",
+    "permission": 0,
+    "source_id": "ag-base-easylist",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "google-ima",
+    "canonical_name": "google-ima.js",
+    "grade": "standard",
+    "digest": "07337c867c40965ee6daedc0ad1adea6aef69a140ba43635124929be2af2fd22",
     "permission": 0,
     "source_id": "ag-base-easylist",
     "source_permissions": 0,
@@ -201520,6 +201542,28 @@
     "reason": null
   },
   {
+    "name": "ra",
+    "canonical_name": "remove-attr.js",
+    "grade": "standard",
+    "digest": "ae285f084ec6df53708f53501c1f149f25f22418e1a0122b2f25fbf44990f40d",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "rmnt",
+    "canonical_name": "remove-node-text.js",
+    "grade": "standard",
+    "digest": "0d37ecc290c6b82cd54146f8f17bf9349cab907a67f4c69946b98b2f013a276d",
+    "permission": 0,
+    "source_id": "ubo-filters-min",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "rmnt",
     "canonical_name": "remove-node-text.js",
     "grade": "standard",
@@ -273889,6 +273933,17 @@
     "reason": null
   },
   {
+    "name": "nostif",
+    "canonical_name": "prevent-setTimeout.js",
+    "grade": "standard",
+    "digest": "7b017d98bb75373ad85231b4bcdc71703cf3a6ba8cb3cbf10509c5f88f8b4050",
+    "permission": 0,
+    "source_id": "ubo-privacy-min",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
     "name": "aopw",
     "canonical_name": "abort-on-property-write.js",
     "grade": "standard",
@@ -296795,6 +296850,28 @@
     "canonical_name": "remove-node-text.js",
     "grade": "standard",
     "digest": "0d37ecc290c6b82cd54146f8f17bf9349cab907a67f4c69946b98b2f013a276d",
+    "permission": 0,
+    "source_id": "ubo-annoyances-min",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "aeld",
+    "canonical_name": "prevent-addEventListener.js",
+    "grade": "standard",
+    "digest": "2f407e598df497e3d513ce23b4b5d76e523879708ae0accae5ea56c1d638292e",
+    "permission": 0,
+    "source_id": "ubo-annoyances-min",
+    "source_permissions": 0,
+    "decision": "admitted",
+    "reason": null
+  },
+  {
+    "name": "nostif",
+    "canonical_name": "prevent-setTimeout.js",
+    "grade": "standard",
+    "digest": "7b017d98bb75373ad85231b4bcdc71703cf3a6ba8cb3cbf10509c5f88f8b4050",
     "permission": 0,
     "source_id": "ubo-annoyances-min",
     "source_permissions": 0,

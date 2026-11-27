@@ -14,13 +14,13 @@
       "permissions": 0,
       "license": "AdGuard Annoyances; see upstream ! Title/! Description metadata",
       "etag": "\"899268e23b60a32e54fe747e35d17dca\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:44 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:36 GMT"
     },
     "ag-base-easylist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt",
-      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/b283c43c37b9ef17e89ff186580f0e72f3dfc543890768499982956b67512af7",
-      "sha256": "b283c43c37b9ef17e89ff186580f0e72f3dfc543890768499982956b67512af7",
-      "bytes": 2424395,
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/b09a595f2addbca247cd83d432b8bedc62f83c5c6ada75681a4ed2d5c11ed76c",
+      "sha256": "b09a595f2addbca247cd83d432b8bedc62f83c5c6ada75681a4ed2d5c11ed76c",
+      "bytes": 2170678,
       "fetched_at": "1970-01-01T00:00:00Z",
       "dialect": "ubo",
       "format": "standard",
@@ -29,8 +29,8 @@
       "trusted": false,
       "permissions": 0,
       "license": "AdGuard Base filter + EasyList; see upstream ! Title/! Description metadata",
-      "etag": "\"bd688ed4ab50690f6250db96dcf3d03e\"",
-      "last_modified": "Fri, 27 Nov 2026 10:51:18 GMT"
+      "etag": "\"e144324f0af46227a42223d824460e7d\"",
+      "last_modified": "Fri, 27 Nov 2026 12:52:38 GMT"
     },
     "ag-tracking": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt",
@@ -46,7 +46,23 @@
       "permissions": 0,
       "license": "AdGuard Tracking Protection; see upstream ! Title/! Description metadata",
       "etag": "\"82db6be2dec0a50e9242e31d40841d4b\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:43 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:45 GMT"
+    },
+    "dan-pollock-hosts": {
+      "url": "https://someonewhocares.org/hosts/hosts",
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/c95ce70f6cdb5375d0d466aa322c3c72f8c4713f6fea0dd17b135ac28a266574",
+      "sha256": "c95ce70f6cdb5375d0d466aa322c3c72f8c4713f6fea0dd17b135ac28a266574",
+      "bytes": 394848,
+      "fetched_at": "1970-01-01T00:00:00Z",
+      "dialect": "hosts",
+      "format": "hosts",
+      "priority": 65,
+      "enabled": true,
+      "trusted": false,
+      "permissions": 0,
+      "license": "Dan Pollock's hosts file; non-commercial redistribution with attribution (see upstream header)",
+      "etag": "\"60660-6611c29ad5865\"",
+      "last_modified": "Wed, 25 Nov 2026 16:17:26 GMT"
     },
     "easyprivacy": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/118_optimized.txt",
@@ -62,7 +78,7 @@
       "permissions": 0,
       "license": "EasyPrivacy; see upstream ! Title/! Description metadata",
       "etag": "\"5ef6a0e598860cf3085061e16314c226\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:40 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:37 GMT"
     },
     "fanboy-annoyances": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/122_optimized.txt",
@@ -78,7 +94,7 @@
       "permissions": 0,
       "license": "Fanboy's Annoyances; see upstream ! Title/! Description metadata",
       "etag": "\"7bbc5a5d306f43bb2f1a097d2d3a8640\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:41 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:38 GMT"
     },
     "fanboy-social": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/123_optimized.txt",
@@ -94,7 +110,7 @@
       "permissions": 0,
       "license": "Fanboy's Social Blocking; see upstream ! Title/! Description metadata",
       "etag": "\"d52a372d217152b45f507b8d9ebc9b6e\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:40 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:37 GMT"
     },
     "malicious-url": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/208_optimized.txt",
@@ -110,7 +126,22 @@
       "permissions": 0,
       "license": "Online Malicious URL Blocklist; see upstream ! Title/! Description metadata",
       "etag": "\"ce63eeae588f1869a6ddaf9264deeda3\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:41 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:37 GMT"
+    },
+    "peter-lowe-hosts": {
+      "url": "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext",
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/d14feaff08619ea6c06bba1001dc28b0297a3494c7588e543a6f29424fb91611",
+      "sha256": "d14feaff08619ea6c06bba1001dc28b0297a3494c7588e543a6f29424fb91611",
+      "bytes": 95369,
+      "fetched_at": "1970-01-01T00:00:00Z",
+      "dialect": "hosts",
+      "format": "hosts",
+      "priority": 66,
+      "enabled": true,
+      "trusted": false,
+      "permissions": 0,
+      "license": "Peter Lowe's Ad and tracking server list; see https://pgl.yoyo.org/adservers/policy.php",
+      "last_modified": "Thu, 26 Nov 2026 22:00:47 GMT"
     },
     "phishing-url": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/255_optimized.txt",
@@ -126,7 +157,7 @@
       "permissions": 0,
       "license": "Phishing URL Blocklist; see upstream ! Title/! Description metadata",
       "etag": "\"c11559c5f5f43441a3c539ce983ddf0a\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:41 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:38 GMT"
     },
     "scam-blocklist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/256_optimized.txt",
@@ -142,7 +173,7 @@
       "permissions": 0,
       "license": "Scam Blocklist by DurableNapkin; see upstream ! Title/! Description metadata",
       "etag": "\"da53e37ad5665928839cd133ea96385e\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:41 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:38 GMT"
     },
     "stevenblack-fakenews-gambling": {
       "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts",
@@ -175,7 +206,7 @@
       "etag": "\"a2a9c6dcab9eceeb729850aef0440a62\""
     },
     "ubo-annoyances-min": {
-      "url": "https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt",
+      "url": "https://ublockorigin.pages.dev/filters/annoyances.min.txt",
       "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/8d6aab24d552631ed96c3646669860fad284f87b8cfd4c9f1af935fdd8409586",
       "sha256": "8d6aab24d552631ed96c3646669860fad284f87b8cfd4c9f1af935fdd8409586",
       "bytes": 294290,
@@ -187,8 +218,7 @@
       "trusted": false,
       "permissions": 0,
       "license": "uBlock filters - Annoyances; GPL-3.0-or-later (uBlock Origin uAssets)",
-      "etag": "\"6b093bb7-47d92\"",
-      "last_modified": "Fri, 27 Nov 2026 08:13:43 GMT"
+      "etag": "\"a5627c74bc6891d88678cb6e4113e3ef\""
     },
     "ubo-badware": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/257_optimized.txt",
@@ -204,7 +234,7 @@
       "permissions": 0,
       "license": "uBlock Origin Badware Risks; see upstream ! Title/! Description metadata",
       "etag": "\"feda94de407a8a961b2c4d07a079efbd\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:40 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:37 GMT"
     },
     "ubo-badware-min": {
       "url": "https://ublockorigin.pages.dev/filters/badware.min.txt",
@@ -251,6 +281,22 @@
       "license": "uBlock filters - Privacy; GPL-3.0-or-later (uBlock Origin uAssets)",
       "etag": "\"b142ebdddce957d80b04bf15f8eb8b88\""
     },
+    "ubo-privacy-removeparam": {
+      "url": "https://ublockorigin.github.io/uAssetsCDN/filters/privacy-removeparam.txt",
+      "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/02f98af853e7a79012a2e481f810f4d8a4ab976f57175942ab7764e6a0dfc2c1",
+      "sha256": "02f98af853e7a79012a2e481f810f4d8a4ab976f57175942ab7764e6a0dfc2c1",
+      "bytes": 182538,
+      "fetched_at": "1970-01-01T00:00:00Z",
+      "dialect": "ubo",
+      "format": "standard",
+      "priority": 69,
+      "enabled": true,
+      "trusted": false,
+      "permissions": 0,
+      "license": "AdGuard/uBO - URL Tracking Protection; GPL-3.0-or-later (uBlock Origin uAssets)",
+      "etag": "\"6b093bb7-2c90a\"",
+      "last_modified": "Fri, 27 Nov 2026 08:13:43 GMT"
+    },
     "warning-removal": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/207_optimized.txt",
       "path": "/home/runner/work/Rustward/Rustward/cache/blobs/sha256/abd3befa49a4c4ff74784505ac8015625ac6ffa2e9d01832670c71eef0298e22",
@@ -265,7 +311,7 @@
       "permissions": 0,
       "license": "Adblock Warning Removal; see upstream ! Title/! Description metadata",
       "etag": "\"1b0986527197b78aa47f4e87588b896a\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:40 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:37 GMT"
     },
     "web-annoyances-ultralist": {
       "url": "https://filters.adtidy.org/extension/ublock/filters/201_optimized.txt",
@@ -281,17 +327,19 @@
       "permissions": 0,
       "license": "Web Annoyances Ultralist; see upstream ! Title/! Description metadata",
       "etag": "\"c90df76465554902a9db260c677beeae\"",
-      "last_modified": "Fri, 27 Nov 2026 11:51:40 GMT"
+      "last_modified": "Fri, 27 Nov 2026 12:52:37 GMT"
     }
   },
   "includes": {
     "ag-annoyances": {},
     "ag-base-easylist": {},
     "ag-tracking": {},
+    "dan-pollock-hosts": {},
     "easyprivacy": {},
     "fanboy-annoyances": {},
     "fanboy-social": {},
     "malicious-url": {},
+    "peter-lowe-hosts": {},
     "phishing-url": {},
     "scam-blocklist": {},
     "stevenblack-fakenews-gambling": {},
@@ -301,6 +349,7 @@
     "ubo-badware-min": {},
     "ubo-filters-min": {},
     "ubo-privacy-min": {},
+    "ubo-privacy-removeparam": {},
     "warning-removal": {},
     "web-annoyances-ultralist": {}
   }

@@ -1,12 +1,12 @@
 {
-  "build_id": "5ef5242e6a01cee2ad9ef4d73a4e809c217e9aae5da5f18345c0fd57d9a68556",
-  "config_hash": "69e553ae0e62748f9689d8b811d5cd8ae2c7a8764b6549eea1ed87a950031da8",
+  "build_id": "d01537f280dc193513bfe2c897f7108b10712c2cd96fcb12009ed3b18e3a2241",
+  "config_hash": "87630ed44da34498f43c6e2dadeaa589be50d7551744122e58fcd2f526e73bc9",
   "profile_hash": "7523a0d8d369cd3ba756dd22e4c6bbb3e9bcfd0e8c4f97cefee9e7ee3023e475",
-  "lists_lock_hash": "363835f41f9faaeb12b606abfd4b21744fdf9f8921bb47b019e43477a59d52c8",
+  "lists_lock_hash": "6fc853041cdae51eb3c75054b13b6dcbd52638afcdc5ec4831c238d8a8d7b9a1",
   "adblock_version": "=0.13.6",
   "engine_profile": "desktop",
   "emit_order": "compiler-friendly-v1",
-  "last_modified": "Fri, 27 Nov 2026 11:51:44 +0000",
+  "last_modified": "Fri, 27 Nov 2026 12:52:45 +0000",
   "sources": [
     "ag-base-easylist",
     "ag-tracking",
@@ -25,6 +25,9 @@
     "ubo-privacy-min",
     "ubo-annoyances-min",
     "ubo-annoyances-cookies",
-    "stevenblack-fakenews-gambling"
+    "ubo-privacy-removeparam",
+    "stevenblack-fakenews-gambling",
+    "peter-lowe-hosts",
+    "dan-pollock-hosts"
   ]
 }

@@ -229,20 +229,6 @@ license = "Online Malicious URL Blocklist; see upstream ! Title/! Description me
 
 
 [[source]]
-id = "dandelion-annoyances"
-url = "https://filters.adtidy.org/extension/ublock/filters/250_optimized.txt"
-sha256 = "dfa6ac3ba023f2fe79bc259796ceb753734d8d12f2b097c6c9b5c2c7b0206ba7"
-dialect = "ubo"
-format = "standard"
-host_semantics = "ubo"
-priority = 82
-enabled = true
-trusted = false
-permissions = 0
-license = "Dandelion Sprout's Annoyances; see upstream ! Title/! Description metadata"
-
-
-[[source]]
 id = "phishing-url"
 url = "https://filters.adtidy.org/extension/ublock/filters/255_optimized.txt"
 sha256 = "fa987632b133df839fe0a92cb8153f9f7f878725822aed1d0722e236d6727214"

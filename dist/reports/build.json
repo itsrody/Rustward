@@ -14975,10 +14975,10 @@
     "candidate_opt_bytes": 39048125,
     "admitted_noopt_bytes": 43699541,
     "candidate_noopt_bytes": 39048181,
-    "admitted_build_ms": 493,
-    "candidate_build_ms": 421,
-    "admitted_qps": 219048.51320782234,
-    "candidate_qps": 222243.245774774,
+    "admitted_build_ms": 486,
+    "candidate_build_ms": 419,
+    "admitted_qps": 221948.23268589762,
+    "candidate_qps": 228981.06094744478,
     "emit_order": "compiler-friendly-v1"
   }
 }

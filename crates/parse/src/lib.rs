@@ -1213,6 +1213,9 @@ fn classify_parse_error(text: &str, error: &str) -> ExclusionReason {
     if text.contains("#%#") {
         return ExclusionReason::UnsupportedSyntax("JS injection (#%#) is excluded".to_string());
     }
+    if text.contains("$cname") || error.to_ascii_lowercase().contains("cname") {
+        return ExclusionReason::UnsupportedSyntax("$cname is not engine-native".to_string());
+    }
     if text.contains("$denyallow") {
         return ExclusionReason::UnsupportedSyntax("denyallow is not engine-native".to_string());
     }

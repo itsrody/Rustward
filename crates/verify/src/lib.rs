@@ -489,7 +489,13 @@ fn mask_types(mask: u32) -> Vec<&'static str> {
         .map(|(kind, _)| *kind)
         .collect();
     if types.is_empty() {
-        types.extend(["script", "image", "document", "xmlhttprequest"]);
+        types.extend([
+            "script",
+            "image",
+            "document",
+            "subdocument",
+            "xmlhttprequest",
+        ]);
     }
     types
 }
@@ -1057,3 +1063,14 @@ pub fn literal_contains_equivalence(before: &str, after: &str, permissions: u8) 
 
 #[allow(dead_code)]
 fn unused_reason(_: ExclusionReason) {}
+
+#[cfg(test)]
+mod tests {
+    use super::mask_types;
+
+    #[test]
+    fn broad_rules_probe_subdocument() {
+        let types = mask_types(0);
+        assert!(types.contains(&"subdocument"));
+    }
+}
